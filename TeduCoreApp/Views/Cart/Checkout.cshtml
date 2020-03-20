@@ -11,10 +11,19 @@
         var checkoutObj = new CheckoutController();
         checkoutObj.initialize();
     </script>
+
+    @*<script>
+            $("#edit").click(function () {
+                $("#Street").removeAttr("disabled");
+            });
+        </script>*@
     @*<recaptcha-script validation-message-element-id="recaptchaErrorMessage" />*@
     @await Html.PartialAsync("_ValidationScriptsPartial")
 
 }
+
+@*<button id="edit">Remove Disable</button>*@
+
 <style>
     .field-validation-error {
         color: red
@@ -101,7 +110,7 @@
                                                                 <label asp-for="Province"></label>
                                                                 <input asp-for="Province" id="Province" class="input form-control" placeholder="Tỉnh, Thành Phố" data-toggle="dropdown" type="text">
                                                                 <span asp-validation-for="Province"></span>
-                                                                <ul style="overflow: scroll; width: 250px; height:400px;" class="dropdown-menu" id="tbl-province-details">
+                                                                <ul style="overflow: scroll; width: 250px; height:400px;" class="dropdown-menu province" id="tbl-province-details">
                                                                 </ul>
                                                                 <script id="template-table-province-details" type="x-tmpl-mustache">
                                                                     <li><a class="province">{{{Name}}}</a></li>
@@ -138,9 +147,9 @@
                                                         <div class="col-lg-3 col-md-6">
                                                             <div class="billing-info">
                                                                 <label asp-for="Street"></label>
-                                                                <input asp-for="Street" id="Street" class="input form-control" placeholder="Đường" data-toggle="dropdown" type="text">
+                                                                <input asp-for="Street" id="Street" class="input form-control" placeholder="Đường" data-toggle="dropdown" type="text" disabled>
                                                                 <span asp-validation-for="Street"></span>
-                                                                <ul style="overflow: scroll; width: 250px; height: 400px;" class="dropdown-menu" id="tbl-street-details">
+                                                                <ul style="overflow: scroll; width: 250px; height: 400px;" class="dropdown-menu street" id="tbl-street-details">
                                                                 </ul>
                                                                 <script id="template-table-street-details" type="x-tmpl-mustache">
                                                                     <li><a>{{{Name}}}</a></li>

@@ -78,6 +78,13 @@ namespace TeduCoreApp.Controllers
             return new OkObjectResult(await _context.Districts.Where(x => x.Name.Contains(KeyString)).ToListAsync());
         }
 
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<District>>> GetDistrictsByNameWard(string NameWard)
+        {
+            int IdDistrict = _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).FirstOrDefault();
+            return new OkObjectResult(await _context.Districts.Where(x => x.Id == IdDistrict).ToListAsync());
+        }
+
         //Wards
 
         [HttpGet]
@@ -107,9 +114,9 @@ namespace TeduCoreApp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsNameWard(string NameWard)
+        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByNameWard(string NameWard)
         {
-            int IdWard = _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).FirstOrDefault(); ;
+            int IdWard = _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).FirstOrDefault();
             return new OkObjectResult(await _context.Streets.Where(x => x.WardId == IdWard).ToListAsync());
         }
 
@@ -125,6 +132,47 @@ namespace TeduCoreApp.Controllers
         {
             int IdProvince = 1;
             return new OkObjectResult(await _context.Streets.Where(x => x.ProvinceId == IdProvince).Select(x => x.Name).ToListAsync());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByKeyString(string KeyString)
+        {
+            return new OkObjectResult(await _context.Streets.Where(x => x.Name.Contains(KeyString)).ToListAsync());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByNameWardAndNameDistrict(string NameDistrict, string NameWard)
+        {
+            int IdDistrict = await _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).SingleOrDefaultAsync();
+            int IdWard = await _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).SingleOrDefaultAsync();
+
+            return new OkObjectResult(await _context.Streets.Where(x => x.DistrictId == IdDistrict && x.WardId == IdWard).ToListAsync());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByNameProvinceAndNameDistrict(string NameDistrict, string NameProvince)
+        {
+            int IdDistrict = await _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).SingleOrDefaultAsync();
+            int IdProvince = await _context.Provinces.Where(x => x.Name == NameProvince).Select(x => x.Id).SingleOrDefaultAsync();
+
+            return new OkObjectResult(await _context.Streets.Where(x => x.DistrictId == IdDistrict && x.ProvinceId == IdProvince).ToListAsync());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByKeyStringByDistrictWard(string KeyString, string NameDistrict, string NameWard)
+        {
+            int IdDistrict = await _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).SingleOrDefaultAsync();
+            int IdWard = await _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).SingleOrDefaultAsync();
+
+            return new OkObjectResult(await _context.Streets.Where(x => x.Name.Contains(KeyString) && x.DistrictId == IdDistrict && x.WardId == IdWard).ToListAsync());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByKeyStringByProvinceDistrict(string KeyString, string NameDistrict, string NameProvince)
+        {
+            int IdDistrict = await _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).SingleOrDefaultAsync();
+            int IdProvince = await _context.Provinces.Where(x => x.Name == NameProvince).Select(x => x.Id).SingleOrDefaultAsync();
+            return new OkObjectResult(await _context.Streets.Where(x => x.Name.Contains(KeyString) && x.DistrictId == IdDistrict && x.ProvinceId == IdProvince).ToListAsync());
         }
     }
 }
