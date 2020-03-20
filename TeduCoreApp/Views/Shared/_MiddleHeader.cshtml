@@ -1,0 +1,30 @@
+﻿<div class="header-middle ptb-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="logo logo-mrg">
+                    <a asp-controller="Home" asp-action="Index">
+                        <img src="assets/img/logo/logo-11.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="header-contact-search-wrapper f-right">
+                    <div class="header-search middle-same header-middle-color-2">
+                        <div id="search">
+                            <form class="header-search-form" method="get" action="/tim-kiem.html">
+                                <input name="keyword" type="text" placeholder="Nhập tên, mã sản phẩm cần tìm ...">
+                                <button class="btn-search" type="submit">
+                                    <i class="ion-ios-search-strong"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="header-cart middle-same header-middle-color-2" id="headerCart">
+                        <vc:header-cart></vc:header-cart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

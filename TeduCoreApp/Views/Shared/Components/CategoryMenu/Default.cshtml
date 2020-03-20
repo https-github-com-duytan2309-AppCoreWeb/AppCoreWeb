@@ -1,0 +1,91 @@
+﻿@model List<ProductCategoryViewModel>
+@inject IViewLocalizer Localizer
+
+<div class="menu-categories">
+    <h3 class="text-white"><a id="showcat" class="text-white" href="#"><i class="fa fa-bars"></i>@Localizer["Tất cả danh mục"]</a></h3>
+    <div class="category-menu category-menu-1" style="background-color:#FFF;" id="hidecat">
+        <nav class="cate-menu-nav">
+            <ul>
+                @foreach (var item in Model.Where(x => x.ParentId == null))
+                {
+                    if (Model.Any(x => x.ParentId == item.Id))
+                    {
+                        <li class="cr-dropdown">
+                            <a href="/danh-muc/@item.SeoAlias-c.@(item.Id).html" class="text-black-50"><i class="none-sm ion-chevron-right text-black-50"></i><i class="none-lg ion-chevron-down"></i>@item.Name</a>
+                            @if (Model.Where(x => x.ParentId == item.Id).Count()==2)
+                            {
+                                <ul class="category-mega-menu category-2-col left-menu">
+                                    @foreach (var item1 in Model.Where(x => x.ParentId == item.Id))
+                                    {
+                                        <li>
+                                            <ul>
+                                                <li class="category-mega-menu-title">@item1.Name</li>
+                                                @foreach (var item2 in Model.Where(x => x.ParentId == item1.Id))
+                                                {
+                                                    <li><a href="/danh-muc/@item2.SeoAlias-c.@(item2.Id).html">@item2.Name</a></li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else if (Model.Where(x => x.ParentId == item.Id).Count()==3)
+                            {
+                                <ul class="category-mega-menu category-3-col left-menu">
+                                    @foreach (var item1 in Model.Where(x => x.ParentId == item.Id))
+                                    {
+                                        <li>
+                                            <ul>
+                                                <li class="category-mega-menu-title">@item1.Name</li>
+                                                @foreach (var item2 in Model.Where(x => x.ParentId == item1.Id))
+                                                {
+                                                    <li><a href="/danh-muc/@item2.SeoAlias-c.@(item2.Id).html">@item2.Name</a></li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else if (Model.Where(x => x.ParentId == item.Id).Count()==1)
+                            {
+                                <ul class="category-mega-menu category-1-col left-menu">
+                                    @foreach (var item1 in Model.Where(x => x.ParentId == item.Id))
+                                    {
+                                        <li>
+                                            <ul>
+                                                <li class="category-mega-menu-title">@item1.Name</li>
+                                                @foreach (var item2 in Model.Where(x => x.ParentId == item1.Id))
+                                                {
+                                                    <li><a href="/danh-muc/@item2.SeoAlias-c.@(item2.Id).html">@item2.Name</a></li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            <ul class="category-small-device">
+                                @foreach (var item1 in Model.Where(x => x.ParentId == item.Id))
+                                {
+                                    <li class="cr-sub-dropdown sub-style">
+                                        <a href="/danh-muc/@item1.SeoAlias-c.@(item1.Id).html">@item1.Name <i class="fa fa-angle-down"></i></a>
+                                        <ul>
+                                            @foreach (var item2 in Model.Where(x => x.ParentId == item1.Id))
+                                            {
+                                                <li><a href="/danh-muc/@item2.SeoAlias-c.@(item2.Id).html">@item2.Name</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="/danh-muc/@item.SeoAlias-c.@(item.Id).html" class="text-black-50"> @item.Name </a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+

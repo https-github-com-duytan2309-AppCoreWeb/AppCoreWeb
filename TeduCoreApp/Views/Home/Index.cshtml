@@ -1,0 +1,499 @@
+﻿@model HomeViewModel
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Model.Title;
+    ViewData["MetaKeyword"] = Model.MetaKeyword;
+    ViewData["MetaDescription"] = Model.MetaDescription;
+}
+@section Scripts{
+    <script src="~/clientapp/controllers/home/index.js"></script>
+    <script>
+        var homeObj = new HomeController();
+        homeObj.initialize();
+    </script>
+}
+
+<script src="~/client/js/jssor.slider.min.js"></script>
+<script type="text/javascript">
+    jssor_1_slider_init = function () {
+        var jssor_1_SlideshowTransitions = [
+            { $Duration: 500, $Delay: 30, $Cols: 8, $Rows: 4, $Clip: 15, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 2049, $Easing: $Jease$.$OutQuad },
+            { $Duration: 500, $Delay: 80, $Cols: 8, $Rows: 4, $Clip: 15, $SlideOut: true, $Easing: $Jease$.$OutQuad },
+            { $Duration: 1000, x: -0.2, $Delay: 40, $Cols: 12, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraight, $Assembly: 260, $Easing: { $Left: $Jease$.$InOutExpo, $Opacity: $Jease$.$InOutQuad }, $Opacity: 2, $Outside: true, $Round: { $Top: 0.5 } },
+            { $Duration: 2000, y: -1, $Delay: 60, $Cols: 15, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationStraight, $Easing: $Jease$.$OutJump, $Round: { $Top: 1.5 } },
+            { $Duration: 1200, x: 0.2, y: -0.1, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $Jease$.$InWave, $Top: $Jease$.$InWave, $Clip: $Jease$.$OutQuad }, $Round: { $Left: 1.3, $Top: 2.5 } }
+        ];
+
+        var jssor_1_options = {
+            $AutoPlay: 1,
+            $SlideshowOptions: {
+                $Class: $JssorSlideshowRunner$,
+                $Transitions: jssor_1_SlideshowTransitions,
+                $TransitionsOrder: 1
+            },
+            $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+            },
+            $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$
+            }
+        };
+
+        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+        /*#region responsive code begin*/
+
+        var MAX_WIDTH = 1920;
+
+        function ScaleSlider() {
+            var containerElement = jssor_1_slider.$Elmt.parentNode;
+            var containerWidth = containerElement.clientWidth;
+
+            if (containerWidth) {
+
+                var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+
+                jssor_1_slider.$ScaleWidth(expectedWidth);
+            }
+            else {
+                window.setTimeout(ScaleSlider, 30);
+            }
+        }
+
+        ScaleSlider();
+
+        $Jssor$.$AddEvent(window, "load", ScaleSlider);
+        $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+        $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+        /*#endregion responsive code end*/
+    };
+</script>
+<link href="/Client/css/slide.css" rel="stylesheet" />
+<div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1920px;height:680px;overflow:hidden;visibility:hidden;">
+    <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+        <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="/Content/Client/img/svg/loading/static-svg/spin.svg" />
+    </div>
+    <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1920px;height:680px;overflow:hidden;">
+        @foreach (var slide in Model.HomeSlides)
+        {
+            <div class="single-slider pt-90 pb-110 bg-img" style="background-image:url('@slide.Image');">
+                <div class="container">
+                    <div class="slider-content slider-content-black slider-animated-1">
+                        @Html.Raw(slide.Description)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div data-u="navigator" class="jssorb053" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+        <div data-u="prototype" class="i" style="width:16px;height:16px;">
+            <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                <path class="b" d="M11400,13800H4600c-1320,0-2400-1080-2400-2400V4600c0-1320,1080-2400,2400-2400h6800 c1320,0,2400,1080,2400,2400v6800C13800,12720,12720,13800,11400,13800z"></path>
+            </svg>
+        </div>
+    </div>
+    <div data-u="arrowleft" class="jssora093" style="width:50px;height:50px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+        <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+            <circle class="c" cx="8000" cy="8000" r="5920"></circle>
+            <polyline class="a" points="7777.8,6080 5857.8,8000 7777.8,9920 "></polyline>
+            <line class="a" x1="10142.2" y1="8000" x2="5857.8" y2="8000"></line>
+        </svg>
+    </div>
+    <div data-u="arrowright" class="jssora093" style="width:50px;height:50px;top:0px;right:30px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+        <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+            <circle class="c" cx="8000" cy="8000" r="5920"></circle>
+            <polyline class="a" points="8222.2,6080 10142.2,8000 8222.2,9920 "></polyline>
+            <line class="a" x1="5857.8" y1="8000" x2="10142.2" y2="8000"></line>
+        </svg>
+    </div>
+</div>
+<script type="text/javascript">jssor_1_slider_init();</script>
+<div class="service-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <div class="shop-service-content-2 text-center mb-20">
+                    <h4>Miễn phí vận chuyển</h4>
+                    <p>Miễn phí vận chuyển cho địa chỉ trong bán kính 15km</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="shop-service-content-2 text-center mb-20">
+                    <h4>Đổi trả hàng</h4>
+                    <p>Đổi trả hàng trong 30 ngày khi gặp lỗi</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="shop-service-content-2 text-center border-none mb-20">
+                    <h4>Hỗ trợ trực tuyến</h4>
+                    <p>Bộ phận hỗ trợ khách hàng 24/7</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-wrapper-ele pt-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="deals-area">
+                    <div class="section-border mb-35">
+                        <h4 class="sidebar-title section-bg-white">@Localizer["Ưu đãi hôm nay"]</h4>
+                    </div>
+                    <div class="deals-slider-active-2 nav-style owl-carousel">
+                        @foreach (var item in Model.HotProducts)
+                        {
+                            <div class="deals-wrapper">
+                                <div class="product-img">
+                                    <a href="/san-pham/@item.SeoAlias-p.@(item.Id).html">
+                                        <img alt="@item.Name" width="270" height="270" src="@item.Image">
+                                    </a>
+                                    <span>-15%</span>
+                                </div>
+                                <div class="timer timer-style-1 mb-20">
+                                    <div data-countdown="2019/07/01"></div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <span>@item.ProductCategory.Name</span>
+                                    <h4 class="nameproduct"><a href="/san-pham/@item.SeoAlias-p.@(item.Id).html" title="@item.Name">@item.Name</a></h4>
+                                    <div class="product-price-wrapper">
+                                        <span class="text-danger">@(item.Price.ToString("N0"))</span>
+                                        <span class="product-price-old">@(item.PromotionPrice.Value.ToString("N0")) </span>
+                                    </div>
+                                    <div class="add-to-cart mt-25">
+                                        <a class="action-cart add-to-cart" id="add-to-cart" title=" Thêm giỏ hàng" data-id="@item.Id" href="#">
+                                            @Localizer["Thêm giỏ hàng"]
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="related-product-area mt-30 mb-30">
+                    <div class="section-border mb-30">
+                        <h4 class="sidebar-title section-bg-white">@Localizer["Sản phẩm mới"]</h4>
+                    </div>
+                    <div class="related-product-active nav-style owl-carousel">
+                        @for (int i = 0; i < Model.HotProducts.Count(); i += 2)
+                        {
+                            <div class="related-product-bundle">
+                                @{
+                                    int j = 0;
+                                    for (; j <= 1 && i + j < Model.HotProducts.Count(); j++)
+                                    {
+                                        <div class="related-product-wrapper">
+                                            <div class="related-product-img">
+                                                <a href="/san-pham/@Model.HotProducts[i + j].SeoAlias-p.@(Model.HotProducts[i + j].Id).html">
+                                                    <img alt="@Model.HotProducts[i + j].Name" width="100" height="100" src="@Model.HotProducts[i + j].Image">
+                                                </a>
+                                                <span>Mới</span>
+                                            </div>
+                                            <div class="product-content" style="max-width:250px">
+                                                <span>@Model.HotProducts[i + j].ProductCategory.Name</span>
+                                                <h4 class="nameproduct">
+                                                    <a href="/san-pham/@Model.HotProducts[i + j].SeoAlias-p.@(Model.HotProducts[i + j].Id).html" title="@Model.HotProducts[i + j].Name">@Model.HotProducts[i + j].Name</a>
+                                                </h4>
+                                                <div class="product-price-wrapper">
+                                                    <span>@(Model.HotProducts[i + j].Price.ToString("N0"))</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="banner-img mt-30 mb-30">
+                    <div class="banner-img banner-hover banner-mrg">
+                        <a href="#">
+                            <img src="~/uploaded/slide/2.jpg" height="300" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="product-area pb-25">
+                    <div class="section-border mb-15">
+                        <h4 class="section-title section-bg-white">@Localizer["Sản phẩm nổi bậc"]</h4>
+                    </div>
+                    <div class="product-slider-nav-2 nav-style nav-style-bundle"></div>
+                    <div class="featured-product-active product-slider-style owl-carousel nav-style product-slider">
+                        @for (int i = 0; i < Model.HotProducts.Count(); i += 2)
+                        {
+                            <div class="devita-product-bundle">
+                                @{
+                                    int j = 0;
+                                    for (; j <= 1 && i + j < Model.HotProducts.Count(); j++)
+                                    {
+                                        <div class="devita-product-2 mb-15">
+                                            <div class="single-product-img">
+                                                <a href="/san-pham/@Model.HotProducts[i + j].SeoAlias-p.@(Model.HotProducts[i + j].Id).html">
+                                                    <img alt="@Model.HotProducts[i + j].Name" width="195" height="165" src="@Model.HotProducts[i + j].Image">
+                                                </a>
+                                            </div>
+                                            <div class="list-col" style="height:115px">
+                                                <div class="gridview">
+                                                    <div class="product-content text-center">
+                                                        <span>@Model.HotProducts[i + j].ProductCategory.Name</span>
+                                                        <h4 class="nameproduct"><a href="/san-pham/@Model.HotProducts[i + j].SeoAlias-p.@(Model.HotProducts[i + j].Id).html" title="@Model.HotProducts[i + j].Name">@Model.HotProducts[i + j].Name</a></h4>
+                                                        <div class="product-price-wrapper">
+                                                            <span class="text-danger">@(Model.HotProducts[i + j].Price.ToString("N0"))</span>
+                                                            <span class="product-price-old">@(Model.HotProducts[i + j].PromotionPrice.Value.ToString("N0")) </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-action-wrapper-2 text-center">
+                                                        <div class="product-action">
+                                                            <a class="action-cart add-to-cart" id="add-to-cart" title=" Thêm giỏ hàng" data-id="@Model.HotProducts[i + j].Id" href="javascript;">
+                                                                @Localizer["Thêm giỏ hàng"]
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="banner-area">
+                    <div class="banner-img banner-hover">
+                        <a href="#">
+                            <img src="~/uploaded/slide/3.jpg" height="230" />
+                        </a>
+                    </div>
+                </div>
+                <div class="best-selling-area pt-35 pb-35">
+                    <div class="container">
+                        <div class="top-bar section-border ">
+                            <div class="section-title-wrapper section-bg-white">
+                                <h4 class="section-title">@Localizer["Sản phẩm bán chạy"]</h4>
+                            </div>
+                            <div class="product-tab-list-2 nav section-bg-white">
+                                @for (var i = 0; i < Model.HomeCategories.Count; i++)
+                                {
+                                    var item = Model.HomeCategories[i];
+                                    if (i == 0)
+                                    {
+                                        <a href="#@item.SeoAlias" class="active" data-toggle="tab"></a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#@item.SeoAlias" data-toggle="tab"><h4>@item.Name</h4></a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="tab-content jump">
+                            @for (var i = 0; i < Model.HomeCategories.Count; i++)
+                            {
+                                var category = Model.HomeCategories[i];
+                                string css = string.Empty;
+                                if (i == 0)
+                                {
+                                    css = "active";
+                                }
+                                else
+                                {
+                                    css = "";
+                                }
+                                <div class="tab-pane @css" id="@category.SeoAlias">
+                                    <div class="height-empty"></div>
+                                    <div class="product-slider-nav-2 nav-style-res nav-style nav-style-red"></div>
+                                    <div class="featured-product-active product-slider-style owl-carousel nav-style product-slider">
+                                        @foreach (var item in category.Products)
+                                        {
+                                            <div class="devita-product-2 devita-product-red">
+                                                <div class="product-img">
+                                                    <a href="/san-pham/@item.SeoAlias-p.@(item.Id).html"><img src="@item.Image" title="@item.Name" height="150" width="150" alt="@item.Name"></a>
+                                                </div>
+                                                <div class="list-col" style="height:160px">
+                                                    <div class="gridview">
+                                                        <div class="product-content text-center">
+                                                            <span>@category.Name</span>
+                                                            <h4 class="nameproduct"><a href="/san-pham/@item.SeoAlias-p.@(item.Id).html" title="@item.Name">@item.Name</a></h4>
+                                                            <div class="product-price-wrapper">
+                                                                <span class="text-danger">@item.Price.ToString("N0")</span>
+                                                                <span class="product-price-old">@(item.PromotionPrice.Value.ToString("N0")) </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-action-wrapper-2 text-center">
+                                                            <div class="product-action">
+                                                                <a class="action-cart add-to-cart" id="add-to-cart" title=" Thêm giỏ hàng" data-id="@item.Id" href="#">
+                                                                    @Localizer["Thêm giỏ hàng"]
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="brand-logo-area pt-20 pb-20 gray-bg">
+    <div class="container">
+        <div class="">
+            <h4 class="section-title">@Localizer["Ngành hàng quan tâm"]</h4>
+        </div> <div class="product-slider-nav-2 nav-style-res nav-style nav-style-red"></div>
+        <div class="brand-logo-active owl-carousel border-top-2 ptb-20">
+            @foreach (var cate in Model.HomeCategories)
+            {
+                <div class="single-brand-logo bg-white pt-10 pb-10" style="width:200px;">
+                    <a href="/danh-muc/@cate.SeoAlias-c.@(cate.Id).html">
+                        <img alt="@cate.Name" width="100" height="100" src="@cate.Image">
+                    </a>
+                    <h6 class="pt-30" style="color:darkgray">@cate.Name</h6>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="product-area pt-30 pb-65">
+    <div class="container">
+        <div class="section-border mb-15">
+            <h4 class="section-title section-bg-white">@Localizer["Sản phẩm dành riêng cho bạn"]</h4>
+        </div>
+        <div class="row">
+            @foreach (var pro in Model.HotProducts.Take(8))
+            {
+                <div class="col-xl-3 col-lg-3 col-md-3 col-xs-6 col-sm-6 col-12 mb-30">
+                    <div class="devita-product-2">
+                        <div class="product-img">
+                            <a href="/san-pham/@pro.SeoAlias-p.@(pro.Id).html">
+                                <img alt="@pro.Name" height="150" width="200" title="@pro.Name" src="@pro.Image">
+                            </a>
+                            @*<span>-15%</span>*@
+                        </div>
+                        <div class="list-col">
+                            <div class="gridview">
+                                <div class="product-content text-center">
+                                    <span>@pro.ProductCategory.Name</span>
+                                    <h4 class="nameproduct"><a href="/san-pham/@pro.SeoAlias-p.@(pro.Id).html" title="@pro.Name">@pro.Name</a></h4>
+                                    <div class="product-price-wrapper">
+                                        <span class="text-danger">@(pro.Price.ToString("N0"))</span>
+                                        <span class="product-price-old">@(pro.PromotionPrice.Value.ToString("N0")) </span>
+                                    </div>
+                                </div>
+                                <div class="product-action-wrapper-2 text-center">
+                                    <div class="product-action">
+                                        <a class="action-cart add-to-cart" id="add-to-cart" title=" Thêm giỏ hàng" data-id="@pro.Id" href="#">
+                                            @Localizer["Thêm giỏ hàng"]
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class=" col-12 col-lg-offset-5 col-sm-offset-5 pt-30">
+                <center>
+                    <a class="btn btn-danger btn-circle" title="Xem thêm" href="#">
+                        @Localizer["Xem thêm"]
+                    </a>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-area gray-bg pt-30 pb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="Best-selling-area">
+                    <div class=" mb-40">
+                        <h4 class="section-title">@Localizer["Dịch vụ cung cấp"]</h4>
+                    </div>
+                    <div class="row">
+                        @foreach (var dichvucate in Model.HomeDichVuCategories)
+                        {
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 col-xs-6 col-sm-6 mb-60">
+                                <div class="single-product-wrapper devita-product-persiangreen">
+                                    <div class="single-product-img">
+                                        <a href="/danh-muc-dich-vu/@dichvucate.SeoAlias-cd.@(dichvucate.Id).html"><img alt="@dichvucate.Name" width="100" height="100" src="@dichvucate.Image"></a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h6 class="text"><a href="/danh-muc-dich-vu/@dichvucate.SeoAlias-cd.@(dichvucate.Id).html"><b>@dichvucate.Name</b></a></h6>
+                                        <h4 style="color:darkgray;">
+                                            @Html.Raw(dichvucate.Description)
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="blog-area mrg-top-md mrg-top-sm">
+                    <div class="mb-40">
+                        <h4 class="section-title">@Localizer["Dự án tiêu biểu"]</h4>
+                    </div>
+                    <div class="blog-slider-active-2 nav-style nav-style-red owl-carousel">
+                        @foreach (var dichvu in Model.LastestDichVu)
+                        {
+                            <div class="blog-wrapper-3 blog-persiangreen">
+                                <div class="blog-img mb-15">
+                                    <a href="/dich-vu/@dichvu.SeoAlias-dv.@(dichvu.Id).html"><img alt="@dichvu.Name" width="250" height="200" src="@dichvu.Image"></a>
+                                </div>
+                                <div class="blog-content-6">
+                                    <h4><a href="/dich-vu/@dichvu.SeoAlias-dv.@(dichvu.Id).html">@dichvu.Name</a></h4>
+                                    <div class="blog-meta">
+                                        <ul>
+                                            <li>@dichvu.DateCreated</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="blog-area pt-30 pb-65">
+    <div class="container">
+        <div class="section-border mb-10">
+            <h4 class="section-title section-bg-white-2">@Localizer["Tin tức mới"]</h4>
+        </div>
+        <div class="blog-slider-active-3 owl-carousel nav-style  nav-style-red mt-35">
+            @foreach (var blog in Model.LastestBlogs)
+            {
+                <div class="blog-wrapper-2 text-center">
+                    <div class="blog-img mb-15">
+                        <a href="/tin-tuc/@blog.SeoAlias-bl.@(blog.Id).html"><img alt="@blog.Name" width="300" height="200" src="@blog.Image"></a>
+                        <div class="blog-categori">
+                            <span>@blog.BlogCategory.Name</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <h4><a href="/tin-tuc/@blog.SeoAlias-bl.@(blog.Id).html">@blog.Name</a></h4>
+                        <p class="desscription">@Html.Raw(blog.Description)</p>
+                    </div>
+                    <div class="blog-meta">
+                        <ul>
+                            <li>@blog.DateCreated</li>
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

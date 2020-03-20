@@ -1,0 +1,116 @@
+﻿@model TeduCoreApp.Models.ProductViewModels.SearchResultViewModel
+@{
+    ViewData["Title"] = "Từ khóa tìm kiếm: " + (Model.Data.CurrentPage == 1 ? Model.Keyword : Model.Keyword + " - Page " + Model.Data.CurrentPage);
+    ViewData["MetaKeyword"] = "Từ khóa tìm kiếm:  " + (Model.Data.CurrentPage == 1 ? Model.Keyword : Model.Keyword + " - Page " + Model.Data.CurrentPage);
+    ViewData["MetaDescription"] = "Từ khóa tìm kiếm:  " + (Model.Data.CurrentPage == 1 ? Model.Keyword : Model.Keyword + " - Page " + Model.Data.CurrentPage);
+}
+
+<div class="breadcrumb-area gray-bg-7">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a asp-action="Index" asp-controller="Home">Trang chủ</a></li>
+                <li class="active">Từ khóa tìm kiếm: @Model.Keyword</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="shop-page-area pt-30 pb-65">
+    <div class="container">
+        <div class="page-title">
+            <h2>Từ khóa tìm kiếm: @Model.Keyword</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+                <div class="shop-topbar-wrapper">
+                    <div class="shop-topbar-left">
+                        <div class="grid-list-options nav view-mode">
+                            <a class="active" href="#product-grid" data-view="product-grid" data-toggle="tab"><i class="fa fa-th"></i></a>
+                            <a href="#product-list" data-view="product-list" data-toggle="tab"><i class="fa fa-list-ul"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-sorting-wrapper">
+                        <form action="/tim-kiem.html" method="get">
+                            <input type="hidden" name="keyword" value="@Model.Keyword" />
+                            <div class="product-shorting shorting-style">
+                                <label>Lọc:</label>
+                                <select name="sortBy" asp-for="SortType"
+                                        onchange="this.form.submit()" asp-items="Model.SortTypes"></select>
+                            </div>
+                            <div class="product-show shorting-style">
+                                <label>Hiển thị:</label>
+                                <select name="pageSize" asp-for="PageSize" onchange="this.form.submit()"
+                                        asp-items="Model.PageSizes"></select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-content jump">
+                    <div class="tab-pane pb-20 active" id="product-grid">
+                        <div class="row">
+                            @foreach (var item in Model.Data.Results)
+                            {
+                                var url = "/san-pham/" + item.SeoAlias + "-p." + item.Id + ".html";
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 mb-80">
+                                    <div class="devita-product-2 mrg-inherit">
+                                        <div class="product-img">
+                                            <a href="@url"><img src="@item.Image" height="150" width="180" alt="@item.Name"></a>
+                                        </div>
+                                        <div class="list-col">
+                                            <div class="gridview">
+                                                <div class="product-content text-center">
+                                                    <span>@item.ProductCategory.Name</span>
+                                                    <h4><a href="@url">@item.Name</a></h4>
+                                                    <div class="product-price-wrapper">
+                                                        <span>@item.Price.ToString("N0")</span>
+                                                        <span class="product-price-old text-danger">@item.PromotionPrice.Value.ToString("N0") </span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-action-wrapper-2 text-center">
+                                                    <div class="product-action">
+                                                        <a class="action-cart add-to-cart" data-id="@item.Id" title="Thêm giỏ hàng" href="#">
+                                                            Thêm giỏ hàng
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="product-list">
+                        <div class="row">
+                            @foreach (var item in Model.Data.Results)
+                            {
+                                var url = "/san-pham/" + item.SeoAlias + "-p." + item.Id + ".html";
+                                <div class="col-lg-12">
+                                    <div class="product-list-wrapper shop-border mb-30 pb-30">
+                                        <div class="product-img">
+                                            <a href="@url"><img src="@item.Image" height="150" width="180" alt="@item.Name"></a>
+                                        </div>
+                                        <div class="product-list-content">
+                                            <span>@item.ProductCategory.Name</span>
+                                            <h4><a href="@url">@item.Name</a></h4>
+                                            <div class="product-price-wrapper">
+                                                <span>@item.Price.ToString("N0")</span>
+                                                <span class="product-price-old text-danger">@item.PromotionPrice.Value.ToString("N0")</span>
+                                            </div>
+                                            <p>@Html.Raw(item.Description)</p>
+                                            <div class="product-action">
+                                                <a class="action-cart add-to-cart" href="#" data-id="@item.Id" title="Thêm giỏ hàng"> Thêm giỏ hàng </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    @(await Component.InvokeAsync("Pager", Model.Data))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

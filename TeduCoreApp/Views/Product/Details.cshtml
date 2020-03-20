@@ -1,0 +1,275 @@
+﻿@model TeduCoreApp.Models.ProductViewModels.DetailViewModel
+@{
+    ViewData["Title"] = Model.Product.Name;
+    ViewData["MetaKeyword"] = Model.Product.SeoKeywords;
+    ViewData["MetaDescription"] = Model.Product.SeoDescription;
+    var category = Model.Category;
+    //var trademark = Model.Trademark;
+    var product = Model.Product;
+}
+
+@section Scripts{
+    <script src="~/clientapp/controllers/product/details.js"></script>
+    <script>
+        var productObj = new ProductDetailController();
+        productObj.initialize();
+    </script>
+}
+<div class="breadcrumb-area gray-bg-7">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a asp-action="Index" asp-controller="Home">Trang chủ</a></li>
+                <li><a asp-action="Index" asp-controller="Product">Sản phẩm</a></li>
+                <li><a title="@category.Name" href="/@category.SeoAlias-c.@(category.Id).html">@category.Name</a></li>
+                <li class="active">@product.Name</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="product-details pt-65 pb-35">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="product-details-img">
+                    <div class="zoompro-border zoompro-span">
+                        <img class="zoompro" src="@product.Image" width="300" height="350" data-zoom-image="@product.Image" alt="@product.Name" />
+                    </div>
+                    <div id="gallery" class="mt-20 product-dec-slider">
+                        @foreach (var item in Model.ProductImages)
+                        {
+                            <a data-image="@item.Path" data-zoom-image="@item.Path">
+                                <img src="@item.Path" width="90" height="90" alt="">
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="banner-img mt-10">
+                    <div class="banner-img banner-hover banner-mrg">
+                        <a href="#">
+                            <img src="~/uploaded/slide/2.jpg" height="150" width="300" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="product-details-content">
+                    <h4>@product.Name</h4>
+
+                    <div style="margin-top:20px;" class="pro-dec-categories">
+                        <ul>
+                            <li class="categories-title"><h5>Danh mục:</h5></li>
+                            <li><a href="/@category.SeoAlias-c.@(category.Id).html">@category.Name</a></li>
+
+                        </ul>
+                    </div>
+                    <span class="text-danger"> @product.PromotionPrice.Value.ToString("N0") đ</span>
+                    <div class="in-stock">
+                        <p><h6></h6> <span></span></p>
+                        <p><h6></h6> <span></span></p>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-3"><b>Tình trạng:</b></div>
+                                <div class="col-4">Còn hàng</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-3"><b>Xuất xứ:</b></div>
+                                <div class="col-4">Toto</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-3"><b>Màu sắc:</b></div>
+                                <div class="col-4"><select class="" asp-items="Model.Colors" id="ddlColorId"></select></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-3"><b>Kích thước:</b></div>
+                                <div class="col-4"><select class="" asp-items="Model.Sizes" id="ddlSizeId"></select></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="word-wrap: break-word;">@product.Description </p>
+                    <div class="pro-dec-feature">
+                        <ul>
+                            <li>Phí vận chuyển: <span> Miễn phí vận chuyển trong bán kính 15 km</span></li>
+                        </ul>
+                    </div>
+                    <div class="quality-add-to-cart">
+                        <form action="#" method="post">
+                            <div class="quality">
+                                <label>Số lượng:</label>
+                                <input type="text" class="qty cart-plus-minus-box" title="Qty" value="1" maxlength="12" id="txtQuantity" name="qtybutton">
+                            </div>
+                            <div class="product-action">
+                                <a href="#" class="action-cart" id="btnAddToCart" data-id="@Model.Product.Id" title=" Thêm vào giỏ hàng"> Thêm vào giỏ hàng </a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="pro-dec-categories pt-0">
+                        @if (Model.Tags.Count > 0)
+                        {
+                            <div class="shop-tags mt-25">
+                                <ul>
+                                    <li class="categories-title">Thẻ liên kết: </li>
+                                    @foreach (var tag in Model.Tags)
+                                    {
+                                        <li><a href="/tag.@(tag.Id).html">@tag.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                    <div class="pro-dec-social pt-0">
+                        <ul>
+                            <li><a class="tweet" href="#"><i class="ion-social-twitter"></i> Tweet</a></li>
+                            <li><a class="share" href="#"><i class="ion-social-facebook"></i> Share</a></li>
+                            <li><a class="google" href="#"><i class="ion-social-googleplus-outline"></i> Google+</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="newsletter-area">
+    <div class="container">
+        <div class="newsletter-border pt-15 pb-25">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="shop-service-content text-center">
+                        <h4 class="text-black-50">Cam kết hàng chính hiệu</h4>
+                        <p class="text-black-50">Hoàn tiền 110%. Nếu phát hiện hàng giả</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="shop-service-content text-center">
+                        <h4 class="text-black-50">Liên hệ</h4>
+                        <p class="text-black-50">Hotline đặt hàng: 097 507 51 61</p>
+                        <p class="text-black-50">Email: thanhvuongcons@gmail.com</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="shop-service-content text-center border-none">
+                        <h4 class="text-black-50">Tư vấn sản phẩm</h4>
+                        <p class="text-black-50">Hotline: 097 507 51 61</p>
+                        <p class="text-black-50">Hỗ trợ miễn phí</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="description-review-area pt-25 pb-30">
+    <div class="container">
+        <div class="description-review-wrapper">
+            <div class="description-review-topbar nav text-center">
+                <a class="active" data-toggle="tab" href="#des-details1">Thông tin chi tiết</a>
+                <a data-toggle="tab" href="#des-details3">Bình luận</a>
+            </div>
+            <div class="tab-content description-review-bottom">
+                <div id="des-details1" class="tab-pane active">
+                    <div class="product-description-wrapper">
+                        <p>@Html.Raw(product.Content)</p>
+                    </div>
+                </div>
+                <div id="des-details3" class="tab-pane">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="product-area pt-25">
+    <div class="container">
+        <div class="section-border mb-10">
+            <h4 class="section-title section-bg-white">Sản phẩm cùng loại</h4>
+        </div>
+        <div class="product-slider-nav nav-style"></div>
+        <div class="headphone-slider-active product-slider owl-carousel nav-style">
+            @foreach (var item in Model.RelatedProducts)
+            {
+                var url = "/san-pham/" + item.SeoAlias + "-" + "p." + item.Id + ".html";
+                <div class="devita-product-2">
+                    <div class="product-img">
+                        <a href="@url">
+                            <img src="@item.Image" width="250" height="150" alt="@item.Name">
+                        </a>
+                    </div>
+                    <div class="list-col" style="height:150px;">
+                        <div class="gridview">
+                            <div class="product-content text-center">
+                                <span>@item.ProductCategory.Name</span>
+                                <h4 class="nameproduct"><a href="@url">@item.Name </a></h4>
+                                <div class="product-price-wrapper">
+                                    <span class="text-danger">@(item.Price.ToString("N0"))</span>
+                                    <span class="product-price-old">@(item.PromotionPrice.Value.ToString("N0")) </span>
+                                </div>
+                            </div>
+                            <div class="product-action-wrapper-2 text-center">
+                                <div class="product-action">
+                                    <a class="action-cart" title="Thêm giỏ hàng" data-id="@item.Id" href="#">
+                                        Thêm giỏ hàng
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@if (Model.UpsellProducts.Count > 0)
+{
+    <div class="product-areapb-45 bg-green pb-45">
+        <div class="container">
+            <div class="section-border mb-10">
+                <h4 class="section-title section-bg-white">Sản phẩm bán nhiều</h4>
+            </div>
+            <div class="product-slider-nav nav-style"></div>
+            <div class="headphone-slider-active product-slider owl-carousel nav-style">
+                @foreach (var item in Model.UpsellProducts)
+                {
+                    var url = "/san-pham/" + item.SeoAlias + "-" + "p." + item.Id + ".html";
+                    <div class="devita-product-2">
+                        <div class="product-img">
+                            <a href="@url">
+                                <img src="@item.Image" width="250" height="150" alt="@item.Name">
+                            </a>
+                        </div>
+                        <div class="list-col" style="height:150px;">
+                            <div class="gridview">
+                                <div class="product-content text-center">
+                                    <span>@item.ProductCategory.Name</span>
+                                    <h4 class="nameproduct"><a href="@url">@item.Name </a></h4>
+                                    <div class="product-price-wrapper">
+                                        <span class="text-danger">@(item.Price.ToString("N0"))</span>
+                                        <span class="product-price-old">@(item.PromotionPrice.Value.ToString("N0")) </span>
+                                    </div>
+                                </div>
+                                <div class="product-action-wrapper-2 text-center">
+                                    <div class="product-action">
+                                        <a class="action-cart" title="Thêm giỏ hàng" data-id="@item.Id" href="#">
+                                            Thêm giỏ hàng
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+    
+
+
+

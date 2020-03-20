@@ -1,0 +1,10 @@
+﻿@*@model List<MenuViewModel>
+<ul>
+    @foreach (var item in Model.Where(c => c.ParentId == null))
+    {
+        <li><a class="facebook" href="#"><i class="ion-social-facebook"></i></a></li>
+    }
+        <li><a class="twitter" href="#"><i class="ion-social-twitter"></i></a></li>
+        <li><a class="googleplus" href="#"><i class="ion-social-googleplus-outline"></i></a></li>
+        <li><a class="rss" href="#"><i class="ion-social-rss"></i></a></li>
+    </ul>*@

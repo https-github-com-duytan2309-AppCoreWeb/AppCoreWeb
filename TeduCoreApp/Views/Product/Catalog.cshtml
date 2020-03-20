@@ -1,0 +1,192 @@
+﻿@model TeduCoreApp.Models.ProductViewModels.CatalogViewModel
+@{
+    ViewData["Title"] = Model.Data.CurrentPage == 1 ? Model.Category.Name : Model.Category.Name + " - Page " + Model.Data.CurrentPage;
+    ViewData["MetaKeyword"] = Model.Data.CurrentPage == 1 ? Model.Category.SeoKeywords : Model.Category.SeoKeywords + " - Page " + Model.Data.CurrentPage;
+    ViewData["MetaDescription"] = Model.Data.CurrentPage == 1 ? Model.Category.SeoDescription : Model.Category.SeoDescription + " - Page " + Model.Data.CurrentPage;
+}
+<div class="breadcrumb-area gray-bg-7">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a asp-action="Index" asp-controller="Home">Trang chủ</a></li>
+                <li class="active">@Model.Category.Name </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="shop-page-area pt-30 pb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 pull-left bg-white">
+                <div class="shop-widget">
+                    <h4 class="shop-sidebar-title">
+                        Danh mục
+                    </h4>
+                    <div class="shop-catigory">
+                        <ul id="faq">
+                                        @*<li>
+                                            <a data-toggle="collapse" data-parent="#faq" href="#shop-catigory-1" aria-expanded="false" class="collapsed text-uppercase">@item1.Name <i class="ion-ios-arrow-down"></i></a>
+                                            <ul id="shop-catigory-1" class="panel-collapse collapse show" style="">
+                                                @foreach (var item2 in Model.RelatedProductCate)
+                                                {
+                                                    <li class=""><a href="/danh-muc/@item2.SeoAlias-c.@(item2.Id).html" class="text-uppercase">@item2.Name <span class="pull-right text-gray">@item2.Products.Count()</span></a></li>
+                                                }
+                                            </ul>
+                                        </li>*@
+                            @foreach (var item in Model.RelatedProductCate)
+                            {
+                                <li class=""><a class="text-uppercase" href="/danh-muc/@item.SeoAlias-c.@(item.Id).html">@item.Name <span class="pull-right text-gray">@item.Products.Count()</span></a></li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+                @*<div class="shop-price-filter mt-10 shop-sidebar-border pt-35">
+                    <h4 class="shop-sidebar-title">Bộ lọc giá</h4>
+                    <div class="price_filter mt-25">
+                        <span>Phạm vi:  $100.00 - 1.300.00 </span>
+                        <div id="slider-range"></div>
+                        <div class="price_slider_amount">
+                            <div class="label-input">
+                                <input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                            </div>
+                            <button type="button" class="btn-default">Lọc giá</button>
+                        </div>
+                    </div>
+                </div>*@
+                <div class="shop-widget mt-10 pt-35">
+                    <h4 class="shop-sidebar-title">
+                        Thương hiệu
+                    </h4>
+                    <div class="sidebar-list-style mt-20 shop-sidebar-border">
+                        <ul>
+                            <li><a href="/san-pham/thuong-hieu-" class="">Name <span class="pull-right text-gray">Count</span></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="shop-widget mt-10 pt-35">
+                    <h4 class="shop-sidebar-title">
+                        Công nghệ
+                    </h4>
+                    <div class="sidebar-list-style mt-20 shop-sidebar-border">
+                        <ul>
+                            <li><a href="/san-pham/nha-san-xuat-" class="">.Name <span class="pull-right text-gray"> Count</span></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="shop-widget mt-10 pt-35">
+                    <h4 class="shop-sidebar-title">Thẻ phổ biến</h4>
+                    <div class="shop-tags mt-25">
+                        <ul>
+                            <li><a href="#">Computer</a></li>
+                            <li><a href="#">Cameras</a></li>
+                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Big Sale</a></li>
+                            <li><a href="#">Sony</a></li>
+                            <li><a href="#">Devita</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 pull-right bg-white">
+               
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="shop-topbar-wrapper">
+                        <div class="shop-topbar-left">
+                            <div class="grid-list-options nav view-mode">
+                                <a class="active" href="#product-grid" data-view="product-grid" data-toggle="tab"><i class="fa fa-th"></i></a>
+                                <a href="#product-list" data-view="product-list" data-toggle="tab"><i class="fa fa-list-ul"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-sorting-wrapper">
+                            <form action="/@Model.Category.SeoAlias-c.@(Model.Category.Id).html" method="get">
+                                <div class="product-shorting shorting-style">
+                                    <label>Lọc:</label>
+                                    <select name="sortBy" asp-for="SortType"
+                                            onchange="this.form.submit()" asp-items="Model.SortTypes"></select>
+                                </div>
+                                <div class="product-show shorting-style">
+                                    <label>Hiển thị:</label>
+                                    <select name="pageSize" asp-for="PageSize" onchange="this.form.submit()"
+                                            asp-items="Model.PageSizes"></select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-content jump">
+                        <div class="tab-pane pb-20 active" id="product-grid">
+                            <div class="row">
+                                @foreach (var item in Model.Data.Results)
+                                {
+                                    var url = "/san-pham/" + item.SeoAlias + "-p." + item.Id + ".html";
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 mb-80">
+                                        <div class="devita-product-2 mrg-inherit">
+                                            <div class="product-img">
+                                                <a href="@url"><img src="@item.Image" height="150" width="180" alt="@item.Name"></a>
+                                            </div>
+                                            <div class="list-col">
+                                                <div class="gridview">
+                                                    <div class="product-content text-center">
+                                                        <span>@item.ProductCategory.Name</span>
+                                                        <h4 class="nameproduct"><a href="@url">@item.Name</a></h4>
+                                                        <div class="product-price-wrapper">
+                                                            <span>@item.Price.ToString("N0")</span>
+                                                            <span class="product-price-old text-danger">@item.PromotionPrice.Value.ToString("N0") </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-action-wrapper-2 text-center">
+                                                        <div class="product-action">
+                                                            <a class="action-cart add-to-cart" data-id="@item.Id" title="Thêm giỏ hàng" href="#">
+                                                                Thêm giỏ hàng
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="product-list">
+                            <div class="row">
+                                @foreach (var item in Model.Data.Results)
+                                {
+                                    var url = "/san-pham/" + item.SeoAlias + "-p." + item.Id + ".html";
+                                    <div class="col-lg-12">
+                                        <div class="product-list-wrapper shop-border mb-80">
+                                            <div class="product-img">
+                                                <a href="@url"><img src="@item.Image" height="150" width="180" alt="@item.Name"></a>
+                                            </div>
+                                            <div class="product-list-content">
+                                                <span>@item.ProductCategory.Name</span>
+                                                <h4><a href="@url">@item.Name</a></h4>
+                                                <div class="product-price-wrapper">
+                                                    <span>@item.Price.ToString("N0")</span>
+                                                    <span class="product-price-old text-danger">@item.PromotionPrice.Value.ToString("N0")</span>
+                                                </div>
+                                                <p>@Html.Raw(item.Description)</p>
+                                                <div class="product-action">
+                                                    <a class="action-cart add-to-cart" href="#" data-id="@item.Id" title="Thêm giỏ hàng"> Thêm giỏ hàng </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        @(await Component.InvokeAsync("Pager", Model.Data))
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

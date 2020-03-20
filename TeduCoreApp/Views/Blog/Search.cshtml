@@ -1,0 +1,433 @@
+﻿@model TeduCoreApp.Models.BlogViewModels.SearchResultViewModel
+@{
+    ViewData["Title"] = "Search results of " + (Model.Data.CurrentPage == 1 ? Model.Keyword : Model.Keyword + " - Page " + Model.Data.CurrentPage);
+    ViewData["MetaKeyword"] = "Search results of " + (Model.Data.CurrentPage == 1 ? Model.Keyword : Model.Keyword + " - Page " + Model.Data.CurrentPage);
+    ViewData["MetaDescription"] = "Search results of " + (Model.Data.CurrentPage == 1 ? Model.Keyword : Model.Keyword + " - Page " + Model.Data.CurrentPage);
+}
+<div class="breadcrumb-area gray-bg-7">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Blog Left Sidebar</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="blog-area pt-65 pb-65">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-12">
+                <div class="shop-sidebar-wrapper gray-bg-7 blog-side-md blog-side-sm">
+                    <div class="shop-widget mb-35">
+                        <div class="header-search-2">
+                            <form class="header-search-form" action="#">
+                                <input type="text" placeholder="Search">
+                                <button>
+                                    <i class="ion-ios-search-strong"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="shop-widget">
+                        <h4 class="shop-sidebar-title">Shop By Categories</h4>
+                        <div class="shop-catigory">
+                            <ul id="faq">
+                                <li>
+                                    <a data-toggle="collapse" data-parent="#faq" href="#shop-catigory-1">Laptop & Computer <i class="ion-ios-arrow-down"></i></a>
+                                    <ul id="shop-catigory-1" class="panel-collapse collapse show">
+                                        <li><a href="#">Accessories</a></li>
+                                        <li><a href="#">Bags & Cases</a></li>
+                                        <li><a href="#">Binoculars & Scopes</a></li>
+                                        <li><a href="#">Digital Cameras</a></li>
+                                        <li><a href="#">Film Photography</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-toggle="collapse" data-parent="#faq" href="#shop-catigory-2">Living room <i class="ion-ios-arrow-down"></i></a>
+                                    <ul id="shop-catigory-2" class="panel-collapse collapse">
+                                        <li><a href="#">Accessories</a></li>
+                                        <li><a href="#">Bags & Cases</a></li>
+                                        <li><a href="#">Binoculars & Scopes</a></li>
+                                        <li><a href="#">Digital Cameras</a></li>
+                                        <li><a href="#">Film Photography</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-toggle="collapse" data-parent="#faq" href="#shop-catigory-3">Lighting Furniture <i class="ion-ios-arrow-down"></i></a>
+                                    <ul id="shop-catigory-3" class="panel-collapse collapse">
+                                        <li><a href="#">Accessories</a></li>
+                                        <li><a href="#">Bags & Cases</a></li>
+                                        <li><a href="#">Binoculars & Scopes</a></li>
+                                        <li><a href="#">Digital Cameras</a></li>
+                                        <li><a href="#">Film Photography</a></li>
+                                    </ul>
+                                </li>
+                                <li> <a href="#">Outdoor</a> </li>
+                                <li> <a href="#">Tablets</a></li>
+                                <li> <a href="#">Accessories</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shop-widget mt-40 pt-35 shop-sidebar-border">
+                        <h4 class="shop-sidebar-title">Recent Post</h4>
+                        <div class="recent-post-wrapper mt-20">
+                            <div class="single-recent-post mb-20">
+                                <div class="recent-post-img">
+                                    <a href="#">
+                                        <img alt="" src="assets/img/product/related-product-1.jpg">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <h4>
+                                        <a href="blog-details.html">Lorem ipsum dolor </a>
+                                    </h4>
+                                    <span>April 19, 2018 </span>
+                                </div>
+                            </div>
+                            <div class="single-recent-post mb-20">
+                                <div class="recent-post-img">
+                                    <a href="#">
+                                        <img alt="" src="assets/img/product/related-product-2.jpg">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <h4>
+                                        <a href="blog-details.html">Lorem ipsum dolor </a>
+                                    </h4>
+                                    <span>April 19, 2018 </span>
+                                </div>
+                            </div>
+                            <div class="single-recent-post">
+                                <div class="recent-post-img">
+                                    <a href="#">
+                                        <img alt="" src="assets/img/product/related-product-3.jpg">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <h4>
+                                        <a href="blog-details.html">Lorem ipsum dolor </a>
+                                    </h4>
+                                    <span>April 19, 2018 </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-widget mt-40 shop-sidebar-border pt-35">
+                        <h4 class="shop-sidebar-title">By Brand</h4>
+                        <div class="sidebar-list-style mt-20">
+                            <ul>
+                                <li><input type="checkbox"><a href="#">Samsung </a></li>
+                                <li><input type="checkbox"><a href="#">Panasonic </a></li>
+                                <li><input type="checkbox"><a href="#">Electrolux </a></li>
+                                <li><input type="checkbox"><a href="#">LG </a></li>
+                                <li><input type="checkbox"><a href="#">Calvin Klein </a></li>
+                                <li><input type="checkbox"><a href="#">Diesel  </a></li>
+                                <li><input type="checkbox"><a href="#">Polo   </a></li>
+                                <li><input type="checkbox"><a href="#">Tommy Hilfiger </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shop-widget mt-40 shop-sidebar-border pt-35">
+                        <h4 class="shop-sidebar-title">By Color</h4>
+                        <div class="sidebar-list-style mt-20">
+                            <ul>
+                                <li><input type="checkbox"><a href="#">Black </a></li>
+                                <li><input type="checkbox"><a href="#">Blue </a></li>
+                                <li><input type="checkbox"><a href="#">Green </a></li>
+                                <li><input type="checkbox"><a href="#">Grey </a></li>
+                                <li><input type="checkbox"><a href="#">Red</a></li>
+                                <li><input type="checkbox"><a href="#">White  </a></li>
+                                <li><input type="checkbox"><a href="#">Yellow   </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shop-widget mt-40 shop-sidebar-border pt-35">
+                        <h4 class="shop-sidebar-title">Popular Tags</h4>
+                        <div class="shop-tags mt-25">
+                            <ul>
+                                <li><a href="#">Computer</a></li>
+                                <li><a href="#">Cameras</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Big Sale</a></li>
+                                <li><a href="#">Sony</a></li>
+                                <li><a href="#">Devita</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="blog-wrapper mb-30 main-blog">
+                            <div class="blog-img mb-20">
+                                <a href="blog-details.html">
+                                    <img src="assets/img/blog/blog-2.jpg" alt="">
+                                </a>
+                            </div>
+                            <span>Design Digital</span>
+                            <h3><a href="blog-details.html">When an unknown printer took a galley of type.</a></h3>
+                            <p>The first line of lorem Ipsum: "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                            <div class="blog-meta-bundle">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>May.20.2018</li>
+                                        <li><a href="#">02 Comments</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-readmore">
+                                    <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="blog-wrapper mb-30 main-blog">
+                            <div class="blog-img mb-20">
+                                <a href="blog-details.html">
+                                    <img src="assets/img/blog/blog-1.jpg" alt="">
+                                </a>
+                            </div>
+                            <span>Design Digital</span>
+                            <h3><a href="blog-details.html">Many desktop publishing packages and web page editors.</a></h3>
+                            <p>The first line of lorem Ipsum: "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                            <div class="blog-meta-bundle">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>May.20.2018</li>
+                                        <li><a href="#">02 Comments</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-readmore">
+                                    <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="blog-wrapper mb-30 main-blog">
+                            <div class="blog-img mb-20">
+                                <a href="blog-details.html">
+                                    <img src="assets/img/blog/blog-3.jpg" alt="">
+                                </a>
+                            </div>
+                            <span>Design Digital</span>
+                            <h3><a href="blog-details.html">Various versions have evolved over the years sometimes.</a></h3>
+                            <p>The first line of lorem Ipsum: "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                            <div class="blog-meta-bundle">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>May.20.2018</li>
+                                        <li><a href="#">02 Comments</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-readmore">
+                                    <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="blog-wrapper mb-30 main-blog">
+                            <div class="blog-img mb-20">
+                                <a href="blog-details.html">
+                                    <img src="assets/img/blog/blog-14.jpg" alt="">
+                                </a>
+                            </div>
+                            <span>Design Digital</span>
+                            <h3><a href="blog-details.html">Various versions have evolved over the years sometimes.</a></h3>
+                            <p>The first line of lorem Ipsum: "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                            <div class="blog-meta-bundle">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>May.20.2018</li>
+                                        <li><a href="#">02 Comments</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-readmore">
+                                    <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="blog-wrapper mb-30 main-blog">
+                            <div class="blog-img mb-20">
+                                <a href="blog-details.html">
+                                    <img src="assets/img/blog/blog-11.jpg" alt="">
+                                </a>
+                            </div>
+                            <span>Design Digital</span>
+                            <h3><a href="blog-details.html">Many desktop publishing packages and web page editors.</a></h3>
+                            <p>The first line of lorem Ipsum: "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                            <div class="blog-meta-bundle">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>May.20.2018</li>
+                                        <li><a href="#">02 Comments</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-readmore">
+                                    <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="blog-wrapper mb-30 main-blog">
+                            <div class="blog-img mb-20">
+                                <a href="blog-details.html">
+                                    <img src="assets/img/blog/blog-15.jpg" alt="">
+                                </a>
+                            </div>
+                            <span>Design Digital</span>
+                            <h3><a href="blog-details.html">When an unknown printer took a galley of type.</a></h3>
+                            <p>The first line of lorem Ipsum: "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                            <div class="blog-meta-bundle">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>May.20.2018</li>
+                                        <li><a href="#">02 Comments</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-readmore">
+                                    <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="blog-wrapper mb-30 main-blog">
+                            <div class="blog-img mb-20">
+                                <a href="blog-details.html">
+                                    <img src="assets/img/blog/blog-8.jpg" alt="">
+                                </a>
+                            </div>
+                            <span>Design Digital</span>
+                            <h3><a href="blog-details.html">Many desktop publishing packages and web page editors.</a></h3>
+                            <p>The first line of lorem Ipsum: "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                            <div class="blog-meta-bundle">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>May.20.2018</li>
+                                        <li><a href="#">02 Comments</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-readmore">
+                                    <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="blog-wrapper mb-30 main-blog">
+                            <div class="blog-img mb-20">
+                                <a href="blog-details.html">
+                                    <img src="assets/img/blog/blog-10.jpg" alt="">
+                                </a>
+                            </div>
+                            <span>Design Digital</span>
+                            <h3><a href="blog-details.html">Various versions have evolved over the years sometimes.</a></h3>
+                            <p>The first line of lorem Ipsum: "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                            <div class="blog-meta-bundle">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>May.20.2018</li>
+                                        <li><a href="#">02 Comments</a></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-readmore">
+                                    <a href="blog-details.html">Read more <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="pagination-total-pages">
+                    <div class="pagination-style">
+                        <ul>
+                            <li><a class="prev-next prev" href="#"><i class="ion-ios-arrow-left"></i> Prev</a></li>
+                            <li><a class="active" href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">...</a></li>
+                            <li><a href="#">10</a></li>
+                            <li><a class="prev-next next" href="#">Next<i class="ion-ios-arrow-right"></i> </a></li>
+                        </ul>
+                    </div>
+                    <div class="total-pages">
+                        <p>Showing 1 - 20 of 30 results  </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-container col1-layout">
+    <div class="container">
+        <div class="row">
+            <div class="col-main col-sm-12 col-xs-12">
+                <div class="shop-inner">
+                    <div class="page-title">
+                        <h2>Search result: @Model.Keyword</h2>
+                    </div>
+                    <div class="toolbar column">
+                        <form action="/search.html" method="get">
+                            <input type="hidden" name="keyword" value="@Model.Keyword" />
+                            <div class="sorter">
+                                <div class="short-by">
+                                    <label>Sort By:</label>
+                                    <select name="sortBy" asp-for="SortType"
+                                            onchange="this.form.submit()" asp-items="Model.SortTypes"></select>
+                                </div>
+                                <div class="short-by page">
+                                    <label>Show:</label>
+                                    <select name="pageSize" asp-for="PageSize" onchange="this.form.submit()"
+                                            asp-items="Model.PageSizes"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="product-grid-area">
+                        <ul class="products-grid">
+                            @foreach (var item in Model.Data.Results)
+                            {
+                                var url = "/" + item.SeoAlias + "-p." + item.Id + ".html";
+                                <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6 ">
+                                    <div class="product-item">
+                                        <div class="item-inner">
+                                            <div class="product-thumbnail">
+                                                <div class="icon-sale-label sale-left">Sale</div>
+                                                <div class="icon-new-label new-right">New</div>
+                                                <div class="pr-img-area">
+                                                    <a title="Ipsums Dolors Untra" href="@url">
+                                                        <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>
+                                                    </a>
+                                                </div>
+                                                <div class="pr-info-area">
+                                                    <div class="pr-button">
+                                                        <div class="mt-button add_to_wishlist"> <a href="wishlist.html"> <i class="fa fa-heart"></i> </a> </div>
+                                                        <div class="mt-button add_to_compare"> <a href="compare.html"> <i class="fa fa-signal"></i> </a> </div>
+                                                        <div class="mt-button quick-view"> <a href="quick_view.html"> <i class="fa fa-search"></i> </a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            }
+                        </ul>
+                    </div>
+                    @(await Component.InvokeAsync("Pager", Model.Data))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Container End -->

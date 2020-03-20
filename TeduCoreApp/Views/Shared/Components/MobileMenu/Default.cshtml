@@ -1,0 +1,59 @@
+﻿@model List<MenuViewModel>
+<div id="mobile-menu">
+    <ul class="menu-overflow">
+        @foreach (var item in Model.Where(c => c.ParentId == null))
+        {
+            var child = Model.Where(x => x.ParentId == item.Id);
+            var blog = item.BlogCategories.Where(x => x.ParentId == null).OrderBy(x => x.SortOrder);
+            var dichvu = item.DichVuCategories.Where(x => x.ParentId == null).OrderBy(x => x.SortOrder);
+            <li>
+                <a href="/@item.Url">@item.Name</a>
+                @if (child.Count() > 0)
+                {
+                    <ul>
+                        @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
+                        {
+                            <li><a href="/@subItem.Url">@subItem.Name</a></li>
+                        }
+                    </ul>
+                }
+                else if (blog.Count() > 0)
+                {
+                    <ul>
+                        @foreach (var blog1 in blog)
+                        {
+                            var blog2 = blog.Where(x => x.ParentId == null && x.ParentId == blog1.Id && x.HomeFlag == true).OrderBy(x => x.SortOrder);
+                            <li>
+                                <a href="/danh-muc-tin-tuc/@blog1.SeoAlias-bl.@(blog1.Id).html">@blog1.Name</a>
+                            </li>
+                        }
+                    </ul>
+                }
+                else if (dichvu.Count() > 0)
+                {
+                    <ul>
+                        @foreach (var dichvu1 in dichvu)
+                        {
+                            var dichvu2 = blog.Where(x => x.ParentId == null && x.ParentId == dichvu1.Id && x.HomeFlag == true).OrderBy(x => x.SortOrder);
+                            <li>
+                                <a href="/danh-muc-dich-vu/@dichvu1.SeoAlias-cd.@(dichvu1.Id).html">@dichvu1.Name</a>
+                            </li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+        @*@foreach (var item in Model.Where(c => c.ParentId == null))
+        {
+            <li>
+                <a href="/@item.Url">@item.Name</a>
+                <ul>
+                    @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
+                    {
+                        <li><a href="/@subItem.Url">@subItem.Name</a></li>
+                    }
+                </ul>
+            </li>
+        }*@
+    </ul>
+</div>

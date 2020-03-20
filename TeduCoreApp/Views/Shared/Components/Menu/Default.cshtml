@@ -1,0 +1,59 @@
+﻿@model List<MenuViewModel>
+
+<div class="main-menu main-none">
+    <nav>
+        <ul>
+            @foreach (var item in Model.Where(c => c.ParentId == null))
+            {
+                var child = Model.Where(x => x.ParentId == item.Id);
+                var menuClass = child.Count() > 0 ? "ion-chevron-down" : "";
+                var blog = item.BlogCategories.Where(x => x.ParentId == null).OrderBy(x => x.SortOrder);
+                var dichvu = item.DichVuCategories.Where(x => x.ParentId == null).OrderBy(x => x.SortOrder);
+                var blogClass = blog.Count() > 0 ? "ion-chevron-down" : "";
+                var dichvuClass = dichvu.Count() > 0 ? "ion-chevron-down" : "";
+                <li>
+                    @if (child.Count() > 0)
+                    {
+                        <a href="/@(item.Url).html">@item.Name <i class="@menuClass text-white"></i> </a>
+                        <ul class="submenu">
+                            @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
+                            {
+                                <li><a href="/@(subItem.Url).html">@subItem.Name</a></li>
+                            }
+                        </ul>
+                    }
+                    else if (blog.Count() > 0)
+                    {
+                        <a href="/@(item.Url).html">@item.Name <i class="@blogClass text-white"></i> </a>
+                        <ul class="submenu">
+                            @foreach (var blog1 in blog)
+                            {
+                                var blog2 = blog.Where(x => x.ParentId == null && x.ParentId == blog1.Id && x.HomeFlag == true).OrderBy(x => x.SortOrder);
+                                <li>
+                                    <a href="/danh-muc-tin-tuc/@blog1.SeoAlias-bl.@(blog1.Id).html">@blog1.Name</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else if (dichvu.Count() > 0)
+                    {
+                        <a href="/@(item.Url).html">@item.Name <i class="@dichvuClass text-white"></i> </a>
+                        <ul class="submenu">
+                            @foreach (var dichvu1 in dichvu)
+                            {
+                                var dichvu2 = blog.Where(x => x.ParentId == null && x.ParentId == dichvu1.Id && x.HomeFlag == true).OrderBy(x => x.SortOrder);
+                                <li>
+                                    <a href="/danh-muc-dich-vu/@dichvu1.SeoAlias-dv.@(dichvu1.Id).html">@dichvu1.Name</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <a href="/@item.Url">@item.Name</a>
+                    }
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,52 @@
+﻿@inject IViewLocalizer Localizer
+<div class="header-top header-top-color-2 pt-10 pb-13 border-bottom-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="header-top-left">
+                    <div class="language-currency">
+                        @await Html.PartialAsync("_SelectLanguagePartial")
+
+                    </div>
+                    <div class="language-currency lang-curr-mrg">
+                        <span>@Localizer["Hỗ trợ trực tuyến"]: </span>
+                        <span>1345145</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="header-top-right">
+                    <ul>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <div class="dropdown">
+                                    <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span>@User.GetSpecificClaim("FullName")</span> <i class="fa fa-angle-down"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a class=""></a></li>
+                                        <li><a href="/account.html">Thông tin Tài khoản</a></li>
+                                        @*<li><a href="/wishlist.html">Danh sách yêu thích</a></li>
+                                        <li><a href="/orders-list.html">Lịch sử đơn hàng</a></li>*@
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                                    <a href="#" onclick="document.getElementById('logoutForm').submit()"><span>Thoát</span></a>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a title="login" href="/dang-nhap.html"><span>Đăng nhập</span></a></li>
+                            <li><a title="register" href="/dang-ky.html"><span>Đăng ký</span></a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+

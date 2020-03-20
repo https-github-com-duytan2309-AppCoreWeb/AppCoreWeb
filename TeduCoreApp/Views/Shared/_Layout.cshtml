@@ -1,0 +1,142 @@
+﻿@using Microsoft.AspNetCore.Localization
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["MetaKeyword"]">
+    <meta name="keywords" content="@ViewData["MetaDescription"]" />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="">
+    <meta name="author" content="ppweb.vn" />
+    <link href="/favicon.jpg" rel="shortcut icon" type="image/jpg">
+    <link href="/Content/Client/images/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/Content/Client/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="/Content/Client/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="/Content/Client/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+    <link rel="stylesheet" href="/client/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/client/css/icons.css">
+    <link rel="stylesheet" href="/client/css/plugins.css">
+    <link rel="stylesheet" href="/client/css/style.css">
+    <link rel="stylesheet" href="/client/css/responsive.css">
+    <link href="~/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
+
+    <script src="/client/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <link href="~/client/css/slide.css" rel="stylesheet" />
+    <style>
+        .nameproduct {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+        }
+
+        .desscription {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+        }
+    </style>
+    @RenderSection("Styles", required: false)
+</head>
+<body class="@ViewData["BodyClass"]" style="min-height:250px;">
+    @*<button onclick="myFunction()">Try it</button>*@
+    <header class="header-area">
+        <partial name="_TopHeader.cshtml" />
+        <partial name="_MiddleHeader.cshtml" />
+        <div class="header-bottom header-bottom-color-4 theme-bg-3 menu-hover-red">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="logo mobile-logo">
+                            <a asp-controller="Home" asp-action="Index">
+                                <img alt="Logo" src="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="mobile-menu-area">
+                            <div class="mobile-menu">
+                                <nav id="mobile-menu-active" style="display: block;">
+                                    @await Component.InvokeAsync("MobileMenu")
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        @await Component.InvokeAsync("CategoryMenu")
+                    </div>
+                    <div class="col-lg-9">
+                        @await Component.InvokeAsync("Menu")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+    <footer class="footer-area gray-bg-3 pt-60">
+        <partial name="_Footer.cshtml" />
+        <div class="footer-bottom pb-25 pt-25 white-bg border-top-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="copyright copyright-goldenbell footer-black-color footer-mrg copyright-center">
+                            <p>© @DateTime.Now.Year - Bản quyền của công ty TM-DV Thành Vượng</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="payment-icon f-right payment-center">
+                            <div class="copyright copyright-goldenbell footer-black-color footer-mrg copyright-center">
+                                <p>Thiết kế bởi <a href="#">ppweb.vn</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/client/js/jquery.min.js"></script>
+    <script src="~/client/js/jquery-ui.js"></script>
+    <script src="~/assets/plugins/general/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/client/js/popper.js"></script>
+    <script src="~/client/js/bootstrap.min.js"></script>
+    <script src="~/client/js/ajax-mail.js"></script>
+    <script src="~/client/js/plugins.js"></script>
+    <script src="~/client/js/main.js"></script>
+    <script src="~/client/js/revolution-slider.js"></script>
+    <script src="~/assets/plugins/general/notifyjs/dist/notify.js"></script>
+    <script src="~/assets/plugins/general/mustache/mustache.min.js"></script>
+    <script src="~/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.js"></script>
+    <script src="~/clientapp/shared/localize/resources.@(requestCulture.RequestCulture.Culture.Name).js"></script>
+    <script src="~/clientapp/shared/tedu.js"></script>
+    <script src="~/clientapp/controllers/base/index.js"></script>
+    <script>
+        var baseObj = new BaseController();
+        baseObj.initialize();
+    </script>
+    @*<script>
+            $(document).ready(function () {
+                setInterval('location.reload()', 4000);
+            });
+        </script>*@
+    @*<script>
+            function myFunction() {
+                location.reload()
+            }
+        </script>*@
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

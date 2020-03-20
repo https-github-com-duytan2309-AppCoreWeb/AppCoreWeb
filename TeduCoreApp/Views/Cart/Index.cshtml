@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Giỏ hàng";
+}
+@section Scripts{
+    <script src="~/lib/mustache/mustache.js"></script>
+    <script src="~/clientapp/controllers/cart/index.js" asp-append-version="true"></script>
+    <script>
+        var cartObj = new CartController();
+        cartObj.initialize();
+    </script>
+}
+<div class="breadcrumb-area gray-bg-7">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a asp-action="Index" asp-controller="Home">Trang chủ</a></li>
+                <li class="active">Giỏ hàng </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="cart-main-area pt-60 pb-65">
+    <div class="container">
+        <h3 class="page-title">Giỏ hàng của bạn</h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <form>
+                    <div class="table-content table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 20%">Hình ảnh</th>
+                                    <th style="width: 20%" class="cart_product">Sản phẩm</th>
+                                    <th style="width: 15%">Giá</th>
+                                    <th style="width: 15%">Số lượng</th>
+                                    <th style="width: 15%">Tổng</th>
+                                    <th style="width: 15%">Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-cart-content"></tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3"><strong>Tổng tiền</strong></td>
+                                    <td colspan="3"><strong><span id="lblTotalAmount"></span> </strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <script id="template-cart" type="x-tmpl-mustache">
+                            <tr data-id="{{ProductId}}">
+                                <td class="product-thumbnail">
+                                    <a href="{{Url}}">
+                                        <img src="{{Image}}" width="150" height="150" alt="{{ProductName}}">
+                                    </a>
+                                </td>
+                                <td class="product-name">
+                                    <p class="product-name"><a href="{{Url}}">{{ProductName}}</a></p>
+                                    <p><a class="cart-plus-minus-box">Color : {{{Colors}}}</a></p>
+                                    <p><a class="cart-plus-minus-box">Size : {{{Sizes}}}</a></p>
+                                </td>
+                                <td class="product-price-cart"><span class="text-danger">{{Price}} đ</span></td>
+                                <td class="product-quantity"><input class="cart-plus-minus-box input-sm txtQuantity" data-id="{{ProductId}}" type="text" value="{{Quantity}}"></td>
+                                <td class="product-subtotal"><span class="text-danger">{{Amount}} đ</span></td>
+                                <td class="product-remove"><a data-id="{{ProductId}}" class="btn-delete"><i class="fa fa-times"></i></a></td>
+                            </tr>
+                        </script>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="cart-shiping-update-wrapper">
+                                <div class="cart-shiping-update">
+                                    <a href="/san-pham.html">Tiếp tục mua sắm</a>
+                                </div>
+                                <div class="cart-clear">
+                                    <a href="/checkout.html">Thanh toán</a>
+                                    <a id="btnClearAll">Xóa giỏ hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="grand-totall">
+                                <div class="title-wrap">
+                                    <h4 class="cart-bottom-title section-bg-gary-cart">Tổng số giỏ hàng</h4>
+                                </div>
+                                <h5>Tổng tiền thanh toán <span id="lblTotalAmount"></span></h5>
+                                <div class="total-shipping">
+                                    <h5>Phí vận chuyển</h5>
+                                    <ul>
+                                        <li> Bán kính 15km <span>Miễn phí</span></li>
+                                        <li> Trên 15km <span>15.000 đ/km</span></li>
+                                    </ul>
+                                </div>
+                                <h4 class="grand-totall-title">Tổng cộng  <span id="lblTotalAmount"></span></h4>
+                                <a href="/checkout.html">Thanh toán</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

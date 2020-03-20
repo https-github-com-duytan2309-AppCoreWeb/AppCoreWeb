@@ -1,0 +1,118 @@
+﻿@model BillViewModel
+@using Microsoft.AspNetCore.Identity;
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:arial;max-width:600px;color:#333333;text-align:center;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#c9c9c9;border-top-left-radius:5px;border-top-right-radius:5px;border-top-width:5px;border-top-style:solid;border-top-color:#1775bc;margin-top:50px;background-image:initial;background-size:initial;background-origin:initial;background-clip:initial;background-position:initial;background-repeat:initial;background:#fff">
+    <tbody>
+        <tr>
+            <td style="padding:30px 0px 0px">
+                <h1><a href="https://noithatthanhvuong.com" style="color:#333333;text-decoration:none" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://noithatthanhvuong.com&amp;source=gmail&amp;ust=1584066682926000&amp;usg=AFQjCNGrlj8ggBvBBOUVdetwzlY-Xml6mw">Nội Thất Thành Vượng</a></h1>
+                <hr style="width:570px;margin:0px auto;border-top-style:solid;border-top-color:#c9c9c9;border-bottom-style:none">
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="padding:20px;line-height:24px">
+
+                <table width="100%" style="padding:10px">
+                    <tbody>
+                        <tr>
+                            <td colspan="4">
+                                <p style="margin-bottom:15px">Mã đơn hàng: <b>#@Model.Code</b></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="300px">Hình ảnh</td>
+                            <td width="300px">Tên sản phẩm</td>
+                            <td width="100px">Số lượng</td>
+                            <td width="200px">Giá</td>
+                            <td width="200px">Tiền</td>
+                        </tr>
+
+                        @{
+                            int countImg = 1;
+                        }
+                        @foreach (var item in Model.BillDetails)
+                        {
+                            <tr>
+                                <td width="300px">
+                                    <p style="padding-right:10px">
+                                        <img src="cid:EmbeddedContent_@countImg" style="width: 100px; height: 50px" />
+                                        @*<img src="@item.Product.Image" style="width: 100px; height: 50px" />*@
+                                </td>
+
+                                <td width="300px">@item.Product.Name</td>
+                                <td width="100px">@item.Quantity</td>
+                                <td width="200px">@item.Price.ToString("N0") VND</td>
+                                <td width="200px">@((item.Quantity * item.Price).ToString("N0")) VND</td>
+                            </tr>
+
+                            countImg++;
+
+                        }
+
+                        @{
+                            countImg = 0;
+                        }
+
+                        <tr>
+                            <td colspan="4"><hr></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Khuyến mãi: () </td>
+                            <td colspan="3">0 VND</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">Phí vận chuyển</td>
+                            <td colspan="3">0 VND</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Tổng cộng</td>
+                            <td colspan="3">@Model.BillDetails.Sum(x => x.Quantity * x.Price).ToString("N0") VND</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table width="100%" style="padding:10px">
+                    <tbody>
+                        <tr>
+                            <td width="200px">Ngày đặt hàng</td>
+                            <td>@Model.DateCreated.ToString("dd/MM/yyyy hh:mm")</td>
+                        </tr>
+                        <tr>
+                            <td width="200px">Phương thức thanh toán</td>
+                            <td>Thanh toán khi nhận hàng tại TP.HCM và Hà Nội (COD)</td>
+                        </tr>
+                        <tr>
+                            <td width="200px">Phương thức giao hàng</td>
+                            <td>
+                                <p>Lần đầu mua hàng, phí ship hỗ trợ 10k</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="100%" style="padding:10px">
+                    <tbody>
+
+                        <tr>
+                            <td colspan="3">
+                                <p style="margin-bottom:15px"><b>Thông tin nhận hàng</b></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="100px">Tên khách hàng</td>
+                            <td width="300px">@Model.CustomerName</td>
+                        </tr>
+                        <tr>
+                            <td width="100px">Điện thoại</td>
+                            <td width="300px">@Model.CustomerMobile</td>
+                        </tr>
+                        <tr>
+                            <td width="100px">Địa chỉ</td>
+                            <td width="300px">@Model.CustomerAddress</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

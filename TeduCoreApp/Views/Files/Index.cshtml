@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<a class="btn btn-success" href="/TestSendMail.html"> Send Mail</a>
+
+<form asp-controller="Files" asp-action="UploadFile" method="post"
+      enctype="multipart/form-data">
+
+    <input type="file" name="file" />
+    <button type="submit">Upload File</button>
+</form>
+
+<form asp-controller="Files" asp-action="UploadFiles" method="post"
+      enctype="multipart/form-data">
+
+    <input type="file" name="files" multiple />
+    <button type="submit">Upload Files</button>
+</form>
+
+<form asp-controller="Files" asp-action="UploadFileViaModel" method="post"
+      enctype="multipart/form-data">
+
+    <input type="file" name="FileToUpload" />
+    <button type="submit">Upload File (model)</button>
+</form>
+© 2020 GitHub, Inc.

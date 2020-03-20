@@ -1,0 +1,34 @@
+﻿@model TeduCoreApp.Models.DichVuViewModels.DetailDichVuViewModel
+@{
+    ViewData["Title"] = Model.DichVu.Name;
+    ViewData["MetaKeyword"] = Model.DichVu.SeoKeywords;
+    ViewData["MetaDescription"] = Model.DichVu.SeoDescription;
+    var category = Model.DichVuCategory;
+    var product = Model.DichVu;
+}
+
+@section Scripts{
+    <script src="~/client-app/controllers/product/details.js"></script>
+    <script>
+        var productObj = new ProductDetailController();
+        productObj.initialize();
+    </script>
+}
+<div class="breadcrumb-area gray-bg-7">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a asp-action="Index" asp-controller="Home">Trang chủ</a></li>
+                <li><a asp-action="Index" asp-controller="Product">Sản phẩm</a></li>
+                <li><a title="@category.Name" href="/@category.SeoAlias-c.@(category.Id).html">@category.Name</a></li>
+                <li class="active">@product.Name</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+
+
+

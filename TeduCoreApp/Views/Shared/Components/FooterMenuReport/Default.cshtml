@@ -1,0 +1,23 @@
+﻿@model List<PageViewModel>
+    <div class="footer-widget footer-widget-goldenbell footer-black-color mb-40">
+        <div class="footer-title mb-30">
+            <h4>Hỗ trợ khách hàng</h4>
+        </div>
+        <div class="footer-content">
+            <ul>
+                <li>
+                    <a href="/">Các câu hỏi thường gặp</a>
+                </li>
+                <li>
+                    <a href="/">Hỗ trợ tư vấn</a>
+                </li>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <a href="/@item.Alias">@item.Name </a>
+                    </li>
+
+                }
+            </ul>
+        </div>
+    </div>

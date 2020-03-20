@@ -1,0 +1,48 @@
+﻿@model List<ShoppingCartViewModel>
+
+<button class="icon-cart">
+    <i class="pe-7s-shopbag cart-bag"></i>
+    <span class="count-amount">@(Model.Sum(m => m.Product.Price * m.Quantity).ToString("N0"))</span>
+    <i class="ion-chevron-down cart-down"></i>
+    @if (Model.Count > 0)
+    {
+        <span class="count-style">@Model.Count</span>
+    }
+</button>
+<div class="shopping-cart-content">
+    @if (Model.Count > 0)
+    {
+        <ul>
+            @foreach (var item in Model)
+            {
+                var url = "/" + item.Product.SeoAlias + "-p." + item.Product.Id + ".html";
+
+                <li class="single-shopping-cart">
+                    <div class="shopping-cart-img">
+                        <a href="@url" title="@item.Product.Name"><img alt="@item.Product.Name" width="82" height="82" src="@item.Product.Image"></a>
+                    </div>
+                    <div class="shopping-cart-title">
+                        <h4><a href="@url">@item.Product.Name<br></a></h4>
+                        <h6>@item.Quantity</h6>
+                        <span>@((item.Product.PromotionPrice ?? item.Product.Price).ToString("N0"))</span>
+                    </div>
+                    <div class="shopping-cart-delete">
+                        <a href="javascript;" class="remove-cart" title="@item.Product.Name" data-id="@item.Product.Id"><i class="ion-android-close"></i></a>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div class="shopping-cart-total">
+            <h4>Phí vận chuyển : <span>Miễn phí</span></h4>
+            <h4>Total : @Model.Count<span class="shop-total">@(Model.Sum(m => m.Product.Price * m.Quantity).ToString("N0"))</span></h4>
+        </div>
+        <div class="shopping-cart-btn">
+            <a class="btn-style btn-hover" href="/cart.html" onClick="location.href='/cart.html'">Giỏ hàng</a>
+            <a class="btn-style btn-hover" href="/checkout.html" onClick="location.href='/checkout.html'">Thanh toán</a>
+        </div>
+    }
+    else
+    {
+        <p>Bạn chưa chọn sản phẩm</p><a href="/thong-tin-bill.html">Thông Hóa Đơn Của Bạn</a>
+    }
+</div>

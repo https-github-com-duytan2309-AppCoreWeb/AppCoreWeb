@@ -1,0 +1,295 @@
+﻿@model CheckoutViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@{
+    ViewData["Title"] = "Thanh toán đơn hàng";
+}
+@section Scripts {
+    <script src="~/lib/mustache/mustache.js"></script>
+    <script src="~/clientapp/controllers/cart/checkout.js"></script>
+    <script>
+        var checkoutObj = new CheckoutController();
+        checkoutObj.initialize();
+    </script>
+    @*<recaptcha-script validation-message-element-id="recaptchaErrorMessage" />*@
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+}
+<style>
+    .field-validation-error {
+        color: red
+    }
+
+    .validation-summary-errors {
+        color: red
+    }
+
+    li:hover {
+        color: darkblue;
+        cursor: pointer;
+    }
+</style>
+<div class="breadcrumb-area gray-bg-7">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                <li class="active"> Thanh toán </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="checkout-area pb-45 pt-65">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                @if (SignInManager.IsSignedIn(User))
+                {
+
+                    <div class="checkout-wrapper">
+                        @if (ViewData["Success"] != null)
+                        {
+                            if ((bool)ViewData["Success"] == true)
+                            {
+
+                                <div class="alert alert-success">
+                                    Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ sớm xác nhận đơn hàng của bạn.
+                                    <br /> Xem chi tiết đơn hàng của bạn
+                                </div>
+                                <a href="/thong-tin-bill.html" class="alert-success note-color"><h5>Tại Đây</h5></a>
+                            }
+                            else
+                            {
+                                <div class="alert alert-danger">
+                                    Có một lỗi trong tiến trình đặt hàng. Vui lòng liên hệ với quản trị viên. (0967422230)
+                                </div>
+
+                            }
+
+                        }
+                        else
+                        {
+                            <form id="frmCheckout" action="/checkout.html" method="post">
+                                @Html.AntiForgeryToken()
+                                <div id="faq" class="panel-group">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h5 class="panel-title"><span>1.</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-2">Thông tin thánh toán</a></h5>
+                                        </div>
+                                        <div id="payment-2" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="billing-information-wrapper">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="billing-info">
+                                                                <label asp-for="CustomerName"></label>
+                                                                <input class="input form-control" placeholder="Nhập họ tên" type="text" asp-for="CustomerName">
+                                                                <span asp-validation-for="CustomerName"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="billing-info">
+                                                                <label asp-for="CustomerMobile"></label>
+                                                                <input class="input form-control" placeholder="Nhập điện thoại" type="tel" asp-for="CustomerMobile">
+                                                                <span asp-validation-for="CustomerMobile"></span>
+                                                            </div>
+                                                        </div>
+                                                        <input type="hidden" asp-for="CustomerAddress">
+                                                        <div class="col-lg-3 col-md-6">
+                                                            <div class="billing-info">
+                                                                <label asp-for="Province"></label>
+                                                                <input asp-for="Province" id="Province" class="input form-control" placeholder="Tỉnh, Thành Phố" data-toggle="dropdown" type="text">
+                                                                <span asp-validation-for="Province"></span>
+                                                                <ul style="overflow: scroll; width: 250px; height:400px;" class="dropdown-menu" id="tbl-province-details">
+                                                                </ul>
+                                                                <script id="template-table-province-details" type="x-tmpl-mustache">
+                                                                    <li><a class="province">{{{Name}}}</a></li>
+                                                                </script>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6">
+                                                            <div class="billing-info">
+                                                                <label asp-for="District"></label>
+                                                                <input asp-for="District" id="District" class="input form-control" placeholder="Quận, Huyện" data-toggle="dropdown" type="text">
+                                                                <span asp-validation-for="District"></span>
+                                                                <ul style="overflow: scroll; width: 250px; height:400px;" class="dropdown-menu district" id="tbl-district-details">
+                                                                </ul>
+                                                                <script id="template-table-district-details" type="x-tmpl-mustache">
+                                                                    <li><a>{{{Name}}}</a></li>
+                                                                </script>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6">
+                                                            <div class="billing-info">
+                                                                <label asp-for="Ward"></label>
+                                                                <input asp-for="Ward" id="Ward" class="input form-control" placeholder="Phường" data-toggle="dropdown" type="text">
+                                                                <span asp-validation-for="Ward"></span>
+                                                                <ul style="overflow: scroll; width: 250px; height:400px;" class="dropdown-menu ward" id="tbl-ward-details">
+                                                                </ul>
+                                                                <script id="template-table-ward-details" type="x-tmpl-mustache">
+                                                                    <li><a>{{{Name}}}</a></li>
+                                                                </script>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-3 col-md-6">
+                                                            <div class="billing-info">
+                                                                <label asp-for="Street"></label>
+                                                                <input asp-for="Street" id="Street" class="input form-control" placeholder="Đường" data-toggle="dropdown" type="text">
+                                                                <span asp-validation-for="Street"></span>
+                                                                <ul style="overflow: scroll; width: 250px; height: 400px;" class="dropdown-menu" id="tbl-street-details">
+                                                                </ul>
+                                                                <script id="template-table-street-details" type="x-tmpl-mustache">
+                                                                    <li><a>{{{Name}}}</a></li>
+                                                                </script>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="billing-info">
+                                                                <label asp-for="CustomerMessage"></label>
+                                                                <textarea class="input form-control" cols="3" placeholder="Nhập tin nhắn" type="text" asp-for="CustomerMessage"></textarea>
+                                                                <span asp-validation-for="CustomerMessage"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h5 class="panel-title"><span>2.</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-5">Hình thức thanh toán</a></h5>
+                                        </div>
+                                        <div id="payment-5" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="payment-info-wrapper">
+                                                    <div class="ship-wrapper mb-10">
+                                                        <div class="title-wrap">
+                                                            <h4 class="cart-bottom-title section-bg-white">Chọn hình thức thanh toán</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="payment-info">
+                                                        <div class="row">
+                                                            @for (int i = 0; i < Model.PaymentMethods.Count; i++)
+                                                            {
+
+                                                                <div class="col-3">
+                                                                    <label asp-for="@Model.PaymentMethods[i].Value">
+                                                                        <input style="width: 50px; height: 50px" type="radio" class="form-inline" name="paymentMethod" asp-for="PaymentMethod" value="@Model.PaymentMethods[i].Value" />
+                                                                        @Model.PaymentMethods[i].Name
+                                                                    </label>
+                                                                </div>
+
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h5 class="panel-title"><span>3.</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-6">Chi tiết đơn hàng</a></h5>
+                                        </div>
+                                        <div id="payment-6" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="order-review-wrapper">
+                                                    <div class="order-review">
+                                                        <div class="table-responsive">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="width-1">Hỉnh ảnh</th>
+                                                                        <th class="width-1">Tên sản phẩm</th>
+                                                                        <th class="width-2">Giá</th>
+                                                                        <th class="width-3">Số lượng</th>
+                                                                        <th class="width-4">Tổng tiền</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach (var item in Model.Carts)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="o-pro-dec">
+                                                                                    <a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html"><img src="@item.Product.Image" width="100" height="100" alt="@item.Product.Name"></a>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="o-pro-dec">
+                                                                                    <p class=""><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html">@item.Product.Name </a></p>
+                                                                                    <small><a href="#">Color : @item.Color.Name</a></small><br>
+                                                                                    <small><a href="#">Size : @item.Size.Name</a></small>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="o-pro-price">
+                                                                                    <p>@item.Price.ToString("N0")</p>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="o-pro-qty">
+                                                                                    <p>@item.Quantity</p>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="o-pro-subtotal">
+                                                                                    <p>@((item.Price * item.Quantity).ToString("N0")) </p>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <td colspan="3">Tổng tiền: </td>
+                                                                        <td colspan="2" class="text-danger">@Model.Carts.Sum(x => x.Quantity * x.Price).ToString("N0")</td>
+                                                                    </tr>
+                                                                    <tr class="tr-f">
+                                                                        <td colspan="3">Vận chuyển: </td>
+                                                                        <td colspan="2">Miễn phí vận chuyển trong bán kính 15km</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="3">Tổng thanh toán: </td>
+                                                                        <td colspan="2" class="text-danger">@Model.Carts.Sum(x => x.Quantity * x.Price).ToString("N0")</td>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                        <div class="billing-back-btn">
+                                                            <span>
+                                                                Bạn quên đồ?
+                                                                <a href="" onclick="window.location.href='/cart.html'"> Quay lại giỏ hàng.</a>
+                                                            </span>
+                                                            <div class="billing-btn">
+                                                                <button @*id="remove-cart-all"*@ type="submit">Thanh toán</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                    </div>
+
+                }
+                else
+                {
+                    <div>
+                        You must login to Processc!!!! SigIn <br />
+                        <a class="btn btn-success" href="/dang-ky.html">Here</a>
+                        Or You Has a<a class="btn btn-success" href="/dang-nhap.html">Account</a>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

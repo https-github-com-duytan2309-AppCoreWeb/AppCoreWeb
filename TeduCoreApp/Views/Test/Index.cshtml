@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@ViewBag.Test
+<h2>Index</h2>
+<form asp-action="File" method="post">
+    <button type="submit"> Send File</button>
+</form>
+
+@*<div class="dropdown">
+        <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span id="selected">Chose option</span><span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Option 1</a></li>
+            <li><a href="#">Option 2</a></li>
+            <li><a href="#">Option 3</a></li>
+            <li><a href="#">Option 4</a></li>
+        </ul>
+    </div>
+
+    <script>
+        $('.dropdown-menu a').click(function () {
+            $('#selected').text($(this).text());
+        });
+    </script>*@
+
+@*<div class="btn-group">
+        <button class="btn">Please Select From List</button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li><a tabindex="-1" href="#">Item I</a></li>
+            <li><a tabindex="-1" href="#">Item II</a></li>
+            <li><a tabindex="-1" href="#">Item III</a></li>
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="#">Other</a></li>
+        </ul>
+    </div>*@
+
+@*<script>
+        $(function () {
+
+            $(".dropdown-menu li a").click(function () {
+
+                $(".btn:first-child").text($(this).text());
+                $(".btn:first-child").val($(this).text());
+
+            });
+
+        });
+    </script>*@

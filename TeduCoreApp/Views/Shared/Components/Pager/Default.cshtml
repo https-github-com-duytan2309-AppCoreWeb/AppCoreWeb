@@ -1,0 +1,57 @@
+﻿@model TeduCoreApp.Utilities.Dtos.PagedResultBase
+@{
+    var urlTemplate = Url.Action() + "?page={0}";
+    var request = ViewContext.HttpContext.Request;
+    foreach (var key in request.Query.Keys)
+    {
+        if (key == "page")
+        {
+            continue;
+        }
+
+        urlTemplate += "&" + key + "=" + request.Query[key];
+    }
+
+    var startIndex = Math.Max(Model.CurrentPage - 5, 1);
+    var finishIndex = Math.Min(Model.CurrentPage + 5, Model.PageCount);
+}
+
+<div class="pagination-total-pages">
+    <div class="pagination-style">
+        @if (Model.PageCount > 1)
+        {
+            <ul>
+                @if (Model.CurrentPage == startIndex)
+                {
+                    <li><a class="prev-next prev"><i class="ion-ios-arrow-left"></i></a></li>
+                }
+                else
+                {
+                    <li><a href="@urlTemplate.Replace("{0}", Model.PageCount.ToString())" class="prev-next prev"><i class="ion-ios-arrow-left"></i> Trước</a></li>
+                }
+                @for (var i = startIndex; i <= finishIndex; i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li><a class="active" href="#">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@urlTemplate.Replace("{0}", i.ToString())">@i</a></li>
+                    }
+                }
+                @if (Model.CurrentPage == finishIndex)
+                {
+                    <li><a class="prev-next next"><i class="ion-ios-arrow-right"></i></a></li>
+                }
+                else
+                {
+                    <li><a class="prev-next next" href="@urlTemplate.Replace("{0}", Model.PageCount.ToString())">Sau <i class="ion-ios-arrow-right"></i> </a></li>
+                }
+            </ul>
+        }
+    </div>
+    <div class="total-pages">
+        Từ @Model.FirstRowOnPage đến @Model.LastRowOnPage của @Model.RowCount sản phẩm
+    </div>
+</div>
