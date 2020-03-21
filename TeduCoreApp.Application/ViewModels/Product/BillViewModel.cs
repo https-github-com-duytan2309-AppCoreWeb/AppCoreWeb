@@ -11,21 +11,24 @@ namespace TeduCoreApp.Application.ViewModels.Product
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui Lòng Nhập Tên Người Nhận")]
+        [Display(Name = "Họ Tên")]
         [MaxLength(256)]
         public string CustomerName { set; get; }
 
         //[Required]
-        //[MaxLength(256)]
+        [MaxLength(256)]
+        [Display(Name = "Tin Nhắn")]
         public string CustomerAddress { set; get; }
 
         [Required(ErrorMessage = "Vui Lòng Nhập Số Điện Thoại")]
+        [Display(Name = "Số Điện Thoại")]
         [MaxLength(50)]
         [Phone(ErrorMessage = "Số Điện Thoại Không Đúng")]
         public string CustomerMobile { set; get; }
 
         //[Required]
-        //[MaxLength(256)]
+        [MaxLength(256)]
         public string CustomerMessage { set; get; }
 
         public PaymentMethod PaymentMethod { set; get; }

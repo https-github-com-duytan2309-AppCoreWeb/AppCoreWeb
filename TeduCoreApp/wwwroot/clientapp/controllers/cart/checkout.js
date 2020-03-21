@@ -6,14 +6,14 @@
         provinces: []
     }
     this.initialize = function () {
-        //$.when(
-        //    loadGetAllStreet(),
-        //    loadGetAllWard(),
-        //    loadGetAllDistrict(),
-        //    loadGetAllProvince())
-        //    .done(function () {
-        //        //registerEvents();
-        //    });
+        $.when(
+            loadGetAllStreet(),
+            loadGetAllWard(),
+            loadGetAllDistrict(),
+            loadGetAllProvince())
+            .done(function () {
+                //registerEvents();
+            });
         registerEvents();
     }
 

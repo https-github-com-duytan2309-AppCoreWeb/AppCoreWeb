@@ -7,16 +7,17 @@ using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Infrastructure.Interfaces;
 
 namespace TeduCoreApp.Application.Implementation
 {
     public class AddressService : IAddressService
     {
-        private readonly ProvinceRepository _provinceRepository;
-        private readonly DistrictRepository _disctrictRepository;
-        private readonly WardRepository _wardRepository;
-        private readonly StreetRepository _streetRepository;
+        private readonly IProvinceRepository _provinceRepository;
+        private readonly IDistrictRepository _disctrictRepository;
+        private readonly IWardRepository _wardRepository;
+        private readonly IStreetRepository _streetRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public AddressService(

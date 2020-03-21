@@ -13,12 +13,12 @@ namespace TeduCoreApp.Controllers
 {
     public class AddressController : Controller
     {
-        private readonly IAddressService _addressServices;
+        //private readonly IAddressService _addressServices;
         private readonly AppDbContext _context;
 
-        public AddressController(IAddressService addressServices, AppDbContext context)
+        public AddressController(/*IAddressService addressServices,*/ AppDbContext context)
         {
-            _addressServices = addressServices;
+            //_addressServices = addressServices;
             _context = context;
         }
 

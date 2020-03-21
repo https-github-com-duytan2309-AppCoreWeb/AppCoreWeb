@@ -132,6 +132,7 @@ namespace TeduCoreApp
             services.AddTransient<IFooterRepository, FooterRepository>();
             services.AddTransient<IReportService, ReportService>();
             services.AddTransient<IContactRepository, ContactRepository>();
+
             services.AddTransient<IProvinceRepository, ProvinceRepository>();
             services.AddTransient<IDistrictRepository, DistrictRepository>();
             services.AddTransient<IWardRepository, WardRepository>();
@@ -155,6 +156,7 @@ namespace TeduCoreApp
             services.AddTransient<IViewRenderService, ViewRenderService>();
             services.AddTransient<IAnnouncementService, AnnouncementService>();
             services.AddTransient<IAddressService, AddressService>();
+            //services.AddTransient<IProvinceService, AddressService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

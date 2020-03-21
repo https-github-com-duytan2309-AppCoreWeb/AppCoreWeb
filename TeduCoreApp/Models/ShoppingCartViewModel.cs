@@ -15,10 +15,10 @@ namespace TeduCoreApp.Models
 
         public decimal Price { set; get; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui Lòng Chọn Màu")]
         public ColorViewModel Color { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui Lòng Chọn Kích Thước")]
         public SizeViewModel Size { get; set; }
 
         public DateTime DateCreated { get; set; }
