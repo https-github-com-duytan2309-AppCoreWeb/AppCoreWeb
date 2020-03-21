@@ -18,7 +18,6 @@ namespace TeduCoreApp.Application.ViewModels.Product
 
         //[Required]
         [MaxLength(256)]
-        [Display(Name = "Tin Nhắn")]
         public string CustomerAddress { set; get; }
 
         [Required(ErrorMessage = "Vui Lòng Nhập Số Điện Thoại")]
@@ -27,7 +26,7 @@ namespace TeduCoreApp.Application.ViewModels.Product
         [Phone(ErrorMessage = "Số Điện Thoại Không Đúng")]
         public string CustomerMobile { set; get; }
 
-        //[Required]
+        [Display(Name = "Tin Nhắn")]
         [MaxLength(256)]
         public string CustomerMessage { set; get; }
 
