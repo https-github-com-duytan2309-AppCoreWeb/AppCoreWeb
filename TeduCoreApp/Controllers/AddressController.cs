@@ -38,12 +38,12 @@ namespace TeduCoreApp.Controllers
         //    return View();
         //}
 
-        [HttpGet]
-        public IActionResult GetAllProvince()
-        {
-            var list = _addressServices.GetAllProvince();
-            return new OkObjectResult(list);
-        }
+        //[HttpGet]
+        //public IActionResult GetAllProvince()
+        //{
+        //    var list = _addressServices.GetAllProvince();
+        //    return new OkObjectResult(list);
+        //}
 
         //Provinces
         [HttpGet]

@@ -15,16 +15,17 @@ namespace TeduCoreApp.Application.ViewModels.Product
         [MaxLength(256)]
         public string CustomerName { set; get; }
 
-        [Required]
-        [MaxLength(256)]
+        //[Required]
+        //[MaxLength(256)]
         public string CustomerAddress { set; get; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui Lòng Nhập Số Điện Thoại")]
         [MaxLength(50)]
+        [Phone(ErrorMessage = "Số Điện Thoại Không Đúng")]
         public string CustomerMobile { set; get; }
 
-        [Required]
-        [MaxLength(256)]
+        //[Required]
+        //[MaxLength(256)]
         public string CustomerMessage { set; get; }
 
         public PaymentMethod PaymentMethod { set; get; }
@@ -39,5 +40,7 @@ namespace TeduCoreApp.Application.ViewModels.Product
         public Guid? CustomerId { set; get; }
 
         public List<BillDetailViewModel> BillDetails { set; get; }
+
+        public string Code { get; set; }
     }
 }
