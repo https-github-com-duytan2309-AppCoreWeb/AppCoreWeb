@@ -54,6 +54,7 @@ namespace TeduCoreApp.Controllers
         public IActionResult Checkout()
         {
             var model = new CheckoutViewModel();
+
             var session = HttpContext.Session.Get<List<ShoppingCartViewModel>>(CommonConstants.CartSession);
             if (session.Any(x => x.Color == null || x.Size == null))
             {
@@ -104,6 +105,7 @@ namespace TeduCoreApp.Controllers
                         DateCreated = DateTime.Now,
                         Code = random.Next().ToString()
                     };
+
                     if (User.Identity.IsAuthenticated == true)
                     {
                         billViewModel.CustomerId = Guid.Parse(User.GetSpecificClaim("UserId"));

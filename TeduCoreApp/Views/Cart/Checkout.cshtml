@@ -38,6 +38,7 @@
         cursor: pointer;
     }
 </style>
+
 <div class="breadcrumb-area gray-bg-7">
     <div class="container">
         <div class="breadcrumb-content">
@@ -106,10 +107,11 @@
                                                         </div>
                                                         <input type="hidden" asp-for="CustomerAddress">
                                                         <div class="col-lg-3 col-md-6">
-                                                            <div class="billing-info">
+                                                            <div id="divProvince" class="billing-info">
                                                                 <label asp-for="Province"></label>
                                                                 <input asp-for="Province" id="Province" class="input form-control" placeholder="Tỉnh, Thành Phố" data-toggle="dropdown" type="text">
                                                                 <span asp-validation-for="Province"></span>
+
                                                                 <ul style="overflow: scroll; width: 250px; height:400px;" class="dropdown-menu province" id="tbl-province-details">
                                                                 </ul>
                                                                 <script id="template-table-province-details" type="x-tmpl-mustache">
