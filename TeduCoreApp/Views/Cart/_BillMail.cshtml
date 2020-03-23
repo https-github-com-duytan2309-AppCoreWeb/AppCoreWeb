@@ -30,6 +30,8 @@
                         @{
                             int countImg = 1;
                             decimal TongGia = 0;
+                            decimal PhiVanChuyen = 0;
+                            decimal KhuyenMai = 0;
                         }
                         @foreach (var item in Model.BillDetails)
                         {
@@ -62,7 +64,7 @@
 
                         @{
                             countImg = 0;
-                            TongGia = TongGia + TongGia * (10 / 100);
+                            TongGia = TongGia + ((TongGia * 10) / 100) + PhiVanChuyen;
                         }
 
                         <tr>
@@ -74,11 +76,11 @@
                         </tr>
                         <tr>
                             <td colspan="2">Khuyến mãi: </td>
-                            <td colspan="3">0 VND</td>
+                            <td colspan="3">@KhuyenMai VND</td>
                         </tr>
                         <tr>
                             <td colspan="2">Phí vận chuyển:</td>
-                            <td colspan="3">0 VND</td>
+                            <td colspan="3">@PhiVanChuyen VND</td>
                         </tr>
                         <tr>
                             <td colspan="2">Tổng cộng:</td>
