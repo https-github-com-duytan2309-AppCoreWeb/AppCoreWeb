@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using System;
@@ -9,8 +10,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
+using TeduCoreApp.Data.EF;
 using TeduCoreApp.Utilities.Helpers;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
@@ -20,14 +23,16 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         private IProductService _productService;
         private IProductCategoryService _productCategoryService;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly AppDbContext _context;
 
-        public ProductController(IProductService productService, 
+        public ProductController(IProductService productService,
             IProductCategoryService productCategoryService,
-            IHostingEnvironment hostingEnvironment)
+            IHostingEnvironment hostingEnvironment, AppDbContext context)
         {
             _productService = productService;
             _productCategoryService = productCategoryService;
             _hostingEnvironment = hostingEnvironment;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -38,16 +43,18 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         #region AJAX API
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var model = _productService.GetAll();
+            //var model = _productService.GetAll();
+            var model = await _context.Products.ToListAsync();
             return new OkObjectResult(model);
         }
 
         [HttpGet]
         public IActionResult GetAllCategories()
         {
-            var model = _productCategoryService.GetAll();
+            //var model = _productCategoryService.GetAll();
+            var model = _context.ProductCategories.ToListAsync();
             return new OkObjectResult(model);
         }
 
@@ -105,6 +112,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 return new OkObjectResult(id);
             }
         }
+
         [HttpPost]
         public IActionResult SaveQuantities(int productId, List<ProductQuantityViewModel> quantities)
         {
@@ -119,6 +127,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             var quantities = _productService.GetQuantities(productId);
             return new OkObjectResult(quantities);
         }
+
         [HttpPost]
         public IActionResult SaveImages(int productId, string[] images)
         {
@@ -148,6 +157,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             var wholePrices = _productService.GetWholePrices(productId);
             return new OkObjectResult(wholePrices);
         }
+
         [HttpPost]
         public IActionResult ImportExcel(IList<IFormFile> files, int categoryId)
         {
@@ -177,6 +187,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             }
             return new NoContentResult();
         }
+
         [HttpPost]
         public IActionResult ExportExcel()
         {
@@ -205,6 +216,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             }
             return new OkObjectResult(fileUrl);
         }
+
         #endregion AJAX API
     }
 }

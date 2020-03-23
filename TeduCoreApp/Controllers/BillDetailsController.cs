@@ -40,6 +40,13 @@ namespace TeduCoreApp.Controllers
             _productServices = productServices;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllProduct()
+        {
+            var model = await _context.Products.ToListAsync();
+            return new OkObjectResult(model);
+        }
+
         // GET: BillDetails
         [Route("thong-tin-bill.html", Name = "CheckBill")]
         public async Task<IActionResult> Index()

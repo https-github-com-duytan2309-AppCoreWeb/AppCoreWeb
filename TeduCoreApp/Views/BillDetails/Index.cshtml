@@ -10,7 +10,7 @@
 {
     @section Scripts{
         <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-        <script src="~/app/controllers/bill/index.js" asp-append-version="true"></script>
+        <script src="~/clientapp/controllers/bills/index.js"></script>
         <script src="~/assets/plugins/general/twbs-pagination/jquery.twbsPagination.min.js"></script>
         <script>
             var billObj = new BillController();
@@ -22,30 +22,11 @@
     }
 
     <input type="hidden" id="hid-category-id" value="0" />
-    <div class="">
-        <div class="page-title">
+    <div class="kt-grid--center">
+        <div class="page-title kt-heading--center">
             <div class="title_left">
-                <h3>Bill management</h3>
+                <h3>Thông Tin Hóa Đơn Của Bạn</h3>
             </div>
-
-            @*<div class="title_right">
-
-                    <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                        <input type="text" id="txtFromDate" class="form-control" placeholder="From Date">
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                        <input type="text" id="txtToDate" class="form-control" placeholder="To date">
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-12 form-group">
-                        <input type="text" id="txtSearchKeyword" class="form-control" placeholder="Tìm kiếm...">
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                        <button class="btn btn-default" id="btn-search" type="button">Search!</button>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                        <button class="btn btn-success" id="btn-create" type="button">Create</button>
-                    </div>
-                </div>*@
         </div>
 
         <div class="clearfix"></div>
@@ -95,7 +76,7 @@
 
         <script id="table-template" type="x-tmpl-mustache">
             <tr>
-                <td><a href="#" data-id="{{Id}}" class="btn-view-client"><i class="fa fa-eye"></i></a></td>
+                <td><a href="#" data-id="{{Id}}" class="btn-view"><i class="fa fa-eye"></i></a></td>
                 <td>{{CustomerName}}</td>
                 <td>{{CustomerAddress}}</td>
                 <td>{{CustomerPhoneNumber}}</td>

@@ -207,7 +207,7 @@ namespace TeduCoreApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByNameWard(string NameWard)
         {
-            int IdWard = _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).FirstOrDefault();
+            int IdWard = await _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).SingleOrDefaultAsync();
             return new OkObjectResult(await _context.Streets.Where(x => x.WardId == IdWard).ToListAsync());
         }
 
@@ -236,12 +236,11 @@ namespace TeduCoreApp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByKeyStringByDistrictWard(string KeyString, string NameDistrict, string NameWard)
+        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByKeyStringByWard(string KeyString, string NameWard)
         {
-            int IdDistrict = await _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).SingleOrDefaultAsync();
             int IdWard = await _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).SingleOrDefaultAsync();
 
-            return new OkObjectResult(await _context.Streets.Where(x => x.Name.Contains(KeyString) && x.DistrictId == IdDistrict && x.WardId == IdWard).ToListAsync());
+            return new OkObjectResult(await _context.Streets.Where(x => x.Name.Contains(KeyString) && x.WardId == IdWard).ToListAsync());
         }
 
         [HttpGet]

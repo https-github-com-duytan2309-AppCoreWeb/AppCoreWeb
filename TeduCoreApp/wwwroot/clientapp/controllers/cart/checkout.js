@@ -5,6 +5,7 @@
         districts: [],
         provinces: []
     }
+
     this.initialize = function () {
         $.when(
             loadGetAllStreet(),
@@ -12,7 +13,7 @@
             loadGetAllDistrict(),
             loadGetAllProvince())
             .done(function () {
-                //registerEvents();
+                //loadRefreshPage();
             });
         registerEvents();
     }
@@ -326,11 +327,11 @@
                 var nameWard = document.getElementById("Ward").value;
                 var nameDistrict = document.getElementById("District").value;
                 var nameProvince = document.getElementById("Province").value;
-                if (nameWard !== "" && nameDistrict !== "") {
+                if (nameWard !== "") {
                     $.ajax({
                         type: "GET",
-                        url: "/Address/GetStreetsByKeyStringByDistrictWard",
-                        data: { KeyString: $(this).val(), NameWard: nameWard, NameDistrict: nameDistrict },
+                        url: "/Address/GetStreetsByKeyStringByWard",
+                        data: { KeyString: $(this).val(), NameWard: nameWard },
                         dataType: "json",
                         success: function (response) {
                             wards = response;

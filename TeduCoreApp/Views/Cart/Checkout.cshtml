@@ -6,23 +6,15 @@
 }
 @section Scripts {
     <script src="~/lib/mustache/mustache.js"></script>
-    <script src="~/clientapp/controllers/cart/checkout.js"></script>
+    <script src="~/clientapp/controllers/cart/checkout.min.js"></script>
     <script>
         var checkoutObj = new CheckoutController();
         checkoutObj.initialize();
     </script>
 
-    @*<script>
-            $("#edit").click(function () {
-                $("#Street").removeAttr("disabled");
-            });
-        </script>*@
-    @*<recaptcha-script validation-message-element-id="recaptchaErrorMessage" />*@
     @await Html.PartialAsync("_ValidationScriptsPartial")
 
 }
-
-@*<button id="edit">Remove Disable</button>*@
 
 <style>
     .field-validation-error {

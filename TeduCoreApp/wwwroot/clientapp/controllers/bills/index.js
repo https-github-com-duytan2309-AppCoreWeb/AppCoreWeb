@@ -9,12 +9,11 @@
     }
 
     this.initialize = function () {
-        $.when(/*loadStatus(),*/
-            loadBillStatus(),
+        $.when(loadBillStatus(),
+            loadProducts(),
             loadPaymentMethod(),
             loadColors(),
-            loadSizes(),
-            loadProducts())
+            loadSizes())
             .done(function () {
                 loadData();
             });
@@ -265,7 +264,7 @@
     function loadProducts() {
         return $.ajax({
             type: "GET",
-            url: "/Admin/Product/GetAll",
+            url: "/BillDetails/GetAllProduct",
             dataType: "json",
             success: function (response) {
                 cachedObj.products = response;
