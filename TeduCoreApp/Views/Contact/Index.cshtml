@@ -42,7 +42,7 @@
                 <ul class="contact-tab-list nav">
                     <li><a href="#contact-address" data-toggle="tab">Liên hệ với chúng tôi</a></li>
                     <li><a href="#contact-form-tab" data-toggle="tab">Gởi phản hồi cho chúng tôi</a></li>
-                    <li><a class="active" href="#store-location" data-toggle="tab">Địa chỉ của hàng</a></li>
+                    <li><a href="#store-location" data-toggle="tab">Địa chỉ cửa hàng</a></li>
                 </ul>
             </div>
             <div class="col-lg-8">
@@ -92,7 +92,7 @@
                             }
                             else
                             {
-                               
+
                                 <form action="/lien-he.html" method="post">
                                     <div asp-validation-summary="All" class="text-danger"></div>
                                     @Html.AntiForgeryToken()
@@ -123,6 +123,7 @@
                         <div class="col-12">
                             <div class="contact-map">
                                 <div id="map" style="width:100%;height:500px;"></div>
+                                <h1>Here IS Address Of Ours</h1>
                             </div>
                         </div>
                     </div>
@@ -131,5 +132,3 @@
         </div>
     </div>
 </div>
-
-

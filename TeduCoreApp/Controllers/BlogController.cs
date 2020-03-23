@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper.Configuration;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Models.BlogViewModels;
-
 
 namespace TeduCoreApp.Controllers
 {
     public class BlogController : Controller
     {
-        IBlogService _blogService;
-        IBillService _billService;
-        IBlogCategoryService _blogCategoryService;
-        IConfiguration _configuration;
+        private IBlogService _blogService;
+        private IBillService _billService;
+        private IBlogCategoryService _blogCategoryService;
+        private IConfiguration _configuration;
+
         public BlogController(IBlogService blogService, IConfiguration configuration,
             IBillService billService,
             IBlogCategoryService blogCategoryService)
@@ -25,6 +25,7 @@ namespace TeduCoreApp.Controllers
             _configuration = configuration;
             _billService = billService;
         }
+
         [Route("tin-tuc.html")]
         public IActionResult Index()
         {
@@ -47,7 +48,6 @@ namespace TeduCoreApp.Controllers
 
             return View(catalog);
         }
-
 
         [Route("tim-kiem-tin-tuc.html")]
         public IActionResult Search(string keyword, int? pageSize, string sortBy, int page = 1)
@@ -77,6 +77,5 @@ namespace TeduCoreApp.Controllers
 
             return View(model);
         }
-
     }
 }

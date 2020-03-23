@@ -46,7 +46,7 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<ProductViewModel, Product>()
                 .ConstructUsing(c => new Product(c.Name, c.CategoryId, c.Image, c.Price, c.OriginalPrice,
                 c.PromotionPrice, c.Description, c.Content, c.HomeFlag, c.HotFlag, c.Tags, c.Unit, c.Status,
-                c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription));
+                c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription, c.VAT));
 
             CreateMap<AppUserViewModel, AppUser>()
                 .ConstructUsing(c => new AppUser(c.Id.GetValueOrDefault(Guid.Empty), c.FullName, c.UserName,
@@ -62,7 +62,7 @@ namespace TeduCoreApp.Application.AutoMapper
 
             CreateMap<BillDetailViewModel, BillDetail>()
                 .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId,
-                c.Quantity, c.Price, c.ColorId, c.SizeId));
+                c.Quantity, c.Price, c.ColorId, c.SizeId, c.PromotionPrice));
 
             CreateMap<ContactViewModel, Contact>()
                 .ConstructUsing(c => new Contact(c.Id, c.Name, c.Phone, c.Email, c.Website, c.Address, c.Other, c.Lng, c.Lat, c.Status));

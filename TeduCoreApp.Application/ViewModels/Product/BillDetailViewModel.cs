@@ -29,5 +29,7 @@ namespace TeduCoreApp.Application.ViewModels.Product
         public ColorViewModel Color { set; get; }
 
         public SizeViewModel Size { set; get; }
+
+        public decimal PromotionPrice { set; get; }
     }
 }

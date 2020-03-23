@@ -13,7 +13,8 @@ namespace TeduCoreApp.Data.Entities
     [Table("Products")]
     public class Product : DomainEntity<int>, ISwitchable, IDateTracking, IHasSeoMetaData
     {
-        public Product() {
+        public Product()
+        {
             ProductTags = new List<ProductTag>();
         }
 
@@ -22,7 +23,7 @@ namespace TeduCoreApp.Data.Entities
             string description, string content, bool? homeFlag, bool? hotFlag,
             string tags, string unit, Status status, string seoPageTitle,
             string seoAlias, string seoMetaKeyword,
-            string seoMetaDescription)
+            string seoMetaDescription, string vat)
         {
             Name = name;
             CategoryId = categoryId;
@@ -42,7 +43,7 @@ namespace TeduCoreApp.Data.Entities
             SeoKeywords = seoMetaKeyword;
             SeoDescription = seoMetaDescription;
             ProductTags = new List<ProductTag>();
-
+            VAT = vat;
         }
 
         public Product(int id, string name, int categoryId, string thumbnailImage,
@@ -50,7 +51,7 @@ namespace TeduCoreApp.Data.Entities
              string description, string content, bool? homeFlag, bool? hotFlag,
              string tags, string unit, Status status, string seoPageTitle,
              string seoAlias, string seoMetaKeyword,
-             string seoMetaDescription)
+             string seoMetaDescription, string vat)
         {
             Id = id;
             Name = name;
@@ -71,8 +72,9 @@ namespace TeduCoreApp.Data.Entities
             SeoKeywords = seoMetaKeyword;
             SeoDescription = seoMetaDescription;
             ProductTags = new List<ProductTag>();
-
+            VAT = vat;
         }
+
         [StringLength(255)]
         [Required]
         public string Name { get; set; }
@@ -119,20 +121,21 @@ namespace TeduCoreApp.Data.Entities
 
         public virtual ICollection<ProductTag> ProductTags { set; get; }
 
-        public string SeoPageTitle {set;get;}
+        public string SeoPageTitle { set; get; }
 
         [StringLength(255)]
-        public string SeoAlias {set;get;}
+        public string SeoAlias { set; get; }
 
         [StringLength(255)]
-        public string SeoKeywords {set;get;}
+        public string SeoKeywords { set; get; }
 
         [StringLength(255)]
-        public string SeoDescription {set;get;}
+        public string SeoDescription { set; get; }
 
-        public DateTime DateCreated {set;get;}
-        public DateTime DateModified {set;get;}
+        public DateTime DateCreated { set; get; }
+        public DateTime DateModified { set; get; }
 
-        public Status Status {set;get;}
+        public Status Status { set; get; }
+        public string VAT { set; get; }
     }
 }

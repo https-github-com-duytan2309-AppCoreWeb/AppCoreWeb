@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper.Configuration;
+
+//using AutoMapper.Configuration;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Models.DichVuViewModels;
 
@@ -11,10 +13,11 @@ namespace TeduCoreApp.Controllers
 {
     public class DichVuController : Controller
     {
-        IDichVuService _dichvuService;
-        IBillService _billService;
-        IDichVuCategoryService _dichvuCategoryService;
-        IConfiguration _configuration;
+        private IDichVuService _dichvuService;
+        private IBillService _billService;
+        private IDichVuCategoryService _dichvuCategoryService;
+        private IConfiguration _configuration;
+
         public DichVuController(IDichVuService dichvuService, IConfiguration configuration,
             IBillService billService,
             IDichVuCategoryService dichvuCategoryService)
@@ -24,6 +27,7 @@ namespace TeduCoreApp.Controllers
             _configuration = configuration;
             _billService = billService;
         }
+
         [Route("dich-vu.html")]
         public IActionResult Index()
         {
@@ -46,7 +50,6 @@ namespace TeduCoreApp.Controllers
 
             return View(catalog);
         }
-
 
         [Route("tim-kiem-dich-vu.html")]
         public IActionResult Search(string keyword, int? pageSize, string sortBy, int page = 1)
@@ -75,6 +78,5 @@ namespace TeduCoreApp.Controllers
             model.Tags = _dichvuService.GetListTagById(id);
             return View(model);
         }
-
     }
 }

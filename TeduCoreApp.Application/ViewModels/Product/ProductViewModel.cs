@@ -47,7 +47,7 @@ namespace TeduCoreApp.Application.ViewModels.Product
         [StringLength(255)]
         public string Unit { get; set; }
 
-        public  ProductCategoryViewModel ProductCategory { set; get; }
+        public ProductCategoryViewModel ProductCategory { set; get; }
 
         public string SeoPageTitle { set; get; }
 
@@ -64,5 +64,6 @@ namespace TeduCoreApp.Application.ViewModels.Product
         public DateTime DateModified { set; get; }
 
         public Status Status { set; get; }
+        public string VAT { set; get; }
     }
 }

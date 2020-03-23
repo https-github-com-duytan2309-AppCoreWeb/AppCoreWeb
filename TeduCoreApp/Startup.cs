@@ -137,6 +137,7 @@ namespace TeduCoreApp
             services.AddTransient<IDistrictRepository, DistrictRepository>();
             services.AddTransient<IWardRepository, WardRepository>();
             services.AddTransient<IStreetRepository, StreetRepository>();
+            services.AddTransient<IFeedbackRepository, FeedbackRepository>();
 
             //Serrvices
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -146,6 +147,7 @@ namespace TeduCoreApp
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IBillService, BillService>();
             services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IBlogCategoryService, BlogCategoryService>();
             services.AddTransient<ICommonService, CommonService>();
             services.AddTransient<IDichVuService, DichVuService>();
             services.AddTransient<IDichVuCategoryService, DichVuCategoryService>();
@@ -156,7 +158,7 @@ namespace TeduCoreApp
             services.AddTransient<IViewRenderService, ViewRenderService>();
             services.AddTransient<IAnnouncementService, AnnouncementService>();
             services.AddTransient<IAddressService, AddressService>();
-            //services.AddTransient<IProvinceService, AddressService>();
+            services.AddTransient<IFeedbackService, FeedbackService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 

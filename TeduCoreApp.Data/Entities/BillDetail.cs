@@ -9,9 +9,11 @@ namespace TeduCoreApp.Data.Entities
     [Table("BillDetails")]
     public class BillDetail : DomainEntity<int>
     {
-        public BillDetail() { }
+        public BillDetail()
+        {
+        }
 
-        public BillDetail(int id, int billId, int productId, int quantity, decimal price, int colorId, int sizeId)
+        public BillDetail(int id, int billId, int productId, int quantity, decimal price, int colorId, int sizeId, decimal promotionPrice)
         {
             Id = id;
             BillId = billId;
@@ -20,9 +22,10 @@ namespace TeduCoreApp.Data.Entities
             Price = price;
             ColorId = colorId;
             SizeId = sizeId;
+            PromotionPrice = promotionPrice;
         }
 
-        public BillDetail(int billId, int productId, int quantity, decimal price, int colorId, int sizeId)
+        public BillDetail(int billId, int productId, int quantity, decimal price, int colorId, int sizeId, decimal promotionPrice)
         {
             BillId = billId;
             ProductId = productId;
@@ -30,7 +33,9 @@ namespace TeduCoreApp.Data.Entities
             Price = price;
             ColorId = colorId;
             SizeId = sizeId;
+            PromotionPrice = promotionPrice;
         }
+
         public int BillId { set; get; }
 
         public int ProductId { set; get; }
@@ -54,5 +59,7 @@ namespace TeduCoreApp.Data.Entities
 
         [ForeignKey("SizeId")]
         public virtual Size Size { set; get; }
+
+        public decimal PromotionPrice { set; get; }
     }
 }

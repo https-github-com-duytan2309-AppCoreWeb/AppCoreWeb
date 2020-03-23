@@ -737,6 +737,7 @@
             }
         });
     }
+
     function ReloadInputDistrict() {
         var inputWard = document.getElementById("Ward").value;
         if (inputWard !== "") {
