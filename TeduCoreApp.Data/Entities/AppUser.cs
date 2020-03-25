@@ -11,8 +11,11 @@ namespace TeduCoreApp.Data.Entities
     [Table("AppUsers")]
     public class AppUser : IdentityUser<Guid>, IDateTracking, ISwitchable
     {
-        public AppUser() {  }
-        public AppUser(Guid id, string fullName, string userName, 
+        public AppUser()
+        {
+        }
+
+        public AppUser(Guid id, string fullName, string userName,
             string email, string phoneNumber, string avatar, Status status)
         {
             Id = id;
@@ -23,6 +26,7 @@ namespace TeduCoreApp.Data.Entities
             Avatar = avatar;
             Status = status;
         }
+
         public string FullName { get; set; }
 
         public DateTime? BirthDay { set; get; }

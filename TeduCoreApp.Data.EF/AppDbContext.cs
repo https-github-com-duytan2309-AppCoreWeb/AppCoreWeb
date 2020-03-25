@@ -22,15 +22,18 @@ namespace TeduCoreApp.Data.EF
         {
         }
 
+        public DbSet<ShipCode> ShipCodes { set; get; }
         public DbSet<Language> Languages { set; get; }
         public DbSet<SystemConfig> SystemConfigs { get; set; }
         public DbSet<Function> Functions { get; set; }
-
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppRole> AppRoles { get; set; }
+        public DbSet<AppUserActions> AppUserActions { set; get; }
+
+        public DbSet<ListAction> ListActions { set; get; }
+        public DbSet<ListController> ListControllers { set; get; }
         public DbSet<Announcement> Announcements { set; get; }
         public DbSet<AnnouncementUser> AnnouncementUsers { set; get; }
-
         public DbSet<Bill> Bills { set; get; }
         public DbSet<BillDetail> BillDetails { set; get; }
         public DbSet<Blog> Blogs { set; get; }
@@ -46,15 +49,11 @@ namespace TeduCoreApp.Data.EF
         public DbSet<ProductImage> ProductImages { set; get; }
         public DbSet<ProductQuantity> ProductQuantities { set; get; }
         public DbSet<ProductTag> ProductTags { set; get; }
-
         public DbSet<Size> Sizes { set; get; }
         public DbSet<Slide> Slides { set; get; }
-
         public DbSet<Tag> Tags { set; get; }
-
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<WholePrice> WholePrices { get; set; }
-
         public DbSet<AdvertistmentPage> AdvertistmentPages { get; set; }
         public DbSet<Advertistment> Advertistments { get; set; }
         public DbSet<AdvertistmentPosition> AdvertistmentPositions { get; set; }
@@ -68,7 +67,6 @@ namespace TeduCoreApp.Data.EF
         public DbSet<Menu> Menus { get; set; }
         public DbSet<ProductStatus> ProductStatus { get; set; }
         public DbSet<Recruitment> Recruitments { get; set; }
-
         public DbSet<Province> Provinces { set; get; }
         public DbSet<District> Districts { set; get; }
         public DbSet<Ward> Wards { set; get; }
@@ -76,6 +74,8 @@ namespace TeduCoreApp.Data.EF
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            //base.OnModelCreating(builder);
+
             #region Identity Config
 
             builder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims").HasKey(x => x.Id);
@@ -92,6 +92,8 @@ namespace TeduCoreApp.Data.EF
                .HasKey(x => new { x.UserId });
 
             #endregion Identity Config
+
+            builder.Entity<AppUserActions>().HasKey(sc => new { sc.IdUser, sc.IdAction });
 
             builder.AddConfiguration(new TagConfiguration());
             builder.AddConfiguration(new BlogTagConfiguration());

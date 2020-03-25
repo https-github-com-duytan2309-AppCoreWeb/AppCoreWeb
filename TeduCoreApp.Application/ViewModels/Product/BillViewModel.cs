@@ -44,5 +44,7 @@ namespace TeduCoreApp.Application.ViewModels.Product
         public List<BillDetailViewModel> BillDetails { set; get; }
 
         public string Code { get; set; }
+
+        public long ShipCodeId { get; set; }
     }
 }

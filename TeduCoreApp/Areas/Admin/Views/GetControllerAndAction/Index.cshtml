@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<form asp-area="Admin" asp-controller="GetControllerAndAction" asp-action="UpdateBusiness">
+    <input placeholder="Update Permission" name="nameSpace" />
+    <input hidden="hidden" placeholder="Url" name="returnUrl" value="Index" />
+    <input type="submit" value="Submit" />
+</form>

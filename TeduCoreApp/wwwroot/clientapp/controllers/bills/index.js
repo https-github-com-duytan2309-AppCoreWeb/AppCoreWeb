@@ -138,8 +138,8 @@
                 var customerId = $('#ddlCustomerId').val();
                 var customerMobile = $('#txtCustomerMobile').val();
                 var customerMessage = $('#txtCustomerMessage').val();
-                //var paymentMethod = $('#ddlPaymentMethod').val();
-                //var billStatus = $('#ddlBillStatus').val();
+                var paymentMethod = $('#ddlPaymentMethod').val();
+                var billStatus = $('#ddlBillStatus').val();
                 //bill detail
 
                 var billDetails = [];

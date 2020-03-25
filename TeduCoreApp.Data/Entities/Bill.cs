@@ -17,7 +17,7 @@ namespace TeduCoreApp.Data.Entities
         }
 
         public Bill(string customerName, string customerAddress, string customerMobile, string customerMessage,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string code)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string code, long shipcodeId)
         {
             CustomerName = customerName;
             CustomerAddress = customerAddress;
@@ -28,10 +28,11 @@ namespace TeduCoreApp.Data.Entities
             Status = status;
             CustomerId = customerId;
             Code = code;
+            ShipCodeId = shipcodeId;
         }
 
         public Bill(int id, string customerName, string customerAddress, string customerMobile, string customerMessage,
-           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string code)
+           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string code, long shipcodeId)
         {
             Id = id;
             CustomerName = customerName;
@@ -43,6 +44,7 @@ namespace TeduCoreApp.Data.Entities
             Status = status;
             CustomerId = customerId;
             Code = code;
+            ShipCodeId = shipcodeId;
         }
 
         [Required]
@@ -78,5 +80,10 @@ namespace TeduCoreApp.Data.Entities
 
         public virtual ICollection<BillDetail> BillDetails { set; get; }
         public string Code { get; set; }
+
+        public long ShipCodeId { get; set; }
+
+        [ForeignKey("ShipCodeId")]
+        public ShipCode ShipCode { get; set; }
     }
 }

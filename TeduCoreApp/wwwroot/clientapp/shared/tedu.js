@@ -110,7 +110,7 @@
                 .addClass('hide');
     },
     getStatus: function (status) {
-        if (status == 1)
+        if (status === 1)
             return '<span class="badge bg-green">Kích hoạt</span>';
         else
             return '<span class="badge bg-red">Khoá</span>';
@@ -138,11 +138,24 @@
             }
         }
         return roots;
+    },
+    formattedDate: function (dateToFormat) {
+        var dateObject = new Date(dateToFormat);
+        var day = dateObject.getDate();
+        var month = dateObject.getMonth() + 1;
+        var year = dateObject.getFullYear();
+        var hh = dateObject.getHours();
+        var mm = dateObject.getMinutes();
+        var ss = dateObject.getSeconds();
+        day = day < 10 ? "0" + day : day;
+        month = month < 10 ? "0" + month : month;
+        var formattedDate = day + "/" + month + "/" + year + " " + hh + ":" + mm + ":" + ss;
+        return formattedDate;
     }
-}
+};
 
 $(document).ajaxSend(function (e, xhr, options) {
-    if (options.type.toUpperCase() == "POST" || options.type.toUpperCase() == "PUT") {
+    if (options.type.toUpperCase() === "POST" || options.type.toUpperCase() === "PUT") {
         var token = $('form').find("input[name='__RequestVerificationToken']").val();
         xhr.setRequestHeader("RequestVerificationToken", token);
     }

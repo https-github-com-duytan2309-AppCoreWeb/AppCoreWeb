@@ -122,21 +122,13 @@
     <script src="~/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.js"></script>
     <script src="~/clientapp/shared/localize/resources.@(requestCulture.RequestCulture.Culture.Name).js"></script>
     <script src="~/clientapp/shared/tedu.js"></script>
+
     <script src="~/clientapp/controllers/base/index.js"></script>
     <script>
         var baseObj = new BaseController();
         baseObj.initialize();
     </script>
-    @*<script>
-            $(document).ready(function () {
-                setInterval('location.reload()', 4000);
-            });
-        </script>*@
-    @*<script>
-            function myFunction() {
-                location.reload()
-            }
-        </script>*@
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

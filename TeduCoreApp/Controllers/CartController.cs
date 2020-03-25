@@ -91,7 +91,7 @@ namespace TeduCoreApp.Controllers
                             ColorId = item.Color.Id,
                             SizeId = item.Size.Id,
                             Quantity = item.Quantity,
-                            ProductId = item.Product.Id
+                            ProductId = item.Product.Id,
                         });
                     }
                     var billViewModel = new BillViewModel()
@@ -103,7 +103,8 @@ namespace TeduCoreApp.Controllers
                         CustomerMessage = model.CustomerMessage,
                         BillDetails = details,
                         DateCreated = DateTime.Now,
-                        Code = random.Next().ToString()
+                        Code = random.Next().ToString(),
+                        ShipCodeId = model.ShipCodeId
                     };
 
                     if (User.Identity.IsAuthenticated == true)

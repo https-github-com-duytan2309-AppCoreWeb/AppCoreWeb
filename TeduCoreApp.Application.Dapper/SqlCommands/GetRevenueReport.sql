@@ -12,10 +12,10 @@ BEGIN
                 on b.Id = bd.BillId
                 inner join Products p
                 on bd.ProductId  = p.Id
-                where b.DateCreated <= cast(@toDate as date) 
+                where b.DateCreated <= cast(@toDate as date)
 				AND b.DateCreated >= cast(@fromDate as date)
                 group by b.DateCreated
 END
 
 EXEC dbo.GetRevenueDaily @fromDate = '12/01/2017',
-                         @toDate = '01/16/2018' 
+                         @toDate = '01/16/2020'

@@ -1,0 +1,49 @@
+﻿@model TeduCoreApp.Data.Entities.ShipCode
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ShipCode</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Carriers)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Carriers)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CollectionFee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CollectionFee)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

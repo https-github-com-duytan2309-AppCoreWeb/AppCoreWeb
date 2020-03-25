@@ -3,20 +3,22 @@
         streets: [],
         wards: [],
         districts: [],
-        provinces: []
-    }
+        provinces: [],
+        paymentMethods: []
+    };
 
     this.initialize = function () {
         $.when(
             loadGetAllStreet(),
             loadGetAllWard(),
             loadGetAllDistrict(),
-            loadGetAllProvince())
+            loadGetAllProvince(),
+            loadDataShipCode())
             .done(function () {
-                //loadRefreshPage();
             });
+
         registerEvents();
-    }
+    };
 
     function registerEvents() {
         $('#Province').keypress(
@@ -736,6 +738,13 @@
                 });
             }
         });
+
+        $('#PaymentMethodRadio').click(function () {
+            if ($(this).is(':checked')) {
+                var value = $(this).text();
+                document.getElementById("PaymentMethod").value = value;
+            }
+        });
     }
 
     function ReloadInputDistrict() {
@@ -886,4 +895,71 @@
             }
         });
     }
-}
+
+    function getPaymentMethodName(paymentMethod) {
+        var method = $.grep(cachedObj.paymentMethods, function (element, index) {
+            return element.Value === paymentMethod;
+        });
+        if (method.length > 0)
+            return method[0].Name;
+        else return '';
+    }
+
+    function loadDataShipCode() {
+        $.ajax({
+            url: '/Admin/ShipCodes/Index',
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                var templateShipCode = $('#template-table-shipcode').html();
+                var render = "";
+
+                $.each(response, function (i, item) {
+                    render += Mustache.render(templateShipCode,
+                        {
+                            Id: item.Id,
+                            Carriers: item.Carriers,
+                            DiliveryTime: item.DeliveryTime,
+                            CollectionFee: item.CollectionFee,
+                            ZipCode: item.ZipCode,
+                            Total: item.Total
+                        });
+                });
+                $('#template-shipcode').html(render);
+
+                $('.dropdown-menu a').on({
+                    click: function () {
+                        var value = $(this).text();
+                        document.getElementById("Carriers").value = value;
+
+                        var that = $(this).data('id');
+                        loadDataShipCodeById(that);
+                    }
+                });
+            },
+            error: function () {
+                tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
+            }
+        });
+    }
+
+    function loadDataShipCodeById(idShipCode) {
+        $.ajax({
+            url: '/Admin/ShipCodes/GetShipCodeById',
+            type: 'GET',
+            dataType: 'json',
+            data: { id: idShipCode },
+            success: function (response) {
+                var data = response;
+                document.getElementById("ShipCodeId").value = data.Id;
+                document.getElementById("CollectionFee").value = data.CollectionFee;
+                document.getElementById("ZipCode").value = data.ZipCode;
+                document.getElementById("DiliveryTime").value = tedu.formattedDate(data.DeliveryTime);
+                document.getElementById("Total").value = data.Total;
+            },
+            error: function () {
+                tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
+            }
+        });
+    }
+};

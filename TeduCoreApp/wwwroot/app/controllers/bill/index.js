@@ -110,76 +110,6 @@
             });
         });
 
-        //$('body').on('click', '.btn-view-client', function (e) {
-        //    e.preventDefault();
-        //    var that = $(this).data('id');
-        //    $.ajax({
-        //        type: "GET",
-        //        url: "/BillDetails/GetById",
-        //        data: { id: that },
-        //        beforeSend: function () {
-        //            tedu.startLoading();
-        //        },
-        //        success: function (response) {
-        //            var data = response;
-        //            $('#hidId').val(data.Id);
-        //            $('#txtCustomerName').val(data.CustomerName);
-        //            $('#txtCustomerAddress').val(data.CustomerAddress);
-        //            $('#txtCustomerMobile').val(data.CustomerMobile);
-        //            $('#txtCustomerMessage').val(data.CustomerMessage);
-        //            $('#ddlPaymentMethod').val(data.PaymentMethod);
-        //            $('#ddlCustomerId').val(data.CustomerId);
-        //            $('#ddlBillStatus').val(data.BillStatus);
-
-        //            var txtStatus = "";
-        //            if (data.Status === 0) {
-        //                txtStatus += "<h3>Đơn Hàng Đang Được Xét Duyệt</h3>";
-        //                $('#txtStatus').html(txtStatus);
-        //            }
-        //            else {
-        //                txtStatus += "<h3>Đơn Hàng Đã Được Chốt</h3>";
-        //                $('#txtStatus').html(txtStatus);
-        //            }
-
-        //            var billDetails = data.BillDetails;
-        //            if (data.BillDetails !== null && data.BillDetails.length > 0) {
-        //                var render = '';
-        //                var templateDetails = $('#template-table-bill-details').html();
-        //                $.each(billDetails, function (i, item) {
-        //                    var products = getProductClientOptions(item.ProductId);
-        //                    var colors = getColorClientOptions(item.ColorId, data.Status);
-        //                    var sizes = getSizeClientOptions(item.SizeId, data.Status);
-        //                    var images = getImageOptions(item.ProductId);
-        //                    var quality = '';
-        //                    if (data.Status === 0) {
-        //                        quality += '<input type="number" class="txtQuantity" value="' + item.Quantity + '" />';
-        //                    }
-        //                    else {
-        //                        quality += '<input type="number" class="txtQuantity" value="' + item.Quantity + '" disabled />';
-        //                    }
-        //                    render += Mustache.render(templateDetails,
-        //                        {
-        //                            Id: item.Id,
-        //                            Products: products,
-        //                            Images: images,
-        //                            Colors: colors,
-        //                            Sizes: sizes,
-        //                            Quantity: quality,
-        //                            //Status: data.BillStatus
-        //                        });
-        //                });
-        //                $('#tbl-bill-details').html(render);
-        //            }
-        //            $('#modal-detail').modal('show');
-        //            tedu.stopLoading();
-        //        },
-        //        error: function (e) {
-        //            tedu.notify('Has an error in progress', 'error');
-        //            tedu.stopLoading();
-        //        }
-        //    });
-        //});
-
         $('#btnSave').on('click', function (e) {
             if ($('#frmMaintainance').valid()) {
                 e.preventDefault();
@@ -239,66 +169,6 @@
                 return false;
             }
         });
-
-        //$('#btnSaveClient').on('click', function (e) {
-        //    if ($('#frmMaintainance').valid()) {
-        //        e.preventDefault();
-        //        var id = $('#hidId').val();
-        //        var customerName = $('#txtCustomerName').val();
-        //        var customerAddress = $('#txtCustomerAddress').val();
-        //        var customerId = $('#ddlCustomerId').val();
-        //        var customerMobile = $('#txtCustomerMobile').val();
-        //        var customerMessage = $('#txtCustomerMessage').val();
-        //        var paymentMethod = $('#ddlPaymentMethod').val();
-        //        var billStatus = $('#ddlBillStatus').val();
-        //        //bill detail
-        //        var billDetails = [];
-        //        $.each($('#tbl-bill-details tr'), function (i, item) {
-        //            billDetails.push({
-        //                Id: $(item).data('id'),
-        //                ProductId: $(item).find('select.ddlProductId').first().val(),
-        //                Quantity: $(item).find('input.txtQuantity').first().val(),
-        //                ColorId: $(item).find('select.ddlColorId').first().val(),
-        //                SizeId: $(item).find('select.ddlSizeId').first().val(),
-        //                BillId: id
-        //            });
-        //        });
-
-        //        $.ajax({
-        //            type: "POST",
-        //            url: "/Admin/Bill/SaveEntity",
-        //            data: {
-        //                Id: id,
-        //                BillStatus: billStatus,
-        //                CustomerAddress: customerAddress,
-        //                CustomerId: customerId,
-        //                CustomerMessage: customerMessage,
-        //                CustomerMobile: customerMobile,
-        //                CustomerName: customerName,
-        //                PaymentMethod: paymentMethod,
-        //                Status: 1,
-        //                BillDetails: billDetails
-        //            },
-        //            dataType: "json",
-        //            beforeSend: function () {
-        //                tedu.startLoading();
-        //            },
-        //            success: function (response) {
-        //                tedu.notify('Save order successful', 'success');
-        //                $('#modal-detail').modal('hide');
-        //                resetFormMaintainance();
-
-        //                tedu.stopLoading();
-        //                loadData(true);
-        //            },
-        //            error: function () {
-        //                tedu.notify('Has an error in progress', 'error');
-        //                tedu.stopLoading();
-        //            }
-        //        });
-        //        return false;
-        //    }
-        //});
 
         $('#btnAddDetail').on('click', function () {
             var template = $('#template-table-bill-details').html();
@@ -433,15 +303,6 @@
         products += "</select>";
         return products;
     }
-    //function getProductClientOptions(selectedId) {
-    //    var products = "<select style='width: 150px' class='form-control ddlProductId' disabled>";
-    //    $.each(cachedObj.products, function (i, product) {
-    //        if (selectedId === product.Id)
-    //            products += '<option value="' + product.Id + '" selected="select">' + product.Name + '</option>';
-    //    });
-
-    //    return products;
-    //}
 
     function getColorOptions(selectedId) {
         var colors = "<select class='form-control ddlColorId'>";
@@ -454,24 +315,6 @@
         colors += "</select>";
         return colors;
     }
-    //function getColorClientOptions(selectedId, status) {
-    //    var colors = "";
-    //    if (status === 0) {
-    //        colors = "<select style='width: 150px'  class='form-control ddlColorId'>";
-    //    }
-    //    else {
-    //        colors = "<select style='width: 150px'  class='form-control ddlColorId' disabled>";
-    //    }
-
-    //    $.each(cachedObj.colors, function (i, color) {
-    //        if (selectedId === color.Id)
-    //            colors += '<option style="width: 100px;" value="' + color.Id + '" selected="select">' + color.Name + '</option>';
-    //        else
-    //            colors += '<option style="width: 100px;" value="' + color.Id + '">' + color.Name + '</option>';
-    //    });
-    //    colors += "</select>";
-    //    return colors;
-    //}
 
     function getSizeOptions(selectedId) {
         var sizes = "<select class='form-control ddlSizeId'>";
@@ -484,24 +327,6 @@
         sizes += "</select>";
         return sizes;
     }
-    //function getSizeClientOptions(selectedId, status) {
-    //    var sizes = "";
-    //    if (status === 0) {
-    //        sizes = "<select style='width: 180px' class='form-control ddlSizeId'>";
-    //    }
-    //    else {
-    //        sizes = "<select style='width: 180px' class='form-control ddlSizeId' disabled>";
-    //    }
-
-    //    $.each(cachedObj.sizes, function (i, size) {
-    //        if (selectedId === size.Id)
-    //            sizes += '<option  value="' + size.Id + '" selected="select">' + size.Name + '</option>';
-    //        else
-    //            sizes += '<option  value="' + size.Id + '">' + size.Name + '</option>';
-    //    });
-    //    sizes += "</select>";
-    //    return sizes;
-    //}
 
     function resetFormMaintainance() {
         $('#hidId').val(0);
@@ -604,4 +429,4 @@
             }
         });
     }
-}
+};
