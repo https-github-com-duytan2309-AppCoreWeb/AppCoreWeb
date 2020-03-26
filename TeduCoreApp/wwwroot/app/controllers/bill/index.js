@@ -18,7 +18,7 @@
             });
 
         registerEvents();
-    }
+    };
 
     function registerEvents() {
         $('#txtFromDate, #txtToDate').datepicker({
@@ -391,6 +391,7 @@
             }
         });
     }
+
     function getPaymentMethodName(paymentMethod) {
         var method = $.grep(cachedObj.paymentMethods, function (element, index) {
             return element.Value === paymentMethod;
@@ -399,6 +400,7 @@
             return method[0].Name;
         else return '';
     }
+
     function getBillStatusName(status) {
         status = $.grep(cachedObj.billStatuses, function (element, index) {
             return element.Value === status;
@@ -407,6 +409,7 @@
             return status[0].Name;
         else return '';
     }
+
     function wrapPaging(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize

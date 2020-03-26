@@ -10,8 +10,8 @@
 {
     @section Scripts{
         <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-        <script src="~/clientapp/controllers/bills/index.js"></script>
         <script src="~/assets/plugins/general/twbs-pagination/jquery.twbsPagination.min.js"></script>
+        <script src="~/clientapp/controllers/bills/index.js"></script>
         <script>
             var billObj = new BillController();
             billObj.initialize();
@@ -81,7 +81,7 @@
                 <td>{{CustomerAddress}}</td>
                 <td>{{CustomerPhoneNumber}}</td>
                 <td>{{CustomerMessage}}</td>
-                <td>{{DateCreated}}</td>
+                <td>{{{DateCreated}}}</td>
             </tr>
         </script>
     </div>

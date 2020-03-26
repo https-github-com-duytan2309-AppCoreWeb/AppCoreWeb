@@ -7,6 +7,12 @@ using Microsoft.AspNetCore.Hosting;
 using System.Net.Http.Headers;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using TeduCoreApp.Data.EF;
+using TeduCoreApp.Services;
+using Microsoft.AspNetCore.Identity;
+using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Application.ViewModels.System;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,9 +21,16 @@ namespace TeduCoreApp.Areas.Admin.Controllers
     public class UploadController : BaseController
     {
         private readonly IHostingEnvironment _hostingEnvironment;
-        public UploadController(IHostingEnvironment hostingEnvironment)
+        private readonly AppDbContext _context;
+        private readonly IFunctional _functionalService;
+        private readonly UserManager<AppUser> _userManager;
+
+        public UploadController(IHostingEnvironment hostingEnvironment, AppDbContext context, IFunctional functionalService, UserManager<AppUser> userManager)
         {
             _hostingEnvironment = hostingEnvironment;
+            _context = context;
+            _functionalService = functionalService;
+            _userManager = userManager;
         }
 
         [HttpPost]
@@ -53,10 +66,12 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 await HttpContext.Response.WriteAsync("<script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", '" + Path.Combine(imageFolder, filename).Replace(@"\", @"/") + "');</script>");
             }
         }
+
         /// <summary>
         /// Upload image for form
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// </returns>
         [HttpPost]
         public IActionResult UploadImage()
         {
@@ -89,6 +104,31 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                     fs.Flush();
                 }
                 return new OkObjectResult(Path.Combine(imageFolder, filename).Replace(@"\", @"/"));
+            }
+        }
+
+        [HttpPost]
+        [RequestSizeLimit(5000000)]
+        public async Task<IActionResult> PostUploadProfilePicture(List<IFormFile> UploadDefault)
+        {
+            try
+            {
+                var folderUpload = "uploaded";
+                var fileName = await _functionalService.UploadFile(UploadDefault, _hostingEnvironment, folderUpload);
+
+                var IdCurent = User.FindFirst("UserId").Value.ToString();
+                var appUser = await _context.AppUsers.Where(x => x.Id.ToString() == IdCurent).SingleOrDefaultAsync();
+                if (appUser != null)
+                {
+                    appUser.Avatar = "/" + folderUpload + "/" + fileName;
+                    _context.AppUsers.Update(appUser);
+                    await _context.SaveChangesAsync();
+                }
+                return Ok(fileName);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
             }
         }
     }

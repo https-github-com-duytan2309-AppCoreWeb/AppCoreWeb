@@ -739,12 +739,12 @@
             }
         });
 
-        $('#PaymentMethodRadio').click(function () {
-            if ($(this).is(':checked')) {
-                var value = $(this).text();
-                document.getElementById("PaymentMethod").value = value;
-            }
-        });
+        //$('#PaymentMethodRadio').click(function () {
+        //    if ($(this).is(':checked')) {
+        //        var value = $(this).text();
+        //        document.getElementById("PaymentMethod").value = value;
+        //    }
+        //});
     }
 
     function ReloadInputDistrict() {
@@ -896,14 +896,14 @@
         });
     }
 
-    function getPaymentMethodName(paymentMethod) {
-        var method = $.grep(cachedObj.paymentMethods, function (element, index) {
-            return element.Value === paymentMethod;
-        });
-        if (method.length > 0)
-            return method[0].Name;
-        else return '';
-    }
+    //function getPaymentMethodName(paymentMethod) {
+    //    var method = $.grep(cachedObj.paymentMethods, function (element, index) {
+    //        return element.Value === paymentMethod;
+    //    });
+    //    if (method.length > 0)
+    //        return method[0].Name;
+    //    else return '';
+    //}
 
     function loadDataShipCode() {
         $.ajax({

@@ -11,7 +11,7 @@ namespace TeduCoreApp.Helpers
 {
     public class CustomClaimsPrincipalFactory : UserClaimsPrincipalFactory<AppUser, AppRole>
     {
-        UserManager<AppUser> _userManger;
+        private UserManager<AppUser> _userManger;
 
         public CustomClaimsPrincipalFactory(UserManager<AppUser> userManager,
             RoleManager<AppRole> roleManager, IOptions<IdentityOptions> options)

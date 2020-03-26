@@ -161,6 +161,7 @@ namespace TeduCoreApp
             services.AddTransient<IFeedbackService, FeedbackService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
+            services.AddTransient<IFunctional, Functional>();
 
             services.AddAuthentication()
                 .AddFacebook(facebookOpts =>

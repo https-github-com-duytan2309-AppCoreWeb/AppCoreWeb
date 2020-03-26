@@ -393,7 +393,7 @@
                 var render = "";
                 if (response.RowCount > 0) {
                     $.each(response.Results, function (i, item) {
-                        var d = new Date(item.DateCreated);
+                        //var d = new Date(item.DateCreated);
                         render += Mustache.render(template, {
                             CustomerName: item.CustomerName,
                             CustomerAddress: item.CustomerAddress,
@@ -401,7 +401,7 @@
                             CustomerMessage: item.CustomerMessage,
                             Id: item.Id,
                             PaymentMethod: getPaymentMethodName(item.PaymentMethod),
-                            DateCreated: d,
+                            DateCreated: tedu.dateTimeFormatJson(item.DateCreated),
                             BillStatus: getBillStatusName(item.BillStatus)
                         });
                     });
@@ -424,6 +424,7 @@
             }
         });
     }
+
     function getPaymentMethodName(paymentMethod) {
         var method = $.grep(cachedObj.paymentMethods, function (element, index) {
             return element.Value === paymentMethod;
@@ -463,4 +464,4 @@
             }
         });
     }
-}
+};

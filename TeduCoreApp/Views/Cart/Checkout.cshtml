@@ -192,8 +192,8 @@
                                                                 <div class="col-3">
                                                                     <label asp-for="@Model.PaymentMethods[i].Value">
                                                                         @*name="paymentMethod" asp-for="PaymentMethod" value="@Model.PaymentMethods[i].Value"*@
-                                                                        <input id="PaymentMethod" type="hidden" asp-for="PaymentMethod" />
-                                                                        <input style="width: 50px; height: 50px" type="radio" asp-for="PaymentMethod" class="form-inline" id="PaymentMethodRadio" value="@IntPayment" />
+                                                                        @*<input id="PaymentMethod" type="hidden" asp-for="PaymentMethod" />*@
+                                                                        <input style="width: 50px; height: 50px" type="radio" asp-for="PaymentMethod" class="form-inline" value="@Model.PaymentMethods[i].Value" * />
                                                                         @Model.PaymentMethods[i].Name
                                                                     </label>
                                                                 </div>

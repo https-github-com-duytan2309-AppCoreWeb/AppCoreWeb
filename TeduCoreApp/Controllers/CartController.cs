@@ -61,10 +61,10 @@ namespace TeduCoreApp.Controllers
                 return Redirect("/cart.html");
             }
 
-            Attachment data = new Attachment(
-                                    "wwwroot/files/mansion.png",
-                                    MediaTypeNames.Application.Octet);
-            ViewBag.LinkImages = data.ContentStream;
+            //Attachment data = new Attachment(
+            //                        "wwwroot/files/mansion.png",
+            //                        MediaTypeNames.Application.Octet);
+            //ViewBag.LinkImages = data.ContentStream;
 
             model.Carts = session;
             return View(model);
@@ -104,7 +104,8 @@ namespace TeduCoreApp.Controllers
                         BillDetails = details,
                         DateCreated = DateTime.Now,
                         Code = random.Next().ToString(),
-                        ShipCodeId = model.ShipCodeId
+                        ShipCodeId = model.ShipCodeId,
+                        PaymentMethod = model.PaymentMethod
                     };
 
                     if (User.Identity.IsAuthenticated == true)
@@ -118,16 +119,16 @@ namespace TeduCoreApp.Controllers
 
                         var content = await _viewRenderService.RenderToStringAsync("Cart/_BillMail", billViewModel);
                         var contentAdmin = await _viewRenderService.RenderToStringAsync("Cart/_BillMailForAdmin", billViewModel);
-                        List<string> images = new List<string>();
+                        //List<string> images = new List<string>();
 
-                        foreach (var item in details)
-                        {
-                            images.Add(@item.Product.Image.Replace('/', '\\'));
-                        }
+                        //foreach (var item in details)
+                        //{
+                        //    images.Add(@item.Product.Image.Replace('/', '\\'));
+                        //}
 
-                        var addmessage = "<h4>Tài Khoản " + User.FindFirst("Email").Value.ToString() + " Đã mua hàng của bạn!!! Click + <a href='/admin/bill/index'>Vào Đây</a> + để kiểm tra thông tin!</h4>";
-                        await _emailSender.SendEmailBillMailAsync(User.FindFirst("Email").Value.ToString(), "Đơn hàng mới từ shop Thành Vượng", content, images);
-                        await _emailSender.SendEmailBillMailAsync("binhit201195@gmail.com", "Đơn hàng mới", addmessage.ToString() + contentAdmin, images);
+                        //var addmessage = "<h4>Tài Khoản " + User.FindFirst("Email").Value.ToString() + " Đã mua hàng của bạn!!! Click + <a href='/admin/bill/index'>Vào Đây</a> + để kiểm tra thông tin!</h4>";
+                        //await _emailSender.SendEmailBillMailAsync(User.FindFirst("Email").Value.ToString(), "Đơn hàng mới từ shop Thành Vượng", content, images);
+                        //await _emailSender.SendEmailBillMailAsync("binhit201195@gmail.com", "Đơn hàng mới", addmessage.ToString() + contentAdmin, images);
                         ViewData["Success"] = true;
 
                         //Clear All product In HeaderCart

@@ -16,16 +16,48 @@ using TeduCoreApp.Services;
 using TeduCoreApp.Extensions;
 using Microsoft.Extensions.FileProviders;
 using TeduCoreApp.Models.FileViewModels;
+using TeduCoreApp.Data.EF;
+using Microsoft.EntityFrameworkCore;
+using System.Net.Http.Headers;
 
 namespace TeduCoreApp.Controllers
 {
     public class FilesController : Controller
     {
         private readonly IFileProvider fileProvider;
+        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly AppDbContext _context;
+        private readonly IFunctional _functionalService;
+        private readonly UserManager<AppUser> _userManager;
 
-        public FilesController(IFileProvider fileProvider)
+        public FilesController(IFileProvider fileProvider, IHostingEnvironment hostingEnvironment, AppDbContext context, IFunctional functionalService, UserManager<AppUser> userManager)
         {
+            this._hostingEnvironment = hostingEnvironment;
+            _context = context;
+            _functionalService = functionalService;
+            _userManager = userManager;
             this.fileProvider = fileProvider;
+        }
+
+        public IActionResult UploadFiles(IList<IFormFile> UploadDefault)
+        {
+            long size = 0;
+            foreach (var file in UploadDefault)
+            {
+                var filename = ContentDispositionHeaderValue
+                                .Parse(file.ContentDisposition)
+                                .FileName
+                                .Trim('"');
+                filename = _hostingEnvironment.WebRootPath + $@"\uploaded\" + $@"\{ filename}
+                ";
+                size += file.Length;
+                using (FileStream fs = System.IO.File.Create(filename))
+                {
+                    file.CopyTo(fs);
+                    fs.Flush();
+                }
+            }
+            return Content("");
         }
 
         public IActionResult Index()
@@ -34,43 +66,58 @@ namespace TeduCoreApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UploadFile(IFormFile file)
+        [RequestSizeLimit(5000000)]
+        public async Task<IActionResult> PostUploadProfilePicture(List<IFormFile> UploadDefault)
         {
-            if (file == null || file.Length == 0)
-                return Content("file not selected");
-
-            var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot/files",
-                        file.GetFilename());
-
-            using (var stream = new FileStream(path, FileMode.Create))
+            try
             {
-                await file.CopyToAsync(stream);
-            }
+                var folderUpload = "uploaded";
+                var fileName = await _functionalService.UploadFile(UploadDefault, _hostingEnvironment, folderUpload);
 
-            return RedirectToAction("Files");
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> UploadFiles(List<IFormFile> files)
-        {
-            if (files == null || files.Count == 0)
-                return Content("files not selected");
-
-            foreach (var file in files)
-            {
-                var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot/files",
-                        file.GetFilename());
-
-                using (var stream = new FileStream(path, FileMode.Create))
+                var IdCurent = User.FindFirst("UserId").Value.ToString();
+                var appUser = await _context.AppUsers.Where(x => x.Id.ToString() == IdCurent).SingleOrDefaultAsync();
+                if (appUser != null)
                 {
-                    await file.CopyToAsync(stream);
+                    appUser.Avatar = "/" + folderUpload + "/" + fileName;
+                    _context.AppUsers.Update(appUser);
+                    await _context.SaveChangesAsync();
                 }
+                return Ok(fileName);
             }
-
-            return RedirectToAction("Files");
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> UploadFile(IFormFile file)
+        //{
+        //    if (file == null || file.Length == 0)
+        //        return Content("file not selected");
+
+        // var path = Path.Combine( Directory.GetCurrentDirectory(), "wwwroot/uploaded/Client", file.GetFilename());
+
+        // using (var stream = new FileStream(path, FileMode.Create)) { await
+        // file.CopyToAsync(stream); }
+
+        //    return Ok("Files");
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> UploadFiles(List<IFormFile> files)
+        //{
+        //    if (files == null || files.Count == 0)
+        //        return Content("files not selected");
+
+        // foreach (var file in files) { var path = Path.Combine( Directory.GetCurrentDirectory(),
+        // "wwwroot/uploaded/Client", file.GetFilename());
+
+        // using (var stream = new FileStream(path, FileMode.Create)) { await
+        // file.CopyToAsync(stream); } }
+
+        //    return Ok("Files");
+        //}
 
         [HttpPost]
         public async Task<IActionResult> UploadFileViaModel(FileInputModel model)
@@ -80,7 +127,7 @@ namespace TeduCoreApp.Controllers
                 return Content("file not selected");
 
             var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot/files",
+                        Directory.GetCurrentDirectory(), "wwwroot/uploaded/Client",
                         model.FileToUpload.GetFilename());
 
             using (var stream = new FileStream(path, FileMode.Create))

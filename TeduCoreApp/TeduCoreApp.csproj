@@ -85,7 +85,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\clientapp\controllers\Blog\" />
     <Folder Include="wwwroot\clientapp\controllers\Service\" />
-    <Folder Include="wwwroot\files\NewFolder\" />
+    <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
 </Project>

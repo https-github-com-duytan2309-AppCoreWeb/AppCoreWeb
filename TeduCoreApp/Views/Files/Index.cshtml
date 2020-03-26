@@ -4,27 +4,56 @@
 }
 
 <h2>Index</h2>
+<div class="col-lg-12">
+    <img id="profilePicture" class="profile-user-img img-responsive img-circle" alt="User profile picture">
+</div>
+<div class="submit" id="uploadbox1">UploadFile</div>
+<div id="Grid"></div>
 
-<a class="btn btn-success" href="/TestSendMail.html"> Send Mail</a>
+@section Scripts{
+    <script>
+        //Sets the asyncUpload API value during initialization
+        $("#uploadbox1").ejUploadbox({
+            asyncUpload: true,
+            saveUrl: "/Files/UploadFiles",
+            allowDragAndDrop: true,
+            multipleFilesSelection: true,
+            success: "uploadSuccess",
+            autoUpload: true,
+            customFileDetails: { title: true, name: true, size: true, status: true, action: true },
+            complete: function (args) { }
+        });
 
-<form asp-controller="Files" asp-action="UploadFile" method="post"
-      enctype="multipart/form-data">
+        function uploadSuccess(e) {
+            var resText = JSON.parse(e.responseText);
+            $('.profilePicture').attr('src', '../upload/Client' + resText);
+            $('#profilePicture').attr('src', '../upload/Client' + resText);
+            $('.img-circle').attr('src', '../upload/Client/' + resText);
+        }
+    </script>
 
-    <input type="file" name="file" />
-    <button type="submit">Upload File</button>
-</form>
+}
 
-<form asp-controller="Files" asp-action="UploadFiles" method="post"
-      enctype="multipart/form-data">
+@*<a class="btn btn-success" href="/TestSendMail.html"> Send Mail</a>*@
 
-    <input type="file" name="files" multiple />
-    <button type="submit">Upload Files</button>
-</form>
+@*<form asp-controller="Files" asp-action="UploadFile" method="post"
+          enctype="multipart/form-data">
 
-<form asp-controller="Files" asp-action="UploadFileViaModel" method="post"
-      enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit">Upload File</button>
+    </form>
+    <br />
+    <form asp-controller="Files" asp-action="UploadFiles" method="post"
+          enctype="multipart/form-data">
 
-    <input type="file" name="FileToUpload" />
-    <button type="submit">Upload File (model)</button>
-</form>
+        <input type="file" name="files" multiple />
+        <button type="submit">Upload Files</button>
+    </form>
+    <br />
+    <form asp-controller="Files" asp-action="UploadFileViaModel" method="post"
+          enctype="multipart/form-data">
+
+        <input type="file" name="FileToUpload" />
+        <button type="submit">Upload File (model)</button>
+    </form>*@
 © 2020 GitHub, Inc.
