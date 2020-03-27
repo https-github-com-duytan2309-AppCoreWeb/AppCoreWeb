@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+
+    <!--Syncfusion-->
+    <script src="~/client/js/ejs/jsondata.min.js"></script>
+    <script src="~/client/js/ejs/jsrender.min.js"></script>
+    <script src="~/lib/syncfusion-javascript/Scripts/ej/web/ej.web.all.min.js"></script>
+    <script>
+        $("#UploadAvatar").ejUploadbox({
+            saveUrl: "/UploadFile/UploadFile",
+            allowDragAndDrop: true,
+            multipleFilesSelection: false,
+            success: "uploadSuccess",
+            asyncUpload: true,
+            buttonText: { upload: "Upload Files" }
+        });
+
+        function uploadSuccess() {
+            alert("Success");
+        }
+    </script>
+}
+@section Styles{
+    <!--Snycfusion-->
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ej.responsive.css" rel="stylesheet" />
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ejgrid.responsive.css" rel="stylesheet" />
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/ej.widgets.core.bootstrap.min.css" rel="stylesheet" />
+
+}
+
+<h2>Index</h2>
+<div id="UploadAvatar"></div>

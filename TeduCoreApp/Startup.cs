@@ -43,6 +43,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using Microsoft.Extensions.DependencyModel;
+using TeduCoreApp.TokenProviders;
 
 namespace TeduCoreApp
 {
@@ -66,7 +68,19 @@ namespace TeduCoreApp
 
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
+               .AddDefaultTokenProviders();
+
+            services.AddDefaultIdentity<AppUser>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+                config.Tokens.ProviderMap.Add("CustomEmailConfirmation",
+                    new TokenProviderDescriptor(
+                        typeof(CustomEmailConfirmationTokenProvider<IdentityUser>)));
+                config.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmation";
+            })
+            .AddEntityFrameworkStores<AppDbContext>();
+
+            services.AddTransient<CustomEmailConfirmationTokenProvider<AppUser>>();
 
             // Configure Identity
             services.Configure<IdentityOptions>(options =>
@@ -84,6 +98,9 @@ namespace TeduCoreApp
 
                 // User settings
                 options.User.RequireUniqueEmail = true;
+
+                //Definde Token
+                options.SignIn.RequireConfirmedEmail = true;
             });
 
             //Services for Files
@@ -188,6 +205,7 @@ namespace TeduCoreApp
             services.AddMinResponse();
             services.AddImageResizer();
             services.AddSession();
+
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
             services.AddMvc(options =>
             {
@@ -261,23 +279,6 @@ namespace TeduCoreApp
                               }
                           });
                     });
-            var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
-            var tokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)],
-
-                ValidateAudience = true,
-                ValidAudience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
-
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = _signingKey,
-
-                RequireExpirationTime = false,
-                ValidateLifetime = false,
-                ClockSkew = TimeSpan.Zero
-            };
-            //app.UseJwtBearerAuthentication();
 
             app.UseCaptcha(Configuration);
             app.UseImageResizer();
@@ -290,7 +291,7 @@ namespace TeduCoreApp
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-
+            app.UseCookiePolicy();
             app.UseHttpsRedirection();
             app.UseSignalR(routes =>
             {

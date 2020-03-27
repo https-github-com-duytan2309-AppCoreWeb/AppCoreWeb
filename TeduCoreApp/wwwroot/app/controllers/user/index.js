@@ -2,7 +2,7 @@
     this.initialize = function () {
         loadData();
         registerEvents();
-    }
+    };
 
     function registerEvents() {
         //Init validation
@@ -46,7 +46,6 @@
             resetFormMaintainance();
             initRoleList();
             $('#modal-add-edit').modal('show');
-
         });
 
         $('body').on('click', '.btn-edit', function (e) {
@@ -74,7 +73,6 @@
                     disableFieldEdit(true);
                     $('#modal-add-edit').modal('show');
                     tedu.stopLoading();
-
                 },
                 error: function () {
                     tedu.notify('Có lỗi xảy ra', 'error');
@@ -157,15 +155,12 @@
                 });
             });
         });
-
-    };
-
+    }
 
     function disableFieldEdit(disabled) {
         $('#txtUserName').prop('disabled', disabled);
         $('#txtPassword').prop('disabled', disabled);
         $('#txtConfirmPassword').prop('disabled', disabled);
-
     }
     function resetFormMaintainance() {
         disableFieldEdit(false);
@@ -179,7 +174,6 @@
         $('#txtEmail').val('');
         $('#txtPhoneNumber').val('');
         $('#ckStatus').prop('checked', true);
-
     }
 
     function initRoleList(selectedRoles) {
@@ -227,6 +221,11 @@
                 var render = "";
                 if (response.RowCount > 0) {
                     $.each(response.Results, function (i, item) {
+                        $(function () {
+                            $("#Uploadbox_" + item.Id).ejUploadbox({
+                                asyncUpload: true
+                            });
+                        });
                         render += Mustache.render(template, {
                             FullName: item.FullName,
                             Id: item.Id,
@@ -236,16 +235,14 @@
                             Status: tedu.getStatus(item.Status)
                         });
                     });
+
                     $("#lbl-total-records").text(response.RowCount);
                     if (render !== undefined) {
                         $('#tbl-content').html(render);
-
                     }
                     wrapPaging(response.RowCount, function () {
                         loadData();
                     }, isPageChanged);
-
-
                 }
                 else {
                     $('#tbl-content').html('');
@@ -256,7 +253,7 @@
                 console.log(status);
             }
         });
-    };
+    }
 
     function wrapPaging(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
@@ -280,4 +277,4 @@
             }
         });
     }
-}
+};

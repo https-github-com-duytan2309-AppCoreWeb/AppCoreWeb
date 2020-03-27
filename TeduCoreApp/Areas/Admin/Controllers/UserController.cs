@@ -8,28 +8,46 @@ using TeduCoreApp.Application.ViewModels.System;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Authorization;
 using TeduCoreApp.Authorization;
+using Microsoft.AspNetCore.Identity;
+using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
 
-
-        public UserController(IUserService userService, IAuthorizationService authorizationService)
+        public UserController(
+            UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager,
+            IUserService userService,
+            IAuthorizationService authorizationService)
         {
+            _userManager = userManager;
+            _signInManager = signInManager;
             _userService = userService;
             _authorizationService = authorizationService;
         }
-        public async Task<IActionResult> Index()
-        {
-            var result = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Read);
-            if (result.Succeeded == false)
-                return new RedirectResult("/Admin/Login/Index");
 
+        public async Task<IActionResult> UserProfile()
+        {
             return View();
         }
+
+        public async Task<IActionResult> Index()
+        {
+            //var result = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Read);
+            //if (result.Succeeded == false)
+            //    return new RedirectResult("/Admin/Login/Index");
+
+            return View("Index");
+        }
+
+        #region Ajax User
+
         public IActionResult GetAll()
         {
             var model = _userService.GetAllAsync();
@@ -88,5 +106,21 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 return new OkObjectResult(id);
             }
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> CheckPassOld(string id, string pass)
+        {
+            var model = await _userService.GetById(id);
+
+            var result = await _signInManager.PasswordSignInAsync(model.Email, pass, false, lockoutOnFailure: false);
+            if (result.Succeeded)
+            {
+                return new OkObjectResult(true);
+            }
+            return new OkObjectResult(false);
+        }
+
+        #endregion Ajax User
     }
 }

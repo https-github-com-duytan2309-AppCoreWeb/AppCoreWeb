@@ -1,59 +1,33 @@
-﻿@{
+﻿@using Syncfusion.JavaScript
+@addTagHelper "*, Syncfusion.EJ"
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
-<div class="col-lg-12">
-    <img id="profilePicture" class="profile-user-img img-responsive img-circle" alt="User profile picture">
-</div>
-<div class="submit" id="uploadbox1">UploadFile</div>
-<div id="Grid"></div>
-
+@section Styles{
+    <!--Snycfusion-->
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ej.responsive.css" rel="stylesheet" />
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ejgrid.responsive.css" rel="stylesheet" />
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/ej.widgets.core.bootstrap.min.css" rel="stylesheet" />
+}
 @section Scripts{
+    <!--Syncfusion-->
+    <script src="~/client/js/ejs/jsondata.min.js"></script>
+    <script src="~/client/js/ejs/jsrender.min.js"></script>
+    <script src="~/lib/syncfusion-javascript/Scripts/ej/web/ej.web.all.min.js"></script>
+    <script src="~/client/js/ejs/properties.js"></script>
+    @*<ej-script-manager></ej-script-manager>*@
     <script>
-        //Sets the asyncUpload API value during initialization
-        $("#uploadbox1").ejUploadbox({
-            asyncUpload: true,
-            saveUrl: "/Files/UploadFiles",
+        $("#UploadAvatar").ejUploadbox({
+            saveUrl: "/Files/PostUploadProfilePictures",
+            uploadName: "files",
             allowDragAndDrop: true,
             multipleFilesSelection: true,
-            success: "uploadSuccess",
-            autoUpload: true,
-            customFileDetails: { title: true, name: true, size: true, status: true, action: true },
-            complete: function (args) { }
+            asyncUpload: true,
+            buttonText: { browse: "browse", upload: "upload", cancel: "cancel", close: "close" }
         });
-
-        function uploadSuccess(e) {
-            var resText = JSON.parse(e.responseText);
-            $('.profilePicture').attr('src', '../upload/Client' + resText);
-            $('#profilePicture').attr('src', '../upload/Client' + resText);
-            $('.img-circle').attr('src', '../upload/Client/' + resText);
-        }
     </script>
-
 }
-
-@*<a class="btn btn-success" href="/TestSendMail.html"> Send Mail</a>*@
-
-@*<form asp-controller="Files" asp-action="UploadFile" method="post"
-          enctype="multipart/form-data">
-
-        <input type="file" name="file" />
-        <button type="submit">Upload File</button>
-    </form>
-    <br />
-    <form asp-controller="Files" asp-action="UploadFiles" method="post"
-          enctype="multipart/form-data">
-
-        <input type="file" name="files" multiple />
-        <button type="submit">Upload Files</button>
-    </form>
-    <br />
-    <form asp-controller="Files" asp-action="UploadFileViaModel" method="post"
-          enctype="multipart/form-data">
-
-        <input type="file" name="FileToUpload" />
-        <button type="submit">Upload File (model)</button>
-    </form>*@
-© 2020 GitHub, Inc.
+<div id="UploadAvatar"></div>

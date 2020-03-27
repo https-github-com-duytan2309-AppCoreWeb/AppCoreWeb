@@ -9,6 +9,8 @@ namespace TeduCoreApp.Services
 {
     public interface IFunctional
     {
-        Task<string> UploadFile(List<IFormFile> files, IHostingEnvironment env, string uploadFolder);
+        Task<string> UploadFiles(List<IFormFile> files, IHostingEnvironment env, string uploadFolder, string user);
+
+        Task<string> UploadFile(IFormFile files, IHostingEnvironment env, string uploadFolder, string user);
     }
 }

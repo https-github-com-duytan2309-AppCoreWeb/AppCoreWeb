@@ -5,8 +5,7 @@
     <UserSecretsId>aspnet-TeduCoreApp-C4D92190-4731-4D06-88EE-9CFEEBF9F478</UserSecretsId>
   </PropertyGroup>
 
-
-   <ItemGroup>
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0" />
     <PackageReference Include="Captcha" Version="4.4.2" />
@@ -28,11 +27,12 @@
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
     <PackageReference Include="ServiceStack" Version="5.8.0" />
     <PackageReference Include="SkiaSharp" Version="1.59.3" />
+    <PackageReference Include="Syncfusion.EJ" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.EJ.AspNet.Core" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.JavaScript" Version="17.4.0.55" />
     <PackageReference Include="WebMarkupMin.AspNetCore2" Version="2.4.2" />
     <PackageReference Include="WebMarkupMin.NUglify" Version="2.4.2" />
   </ItemGroup>
-
-
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.1.0-preview1-final" />
@@ -87,5 +87,4 @@
     <Folder Include="wwwroot\clientapp\controllers\Service\" />
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
-
 </Project>

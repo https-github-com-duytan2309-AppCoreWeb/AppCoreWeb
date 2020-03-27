@@ -1,8 +1,8 @@
 ﻿var gulp = require("gulp"),
-  rimraf = require("rimraf"),
-  concat = require("gulp-concat"),
-  cssmin = require("gulp-cssmin"),
-  uglify = require("gulp-uglify");
+    rimraf = require("rimraf"),
+    concat = require("gulp-concat"),
+    cssmin = require("gulp-cssmin"),
+    uglify = require("gulp-uglify");
 
 var paths = {
     webroot: "./wwwroot/"
@@ -36,7 +36,6 @@ gulp.task("clean:adminCss", function (cb) {
     rimraf(paths.concatAdminCssDest, cb);
 });
 
-
 gulp.task("clean:clientCss", function (cb) {
     rimraf(paths.concatClientCssDest, cb);
 });
@@ -57,7 +56,6 @@ gulp.task("min:clientJs", function () {
         .pipe(gulp.dest("."));
 });
 
-
 gulp.task("min:adminCss", function () {
     return gulp.src([paths.adminCss, "!" + paths.minCss])
         .pipe(concat(paths.concatAdminCssDest))
@@ -72,3 +70,8 @@ gulp.task("min:clientCss", function () {
 });
 
 gulp.task("min", ["min:adminJs", "min:clientJs", "min:adminCss", "min:clientCss"]);
+
+gulp.task('copy', async function () {
+    gulp.src('./node_modules/syncfusion-javascript/**')
+        .pipe(gulp.dest('./wwwroot/lib/syncfusion-javascript'));
+});

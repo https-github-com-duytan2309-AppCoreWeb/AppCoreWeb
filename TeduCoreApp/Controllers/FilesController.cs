@@ -3,22 +3,29 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.ServiceModel.Channels;
+
+//using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
+
+//using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+
+//using Microsoft.Extensions.Configuration;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Services;
-using TeduCoreApp.Extensions;
+
+//using TeduCoreApp.Extensions;
 using Microsoft.Extensions.FileProviders;
 using TeduCoreApp.Models.FileViewModels;
 using TeduCoreApp.Data.EF;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http.Headers;
+using Syncfusion.MVC.EJ;
+
+//using Syncfusion.JavaScript;
 
 namespace TeduCoreApp.Controllers
 {
@@ -32,17 +39,17 @@ namespace TeduCoreApp.Controllers
 
         public FilesController(IFileProvider fileProvider, IHostingEnvironment hostingEnvironment, AppDbContext context, IFunctional functionalService, UserManager<AppUser> userManager)
         {
-            this._hostingEnvironment = hostingEnvironment;
+            _hostingEnvironment = hostingEnvironment;
             _context = context;
             _functionalService = functionalService;
             _userManager = userManager;
             this.fileProvider = fileProvider;
         }
 
-        public IActionResult UploadFiles(IList<IFormFile> UploadDefault)
+        public IActionResult UploadFiles(IList<IFormFile> files)
         {
             long size = 0;
-            foreach (var file in UploadDefault)
+            foreach (var file in files)
             {
                 var filename = ContentDispositionHeaderValue
                                 .Parse(file.ContentDisposition)
@@ -67,15 +74,15 @@ namespace TeduCoreApp.Controllers
 
         [HttpPost]
         [RequestSizeLimit(5000000)]
-        public async Task<IActionResult> PostUploadProfilePicture(List<IFormFile> UploadDefault)
+        public async Task<IActionResult> PostUploadProfilePictures(List<IFormFile> files)
         {
             try
             {
-                var folderUpload = "uploaded";
-                var fileName = await _functionalService.UploadFile(UploadDefault, _hostingEnvironment, folderUpload);
-
                 var IdCurent = User.FindFirst("UserId").Value.ToString();
                 var appUser = await _context.AppUsers.Where(x => x.Id.ToString() == IdCurent).SingleOrDefaultAsync();
+                var folderUpload = "uploaded";
+
+                var fileName = await _functionalService.UploadFiles(files, _hostingEnvironment, folderUpload, IdCurent);
                 if (appUser != null)
                 {
                     appUser.Avatar = "/" + folderUpload + "/" + fileName;
@@ -90,34 +97,66 @@ namespace TeduCoreApp.Controllers
             }
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> UploadFile(IFormFile file)
-        //{
-        //    if (file == null || file.Length == 0)
-        //        return Content("file not selected");
+        [HttpPost]
+        [RequestSizeLimit(5000000)]
+        public async Task<IActionResult> PostUploadProfilePicture(IFormFile file)
+        {
+            try
+            {
+                var IdCurent = User.FindFirst("UserId").Value.ToString();
+                var appUser = await _context.AppUsers.Where(x => x.Id.ToString() == IdCurent).SingleOrDefaultAsync();
+                var folderUpload = "uploaded";
+                var fileName = await _functionalService.UploadFile(file, _hostingEnvironment, folderUpload, IdCurent);
+                var webRoot = _hostingEnvironment.ContentRootPath;
+                if (appUser != null)
+                {
+                    appUser.Avatar = "/" + folderUpload + "/" + fileName;
+                    _context.AppUsers.Update(appUser);
+                    await _context.SaveChangesAsync();
+                }
 
-        // var path = Path.Combine( Directory.GetCurrentDirectory(), "wwwroot/uploaded/Client", file.GetFilename());
+                return Ok(fileName);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
+        }
 
-        // using (var stream = new FileStream(path, FileMode.Create)) { await
-        // file.CopyToAsync(stream); }
+        [HttpPost]
+        public async Task<IActionResult> UploadFile(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return Content("file not selected");
 
-        //    return Ok("Files");
-        //}
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploaded", file.GetFilename());
 
-        //[HttpPost]
-        //public async Task<IActionResult> UploadFiles(List<IFormFile> files)
-        //{
-        //    if (files == null || files.Count == 0)
-        //        return Content("files not selected");
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
 
-        // foreach (var file in files) { var path = Path.Combine( Directory.GetCurrentDirectory(),
-        // "wwwroot/uploaded/Client", file.GetFilename());
+            return Ok("Files");
+        }
 
-        // using (var stream = new FileStream(path, FileMode.Create)) { await
-        // file.CopyToAsync(stream); } }
+        [HttpPost]
+        public async Task<IActionResult> UploadFiles(List<IFormFile> files)
+        {
+            if (files == null || files.Count == 0)
+                return Content("files not selected");
 
-        //    return Ok("Files");
-        //}
+            foreach (var file in files)
+            {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploaded", file.GetFilename());
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+
+            return Ok("Files");
+        }
 
         [HttpPost]
         public async Task<IActionResult> UploadFileViaModel(FileInputModel model)

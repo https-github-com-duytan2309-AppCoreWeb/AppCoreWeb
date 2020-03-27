@@ -1,0 +1,168 @@
+﻿@inject AppDbContext Context
+@{
+    ViewData["Title"] = "UserProfile";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    AppUser profile = await Context.AppUsers.Where(x => x.Id.ToString() == User.FindFirst("UserId").Value.ToString()).SingleOrDefaultAsync();
+}
+@section Scripts{
+
+    <script src="~/app/controllers/user/profile.js" asp-append-version="true"></script>
+    <script>
+        var profileObj = new ProfileController();
+        profileObj.initialize();
+    </script>
+
+}
+@section Styles{
+
+}
+<hr>
+<div class="container bootstrap snippet">
+    <div class="row">
+        <div class="col-sm-3">
+            <!--left col-->
+            <div class="text-center">
+                <div class="col-lg-12">
+                    <img id="profilePicture" class="profile-user-img img-responsive img-circle" src="@profile.Avatar" alt="User profile picture">
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="col-lg-12">
+                    <div class="cols-sample-area">
+                        <div class="control">
+                            <div id="UploadAvatar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </hr>
+            <br>
+
+            <div class="panel panel-default">
+                @*<div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>*@
+                <div class="panel-body"><a href="http://bootnipets.com">   </a></div>
+            </div>
+
+            <ul class="list-group">
+                <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Social Media</div>
+                <div class="panel-body">
+                    <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+                </div>
+            </div>
+        </div>
+        <!--/col-3-->
+        <div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                <li><a data-toggle="tab" href="#messages">Thây Đổi Mật Khẩu</a></li>
+                <li><a data-toggle="tab" href="#settings">Other Profile</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <!--/tab-pane-home-->
+                <div class="tab-pane active" id="home">
+                    <hr>
+                    <form class="form" method="post" id="registrationForm">
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="first_name"><h4>Họ Tên</h4></label>
+                                <input type="text" class="form-control" name="txtfull_name" id="txtfull_name" value="@profile.FullName" title="enter your first name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="last_name"><h4>Tên Đăng Nhập</h4></label>
+                                <input type="text" class="form-control" name="user_name" id="txtuser_name" value="@profile.UserName" title="enter your last name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="phone"><h4>Điện Thoại</h4></label>
+                                <input type="text" class="form-control" name="phone" id="txtphone" value="@profile.PhoneNumber" title="enter your phone number if any.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="email"><h4>Email</h4></label>
+                                <input type="email" class="form-control" name="email" id="txtemail" value="@profile.Email" title="enter your email.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="text"><h4>Location</h4></label>
+                                <input type="text" class="form-control" id="txtlocation" placeholder="Address" title="enter a location">
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                                <div class="col-xs-6">
+                                    <label for="password"><h4>Password</h4></label>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                                </div>
+                            </div>*@
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" id="saveProfile" data-id="@profile.Id" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                <button class="btn btn-lg" type="reset" id="resetProfile"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                </div>
+                <!--/tab-pane-home-->
+                <div class="tab-pane" id="messages">
+                    <h2>Thây Đổi Mật Khẩu</h2>
+                    <hr>
+                    <form class="form" method="post" id="registrationForm">
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="first_name"><h4>MẬt Khẩu Cũ</h4></label>
+                                <input type="password" class="form-control" name="txtpass_old" id="txtpass_old" title="enter your first name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="last_name"><h4>Mật Khẩu Mới</h4></label>
+                                <input type="password" class="form-control" name="txtpass_new" id="txtpass_new" title="enter your last name if any.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="phone"><h4>Nhập Lại Mật Khẩu Mới</h4></label>
+                                <input type="password" class="form-control" name="txtpass_new_re" id="txtpass_new_re" title="enter your phone number if any.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" id="savePassNew" data-id="@profile.Id" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                <button class="btn btn-lg" type="reset" id="resetPassForm"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                </div>
+                <div class="tab-pane" id="settings">
+                    <h2>Other Profile</h2>
+                </div>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+    </div><!--/col-9-->
+</div><!--/row-->

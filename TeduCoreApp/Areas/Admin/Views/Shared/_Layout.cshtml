@@ -22,6 +22,13 @@
     <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
     <!-- Custom Theme Style -->
     <link href="~/admin-side/css/custom.css" rel="stylesheet" />
+
+    <!--Snycfusion-->
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ej.responsive.css" rel="stylesheet" />
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ejgrid.responsive.css" rel="stylesheet" />
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/ej.widgets.core.bootstrap.min.css" rel="stylesheet" />
+
     @RenderSection("Styles", required: false)
 </head>
 
@@ -31,7 +38,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="/admin/home" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                        <a href="/admin/home/index" class="site_title"><i class="fa fa-bullhorn"></i><span>Trang Quản Trị</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -42,12 +49,11 @@
                             <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Welcome,</span>
+                            <span>Chào Mừng,</span>
                             <h2>@User.GetSpecificClaim("FullName")</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
-
                     <br />
 
                     <!-- sidebar menu -->
@@ -203,9 +209,19 @@
     <script src="~/admin-side/js/custom.min.js"></script>
 
     <!--Syncfusion-->
-    <script src="~/lib/ejs/jsondata.min.js"></script>
-    <script src="~/lib/ejs/jsrender.min.js"></script>
-    <script src="~/lib/ejs/ej.web.all.min.js" type="text/javascript"></script>
+    <script src="~/client/js/ejs/jsondata.min.js"></script>
+    <script src="~/client/js/ejs/jsrender.min.js"></script>
+    <script src="~/lib/syncfusion-javascript/Scripts/ej/web/ej.web.all.min.js"></script>
+    <script src="~/client/js/ejs/properties.js"></script>
+    <ej-script-manager></ej-script-manager>
+
+    @*<script>
+
+            $("#UploadLogo").ejUploadbox({
+                saveUrl: "/Files/PostUploadProfilePicture",
+
+            });
+        </script>*@
 
     <environment names="Development">
         <script src="~/app/shared/tedu.js"></script>

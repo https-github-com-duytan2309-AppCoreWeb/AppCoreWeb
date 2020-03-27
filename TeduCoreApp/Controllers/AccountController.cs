@@ -20,6 +20,7 @@ using BotDetect.Web.Mvc;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using Newtonsoft.Json;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace TeduCoreApp.Controllers
 {
@@ -81,6 +82,7 @@ namespace TeduCoreApp.Controllers
                 // This doesn't count login failures towards account lockout To enable password
                 // failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                //await _userManager.IsEmailConfirmedAsync(user);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("Người dùng đăng nhập.");
@@ -260,13 +262,10 @@ namespace TeduCoreApp.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                _logger.LogInformation("Người dùng đã tạo một tài khoản mới bằng mật khẩu.");
-
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
                 await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
-
-                await _signInManager.SignInAsync(user, isPersistent: false);
+                //await _signInManager.SignInAsync(user, isPersistent: false);
                 _logger.LogInformation("Người dùng đã tạo một tài khoản mới bằng mật khẩu.");
                 return RedirectToLocal(returnUrl);
             }
