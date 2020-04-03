@@ -7,7 +7,7 @@ using TeduCoreApp.Infrastructure.SharedKernel;
 namespace TeduCoreApp.Data.Entities
 {
     [Table("AppUserActions")]
-    public class AppUserActions : DomainEntity<long>
+    public class AppUserActions
     {
         public AppUserActions()
         {
@@ -25,5 +25,8 @@ namespace TeduCoreApp.Data.Entities
         public long IdAction { set; get; }
         public string Description { set; get; }
         public bool IsAllowed { set; get; }
+
+        public virtual ListAction ListAction { get; set; }
+        public virtual AppUser AppUser { get; set; }
     }
 }

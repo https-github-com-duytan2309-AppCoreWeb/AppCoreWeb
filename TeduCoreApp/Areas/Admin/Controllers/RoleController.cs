@@ -9,7 +9,8 @@ using TeduCoreApp.Application.ViewModels.System;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    public class RoleController : BaseController
+    [Area("Admin")]
+    public class RoleController : Controller
     {
         private readonly IRoleService _roleService;
 
@@ -17,6 +18,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         {
             _roleService = roleService;
         }
+
         public IActionResult Index()
         {
             return View();
@@ -28,6 +30,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
 
             return new OkObjectResult(model);
         }
+
         [HttpGet]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -72,7 +75,6 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             await _roleService.DeleteAsync(id);
             return new OkObjectResult(id);
         }
-
 
         [HttpPost]
         public IActionResult ListAllFunction(Guid roleId)

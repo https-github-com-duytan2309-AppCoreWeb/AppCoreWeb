@@ -62,41 +62,26 @@
             location.reload();
         });
 
-        $('body').on('click', '#savePassNew', function (e) {
-            e.preventDefault();
-            var that = $(this).data('id');
-            var passOld = $('#txtpass_old').val();
-            checkPass(that, passOld);
-
-            //Thây đổi mật khẩu
-            $.ajax({
-                type: "POST",
-                url: "/Admin/User/CheckPassOld",
-                data: {
-                    id: Id,
-                    pass: passOld
-                },
-                success: function (response) {
-                    check = response;
-                    if (check === false) {
-                        tedu.notify('mật khẩu cũ không đúng', 'error');
-                        $("#txtpass_old").val("");
-                        $("#txtpass_new").val("");
-                        $("#txtpass_new_re").val("");
-                    }
-                    else {
-                        tedu.notify('mật khẩu cũ đúng', 'success');
-                    }
-                },
-                error: function (e) {
-                    tedu.notify('Lỗi trong quá trình kiểm tra mật khẩu!!!', 'error');
-                    location.reload();
-                }
-            });
+        $("#form-change-pass").ajaxSubmit({
+            type: "POST",
+            url: '/Manage/ChangePassword',
+            data: {
+                OldPassword: $("#OldPassword").val(),
+                NewPassword: $("#NewPassword").val(),
+                ConfirmPassword: $("#ConfirmPassword").val(),
+                StatusMessage: "Status Message"
+            },
+            success: function (response) {
+                alert("Cập nhật mật khẩu thành công!");
+            },
+            error: function (e) {
+                alert("Cập nhật mật khẩu thất bại!");
+            }
         });
     }
 
     function checkPass(Id, passOld) {
+        //var result = false;
         $.ajax({
             type: "POST",
             url: "/Admin/User/CheckPassOld",
@@ -105,20 +90,31 @@
                 pass: passOld
             },
             success: function (response) {
-                check = response;
-                if (check === false) {
-                    tedu.notify('mật khẩu cũ không đúng', 'error');
-                    $("#txtpass_old").val("");
-                    $("#txtpass_new").val("");
-                    $("#txtpass_new_re").val("");
-                }
-                else {
-                    tedu.notify('mật khẩu cũ đúng', 'success');
-                }
+                //result = response;
+                tedu.notify('Kểm tra mật khẩu thành công!!!', 'success');
             },
             error: function (e) {
                 tedu.notify('Lỗi trong quá trình kiểm tra mật khẩu!!!', 'error');
-                location.reload();
+            }
+        });
+        //return result;
+    }
+    function changePassword(passOld, passNew, passComfirm) {
+        $.ajax({
+            type: "POST",
+            url: "/Manage/ChangePassword",
+            data: {
+                id: Id,
+                OldPassword: passOld,
+                NewPassword: passNew,
+                ConfirmPassword: passComfirm,
+                StatusMessage: "Status Message"
+            },
+            success: function (response) {
+                tedu.notify('Thây đổi mật khẩu thành công!!!', 'error');
+            },
+            error: function (e) {
+                tedu.notify('Lỗi trong quá trình thây đổi mật khẩu!!!', 'error');
             }
         });
 

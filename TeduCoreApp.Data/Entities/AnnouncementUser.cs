@@ -10,7 +10,10 @@ namespace TeduCoreApp.Data.Entities
     [Table("AnnouncementUsers")]
     public class AnnouncementUser : DomainEntity<int>
     {
-        public AnnouncementUser() { }
+        public AnnouncementUser()
+        {
+        }
+
         public AnnouncementUser(string announcementId, Guid userId, bool? hasRead)
         {
             AnnouncementId = announcementId;
@@ -29,5 +32,4 @@ namespace TeduCoreApp.Data.Entities
         [ForeignKey("AnnouncementId")]
         public virtual Announcement Announcement { get; set; }
     }
-    
 }

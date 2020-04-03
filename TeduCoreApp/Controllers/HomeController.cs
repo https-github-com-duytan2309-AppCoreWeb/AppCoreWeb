@@ -38,6 +38,12 @@ namespace TeduCoreApp.Controllers
             _localizer = localizer;
         }
 
+        public IActionResult Test()
+        {
+            ViewBag.Test = Guid.NewGuid();
+            return View();
+        }
+
         //[ResponseCache(CacheProfileName = "Default")]
         public IActionResult Index()
         {

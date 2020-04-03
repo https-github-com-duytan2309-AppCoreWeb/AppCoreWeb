@@ -18,7 +18,6 @@ using TeduCoreApp.Data.Entities;
 namespace TeduCoreApp.Controllers
 {
     [Authorize]
-    //[Route("[controller]/[action]")]
     public class ManageController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -124,7 +123,7 @@ namespace TeduCoreApp.Controllers
             }
 
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+            var callbackUrl = Url.EmailConfirmationLink(user.Id.ToString(), code, Request.Scheme);
             var email = user.Email;
             await _emailSender.SendEmailConfirmationAsync(email, callbackUrl);
 
@@ -503,6 +502,6 @@ namespace TeduCoreApp.Controllers
                 unformattedKey);
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

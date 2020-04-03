@@ -11,8 +11,28 @@ namespace TeduCoreApp.Data.Entities
     [Table("AppUsers")]
     public class AppUser : IdentityUser<Guid>, IDateTracking, ISwitchable
     {
-        public AppUser()
+        public AppUser() : base()
         {
+            AppUserRoles = new HashSet<AppUserRole>();
+            AppUserClaims = new HashSet<AppUserClaim>();
+            AppUserLogins = new HashSet<AppUserLogin>();
+            AppUserActions = new HashSet<AppUserActions>();
+        }
+
+        public AppUser(string username) : base(username)
+        {
+            UserName = username;
+        }
+
+        public AppUser(string userName, string fullName,
+            string email, string phoneNumber, string avatar, Status status)
+        {
+            this.UserName = userName;
+            this.FullName = fullName;
+            this.Email = email;
+            this.PhoneNumber = phoneNumber;
+            this.Avatar = avatar;
+            this.Status = status;
         }
 
         public AppUser(Guid id, string fullName, string userName,
@@ -38,5 +58,10 @@ namespace TeduCoreApp.Data.Entities
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public Status Status { get; set; }
+
+        public virtual ICollection<AppUserClaim> AppUserClaims { get; set; }
+        public virtual ICollection<AppUserRole> AppUserRoles { get; set; }
+        public virtual ICollection<AppUserLogin> AppUserLogins { get; set; }
+        public virtual ICollection<AppUserActions> AppUserActions { get; set; }
     }
 }

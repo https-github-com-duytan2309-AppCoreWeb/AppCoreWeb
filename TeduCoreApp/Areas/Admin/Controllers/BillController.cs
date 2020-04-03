@@ -16,7 +16,8 @@ using TeduCoreApp.Utilities.Helpers;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    public class BillController : BaseController
+    [Area("Admin")]
+    public class BillController : Controller
     {
         private readonly IBillService _billService;
         private readonly IHostingEnvironment _hostingEnvironment;

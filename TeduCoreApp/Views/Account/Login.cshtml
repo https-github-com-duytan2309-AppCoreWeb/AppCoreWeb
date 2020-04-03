@@ -41,7 +41,6 @@
                                         <button type="submit"><span>Đăng nhập</span></button>
                                     </center>
                                 </div>
-
                             </form>
                             @{
                                 var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -60,9 +59,11 @@
                                             <ul>
                                                 @foreach (var provider in loginProviders)
                                                 {
-                                                    @*<button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.Name</button>*@
+                                                    <li>
+                                                        <button type="submit" class="btn btn-default tweet" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.Name</button>
+                                                    </li>
+                                                    @*<button class="tweet" name="provider" value="@provider.Name"> @provider.Name</button>*@
 
-                                                    <li><a class="tweet" name="provider" value="@provider.Name" href="#"> @provider.Name</a></li>
                                                 }
                                             </ul>
                                         </div>
@@ -79,5 +80,5 @@
 </div>
 
 @*@section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
-}*@
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+    }*@

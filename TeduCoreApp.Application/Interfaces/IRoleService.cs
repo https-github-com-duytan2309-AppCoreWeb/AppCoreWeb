@@ -19,7 +19,6 @@ namespace TeduCoreApp.Application.Interfaces
 
         Task<AppRoleViewModel> GetById(Guid id);
 
-
         Task UpdateAsync(AppRoleViewModel userVm);
 
         List<PermissionViewModel> GetListFunctionWithRole(Guid roleId);

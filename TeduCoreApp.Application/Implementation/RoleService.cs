@@ -22,6 +22,7 @@ namespace TeduCoreApp.Application.Implementation
         private IFunctionRepository _functionRepository;
         private IPermissionRepository _permissionRepository;
         private IUnitOfWork _unitOfWork;
+
         public RoleService(RoleManager<AppRole> roleManager, IUnitOfWork unitOfWork,
          IFunctionRepository functionRepository, IPermissionRepository permissionRepository)
         {
@@ -30,6 +31,7 @@ namespace TeduCoreApp.Application.Implementation
             _functionRepository = functionRepository;
             _permissionRepository = permissionRepository;
         }
+
         public async Task<bool> AddAsync(AppRoleViewModel roleVm)
         {
             var role = new AppRole()

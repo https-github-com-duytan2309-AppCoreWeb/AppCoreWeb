@@ -75,7 +75,6 @@ namespace TeduCoreApp.Application.Implementation
                     announ.HasRead = true;
                     result = true;
                 }
-
             }
             return result;
         }

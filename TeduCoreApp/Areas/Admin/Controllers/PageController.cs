@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    public class PageController : BaseController
+    [Area("Admin")]
+    public class PageController : Controller
     {
         public IPageService _pageService;
 

@@ -9,12 +9,13 @@ using TeduCoreApp.Application.Interfaces;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    public class FunctionController : BaseController
+    [Area("Admin")]
+    public class FunctionController : Controller
     {
         #region Initialize
 
         private IFunctionService _functionService;
-        
+
         public FunctionController(IFunctionService functionService)
         {
             this._functionService = functionService;
@@ -141,6 +142,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         #region Private Functions
+
         private void GetByParentId(IEnumerable<FunctionViewModel> allFunctions,
             FunctionViewModel parent, IList<FunctionViewModel> items)
         {
@@ -154,6 +156,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 GetByParentId(functionsEntities, cat, items);
             }
         }
-        #endregion
+
+        #endregion Private Functions
     }
 }

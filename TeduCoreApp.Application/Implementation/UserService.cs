@@ -17,6 +17,7 @@ namespace TeduCoreApp.Application.Implementation
     public class UserService : IUserService
     {
         private readonly UserManager<AppUser> _userManager;
+
         public UserService(UserManager<AppUser> userManager)
         {
             _userManager = userManager;
@@ -39,7 +40,6 @@ namespace TeduCoreApp.Application.Implementation
                 var appUser = await _userManager.FindByNameAsync(user.UserName);
                 if (appUser != null)
                     await _userManager.AddToRolesAsync(appUser, userVm.Roles);
-
             }
             return true;
         }
@@ -78,7 +78,6 @@ namespace TeduCoreApp.Application.Implementation
                 PhoneNumber = x.PhoneNumber,
                 Status = x.Status,
                 DateCreated = x.DateCreated
-
             }).ToList();
             var paginationSet = new PagedResult<AppUserViewModel>()
             {
@@ -121,7 +120,6 @@ namespace TeduCoreApp.Application.Implementation
                 user.PhoneNumber = userVm.PhoneNumber;
                 await _userManager.UpdateAsync(user);
             }
-
         }
     }
 }

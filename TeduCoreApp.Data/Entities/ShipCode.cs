@@ -13,13 +13,14 @@ namespace TeduCoreApp.Data.Entities
         {
         }
 
-        public ShipCode(string carriers, DateTime dilivery, decimal collectionFee, decimal total, string zipCode)
+        public ShipCode(string carriers, DateTime dilivery, decimal collectionFee, decimal total, string zipCode, int idadress)
         {
             Carriers = carriers;
             DeliveryTime = dilivery;
             CollectionFee = collectionFee;
             Total = total;
             ZipCode = zipCode;
+            IdAddress = idadress;
         }
 
         //Hãng Vận Chuyển
@@ -37,5 +38,7 @@ namespace TeduCoreApp.Data.Entities
 
         //Tồng Chi Phí
         public decimal Total { get; set; }
+
+        public int IdAddress { get; set; }
     }
 }

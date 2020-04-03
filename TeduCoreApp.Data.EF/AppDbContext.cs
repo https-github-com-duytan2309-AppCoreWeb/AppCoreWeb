@@ -16,19 +16,26 @@ using System.IO;
 
 namespace TeduCoreApp.Data.EF
 {
-    public class AppDbContext : IdentityDbContext<AppUser, AppRole, Guid>
+    public class AppDbContext : IdentityDbContext<AppUser, AppRole, Guid, AppUserClaim, AppUserRole, AppUserLogin, AppRoleClaim, AppUserToken>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
         }
 
+        public DbSet<Address> Address { set; get; }
         public DbSet<ShipCode> ShipCodes { set; get; }
         public DbSet<Language> Languages { set; get; }
         public DbSet<SystemConfig> SystemConfigs { get; set; }
         public DbSet<Function> Functions { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+
         public DbSet<AppRole> AppRoles { get; set; }
+        public DbSet<AppUserRole> AppUserRoles { get; set; }
         public DbSet<AppUserActions> AppUserActions { set; get; }
+        public DbSet<AppUserClaim> AppUserClaims { get; set; }
+        public DbSet<AppUserLogin> AppUserLogins { get; set; }
+        public DbSet<AppRoleClaim> AppRoleClaims { get; set; }
+        public DbSet<AppUserToken> AppUserTokens { get; set; }
 
         public DbSet<ListAction> ListActions { set; get; }
         public DbSet<ListController> ListControllers { set; get; }
@@ -72,28 +79,67 @@ namespace TeduCoreApp.Data.EF
         public DbSet<Ward> Wards { set; get; }
         public DbSet<Street> Streets { set; get; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=TAN-IT\\SqlExpress;Database=TeduCore;Trusted_Connection=True;MultipleActiveResultSets=true");
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //base.OnModelCreating(builder);
+            base.OnModelCreating(builder);
 
             #region Identity Config
 
-            builder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims").HasKey(x => x.Id);
+            builder.Entity<AppUserClaim>().ToTable("AppUserClaims").HasKey(x => x.Id);
 
-            builder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims")
+            builder.Entity<AppUserClaim>().ToTable("AppUserClaims")
+               .HasOne<AppUser>(sc => sc.AppUser)
+               .WithMany(s => s.AppUserClaims)
+               .HasForeignKey(sc => sc.UserId);
+
+            builder.Entity<AppRoleClaim>().ToTable("AppRoleClaims")
                 .HasKey(x => x.Id);
 
-            builder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
+            builder.Entity<AppUserLogin>().ToTable("AppUserLogins").HasKey(l => new { l.UserId, l.LoginProvider, l.ProviderKey });
 
-            builder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles")
-                .HasKey(x => new { x.RoleId, x.UserId });
+            builder.Entity<AppUserLogin>().ToTable("AppUserLogins")
+               .HasOne<AppUser>(sc => sc.AppUser)
+               .WithMany(s => s.AppUserLogins)
+               .HasForeignKey(sc => sc.UserId);
 
-            builder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens")
+            builder.Entity<AppUserToken>().ToTable("AppUserTokens")
                .HasKey(x => new { x.UserId });
+
+            //AspNetUserRole
+
+            builder.Entity<AppUser>().ToTable("AppUsers").HasKey(x => x.Id);
+            builder.Entity<AppRole>().ToTable("AppRoles").HasKey(x => x.Id);
+
+            builder.Entity<AppUserRole>().ToTable("AppUserRoles");
+
+            builder.Entity<AppUserRole>().ToTable("AppUserRoles")
+               .HasOne<AppUser>(sc => sc.AppUsers)
+               .WithMany(s => s.AppUserRoles)
+               .HasForeignKey(sc => sc.UserId);
+
+            builder.Entity<AppUserRole>().ToTable("AppUserRoles")
+              .HasOne<AppRole>(sc => sc.AppRoles)
+              .WithMany(s => s.AppUserRoles)
+              .HasForeignKey(sc => sc.RoleId);
 
             #endregion Identity Config
 
-            builder.Entity<AppUserActions>().HasKey(sc => new { sc.IdUser, sc.IdAction });
+            builder.Entity<AppUserActions>().ToTable("AppUserActions").HasKey(sc => new { sc.IdAction, sc.IdUser });
+
+            builder.Entity<AppUserActions>().ToTable("AppUserActions")
+                .HasOne<ListAction>(sc => sc.ListAction)
+                .WithMany(s => s.AspNetUserActions)
+                .HasForeignKey(sc => sc.IdAction);
+
+            builder.Entity<AppUserActions>().ToTable("AppUserActions")
+                .HasOne<AppUser>(sc => sc.AppUser)
+                .WithMany(s => s.AppUserActions)
+                .HasForeignKey(sc => sc.IdUser);
 
             builder.AddConfiguration(new TagConfiguration());
             builder.AddConfiguration(new BlogTagConfiguration());

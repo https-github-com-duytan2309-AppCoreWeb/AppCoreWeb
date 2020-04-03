@@ -13,7 +13,8 @@
             loadGetAllWard(),
             loadGetAllDistrict(),
             loadGetAllProvince(),
-            loadDataShipCode())
+            loadDataShipCode(),
+            LoadShipCodeIdAdress())
             .done(function () {
             });
 
@@ -470,6 +471,7 @@
                                 document.getElementById("District").value = value;
                                 ReloadInputProvince();
                                 ReloadInputStreet();
+                                LoadShipCodeIdAdress(value, nameProvince);
                             }
                         });
                     },
@@ -505,6 +507,7 @@
                                     document.getElementById("District").value = value;
                                     ReloadInputProvince();
                                     ReloadInputStreet();
+                                    LoadShipCodeIdAdress(value, nameProvince);
                                 }
                             });
                         },
@@ -540,6 +543,7 @@
                                     document.getElementById("District").value = value;
                                     ReloadInputProvince();
                                     ReloadInputStreet();
+                                    LoadShipCodeIdAdress(value, nameProvince);
                                 }
                             });
                         },
@@ -555,7 +559,6 @@
             e.preventDefault();
             var nameDistrict = document.getElementById("District").value;
             var nameProvince = document.getElementById("Province").value;
-
             if (nameDistrict === "" && nameProvince === "") {
                 $("#Ward").attr("placeholder", "Vui Lòng Nhập Vài Từ Tìm ...");
             }
@@ -739,11 +742,11 @@
             }
         });
 
-        //$('#PaymentMethodRadio').click(function () {
-        //    if ($(this).is(':checked')) {
-        //        var value = $(this).text();
-        //        document.getElementById("PaymentMethod").value = value;
-        //    }
+        //$('#District').on('change', function (e) {
+        //    e.preventDefault();
+        //    var nameProvince = document.getElementById("Province").value;
+        //    var nameDistrict = document.getElementById("District").value;
+        //    LoadShipCodeIdAdress(nameDistrict, nameProvince);
         //});
     }
 
@@ -896,18 +899,9 @@
         });
     }
 
-    //function getPaymentMethodName(paymentMethod) {
-    //    var method = $.grep(cachedObj.paymentMethods, function (element, index) {
-    //        return element.Value === paymentMethod;
-    //    });
-    //    if (method.length > 0)
-    //        return method[0].Name;
-    //    else return '';
-    //}
-
     function loadDataShipCode() {
         $.ajax({
-            url: '/Admin/ShipCodes/Index',
+            url: '/ShipCodes/GetShipCodes',
             type: 'GET',
             dataType: 'json',
             success: function (response) {
@@ -933,7 +927,7 @@
                         document.getElementById("Carriers").value = value;
 
                         var that = $(this).data('id');
-                        loadDataShipCodeById(that);
+                        GetShipCodeById(that);
                     }
                 });
             },
@@ -943,12 +937,79 @@
         });
     }
 
-    function loadDataShipCodeById(idShipCode) {
+    function LoadShipCodeIdAdress() {
+        var nameProvince = document.getElementById("Province").value;
+        var nameDistrict = document.getElementById("District").value;
+        if (nameDistrict !== "") {
+            $.ajax({
+                url: '/ShipCodes/GetShipCodeIdAdress',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    NameProvince: nameProvince,
+                    NameDistrict: nameDistrict
+                },
+                success: function (response) {
+                    document.getElementById("CollectionFee").value = response.CollectionFee;
+                    document.getElementById("ZipCode").value = response.ZipCode;
+                    document.getElementById("DiliveryTime").value = tedu.formattedDate(response.DeliveryTime);
+                    LoadShipCodeTotalAndCarres(nameProvince, nameDistrict);
+                },
+                error: function () {
+                    tedu.notify('Có lỗi trong xử lý yêu cầu load phương thức giao hàng', 'error');
+                }
+            });
+        }
+    }
+
+    //Load Total with Id ShipCode
+    function LoadShipCodeTotalAndCarres(nameProvince, nameDistrict) {
         $.ajax({
-            url: '/Admin/ShipCodes/GetShipCodeById',
+            url: '/ShipCodes/GetListShipCodeIdAdress',
             type: 'GET',
             dataType: 'json',
-            data: { id: idShipCode },
+            data: {
+                NameProvince: nameProvince,
+                NameDistrict: nameDistrict
+            },
+            success: function (response) {
+                var templateShipCode = $('#template-table-shipcode').html();
+                var render = "";
+                $.each(response, function (i, item) {
+                    render += Mustache.render(templateShipCode,
+                        {
+                            Id: item.Id,
+                            Carriers: item.Carriers,
+                            DiliveryTime: item.DeliveryTime,
+                            CollectionFee: item.CollectionFee,
+                            ZipCode: item.ZipCode,
+                            Total: item.Total
+                        });
+                });
+                $('#template-shipcode').html(render);
+                $('.dropdown-menu a').on({
+                    click: function () {
+                        var value = $(this).text();
+                        document.getElementById("Carriers").value = value;
+                        var that = $(this).data('id');
+                        GetShipCodeByIdAddress(that);
+                    }
+                });
+            },
+            error: function () {
+                tedu.notify('Có lỗi trong xử lý yêu cầu load phương thức giao hàng', 'error');
+            }
+        });
+    }
+
+    function GetShipCodeById(idShipCode) {
+        $.ajax({
+            url: '/ShipCodes/GetShipCodeById',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                id: idShipCode,
+            },
             success: function (response) {
                 var data = response;
                 document.getElementById("ShipCodeId").value = data.Id;
@@ -958,7 +1019,26 @@
                 document.getElementById("Total").value = data.Total;
             },
             error: function () {
-                tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
+                tedu.notify('Có lỗi trong xử lý yêu cầu get Id', 'error');
+            }
+        });
+    }
+
+    function GetShipCodeByIdAddress(idShipCode) {
+        $.ajax({
+            url: '/ShipCodes/GetShipCodeById',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                id: idShipCode,
+            },
+            success: function (response) {
+                var data = response;
+                document.getElementById("ShipCodeId").value = data.Id;
+                document.getElementById("Total").value = data.Total;
+            },
+            error: function () {
+                tedu.notify('Có lỗi trong xử lý yêu cầu get Id', 'error');
             }
         });
     }

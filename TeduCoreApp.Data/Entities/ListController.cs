@@ -18,13 +18,10 @@ namespace TeduCoreApp.Data.Entities
             Id = id;
             ControllerName = controllerName;
             Discription = discription;
-            DiscriptionAction = discriptionAction;
         }
 
         public string ControllerName { set; get; }
         public string Discription { set; get; }
-
-        public string DiscriptionAction { set; get; }
 
         public virtual ICollection<ListAction> ListActions { get; set; }
     }

@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Extensions;
 using TeduCoreApp.Application.Dapper.Interfaces;
+using TeduCoreApp.Admin.Filter;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
- 
-    public class HomeController : BaseController
+    [Area("Admin")]
+    public class HomeController : Controller
     {
         private readonly IReportService _reportService;
 

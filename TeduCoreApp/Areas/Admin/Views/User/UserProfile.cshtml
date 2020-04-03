@@ -11,10 +11,60 @@
         var profileObj = new ProfileController();
         profileObj.initialize();
     </script>
+    <script>
+        $(document).ready(function () {
+            $("#form-change-pass").validate({
+                rules: {
+                    OldPassword: "required",
+                    NewPassword: "required",
+                    ConfirmPassword: "required"
+                },
+                messages: {
+                    OldPassword: { required: "Vui lòng nhập mật khẩu cũ" },
+                    NewPassword: { required: "Vui lòng nhập mật khẩu mới" },
+                    ConfirmPassword: { required: "Vui lòng nhập lại mật khẩu mới để tiếp tục" }
+                },
 
+            });
+        });
+    </script>
+    <script>
+        $("#form-change-pass").ajaxSubmit({
+            url: '/Manage/ChangePassword',
+            data: {
+                OldPassword: $("#OldPassword").val(),
+                NewPassword: $("#NewPassword").val(),
+                ConfirmPassword: $("#ConfirmPassword").val(),
+                StatusMessage: "Status Message"
+            },
+            type: 'post',
+            success: function (response) {
+                tedu.notify('Thây đổi mật khẩu thành công!!!', 'error');
+            },
+            error: function (e) {
+            }
+        });</script>
 }
 @section Styles{
+    <style>
+        label {
+            display: block;
+        }
 
+        input.error {
+            border: 1px solid red;
+        }
+
+        label.error {
+            font-weight: normal;
+            color: red;
+        }
+
+        button {
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
 }
 <hr>
 <div class="container bootstrap snippet">
@@ -127,35 +177,38 @@
                 <div class="tab-pane" id="messages">
                     <h2>Thây Đổi Mật Khẩu</h2>
                     <hr>
-                    <form class="form" method="post" id="registrationForm">
+                    <form class="form" method="post" id="form-change-pass">
+                        @*<fieldset>*@
                         <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="first_name"><h4>MẬt Khẩu Cũ</h4></label>
-                                <input type="password" class="form-control" name="txtpass_old" id="txtpass_old" title="enter your first name if any.">
+                            @*<input name="TokenReset" id="TokenReset" type="hidden" />
+                                <input name="EmailReset" id="EmailReset" type="hidden" />*@
+                            <div class="col-xs-8">
+                                <label for="OldPassword">Mật khẩu cũ</label>
+                                <input data-id="@profile.Id" type="password" class="form-control" name="OldPassword" id="OldPassword" title="enter your first name if any." />
                             </div>
                         </div>
                         <div class="form-group">
-
-                            <div class="col-xs-6">
-                                <label for="last_name"><h4>Mật Khẩu Mới</h4></label>
-                                <input type="password" class="form-control" name="txtpass_new" id="txtpass_new" title="enter your last name if any.">
+                            <div class="col-xs-8">
+                                <label for="NewPassword">Mật khẩu mới</label>
+                                <input type="password" class="form-control" name="NewPassword" id="NewPassword" title="enter your last name if any." />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="phone"><h4>Nhập Lại Mật Khẩu Mới</h4></label>
-                                <input type="password" class="form-control" name="txtpass_new_re" id="txtpass_new_re" title="enter your phone number if any.">
+                            <div class="col-xs-8">
+                                <label for="ConfirmPassword">Xác nhận mật khẩu</label>
+                                <input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword" title="enter your phone number if any.">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success" id="savePassNew" data-id="@profile.Id" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                <button class="btn btn-lg" type="reset" id="resetPassForm"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Save</button>
+                                <button class="btn btn-lg" type="reset" id="resetPassForm"><i class="glyphicon glyphicon-repeat"></i>Reset</button>
                             </div>
                         </div>
+                        @*</fieldset>*@
                     </form>
                     <hr>
                 </div>

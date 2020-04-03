@@ -263,7 +263,7 @@ namespace TeduCoreApp.Controllers
             if (result.Succeeded)
             {
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                var callbackUrl = Url.EmailConfirmationLink(user.Id.ToString(), code, Request.Scheme);
                 await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
                 //await _signInManager.SignInAsync(user, isPersistent: false);
                 _logger.LogInformation("Người dùng đã tạo một tài khoản mới bằng mật khẩu.");
@@ -413,7 +413,7 @@ namespace TeduCoreApp.Controllers
                 // For more information on how to enable account confirmation and password reset
                 // please visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+                var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme);
                 await _emailSender.SendEmailAsync(model.Email, "Reset Password",
                    $"Vui lòng đặt lại mật khẩu của bạn bằng cách nhấn vào đây: <a href='{callbackUrl}'>Vào đây</a>");
                 return RedirectToAction(nameof(ForgotPasswordConfirmation));

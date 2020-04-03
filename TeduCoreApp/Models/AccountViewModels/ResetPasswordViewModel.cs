@@ -19,7 +19,7 @@ namespace TeduCoreApp.Models.AccountViewModels
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Mật khẩu nhập lại không trùng khớp.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

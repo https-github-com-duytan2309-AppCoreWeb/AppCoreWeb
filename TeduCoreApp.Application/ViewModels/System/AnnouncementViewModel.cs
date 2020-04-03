@@ -11,6 +11,7 @@ namespace TeduCoreApp.Application.ViewModels.System
     public class AnnouncementViewModel
     {
         public string Id { get; set; }
+
         [Required]
         [StringLength(250)]
         public string Title { set; get; }

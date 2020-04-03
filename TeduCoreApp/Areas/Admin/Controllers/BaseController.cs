@@ -11,6 +11,5 @@ namespace TeduCoreApp.Areas.Admin.Controllers
     [Authorize]
     public class BaseController : Controller
     {
-        
     }
 }

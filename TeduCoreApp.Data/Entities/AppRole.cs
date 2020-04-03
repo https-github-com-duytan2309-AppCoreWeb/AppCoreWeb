@@ -12,14 +12,22 @@ namespace TeduCoreApp.Data.Entities
     {
         public AppRole() : base()
         {
+            AppUserRoles = new HashSet<AppUserRole>();
+        }
+
+        public AppRole(string roleName) : base(roleName)
+        {
+            Name = roleName;
         }
 
         public AppRole(string name, string description) : base(name)
         {
-            this.Description = description;
+            Description = description;
         }
 
         [StringLength(250)]
         public string Description { get; set; }
+
+        public virtual ICollection<AppUserRole> AppUserRoles { get; set; }
     }
 }

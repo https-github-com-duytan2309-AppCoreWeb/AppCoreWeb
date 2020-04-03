@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TeduCoreApp.Admin.Filter;
 using TeduCoreApp.Areas.Admin.Models.BusinessModel;
 using TeduCoreApp.Data.EF;
 using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    public class GetControllerAndActionController : BaseController
+    [Area("Admin")]
+    [ServiceFilter(typeof(FilterActionAttribute))]
+    public class GetControllerAndActionController : Controller
     {
         private AppDbContext _context;
         private Roles_Action_Controller _db = new Roles_Action_Controller();
@@ -34,8 +38,9 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             return new OkObjectResult(_context.ListControllers.ToList());
         }
 
+        [HttpPost]
         //Updates Controller and Action
-        public ActionResult UpdateBusiness(string nameSpace, string returnUrl = "Index")
+        public ActionResult UpdateBusinessAdmin(string returnUrl = "Index")
         {
             //LAy danh sach Contorller va Action
             ReflectionController rc = new ReflectionController();
@@ -46,7 +51,8 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             {
                 if (!listControllerOld.Contains(c.Name))
                 {
-                    ListController b = new ListController() { ControllerName = c.Name, DiscriptionAction = "Chưa có mô tả" };
+                    string namecontroller = c.Name.ToString();
+                    ListController b = new ListController() { ControllerName = namecontroller, Discription = "Chưa có mô tả" };
                     _context.ListControllers.Add(b);
                     _context.SaveChanges();
                 }
@@ -58,8 +64,45 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                     if (!listActionOld.Contains(c.Name + "-" + p))
                     {
                         var controllerOld = _context.ListControllers.SingleOrDefault(x => x.ControllerName == c.Name);
-                        ListAction action = new ListAction() { IdController = controllerOld.Id, ActionName = c.Name + "-" + p, Discription = "Chưa có mô tả" };
+                        ListAction action = new ListAction() { IdController = controllerOld.Id, ActionName = "Admin-" + c.Name + "-" + p, Discription = "Chưa có mô tả" };
                         _context.ListActions.Add(action);
+                        _context.SaveChanges();
+                    }
+                }
+            }
+            _context.SaveChanges();
+            TempData["err"] = "<div class='alert alert-info' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span><span class='sr-only'></span>Cập Nhật thành công</div>";
+            return RedirectToAction(returnUrl);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateBusinessClient(string returnUrl = "Index")
+        {
+            //LAy danh sach Contorller va Action
+            ReflectionController rc = new ReflectionController();
+            List<Type> listControllerType = rc.GetControllers("TeduCoreApp.Controllers");
+            List<string> listControllerOld = _context.ListControllers.Select(c => c.ControllerName).ToList();
+            List<string> listActionOld = _context.ListActions.Select(p => p.ActionName).ToList();
+            foreach (var c in listControllerType)
+            {
+                if (!listControllerOld.Contains(c.Name))
+                {
+                    string namecontroller = c.Name.ToString();
+                    ListController b = new ListController() { ControllerName = namecontroller, Discription = "Chưa có mô tả" };
+                    _context.ListControllers.Add(b);
+                    _context.SaveChanges();
+                }
+
+                List<string> listAction = rc.GetActions(c);
+
+                foreach (var p in listAction)
+                {
+                    if (!listActionOld.Contains(c.Name + "-" + p))
+                    {
+                        var controllerOld = _context.ListControllers.SingleOrDefault(x => x.ControllerName == c.Name);
+                        ListAction action = new ListAction() { IdController = controllerOld.Id, ActionName = "Client-" + c.Name + "-" + p, Discription = "Chưa có mô tả" };
+                        _context.ListActions.Add(action);
+                        _context.SaveChanges();
                     }
                 }
             }

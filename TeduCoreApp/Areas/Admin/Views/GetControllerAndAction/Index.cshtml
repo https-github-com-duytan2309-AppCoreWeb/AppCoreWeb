@@ -4,8 +4,14 @@
 }
 
 <h2>Index</h2>
-<form asp-area="Admin" asp-controller="GetControllerAndAction" asp-action="UpdateBusiness">
-    <input placeholder="Update Permission" name="nameSpace" />
-    <input hidden="hidden" placeholder="Url" name="returnUrl" value="Index" />
-    <input type="submit" value="Submit" />
+<form method="post" asp-action="UpdateBusinessAdmin">
+    <input placeholder="Update Permission" name="returnUrl" value="Index" />
+    @*<input hidden="hidden" placeholder="Url" name="returnUrl" value="Index" />*@
+    <input class="btn btn-sm btn-primary" type="submit" value="Submit Admin" />
+</form>
+
+<form method="post" asp-action="UpdateBusinessClient">
+    <input placeholder="Update Permission" name="returnUrl" value="Index" />
+    @*<input hidden="hidden" placeholder="Url" name="returnUrl" value="Index" />*@
+    <input class="btn btn-sm btn-primary" type="submit" value="Submit Client" />
 </form>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@inject SignInManager<AppUser> SignInManager
+<h2>Index</h2>
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a asp-controller="home" asp-action="index"><h1>Quay Lai Trang Chu</h1></a>
+    </li>
+    <li class="nav-item">
+        <a asp-controller="home" asp-action="create"><h1>Create</h1></a>
+    </li>
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a asp-controller="Administration" asp-action="ListRoles">
+                Manage Roles
+            </a>
+        </li>
+    }
+</ul>

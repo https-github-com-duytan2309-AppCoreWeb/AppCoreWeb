@@ -18,7 +18,8 @@ using TeduCoreApp.Utilities.Helpers;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    public class ProductController : BaseController
+    [Area("Admin")]
+    public class ProductController : Controller
     {
         private IProductService _productService;
         private IProductCategoryService _productCategoryService;

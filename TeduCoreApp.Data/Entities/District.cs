@@ -26,7 +26,7 @@ namespace TeduCoreApp.Data.Entities
         }
 
         [StringLength(10)]
-        [Required]
+        //[Required]
         public string Code { set; get; }
 
         [StringLength(250)]
@@ -36,7 +36,7 @@ namespace TeduCoreApp.Data.Entities
         [StringLength(250)]
         public string Rank { set; get; }
 
-        [Required]
+        //[Required]
         public int ProvinceId { get; set; }
 
         [ForeignKey("ProvinceId")]

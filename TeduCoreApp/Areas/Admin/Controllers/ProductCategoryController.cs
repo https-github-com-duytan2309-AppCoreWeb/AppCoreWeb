@@ -10,9 +10,11 @@ using TeduCoreApp.Utilities.Helpers;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    public class ProductCategoryController : BaseController
+    [Area("Admin")]
+    public class ProductCategoryController : Controller
     {
-        IProductCategoryService _productCategoryService;
+        private IProductCategoryService _productCategoryService;
+
         public ProductCategoryController(IProductCategoryService productCategoryService)
         {
             _productCategoryService = productCategoryService;
@@ -24,6 +26,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         #region Get Data API
+
         [HttpGet]
         public IActionResult GetById(int id)
         {
@@ -31,6 +34,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
 
             return new ObjectResult(model);
         }
+
         [HttpPost]
         public IActionResult SaveEntity(ProductCategoryViewModel productVm)
         {
@@ -52,7 +56,6 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 }
                 _productCategoryService.Save();
                 return new OkObjectResult(productVm);
-
             }
         }
 
@@ -70,6 +73,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 return new OkObjectResult(id);
             }
         }
+
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -121,6 +125,6 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             }
         }
 
-        #endregion
+        #endregion Get Data API
     }
 }

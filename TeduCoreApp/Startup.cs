@@ -45,6 +45,8 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.Extensions.DependencyModel;
 using TeduCoreApp.TokenProviders;
+using System.Security.Claims;
+using TeduCoreApp.Admin.Filter;
 
 namespace TeduCoreApp
 {
@@ -62,25 +64,34 @@ namespace TeduCoreApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region Identity
+
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                 o => o.MigrationsAssembly("TeduCoreApp.Data.EF")));
 
-            services.AddIdentity<AppUser, AppRole>()
-                .AddEntityFrameworkStores<AppDbContext>()
-               .AddDefaultTokenProviders();
-
-            services.AddDefaultIdentity<AppUser>(config =>
+            services.AddIdentity<AppUser, AppRole>(config =>
             {
                 config.SignIn.RequireConfirmedEmail = true;
-                config.Tokens.ProviderMap.Add("CustomEmailConfirmation",
-                    new TokenProviderDescriptor(
-                        typeof(CustomEmailConfirmationTokenProvider<IdentityUser>)));
-                config.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmation";
-            })
-            .AddEntityFrameworkStores<AppDbContext>();
 
-            services.AddTransient<CustomEmailConfirmationTokenProvider<AppUser>>();
+                config.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmation";
+
+                //config.Tokens.ProviderMap.Add("CustomEmailConfirmation",
+                //    new TokenProviderDescriptor(
+                //        typeof(CustomEmailConfirmationTokenProvider<IdentityUser>)));
+            })
+               .AddEntityFrameworkStores<AppDbContext>()
+               .AddDefaultTokenProviders()
+               .AddTokenProvider<CustomEmailConfirmationTokenProvider<AppUser>>("CustomEmailConfirmation");
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = new PathString("/Admin/Notify/AccessDenied");
+            });
+            services.Configure<DataProtectionTokenProviderOptions>(o =>
+                        o.TokenLifespan = TimeSpan.FromHours(5));
+
+            services.Configure<EmailConfirmationTokenProviderOptions>(o =>
+                       o.TokenLifespan = TimeSpan.FromHours(3));
 
             // Configure Identity
             services.Configure<IdentityOptions>(options =>
@@ -95,13 +106,19 @@ namespace TeduCoreApp
                 // Lockout settings
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
                 options.Lockout.MaxFailedAccessAttempts = 10;
+                options.Lockout.AllowedForNewUsers = true;
 
                 // User settings
-                options.User.RequireUniqueEmail = true;
 
                 //Definde Token
                 options.SignIn.RequireConfirmedEmail = true;
+                //email duy nhất
+                options.User.RequireUniqueEmail = true;
+                options.User.AllowedUserNameCharacters =
+                                        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
             });
+
+            #endregion Identity
 
             //Services for Files
             services.AddSingleton<IFileProvider>(
@@ -109,16 +126,13 @@ namespace TeduCoreApp
                                 Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
             services.AddAutoMapper();
-            // Add application services.
-            services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
-            services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
-
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
-
             services.AddSingleton<IEmailSender, EmailSender>();
 
-            services.AddTransient<DbInitializer>();
+            //services.AddTransient<DbInitializer>();
+
+            services.AddTransient<FilterActionAttribute>();
 
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
 
@@ -242,6 +256,7 @@ namespace TeduCoreApp
                 options.AddPolicy("ApiUser", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
             });
 
+            services.AddMvcCore();
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); ;
@@ -287,6 +302,7 @@ namespace TeduCoreApp
             app.UseAuthentication();
             app.UseSession();
             app.UseHttpsRedirection();
+
             //app.UseHttpContextItemsMiddleware();
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);

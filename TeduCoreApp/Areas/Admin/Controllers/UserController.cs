@@ -13,7 +13,8 @@ using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    public class UserController : BaseController
+    [Area("Admin")]
+    public class UserController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;

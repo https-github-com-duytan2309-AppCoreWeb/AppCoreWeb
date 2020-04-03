@@ -19,7 +19,6 @@ namespace TeduCoreApp.Application.Interfaces
 
         Task<AppUserViewModel> GetById(string id);
 
-
         Task UpdateAsync(AppUserViewModel userVm);
     }
 }
