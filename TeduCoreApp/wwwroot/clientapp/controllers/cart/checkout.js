@@ -8,15 +8,15 @@
     };
 
     this.initialize = function () {
-        $.when(
-            loadGetAllStreet(),
-            loadGetAllWard(),
-            loadGetAllDistrict(),
-            loadGetAllProvince(),
-            loadDataShipCode(),
-            LoadShipCodeIdAdress())
-            .done(function () {
-            });
+        //$.when(
+        //    loadGetAllStreet(),
+        //    loadGetAllWard(),
+        //    loadGetAllDistrict(),
+        //    loadGetAllProvince(),
+        //    loadDataShipCode(),
+        //    LoadShipCodeIdAdress())
+        //    .done(function () {
+        //    });
 
         registerEvents();
     };
@@ -46,9 +46,12 @@
 
                         $('.dropdown-menu a').on({
                             click: function () {
-                                var value = $(this).text();
-                                document.getElementById("Province").value = value;
-                                /*ReloadInputStreet();*/
+                                var valueProvince = $(this).text();
+                                document.getElementById("Province").value = valueProvince;
+                                document.getElementById("Street").value = "";
+                                document.getElementById("Ward").value = "";
+                                document.getElementById("District").value = "";
+                                $("#Street").attr("disabled", "disabled");
                             }
                         });
                     },
@@ -61,8 +64,8 @@
         $('#District').keypress(
             function () {
                 var nameProvince = document.getElementById("Province").value;
-                var nameWard = document.getElementById("Ward").value;
-                if (nameProvince === "" && nameWard === "") {
+                document.getElementById("Ward").value;
+                if (nameProvince === "") {
                     $.ajax({
                         type: "GET",
                         url: "/Address/GetDistrictsByKeyString",
@@ -87,8 +90,10 @@
                                 click: function () {
                                     var value = $(this).text();
                                     document.getElementById("District").value = value;
+                                    document.getElementById("Ward").value = "";
+                                    $("#Street").removeAttr("disabled");
                                     ReloadInputProvince();
-                                    ReloadInputStreet();
+                                    LoadShipCodeIdAdress(value, nameProvince);
                                 }
                             });
                         },
@@ -97,76 +102,43 @@
                         }
                     });
                 }
-                if (nameProvince !== "" && nameWard === "") {
-                    $.ajax({
-                        type: "GET",
-                        url: "/Address/GetDistrictsByKeyStringAndNameProvince",
-                        data: { KeyString: $(this).val(), NameProvince: nameProvince },
-                        dataType: "json",
-                        success: function (response) {
-                            districts = response;
-                            var render = '';
-                            var templateDetails = $('#template-table-district-details').html();
+                else {
+                    if (nameProvince !== "") {
+                        $.ajax({
+                            type: "GET",
+                            url: "/Address/GetDistrictsByKeyStringAndNameProvince",
+                            data: { KeyString: $(this).val(), NameProvince: nameProvince },
+                            dataType: "json",
+                            success: function (response) {
+                                districts = response;
+                                var render = '';
+                                var templateDetails = $('#template-table-district-details').html();
 
-                            $.each(districts, function (i, item) {
-                                render += Mustache.render(templateDetails,
-                                    {
-                                        Name: item.Name,
-                                        Id: item.Id
-                                    });
-                            });
+                                $.each(districts, function (i, item) {
+                                    render += Mustache.render(templateDetails,
+                                        {
+                                            Name: item.Name,
+                                            Id: item.Id
+                                        });
+                                });
 
-                            $('#tbl-district-details').html(render);
+                                $('#tbl-district-details').html(render);
 
-                            $('.dropdown-menu a').on({
-                                click: function () {
-                                    var value = $(this).text();
-                                    document.getElementById("District").value = value;
-                                    ReloadInputProvince();
-                                    ReloadInputStreet();
-                                }
-                            });
-                        },
-                        error: function () {
-                            tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
-                        }
-                    });
-                }
-
-                if (nameWard !== "") {
-                    $.ajax({
-                        type: "GET",
-                        url: "/Address/GetDistrictsByNameWard",
-                        data: { NameWard: nameWard },
-                        dataType: "json",
-                        success: function (response) {
-                            districts = response;
-                            var render = '';
-                            var templateDetails = $('#template-table-district-details').html();
-
-                            $.each(districts, function (i, item) {
-                                render += Mustache.render(templateDetails,
-                                    {
-                                        Name: item.Name,
-                                        Id: item.Id
-                                    });
-                            });
-
-                            $('#tbl-district-details').html(render);
-
-                            $('.dropdown-menu a').on({
-                                click: function () {
-                                    var value = $(this).text();
-                                    document.getElementById("District").value = value;
-                                    ReloadInputProvince();
-                                    ReloadInputStreet();
-                                }
-                            });
-                        },
-                        error: function () {
-                            tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
-                        }
-                    });
+                                $('.dropdown-menu a').on({
+                                    click: function () {
+                                        var value = $(this).text();
+                                        document.getElementById("District").value = value;
+                                        document.getElementById("Ward").value = "";
+                                        $("#Street").removeAttr("disabled");
+                                        LoadShipCodeIdAdress(value, nameProvince);
+                                    }
+                                });
+                            },
+                            error: function () {
+                                tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
+                            }
+                        });
+                    }
                 }
             }
         );
@@ -198,11 +170,10 @@
 
                             $('.dropdown-menu a').on({
                                 click: function () {
-                                    var value = $(this).text();
-                                    document.getElementById("Ward").value = value;
+                                    var valueWard = $(this).text();
+                                    document.getElementById("Ward").value = valueWard;
                                     ReloadInputDistrict();
                                     ReloadInputProvince();
-                                    ReloadInputStreet();
                                 }
                             });
                         },
@@ -211,116 +182,75 @@
                         }
                     });
                 }
+                else {
+                    if (nameDistrict !== "") {
+                        $.ajax({
+                            type: "GET",
+                            url: "/Address/GetWardsByKeyStringAndNameDistrict",
+                            data: { KeyString: $(this).val(), NameDistrict: nameDistrict },
+                            dataType: "json",
+                            success: function (response) {
+                                wards = response;
+                                var render = '';
+                                var templateDetails = $('#template-table-ward-details').html();
 
-                if (nameProvince !== "" && nameDistrict === "") {
-                    $.ajax({
-                        type: "GET",
-                        url: "/Address/GetWardsByKeyStringAndNameProvince",
-                        data: { KeyString: $(this).val(), NameProvince: nameProvince },
-                        dataType: "json",
-                        success: function (response) {
-                            wards = response;
-                            var render = '';
-                            var templateDetails = $('#template-table-ward-details').html();
+                                $.each(wards, function (i, item) {
+                                    render += Mustache.render(templateDetails,
+                                        {
+                                            Name: item.Name,
+                                            Id: item.Id
+                                        });
+                                });
 
-                            $.each(wards, function (i, item) {
-                                render += Mustache.render(templateDetails,
-                                    {
-                                        Name: item.Name,
-                                        Id: item.Id
-                                    });
-                            });
+                                $('#tbl-ward-details').html(render);
 
-                            $('#tbl-ward-details').html(render);
+                                $('.dropdown-menu a').on({
+                                    click: function () {
+                                        var valueWard = $(this).text();
+                                        document.getElementById("Ward").value = valueWard;
+                                    }
+                                });
+                            },
+                            error: function () {
+                                tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
+                            }
+                        });
+                    }
+                    else if (nameProvince !== "") {
+                        $.ajax({
+                            type: "GET",
+                            url: "/Address/GetWardsByKeyStringAndNameProvince",
+                            data: { KeyString: $(this).val(), NameProvince: nameProvince },
+                            dataType: "json",
+                            success: function (response) {
+                                wards = response;
+                                var render = '';
+                                var templateDetails = $('#template-table-ward-details').html();
 
-                            $('.dropdown-menu a').on({
-                                click: function () {
-                                    var value = $(this).text();
-                                    document.getElementById("Ward").value = value;
-                                    ReloadInputDistrict();
-                                    ReloadInputProvince();
-                                    ReloadInputStreet();
-                                }
-                            });
-                        },
-                        error: function () {
-                            tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
-                        }
-                    });
-                }
+                                $.each(wards, function (i, item) {
+                                    render += Mustache.render(templateDetails,
+                                        {
+                                            Name: item.Name,
+                                            Id: item.Id
+                                        });
+                                });
 
-                if (nameProvince === "" && nameDistrict !== "") {
-                    $.ajax({
-                        type: "GET",
-                        url: "/Address/GetWardsByKeyStringAndNameDistrict",
-                        data: { KeyString: $(this).val(), NameDistrict: nameDistrict },
-                        dataType: "json",
-                        success: function (response) {
-                            wards = response;
-                            var render = '';
-                            var templateDetails = $('#template-table-ward-details').html();
+                                $('#tbl-ward-details').html(render);
 
-                            $.each(wards, function (i, item) {
-                                render += Mustache.render(templateDetails,
-                                    {
-                                        Name: item.Name,
-                                        Id: item.Id
-                                    });
-                            });
-
-                            $('#tbl-ward-details').html(render);
-
-                            $('.dropdown-menu a').on({
-                                click: function () {
-                                    var value = $(this).text();
-                                    document.getElementById("Ward").value = value;
-                                    ReloadInputDistrict();
-                                    ReloadInputProvince();
-                                    ReloadInputStreet();
-                                }
-                            });
-                        },
-                        error: function () {
-                            tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
-                        }
-                    });
-                }
-
-                if (nameProvince !== "" && nameDistrict !== "") {
-                    $.ajax({
-                        type: "GET",
-                        url: "/Address/GetWardsByKeyStringAndNameDistrictAndNameProvince",
-                        data: { KeyString: $(this).val(), NameDistrict: nameDistrict, NameProvince: nameProvince },
-                        dataType: "json",
-                        success: function (response) {
-                            wards = response;
-                            var render = '';
-                            var templateDetails = $('#template-table-ward-details').html();
-
-                            $.each(wards, function (i, item) {
-                                render += Mustache.render(templateDetails,
-                                    {
-                                        Name: item.Name,
-                                        Id: item.Id
-                                    });
-                            });
-
-                            $('#tbl-ward-details').html(render);
-
-                            $('.dropdown-menu a').on({
-                                click: function () {
-                                    var value = $(this).text();
-                                    document.getElementById("Ward").value = value;
-                                    ReloadInputDistrict();
-                                    ReloadInputProvince();
-                                    ReloadInputStreet();
-                                }
-                            });
-                        },
-                        error: function () {
-                            tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
-                        }
-                    });
+                                $('.dropdown-menu a').on({
+                                    click: function () {
+                                        var value = $(this).text();
+                                        document.getElementById("Ward").value = value;
+                                        ReloadInputDistrict();
+                                        $("#Street").removeAttr("disabled");
+                                    }
+                                });
+                            },
+                            error: function () {
+                                tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
+                            }
+                        });
+                    }
                 }
             }
         );
@@ -329,11 +259,10 @@
             function () {
                 var nameWard = document.getElementById("Ward").value;
                 var nameDistrict = document.getElementById("District").value;
-                var nameProvince = document.getElementById("Province").value;
                 if (nameWard !== "") {
                     $.ajax({
                         type: "GET",
-                        url: "/Address/GetStreetsByKeyStringByWard",
+                        url: "/Address/GetStreetsByKeyStringAndByNameWard",
                         data: { KeyString: $(this).val(), NameWard: nameWard },
                         dataType: "json",
                         success: function (response) {
@@ -353,9 +282,8 @@
 
                             $('.dropdown-menu a').on({
                                 click: function () {
-                                    var value = $(this).text();
-                                    document.getElementById("Street").value = value;
-                                    ReloadInputWard();
+                                    var valueStreet = $(this).text();
+                                    document.getElementById("Street").value = valueStreet;
                                 }
                             });
                         },
@@ -364,12 +292,11 @@
                         }
                     });
                 }
-
-                if (nameProvince !== "" && nameDistrict !== "") {
+                else if (nameDistrict !== "") {
                     $.ajax({
                         type: "GET",
-                        url: "/Address/GetStreetsByKeyStringByProvinceDistrict",
-                        data: { KeyString: $(this).val(), NameProvince: nameProvince, NameDistrict: nameDistrict },
+                        url: "/Address/GetStreetsByKeyStringAndByNameDistrict",
+                        data: { KeyString: $(this).val(), NameDistrict: nameDistrict },
                         dataType: "json",
                         success: function (response) {
                             wards = response;
@@ -388,8 +315,8 @@
 
                             $('.dropdown-menu a').on({
                                 click: function () {
-                                    var value = $(this).text();
-                                    document.getElementById("Street").value = value;
+                                    var valueStreet = $(this).text();
+                                    document.getElementById("Street").value = valueStreet;
                                     ReloadInputWard();
                                 }
                             });
@@ -402,50 +329,46 @@
             }
         );
 
-        $('body').on('click', '#Province', function (e) {
-            e.preventDefault();
-            var data = document.getElementById("Province").value;
-            if (data === "") {
-                $.ajax({
-                    type: "GET",
-                    url: "/Address/GetProvinces",
-                    dataType: "json",
-                    success: function (response) {
-                        provinces = response;
-                        var render = '';
-                        var templateDetails = $('#template-table-province-details').html();
+        $("#Province").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/Address/GetProvinces",
+                dataType: "json",
+                success: function (response) {
+                    provinces = response;
+                    var render = '';
+                    var templateDetails = $('#template-table-province-details').html();
 
-                        $.each(provinces, function (i, item) {
-                            render += Mustache.render(templateDetails,
-                                {
-                                    Name: item.Name,
-                                    Id: item.Id
-                                });
-                        });
+                    $.each(provinces, function (i, item) {
+                        render += Mustache.render(templateDetails,
+                            {
+                                Name: item.Name,
+                                Id: item.Id
+                            });
+                    });
 
-                        $('#tbl-province-details').html(render);
+                    $('#tbl-province-details').html(render);
 
-                        $('.dropdown-menu a').on({
-                            click: function () {
-                                var value = $(this).text();
-                                $('#Province').val(value);
-                                ReloadInputStreet();
-                            }
-                        });
-                    },
-                    error: function () {
-                        tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
-                    }
-                });
-            }
+                    $('.dropdown-menu a').on({
+                        click: function () {
+                            var valueProvince = $(this).text();
+                            document.getElementById("Province").value = valueProvince;
+                            document.getElementById("Street").value = "";
+                            document.getElementById("Ward").value = "";
+                            document.getElementById("District").value = "";
+                            $("#Street").attr("disabled", "disabled");
+                        }
+                    });
+                },
+                error: function () {
+                    tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
+                }
+            });
         });
 
-        $('body').on('click', '#District', function (e) {
-            e.preventDefault();
+        $("#District").click(function () {
             var nameProvince = document.getElementById("Province").value;
-            var nameWard = document.getElementById("Ward").value;
-
-            if (nameProvince === "" && nameWard === "") {
+            if (nameProvince === "") {
                 $.ajax({
                     type: "GET",
                     url: "/Address/GetDistricts",
@@ -469,8 +392,9 @@
                             click: function () {
                                 var value = $(this).text();
                                 document.getElementById("District").value = value;
+                                document.getElementById("Ward").value = "";
+                                $("#Street").removeAttr("disabled");
                                 ReloadInputProvince();
-                                ReloadInputStreet();
                                 LoadShipCodeIdAdress(value, nameProvince);
                             }
                         });
@@ -480,7 +404,7 @@
                     }
                 });
             } else {
-                if (nameProvince !== "" && nameWard === "") {
+                if (nameProvince !== "") {
                     $.ajax({
                         type: "GET",
                         data: { NameProvince: nameProvince },
@@ -505,44 +429,8 @@
                                 click: function () {
                                     var value = $(this).text();
                                     document.getElementById("District").value = value;
-                                    ReloadInputProvince();
-                                    ReloadInputStreet();
-                                    LoadShipCodeIdAdress(value, nameProvince);
-                                }
-                            });
-                        },
-                        error: function () {
-                            tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
-                        }
-                    });
-                }
-                else if (nameWard !== "" && nameProvince === "") {
-                    $.ajax({
-                        type: "GET",
-                        data: { NameWard: nameWard },
-                        url: "/Address/GetDistrictsByNameWard",
-                        dataType: "json",
-                        success: function (response) {
-                            districts = response;
-                            var render = '';
-                            var templateDetails = $('#template-table-district-details').html();
-
-                            $.each(districts, function (i, item) {
-                                render += Mustache.render(templateDetails,
-                                    {
-                                        Name: item.Name,
-                                        Id: item.Id
-                                    });
-                            });
-
-                            $('#tbl-district-details').html(render);
-
-                            $('.dropdown-menu a').on({
-                                click: function () {
-                                    var value = $(this).text();
-                                    document.getElementById("District").value = value;
-                                    ReloadInputProvince();
-                                    ReloadInputStreet();
+                                    document.getElementById("Ward").value = "";
+                                    $("#Street").removeAttr("disabled");
                                     LoadShipCodeIdAdress(value, nameProvince);
                                 }
                             });
@@ -555,22 +443,47 @@
             }
         });
 
-        $('body').on('click', '#Ward', function (e) {
-            e.preventDefault();
+        $("#Ward").click(function () {
             var nameDistrict = document.getElementById("District").value;
             var nameProvince = document.getElementById("Province").value;
             if (nameDistrict === "" && nameProvince === "") {
                 $("#Ward").attr("placeholder", "Vui Lòng Nhập Vài Từ Tìm ...");
             }
             else {
-                if (nameProvince !== "" && nameDistrict !== "") {
+                if (nameDistrict !== "") {
                     $.ajax({
                         type: "GET",
-                        url: "/Address/GetWardsByNameDistrictAndNameProvince",
-                        data: {
-                            NameProvince: nameProvince,
-                            NameDistrict: nameDistrict
+                        url: "/Address/GetWardsByNameDistrict",
+                        data: { NameDistrict: nameDistrict },
+                        dataType: "json",
+                        success: function (response) {
+                            wards = response;
+                            var render = '';
+                            var templateDetails = $('#template-table-ward-details').html();
+                            $.each(wards, function (i, item) {
+                                render += Mustache.render(templateDetails,
+                                    {
+                                        Name: item.Name
+                                    });
+                            });
+
+                            $('#tbl-ward-details').html(render);
+
+                            $('.dropdown-menu a').click(function () {
+                                var value = $(this).text();
+                                document.getElementById("Ward").value = value;
+                            });
                         },
+                        error: function () {
+                            tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
+                        }
+                    });
+                }
+                else if (nameProvince !== "") {
+                    $.ajax({
+                        type: "GET",
+                        url: "/Address/GetWardsByNameProvince",
+                        data: { NameProvince: nameProvince },
                         dataType: "json",
                         success: function (response) {
                             wards = response;
@@ -589,98 +502,26 @@
                                 var value = $(this).text();
                                 document.getElementById("Ward").value = value;
                                 ReloadInputDistrict();
-                                ReloadInputProvince();
-                                ReloadInputStreet();
+                                $("#Street").removeAttr("disabled");
                             });
                         },
                         error: function () {
                             tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
                         }
                     });
-                } else {
-                    if (nameDistrict !== "") {
-                        $.ajax({
-                            type: "GET",
-                            url: "/Address/GetWardsByNameDistrict",
-                            data: { NameDistrict: nameDistrict },
-                            dataType: "json",
-                            success: function (response) {
-                                wards = response;
-                                var render = '';
-                                var templateDetails = $('#template-table-ward-details').html();
-                                $.each(wards, function (i, item) {
-                                    render += Mustache.render(templateDetails,
-                                        {
-                                            Name: item.Name
-                                        });
-                                });
-
-                                $('#tbl-ward-details').html(render);
-
-                                $('.dropdown-menu a').click(function () {
-                                    var value = $(this).text();
-                                    document.getElementById("Ward").value = value;
-                                    ReloadInputDistrict();
-                                    ReloadInputProvince();
-                                    ReloadInputStreet();
-                                });
-                            },
-                            error: function () {
-                                tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
-                            }
-                        });
-                    }
-
-                    if (nameProvince !== "") {
-                        $.ajax({
-                            type: "GET",
-                            url: "/Address/GetWardsByNameProvince",
-                            data: { NameProvince: nameProvince },
-                            dataType: "json",
-                            success: function (response) {
-                                wards = response;
-                                var render = '';
-                                var templateDetails = $('#template-table-ward-details').html();
-                                $.each(wards, function (i, item) {
-                                    render += Mustache.render(templateDetails,
-                                        {
-                                            Name: item.Name
-                                        });
-                                });
-
-                                $('#tbl-ward-details').html(render);
-
-                                $('.dropdown-menu a').click(function () {
-                                    var value = $(this).text();
-                                    document.getElementById("Ward").value = value;
-                                    ReloadInputDistrict();
-                                    ReloadInputProvince();
-                                    ReloadInputStreet();
-                                });
-                            },
-                            error: function () {
-                                tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
-                            }
-                        });
-                    }
                 }
             }
         });
 
-        $('body').on('click', '#Street', function (e) {
-            e.preventDefault();
-
+        $("#Street").click(function () {
             var nameWard = document.getElementById("Ward").value;
             var nameDistrict = document.getElementById("District").value;
-            var nameProvince = document.getElementById("Province").value;
-
-            if (nameDistrict !== "" && nameWard !== "") {
+            if (nameWard !== "") {
                 $.ajax({
                     type: "GET",
-                    url: "/Address/GetStreetsByNameWardAndNameDistrict",
+                    url: "/Address/GetStreetsByNameWard",
                     data: {
                         NameWard: nameWard,
-                        NameDistrict: nameDistrict
                     },
                     dataType: "json",
                     success: function (response) {
@@ -697,9 +538,8 @@
                         $('#tbl-street-details').html(render);
 
                         $('.dropdown-menu a').click(function () {
-                            var value = $(this).text();
-                            document.getElementById("Street").value = value;
-                            ReloadInputWard();
+                            var valueStreet = $(this).text();
+                            document.getElementById("Street").value = valueStreet;
                         });
                     },
                     error: function () {
@@ -707,12 +547,11 @@
                     }
                 });
             }
-            else if (nameProvince !== "" && nameDistrict !== "") {
+            else if (nameDistrict !== "") {
                 $.ajax({
                     type: "GET",
-                    url: "/Address/GetStreetsByNameProvinceAndNameDistrict",
+                    url: "/Address/GetStreetsByNameDistrict",
                     data: {
-                        NameProvince: nameProvince,
                         NameDistrict: nameDistrict
                     },
                     dataType: "json",
@@ -730,8 +569,8 @@
                         $('#tbl-street-details').html(render);
 
                         $('.dropdown-menu a').click(function () {
-                            var value = $(this).text();
-                            document.getElementById("Street").value = value;
+                            var valueStreet = $(this).text();
+                            document.getElementById("Street").value = valueStreet;
                             ReloadInputWard();
                         });
                     },
@@ -741,13 +580,6 @@
                 });
             }
         });
-
-        //$('#District').on('change', function (e) {
-        //    e.preventDefault();
-        //    var nameProvince = document.getElementById("Province").value;
-        //    var nameDistrict = document.getElementById("District").value;
-        //    LoadShipCodeIdAdress(nameDistrict, nameProvince);
-        //});
     }
 
     function ReloadInputDistrict() {
@@ -756,11 +588,10 @@
             $.ajax({
                 type: "GET",
                 data: { NameWard: inputWard },
-                url: "/Address/GetDistrictByWard",
+                url: "/Address/GetDistrictsByNameWard",
                 dataType: "json",
                 success: function (response) {
-                    var value = response;
-                    document.getElementById("District").value = value.Name;
+                    document.getElementById("District").value = response.Name;
                 },
                 error: function () {
                     tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
@@ -777,7 +608,7 @@
             $.ajax({
                 type: "GET",
                 data: { NameWard: inputWard },
-                url: "/Address/GetProvinceByWard",
+                url: "/Address/GetProvinceByNameWard",
                 dataType: "json",
                 success: function (response) {
                     var value = response;
@@ -793,7 +624,7 @@
             $.ajax({
                 type: "GET",
                 data: { NameDistrict: inputDistrict },
-                url: "/Address/GetProvinceByDistrict",
+                url: "/Address/GetProvinceByNameDistrict",
                 dataType: "json",
                 success: function (response) {
                     var value = response;
@@ -808,7 +639,6 @@
 
     function ReloadInputWard() {
         var inputStreet = document.getElementById("Street").value;
-
         if (inputStreet !== "") {
             $.ajax({
                 type: "GET",
@@ -826,19 +656,6 @@
         }
     }
 
-    function ReloadInputStreet() {
-        var inputDistrict = document.getElementById("District").value;
-        var inputWard = document.getElementById("Ward").value;
-
-        if (inputDistrict !== "") {
-            $("#Street").removeAttr("disabled");
-        }
-
-        if (inputWard !== "") {
-            $("#Street").removeAttr("disabled");
-        }
-    }
-
     function loadGetAllStreet() {
         return $.ajax({
             type: "GET",
@@ -846,7 +663,6 @@
             dataType: "json",
             success: function (response) {
                 cachedObj.streets = response;
-                //tedu.notify('Load Streets Success!!!', 'success');
             },
             error: function () {
                 tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
@@ -861,7 +677,6 @@
             dataType: "json",
             success: function (response) {
                 cachedObj.wards = response;
-                //tedu.notify('Load Wards Success!!!', 'success');
             },
             error: function () {
                 tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
@@ -876,7 +691,6 @@
             dataType: "json",
             success: function (response) {
                 cachedObj.districts = response;
-                //tedu.notify('Load Districts Success!!!', 'success');
             },
             error: function () {
                 tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');
@@ -891,7 +705,6 @@
             dataType: "json",
             success: function (response) {
                 cachedObj.provinces = response;
-                //    tedu.notify('Load Provinces Success!!!', 'success');
             },
             error: function () {
                 tedu.notify('Có lỗi trong xử lý yêu cầu', 'error');

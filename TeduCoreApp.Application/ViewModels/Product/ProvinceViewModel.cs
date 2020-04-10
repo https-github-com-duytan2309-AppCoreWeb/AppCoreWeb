@@ -18,7 +18,7 @@ namespace TeduCoreApp.Application.ViewModels.Product
         public bool Status { set; get; }
 
         public List<DistrictViewModel> Districts { set; get; }
-        public List<WardViewModel> Wards { set; get; }
-        public List<StreetViewModel> Streets { set; get; }
+        //public List<WardViewModel> Wards { set; get; }
+        //public List<StreetViewModel> Streets { set; get; }
     }
 }

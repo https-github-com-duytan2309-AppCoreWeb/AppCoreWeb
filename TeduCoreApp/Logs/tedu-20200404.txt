@@ -1,0 +1,514 @@
+2020-04-04T15:23:24.2016424+07:00 0HLUOE5OLCDFA:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Account/Login   (ca22a1cb)
+2020-04-04T15:23:26.1175887+07:00 0HLUOE5OLCDFA:00000001 [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-04T15:23:26.1180923+07:00 0HLUOE5OLCDFA:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-04T15:23:26.1181973+07:00 0HLUOE5OLCDFA:00000001 [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-04T15:23:26.1185162+07:00 0HLUOE5OLCDFA:00000001 [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-04T15:23:26.1185965+07:00 0HLUOE5OLCDFA:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-04T15:23:26.1186808+07:00 0HLUOE5OLCDFA:00000001 [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-04T15:23:26.1188210+07:00 0HLUOE5OLCDFA:00000001 [WRN] No type was specified for the decimal column '"CollectionFee"' on entity type '"ShipCode"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-04T15:23:26.1188804+07:00 0HLUOE5OLCDFA:00000001 [WRN] No type was specified for the decimal column '"Total"' on entity type '"ShipCode"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-04T15:23:26.1189744+07:00 0HLUOE5OLCDFA:00000001 [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-04T15:23:26.1190464+07:00 0HLUOE5OLCDFA:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-04T15:23:26.2156348+07:00 0HLUOE5OLCDFA:00000001 [INF] Entity Framework Core "2.2.4-servicing-10062" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2020-04-04T15:23:27.0580185+07:00 0HLUOE5OLCDFA:00000001 [INF] Executed DbCommand ("245"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2020-04-04T15:23:27.6928710+07:00 0HLUOE5OLCDFA:00000001 [INF] Executed DbCommand ("50"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2020-04-04T15:23:27.7969067+07:00 0HLUOE5OLCDFA:00000001 [INF] Executed DbCommand ("13"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2020-04-04T15:23:27.8152639+07:00 0HLUOE5OLCDFA:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2020-04-04T15:23:27.8792193+07:00 0HLUOE5OLCDFA:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-04T15:23:27.8795442+07:00 0HLUOE5OLCDFA:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-04T15:23:28.2072819+07:00 0HLUOE5OLCDFA:00000001 [INF] Request finished in 4019.3034ms 404  (791a596a)
+2020-04-04T15:23:35.6362471+07:00 0HLUOE5OLCDFA:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/   (ca22a1cb)
+2020-04-04T15:23:35.6409032+07:00 0HLUOE5OLCDFA:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-04T15:23:35.6410012+07:00 0HLUOE5OLCDFA:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-04T15:23:35.6424547+07:00 0HLUOE5OLCDFA:00000002 [INF] Executing endpoint '"TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)"' (500cc934)
+2020-04-04T15:23:35.6676348+07:00 0HLUOE5OLCDFA:00000002 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "TeduCoreApp.Controllers.HomeController" ("TeduCoreApp"). (122b2fdf)
+2020-04-04T15:23:35.7043720+07:00 0HLUOE5OLCDFA:00000002 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" - Validation state: Valid (dad538d7)
+2020-04-04T15:23:35.7163421+07:00 0HLUOE5OLCDFA:00000002 [INF] Entity Framework Core "2.2.4-servicing-10062" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2020-04-04T15:23:35.8019516+07:00 0HLUOE5OLCDFA:00000002 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2020-04-04T15:23:35.9239048+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2020-04-04T15:23:35.9621359+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("22"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[HomeOrder], [t].[Id], [c.Products].[Id] AS [Id0], [c.Products].[Name], [c.Products].[CategoryId], [c.Products].[Image], [c.Products].[Price], [c.Products].[PromotionPrice], [c.Products].[OriginalPrice], [c.Products].[Description], [c.Products].[Content], [c.Products].[HomeFlag], [c.Products].[HotFlag], [c.Products].[ViewCount], [c.Products].[Tags], [c.Products].[Unit], [c.Products].[SeoPageTitle], [c.Products].[SeoAlias], [c.Products].[SeoKeywords], [c.Products].[SeoDescription], [c.Products].[DateCreated], [c.Products].[DateModified], [c.Products].[Status], [c.Products].[VAT]
+FROM [Products] AS [c.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [c0].[HomeOrder], [c0].[Id]
+    FROM [ProductCategories] AS [c0]
+    WHERE [c0].[HomeFlag] = 1
+    ORDER BY [c0].[HomeOrder], [c0].[Id]
+) AS [t] ON [c.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[HomeOrder], [t].[Id]" (0723d8ff)
+2020-04-04T15:23:36.0349906+07:00 0HLUOE5OLCDFA:00000002 [WRN] The Include operation for navigation '"[c].DichVus"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2020-04-04T15:23:36.3400743+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[MenuId], [c].[HomeOrder], CASE
+    WHEN [c].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [c].[MenuId] AS [Id0], [c.Menu].[Name] AS [Name0], [c.Menu].[Description] AS [Description0], [c.Menu].[Url], [c.Menu].[Target], [c.Menu].[ParentId] AS [ParentId0], [c.Menu].[HomeOrder] AS [HomeOrder0], [c.Menu].[DateCreated], [c.Menu].[DateModified], [c.Menu].[SortOrder], [c.Menu].[Status], [c.Menu].[SeoAlias], [c.Menu].[GroupAlias], [c].[Image], [c].[HomeFlag], [c].[DateCreated] AS [DateCreated0], [c].[DateModified] AS [DateModified0], [c].[SortOrder] AS [SortOrder0], [c].[Status] AS [Status0], [c].[SeoPageTitle], [c].[SeoAlias] AS [SeoAlias0], [c].[SeoKeywords], [c].[SeoDescription], [c.Menu].[Id]
+FROM [DichVuCategory] AS [c]
+LEFT JOIN [Menu] AS [c.Menu] ON [c].[MenuId] = [c.Menu].[Id]
+WHERE ([c].[HomeFlag] = 1) AND [c].[ParentId] IS NULL
+ORDER BY [c].[HomeOrder], [c].[Id], [c.Menu].[Id]" (0723d8ff)
+2020-04-04T15:23:36.4821835+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("29"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x].[VAT], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2020-04-04T15:23:36.5206000+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("21"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[VAT]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) AND ([x0].[HotFlag] = 1)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2020-04-04T15:23:36.6512336+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("24"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x].[VAT], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2020-04-04T15:23:36.6782981+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("20"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[VAT]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2020-04-04T15:23:37.5136034+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("402"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.BlogCategory].[Name] AS [Name1], [x.BlogCategory].[Description] AS [Description1], [x.BlogCategory].[ParentId], [x.BlogCategory].[MenuId], [x.BlogCategory].[HomeOrder], [x.BlogCategory].[Image] AS [Image0], [x.BlogCategory].[HomeFlag] AS [HomeFlag0], CASE
+    WHEN [x.BlogCategory].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.BlogCategory.Menu].[Id] AS [Id0], [x.BlogCategory.Menu].[Name] AS [Name0], [x.BlogCategory.Menu].[Description] AS [Description0], [x.BlogCategory.Menu].[Url], [x.BlogCategory.Menu].[Target], [x.BlogCategory.Menu].[ParentId] AS [ParentId0], [x.BlogCategory.Menu].[HomeOrder] AS [HomeOrder0], [x.BlogCategory.Menu].[DateCreated], [x.BlogCategory.Menu].[DateModified], [x.BlogCategory.Menu].[SortOrder], [x.BlogCategory.Menu].[Status], [x.BlogCategory.Menu].[SeoAlias], [x.BlogCategory.Menu].[GroupAlias], [x.BlogCategory].[DateCreated] AS [DateCreated0], [x.BlogCategory].[DateModified] AS [DateModified0], [x.BlogCategory].[SortOrder] AS [SortOrder0], [x.BlogCategory].[Status] AS [Status0], [x.BlogCategory].[SeoPageTitle], [x.BlogCategory].[SeoAlias] AS [SeoAlias0], [x.BlogCategory].[SeoKeywords], [x.BlogCategory].[SeoDescription], [x].[DateCreated] AS [DateCreated1], [x].[DateModified] AS [DateModified1], [x].[Status] AS [Status1], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias1], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x.BlogCategory.Menu].[Id], [x.BlogCategory].[Id]
+FROM [Blogs] AS [x]
+INNER JOIN [BlogCategory] AS [x.BlogCategory] ON [x].[CategoryId] = [x.BlogCategory].[Id]
+LEFT JOIN [Menu] AS [x.BlogCategory.Menu] ON [x.BlogCategory].[MenuId] = [x.BlogCategory.Menu].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated1] DESC, [x].[Id], [x.BlogCategory.Menu].[Id], [x.BlogCategory].[Id]" (0723d8ff)
+2020-04-04T15:23:37.8920790+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("8"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[CategoryId], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.DichVuCategory].[Name] AS [Name1], [x.DichVuCategory].[Description] AS [Description1], [x.DichVuCategory].[ParentId], [x.DichVuCategory].[MenuId], [x.DichVuCategory].[HomeOrder], CASE
+    WHEN [x.DichVuCategory].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.DichVuCategory.Menu].[Id] AS [Id0], [x.DichVuCategory.Menu].[Name] AS [Name0], [x.DichVuCategory.Menu].[Description] AS [Description0], [x.DichVuCategory.Menu].[Url], [x.DichVuCategory.Menu].[Target], [x.DichVuCategory.Menu].[ParentId] AS [ParentId0], [x.DichVuCategory.Menu].[HomeOrder] AS [HomeOrder0], [x.DichVuCategory.Menu].[DateCreated], [x.DichVuCategory.Menu].[DateModified], [x.DichVuCategory.Menu].[SortOrder], [x.DichVuCategory.Menu].[Status], [x.DichVuCategory.Menu].[SeoAlias], [x.DichVuCategory.Menu].[GroupAlias], [x.DichVuCategory].[Image] AS [Image0], [x.DichVuCategory].[HomeFlag] AS [HomeFlag0], [x.DichVuCategory].[DateCreated] AS [DateCreated0], [x.DichVuCategory].[DateModified] AS [DateModified0], [x.DichVuCategory].[SortOrder] AS [SortOrder0], [x.DichVuCategory].[Status] AS [Status0], [x.DichVuCategory].[SeoPageTitle], [x.DichVuCategory].[SeoAlias] AS [SeoAlias0], [x.DichVuCategory].[SeoKeywords], [x.DichVuCategory].[SeoDescription], [x].[DateCreated] AS [DateCreated1], [x].[DateModified] AS [DateModified1], [x].[Status] AS [Status1], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias1], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x.DichVuCategory.Menu].[Id], [x.DichVuCategory].[Id]
+FROM [DichVu] AS [x]
+INNER JOIN [DichVuCategory] AS [x.DichVuCategory] ON [x].[CategoryId] = [x.DichVuCategory].[Id]
+LEFT JOIN [Menu] AS [x.DichVuCategory.Menu] ON [x.DichVuCategory].[MenuId] = [x.DichVuCategory.Menu].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated1] DESC, [x].[Id], [x.DichVuCategory.Menu].[Id], [x.DichVuCategory].[Id]" (0723d8ff)
+2020-04-04T15:23:37.9378067+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("5"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2020-04-04T15:23:37.9529698+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 2238.2948ms. (50a9e262)
+2020-04-04T15:23:38.0001171+07:00 0HLUOE5OLCDFA:00000002 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2020-04-04T15:23:39.0555635+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("11"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-04T15:23:39.0873260+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("25"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-04T15:23:39.1417723+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("46"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-04T15:23:39.4331301+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("36"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2020-04-04T15:23:39.5989102+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("162"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status], [x.Products].[VAT]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2020-04-04T15:23:40.1834778+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-04T15:23:40.1982641+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("14"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-04T15:23:40.2054624+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-04T15:23:40.3194764+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("5"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2020-04-04T15:23:40.5388980+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("11"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-04T15:23:40.6182240+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed DbCommand ("14"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-04T15:23:40.7328839+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed ViewResult - view "Index" executed in 2758.2212ms. (f66409e9)
+2020-04-04T15:23:40.7335491+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 5065.4442ms (afa2e885)
+2020-04-04T15:23:40.7336429+07:00 0HLUOE5OLCDFA:00000002 [INF] Executed endpoint '"TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)"' (99874f2b)
+2020-04-04T15:23:42.4327367+07:00 0HLUOE5OLCDFA:00000002 [INF] Request finished in 6796.5048ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-04T15:23:42.7472945+07:00 0HLUOE5OLCDFA:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/plugins.css   (ca22a1cb)
+2020-04-04T15:23:42.8969763+07:00 0HLUOE5OLCDFB:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/bootstrap.min.css   (ca22a1cb)
+2020-04-04T15:23:42.9144039+07:00 0HLUOE5OLCDFA:00000003 [INF] Sending file. Request path: '"/client/css/plugins.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\plugins.css"' (27b0a520)
+2020-04-04T15:23:42.9146672+07:00 0HLUOE5OLCDFA:00000003 [INF] Request finished in 167.356ms 200 text/css (791a596a)
+2020-04-04T15:23:42.9259159+07:00 0HLUOE5OLCDFI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/slide.css   (ca22a1cb)
+2020-04-04T15:23:42.9624484+07:00 0HLUOE5OLCDFH:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/icons.css   (ca22a1cb)
+2020-04-04T15:23:42.9631103+07:00 0HLUOE5OLCDFG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/logo/logo-11.png   (ca22a1cb)
+2020-04-04T15:23:42.9648774+07:00 0HLUOE5OLCDFG:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-04T15:23:42.9649705+07:00 0HLUOE5OLCDFG:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-04T15:23:42.9662855+07:00 0HLUOE5OLCDFJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/jssor.slider.min.js   (ca22a1cb)
+2020-04-04T15:23:42.9890213+07:00 0HLUOE5OLCDFG:00000001 [INF] Request finished in 25.9094ms 404  (791a596a)
+2020-04-04T15:23:42.9892537+07:00 0HLUOE5OLCDFF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/vendor/modernizr-2.8.3.min.js   (ca22a1cb)
+2020-04-04T15:23:43.0098091+07:00 0HLUOE5OLCDFI:00000001 [INF] Sending file. Request path: '"/client/css/slide.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\slide.css"' (27b0a520)
+2020-04-04T15:23:43.0101960+07:00 0HLUOE5OLCDFI:00000001 [INF] Request finished in 84.0832ms 200 text/css (791a596a)
+2020-04-04T15:23:43.0104927+07:00 0HLUOE5OLCDFE:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/style.css   (ca22a1cb)
+2020-04-04T15:23:43.0343410+07:00 0HLUOE5OLCDFD:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2020-04-04T15:23:43.0820756+07:00 0HLUOE5OLCDFC:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/responsive.css   (ca22a1cb)
+2020-04-04T15:23:43.0909695+07:00 0HLUOE5OLCDFD:00000001 [INF] Sending file. Request path: '"/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\assets\plugins\general\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2020-04-04T15:23:43.0910813+07:00 0HLUOE5OLCDFD:00000001 [INF] Request finished in 56.7967ms 200 text/css (791a596a)
+2020-04-04T15:23:43.0984175+07:00 0HLUOE5OLCDFH:00000001 [INF] Sending file. Request path: '"/client/css/icons.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\icons.css"' (27b0a520)
+2020-04-04T15:23:43.0985369+07:00 0HLUOE5OLCDFH:00000001 [INF] Request finished in 136.2993ms 200 text/css (791a596a)
+2020-04-04T15:23:43.0994228+07:00 0HLUOE5OLCDFC:00000001 [INF] Sending file. Request path: '"/client/css/responsive.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\responsive.css"' (27b0a520)
+2020-04-04T15:23:43.0995733+07:00 0HLUOE5OLCDFC:00000001 [INF] Request finished in 17.514ms 200 text/css (791a596a)
+2020-04-04T15:23:43.1015569+07:00 0HLUOE5OLCDFB:00000001 [INF] Sending file. Request path: '"/client/css/bootstrap.min.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\bootstrap.min.css"' (27b0a520)
+2020-04-04T15:23:43.1016882+07:00 0HLUOE5OLCDFB:00000001 [INF] Request finished in 204.758ms 200 text/css (791a596a)
+2020-04-04T15:23:43.1028511+07:00 0HLUOE5OLCDFE:00000001 [INF] Sending file. Request path: '"/client/css/style.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\style.css"' (27b0a520)
+2020-04-04T15:23:43.1029576+07:00 0HLUOE5OLCDFE:00000001 [INF] Request finished in 92.4811ms 200 text/css (791a596a)
+2020-04-04T15:23:43.1389321+07:00 0HLUOE5OLCDFF:00000001 [INF] Sending file. Request path: '"/client/js/vendor/modernizr-2.8.3.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\vendor\modernizr-2.8.3.min.js"' (27b0a520)
+2020-04-04T15:23:43.1390804+07:00 0HLUOE5OLCDFF:00000001 [INF] Request finished in 149.8503ms 200 application/javascript (791a596a)
+2020-04-04T15:23:43.2089947+07:00 0HLUOE5OLCDFJ:00000001 [INF] Sending file. Request path: '"/client/js/jssor.slider.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\jssor.slider.min.js"' (27b0a520)
+2020-04-04T15:23:43.2091969+07:00 0HLUOE5OLCDFJ:00000001 [INF] Request finished in 242.9385ms 200 application/javascript (791a596a)
+2020-04-04T15:23:43.3534094+07:00 0HLUOE5OLCDFD:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Client/css/slide.css   (ca22a1cb)
+2020-04-04T15:23:43.3548777+07:00 0HLUOE5OLCDFD:00000002 [INF] Sending file. Request path: '"/Client/css/slide.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\Client\css\slide.css"' (27b0a520)
+2020-04-04T15:23:43.3549840+07:00 0HLUOE5OLCDFD:00000002 [INF] Request finished in 1.6233ms 200 text/css (791a596a)
+2020-04-04T15:23:43.4236910+07:00 0HLUOE5OLCDFI:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/jquery.min.js   (ca22a1cb)
+2020-04-04T15:23:43.5051194+07:00 0HLUOE5OLCDFG:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/jquery-ui.js   (ca22a1cb)
+2020-04-04T15:23:43.6493103+07:00 0HLUOE5OLCDFG:00000002 [INF] Sending file. Request path: '"/client/js/jquery-ui.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\jquery-ui.js"' (27b0a520)
+2020-04-04T15:23:43.6494457+07:00 0HLUOE5OLCDFG:00000002 [INF] Request finished in 144.3826ms 200 application/javascript (791a596a)
+2020-04-04T15:23:43.6540705+07:00 0HLUOE5OLCDFI:00000002 [INF] Sending file. Request path: '"/client/js/jquery.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\jquery.min.js"' (27b0a520)
+2020-04-04T15:23:43.6542014+07:00 0HLUOE5OLCDFI:00000002 [INF] Request finished in 230.6804ms 200 application/javascript (791a596a)
+2020-04-04T15:23:43.9563582+07:00 0HLUOE5OLCDFF:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/plugins/general/jquery-validation/dist/jquery.validate.min.js   (ca22a1cb)
+2020-04-04T15:23:44.1253604+07:00 0HLUOE5OLCDFF:00000002 [INF] Sending file. Request path: '"/assets/plugins/general/jquery-validation/dist/jquery.validate.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\assets\plugins\general\jquery-validation\dist\jquery.validate.min.js"' (27b0a520)
+2020-04-04T15:23:44.1254973+07:00 0HLUOE5OLCDFF:00000002 [INF] Request finished in 169.1604ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.1455886+07:00 0HLUOE5OLCDFJ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/plugins/general/mustache/mustache.min.js   (ca22a1cb)
+2020-04-04T15:23:44.1456649+07:00 0HLUOE5OLCDFA:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/LT5615C.jpg   (ca22a1cb)
+2020-04-04T15:23:44.1601015+07:00 0HLUOE5OLCDFA:00000004 [INF] Sending file. Request path: '"/uploaded/images/20191202/LT5615C.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\LT5615C.jpg"' (27b0a520)
+2020-04-04T15:23:44.1602177+07:00 0HLUOE5OLCDFA:00000004 [INF] Request finished in 14.5567ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.1673175+07:00 0HLUOE5OLCDFH:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/slide/2.jpg   (ca22a1cb)
+2020-04-04T15:23:44.1814161+07:00 0HLUOE5OLCDFD:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/LT5715.jpg   (ca22a1cb)
+2020-04-04T15:23:44.2022952+07:00 0HLUOE5OLCDFD:00000003 [INF] Sending file. Request path: '"/uploaded/images/20191202/LT5715.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\LT5715.jpg"' (27b0a520)
+2020-04-04T15:23:44.2024007+07:00 0HLUOE5OLCDFD:00000003 [INF] Request finished in 25.3065ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.2034950+07:00 0HLUOE5OLCDFC:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/popper.js   (ca22a1cb)
+2020-04-04T15:23:44.2066779+07:00 0HLUOE5OLCDFH:00000002 [INF] Sending file. Request path: '"/uploaded/slide/2.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\slide\2.jpg"' (27b0a520)
+2020-04-04T15:23:44.2068433+07:00 0HLUOE5OLCDFH:00000002 [INF] Request finished in 39.547ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.2072967+07:00 0HLUOE5OLCDFJ:00000002 [INF] Sending file. Request path: '"/assets/plugins/general/mustache/mustache.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\assets\plugins\general\mustache\mustache.min.js"' (27b0a520)
+2020-04-04T15:23:44.2074042+07:00 0HLUOE5OLCDFJ:00000002 [INF] Request finished in 61.8754ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.2213836+07:00 0HLUOE5OLCDFB:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/clientapp/shared/tedu.js   (ca22a1cb)
+2020-04-04T15:23:44.2550114+07:00 0HLUOE5OLCDFE:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/bootstrap.min.js   (ca22a1cb)
+2020-04-04T15:23:44.2559762+07:00 0HLUOE5OLCDFG:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/clientapp/controllers/base/index.js   (ca22a1cb)
+2020-04-04T15:23:44.2959050+07:00 0HLUOE5OLCDFB:00000002 [INF] Sending file. Request path: '"/clientapp/shared/tedu.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\clientapp\shared\tedu.js"' (27b0a520)
+2020-04-04T15:23:44.2960534+07:00 0HLUOE5OLCDFB:00000002 [INF] Request finished in 74.6725ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.2980355+07:00 0HLUOE5OLCDFG:00000003 [INF] Sending file. Request path: '"/clientapp/controllers/base/index.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\clientapp\controllers\base\index.js"' (27b0a520)
+2020-04-04T15:23:44.2993778+07:00 0HLUOE5OLCDFG:00000003 [INF] Request finished in 42.2386ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.3000474+07:00 0HLUOE5OLCDFF:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/plugins.js   (ca22a1cb)
+2020-04-04T15:23:44.3011419+07:00 0HLUOE5OLCDFC:00000002 [INF] Sending file. Request path: '"/client/js/popper.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\popper.js"' (27b0a520)
+2020-04-04T15:23:44.3012629+07:00 0HLUOE5OLCDFC:00000002 [INF] Request finished in 97.8202ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.3014638+07:00 0HLUOE5OLCDFA:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/ajax-mail.js   (ca22a1cb)
+2020-04-04T15:23:44.3451237+07:00 0HLUOE5OLCDFA:00000005 [INF] Sending file. Request path: '"/client/js/ajax-mail.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\ajax-mail.js"' (27b0a520)
+2020-04-04T15:23:44.3452446+07:00 0HLUOE5OLCDFA:00000005 [INF] Request finished in 43.792ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.3455450+07:00 0HLUOE5OLCDFD:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2020-04-04T15:23:44.4541145+07:00 0HLUOE5OLCDFE:00000002 [INF] Sending file. Request path: '"/client/js/bootstrap.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\bootstrap.min.js"' (27b0a520)
+2020-04-04T15:23:44.4542304+07:00 0HLUOE5OLCDFE:00000002 [INF] Request finished in 199.2603ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.4690043+07:00 0HLUOE5OLCDFD:00000004 [INF] Sending file. Request path: '"/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\assets\plugins\general\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2020-04-04T15:23:44.4691118+07:00 0HLUOE5OLCDFD:00000004 [INF] Request finished in 123.577ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.5206551+07:00 0HLUOE5OLCDFJ:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/clientapp/shared/localize/resources.en-US.js   (ca22a1cb)
+2020-04-04T15:23:44.5264106+07:00 0HLUOE5OLCDFB:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/plugins/general/notifyjs/dist/notify.js   (ca22a1cb)
+2020-04-04T15:23:44.5365559+07:00 0HLUOE5OLCDFG:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/revolution-slider.js   (ca22a1cb)
+2020-04-04T15:23:44.5938038+07:00 0HLUOE5OLCDFJ:00000003 [INF] Sending file. Request path: '"/clientapp/shared/localize/resources.en-US.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\clientapp\shared\localize\resources.en-US.js"' (27b0a520)
+2020-04-04T15:23:44.5939119+07:00 0HLUOE5OLCDFJ:00000003 [INF] Request finished in 73.3029ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.5942399+07:00 0HLUOE5OLCDFA:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Content/Client/img/svg/loading/static-svg/spin.svg   (ca22a1cb)
+2020-04-04T15:23:44.6037733+07:00 0HLUOE5OLCDFA:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-04T15:23:44.6038705+07:00 0HLUOE5OLCDFA:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-04T15:23:44.6040895+07:00 0HLUOE5OLCDFA:00000006 [INF] Request finished in 9.8637ms 404  (791a596a)
+2020-04-04T15:23:44.6042777+07:00 0HLUOE5OLCDFC:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/clientapp/controllers/home/index.js   (ca22a1cb)
+2020-04-04T15:23:44.6180143+07:00 0HLUOE5OLCDFB:00000003 [INF] Sending file. Request path: '"/assets/plugins/general/notifyjs/dist/notify.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\assets\plugins\general\notifyjs\dist\notify.js"' (27b0a520)
+2020-04-04T15:23:44.6181811+07:00 0HLUOE5OLCDFB:00000003 [INF] Request finished in 91.8157ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.6727594+07:00 0HLUOE5OLCDFD:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/L1616C.jpg   (ca22a1cb)
+2020-04-04T15:23:44.6766117+07:00 0HLUOE5OLCDFC:00000003 [INF] Sending file. Request path: '"/clientapp/controllers/home/index.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\clientapp\controllers\home\index.js"' (27b0a520)
+2020-04-04T15:23:44.6767300+07:00 0HLUOE5OLCDFC:00000003 [INF] Request finished in 72.468ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.7319263+07:00 0HLUOE5OLCDFD:00000005 [INF] Sending file. Request path: '"/uploaded/images/20191202/L1616C.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\L1616C.jpg"' (27b0a520)
+2020-04-04T15:23:44.7320460+07:00 0HLUOE5OLCDFD:00000005 [INF] Request finished in 59.3466ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.7323622+07:00 0HLUOE5OLCDFA:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/L1715.jpg   (ca22a1cb)
+2020-04-04T15:23:44.8115010+07:00 0HLUOE5OLCDFJ:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/slide/3.jpg   (ca22a1cb)
+2020-04-04T15:23:44.8205930+07:00 0HLUOE5OLCDFA:00000007 [INF] Sending file. Request path: '"/uploaded/images/20191202/L1715.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\L1715.jpg"' (27b0a520)
+2020-04-04T15:23:44.8206999+07:00 0HLUOE5OLCDFA:00000007 [INF] Request finished in 88.3548ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.8211420+07:00 0HLUOE5OLCDFB:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/L1716.jpg   (ca22a1cb)
+2020-04-04T15:23:44.8272685+07:00 0HLUOE5OLCDFN:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/LT4704G17.jpg   (ca22a1cb)
+2020-04-04T15:23:44.8318831+07:00 0HLUOE5OLCDFB:00000004 [INF] Sending file. Request path: '"/uploaded/images/20191202/L1716.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\L1716.jpg"' (27b0a520)
+2020-04-04T15:23:44.8320176+07:00 0HLUOE5OLCDFB:00000004 [INF] Request finished in 10.8846ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.8322183+07:00 0HLUOE5OLCDFI:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/LT367CR.jpg   (ca22a1cb)
+2020-04-04T15:23:44.8389178+07:00 0HLUOE5OLCDFM:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/LT5616C.jpg   (ca22a1cb)
+2020-04-04T15:23:44.8397788+07:00 0HLUOE5OLCDFN:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191202/LT4704G17.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\LT4704G17.jpg"' (27b0a520)
+2020-04-04T15:23:44.8398851+07:00 0HLUOE5OLCDFN:00000001 [INF] Request finished in 12.6566ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.8400916+07:00 0HLUOE5OLCDFC:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/LT4704G19.jpg   (ca22a1cb)
+2020-04-04T15:23:44.8431680+07:00 0HLUOE5OLCDFC:00000004 [INF] Sending file. Request path: '"/uploaded/images/20191202/LT4704G19.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\LT4704G19.jpg"' (27b0a520)
+2020-04-04T15:23:44.8432948+07:00 0HLUOE5OLCDFC:00000004 [INF] Request finished in 3.1924ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.8434877+07:00 0HLUOE5OLCDFK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/LT4706.jpg   (ca22a1cb)
+2020-04-04T15:23:44.8560570+07:00 0HLUOE5OLCDFK:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191202/LT4706.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\LT4706.jpg"' (27b0a520)
+2020-04-04T15:23:44.8562105+07:00 0HLUOE5OLCDFK:00000001 [INF] Request finished in 12.7329ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.8564071+07:00 0HLUOE5OLCDFL:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/LT4724.jpg   (ca22a1cb)
+2020-04-04T15:23:44.8601618+07:00 0HLUOE5OLCDFL:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191202/LT4724.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\LT4724.jpg"' (27b0a520)
+2020-04-04T15:23:44.8602747+07:00 0HLUOE5OLCDFL:00000001 [INF] Request finished in 3.8774ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.8738683+07:00 0HLUOE5OLCDFE:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/main.js   (ca22a1cb)
+2020-04-04T15:23:44.9058397+07:00 0HLUOE5OLCDFM:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191202/LT5616C.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\LT5616C.jpg"' (27b0a520)
+2020-04-04T15:23:44.9059525+07:00 0HLUOE5OLCDFM:00000001 [INF] Request finished in 67.0935ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.9078710+07:00 0HLUOE5OLCDFO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191202/LT4716.jpg   (ca22a1cb)
+2020-04-04T15:23:44.9141310+07:00 0HLUOE5OLCDFF:00000003 [INF] Sending file. Request path: '"/client/js/plugins.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\plugins.js"' (27b0a520)
+2020-04-04T15:23:44.9142523+07:00 0HLUOE5OLCDFF:00000003 [INF] Request finished in 614.2333ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.9246835+07:00 0HLUOE5OLCDFG:00000004 [INF] Sending file. Request path: '"/client/js/revolution-slider.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\revolution-slider.js"' (27b0a520)
+2020-04-04T15:23:44.9248083+07:00 0HLUOE5OLCDFG:00000004 [INF] Request finished in 388.2781ms 200 application/javascript (791a596a)
+2020-04-04T15:23:44.9284346+07:00 0HLUOE5OLCDFJ:00000004 [INF] Sending file. Request path: '"/uploaded/slide/3.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\slide\3.jpg"' (27b0a520)
+2020-04-04T15:23:44.9285640+07:00 0HLUOE5OLCDFJ:00000004 [INF] Request finished in 117.1205ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.9349073+07:00 0HLUOE5OLCDFI:00000003 [INF] Sending file. Request path: '"/uploaded/images/20191202/LT367CR.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\LT367CR.jpg"' (27b0a520)
+2020-04-04T15:23:44.9351625+07:00 0HLUOE5OLCDFI:00000003 [INF] Request finished in 102.8499ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:44.9359187+07:00 0HLUOE5OLCDFB:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/bong-hoat-tinh-gap-3/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.0505581+07:00 0HLUOE5OLCDFO:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191202/LT4716.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191202\LT4716.jpg"' (27b0a520)
+2020-04-04T15:23:45.0507025+07:00 0HLUOE5OLCDFO:00000001 [INF] Request finished in 142.875ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:45.0546520+07:00 0HLUOE5OLCDFB:00000005 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/bong-hoat-tinh-gap-3/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\bong-hoat-tinh-gap-3\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.0548546+07:00 0HLUOE5OLCDFB:00000005 [INF] Request finished in 118.9395ms 200 image/png (791a596a)
+2020-04-04T15:23:45.0554270+07:00 0HLUOE5OLCDFE:00000003 [INF] Sending file. Request path: '"/client/js/main.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\main.js"' (27b0a520)
+2020-04-04T15:23:45.0555406+07:00 0HLUOE5OLCDFE:00000003 [INF] Request finished in 181.7435ms 200 application/javascript (791a596a)
+2020-04-04T15:23:45.0559003+07:00 0HLUOE5OLCDFN:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/bong-thang-topaz-co-chan-vai-2d/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.0605437+07:00 0HLUOE5OLCDFN:00000002 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/bong-thang-topaz-co-chan-vai-2d/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\bong-thang-topaz-co-chan-vai-2d\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.0606579+07:00 0HLUOE5OLCDFN:00000002 [INF] Request finished in 4.7768ms 200 image/png (791a596a)
+2020-04-04T15:23:45.0608564+07:00 0HLUOE5OLCDFC:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/bong-thang-korea-co-chan-vai-gam/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.0659844+07:00 0HLUOE5OLCDFK:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/nem-bong-thang-sapphire-co-chan-vai-gam-3d/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.1243269+07:00 0HLUOE5OLCDFD:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/bong-ep/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.1393565+07:00 0HLUOE5OLCDFL:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/gap-3-bong-ep-emerald-vai-xop-gam-co-chan/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.1393565+07:00 0HLUOE5OLCDFA:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/bong-mem-citrine-vai-tc-hoa--hoac-vai-valize/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.1442349+07:00 0HLUOE5OLCDFC:00000005 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/bong-thang-korea-co-chan-vai-gam/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\bong-thang-korea-co-chan-vai-gam\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.1443507+07:00 0HLUOE5OLCDFC:00000005 [INF] Request finished in 83.5047ms 200 image/png (791a596a)
+2020-04-04T15:23:45.1446884+07:00 0HLUOE5OLCDFK:00000002 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/nem-bong-thang-sapphire-co-chan-vai-gam-3d/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\nem-bong-thang-sapphire-co-chan-vai-gam-3d\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.1448111+07:00 0HLUOE5OLCDFK:00000002 [INF] Request finished in 78.8585ms 200 image/png (791a596a)
+2020-04-04T15:23:45.1449166+07:00 0HLUOE5OLCDFA:00000008 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/bong-mem-citrine-vai-tc-hoa--hoac-vai-valize/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\bong-mem-citrine-vai-tc-hoa--hoac-vai-valize\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.1450156+07:00 0HLUOE5OLCDFA:00000008 [INF] Request finished in 5.7221ms 200 image/png (791a596a)
+2020-04-04T15:23:45.1494371+07:00 0HLUOE5OLCDFD:00000006 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/bong-ep/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\bong-ep\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.1495817+07:00 0HLUOE5OLCDFD:00000006 [INF] Request finished in 25.4993ms 200 image/png (791a596a)
+2020-04-04T15:23:45.1618802+07:00 0HLUOE5OLCDFM:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/nem-gap-3-bong-ep-khoan-lo-ruby-vai-xop-gam/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.1648816+07:00 0HLUOE5OLCDFL:00000002 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/gap-3-bong-ep-emerald-vai-xop-gam-co-chan/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\gap-3-bong-ep-emerald-vai-xop-gam-co-chan\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.1650508+07:00 0HLUOE5OLCDFL:00000002 [INF] Request finished in 25.7312ms 200 image/png (791a596a)
+2020-04-04T15:23:45.1910954+07:00 0HLUOE5OLCDFI:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/gap-3-bong-ep-korea-vai-cotton/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.2128226+07:00 0HLUOE5OLCDFM:00000002 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/nem-gap-3-bong-ep-khoan-lo-ruby-vai-xop-gam/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\nem-gap-3-bong-ep-khoan-lo-ruby-vai-xop-gam\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.2130987+07:00 0HLUOE5OLCDFM:00000002 [INF] Request finished in 51.1007ms 200 image/png (791a596a)
+2020-04-04T15:23:45.2195953+07:00 0HLUOE5OLCDFI:00000004 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/gap-3-bong-ep-korea-vai-cotton/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\gap-3-bong-ep-korea-vai-cotton\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.2197329+07:00 0HLUOE5OLCDFI:00000004 [INF] Request finished in 28.7172ms 200 image/png (791a596a)
+2020-04-04T15:23:45.2235070+07:00 0HLUOE5OLCDFE:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/gap-3-bong-ep-sapphire-co-chan-vai-gam-3d/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.2235070+07:00 0HLUOE5OLCDFO:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/nem-gap-3-bong-ep-topaz-co-chan-vai-2d/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.2289309+07:00 0HLUOE5OLCDFO:00000002 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/nem-gap-3-bong-ep-topaz-co-chan-vai-2d/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\nem-gap-3-bong-ep-topaz-co-chan-vai-2d\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.2290722+07:00 0HLUOE5OLCDFO:00000002 [INF] Request finished in 5.6363ms 200 image/png (791a596a)
+2020-04-04T15:23:45.3010918+07:00 0HLUOE5OLCDFB:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/gap-3-bong-ep-topaz-vai-2d/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.3096622+07:00 0HLUOE5OLCDFB:00000006 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/gap-3-bong-ep-topaz-vai-2d/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\gap-3-bong-ep-topaz-vai-2d\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.3097676+07:00 0HLUOE5OLCDFB:00000006 [INF] Request finished in 8.7495ms 200 image/png (791a596a)
+2020-04-04T15:23:45.3135296+07:00 0HLUOE5OLCDFE:00000004 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/gap-3-bong-ep-sapphire-co-chan-vai-gam-3d/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\gap-3-bong-ep-sapphire-co-chan-vai-gam-3d\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.3136490+07:00 0HLUOE5OLCDFE:00000004 [INF] Request finished in 90.1453ms 200 image/png (791a596a)
+2020-04-04T15:23:45.3404229+07:00 0HLUOE5OLCDFD:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-mousse/deo-baolan/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.3585734+07:00 0HLUOE5OLCDFD:00000007 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-mousse/deo-baolan/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-mousse\deo-baolan\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.3586875+07:00 0HLUOE5OLCDFD:00000007 [INF] Request finished in 18.3075ms 200 image/png (791a596a)
+2020-04-04T15:23:45.3589257+07:00 0HLUOE5OLCDFP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/dupong-citrine--vai-valize/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.3635343+07:00 0HLUOE5OLCDFQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-bong/bong-hoat-tinh/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.3648074+07:00 0HLUOE5OLCDFP:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/dupong-citrine--vai-valize/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\dupong-citrine--vai-valize\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.3653890+07:00 0HLUOE5OLCDFP:00000001 [INF] Request finished in 6.4594ms 200 image/png (791a596a)
+2020-04-04T15:23:45.4505861+07:00 0HLUOE5OLCDFN:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-mousse/gap-3-k35-citrine-vai-valize/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.4584651+07:00 0HLUOE5OLCDFQ:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-bong/bong-hoat-tinh/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-bong\bong-hoat-tinh\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.4585829+07:00 0HLUOE5OLCDFQ:00000001 [INF] Request finished in 95.0866ms 200 image/png (791a596a)
+2020-04-04T15:23:45.4945308+07:00 0HLUOE5OLCDFA:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-mousse/mut-k35-citrine-vo-long-vai-valize/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.4948940+07:00 0HLUOE5OLCDFN:00000003 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-mousse/gap-3-k35-citrine-vai-valize/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-mousse\gap-3-k35-citrine-vai-valize\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.4949980+07:00 0HLUOE5OLCDFN:00000003 [INF] Request finished in 44.4579ms 200 image/png (791a596a)
+2020-04-04T15:23:45.5258846+07:00 0HLUOE5OLCDFC:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-mousse/gap-3-thong-hoi-sapphire-xuat-khau-vai-xop-gam/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.5459172+07:00 0HLUOE5OLCDFO:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-mousse/gap-3-thong-hoi-topaz-xuat-khau-vai-xop-gam/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.5492573+07:00 0HLUOE5OLCDFA:00000009 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-mousse/mut-k35-citrine-vo-long-vai-valize/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-mousse\mut-k35-citrine-vo-long-vai-valize\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.5493909+07:00 0HLUOE5OLCDFA:00000009 [INF] Request finished in 54.9839ms 200 image/png (791a596a)
+2020-04-04T15:23:45.5529769+07:00 0HLUOE5OLCDFC:00000006 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-mousse/gap-3-thong-hoi-sapphire-xuat-khau-vai-xop-gam/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-mousse\gap-3-thong-hoi-sapphire-xuat-khau-vai-xop-gam\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.5530913+07:00 0HLUOE5OLCDFC:00000006 [INF] Request finished in 27.4411ms 200 image/png (791a596a)
+2020-04-04T15:23:45.5794252+07:00 0HLUOE5OLCDFM:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-mousse/mut-cnc-ruby-vai-gam/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.5806431+07:00 0HLUOE5OLCDFO:00000003 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-mousse/gap-3-thong-hoi-topaz-xuat-khau-vai-xop-gam/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-mousse\gap-3-thong-hoi-topaz-xuat-khau-vai-xop-gam\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.5808000+07:00 0HLUOE5OLCDFO:00000003 [INF] Request finished in 34.9465ms 200 image/png (791a596a)
+2020-04-04T15:23:45.5850964+07:00 0HLUOE5OLCDFM:00000003 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-mousse/mut-cnc-ruby-vai-gam/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-mousse\mut-cnc-ruby-vai-gam\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.5852108+07:00 0HLUOE5OLCDFM:00000003 [INF] Request finished in 5.8346ms 200 image/png (791a596a)
+2020-04-04T15:23:45.5997929+07:00 0HLUOE5OLCDFL:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-mousse/mut-thong-hoi-sapphire-xuat-khau-vai-xop-gam/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.6295258+07:00 0HLUOE5OLCDFL:00000003 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-mousse/mut-thong-hoi-sapphire-xuat-khau-vai-xop-gam/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-mousse\mut-thong-hoi-sapphire-xuat-khau-vai-xop-gam\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.6296366+07:00 0HLUOE5OLCDFL:00000003 [INF] Request finished in 30.0796ms 200 image/png (791a596a)
+2020-04-04T15:23:45.6453565+07:00 0HLUOE5OLCDFK:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-mousse/nem-ep-deo/1400-x-970-01.png   (ca22a1cb)
+2020-04-04T15:23:45.6493044+07:00 0HLUOE5OLCDFB:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-mousse/mut-thong-hoi-topaz-xuat-khau-vai-xop-gam/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.7070145+07:00 0HLUOE5OLCDFK:00000003 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-mousse/nem-ep-deo/1400-x-970-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-mousse\nem-ep-deo\1400-x-970-01.png"' (27b0a520)
+2020-04-04T15:23:45.7071516+07:00 0HLUOE5OLCDFK:00000003 [INF] Request finished in 61.8412ms 200 image/png (791a596a)
+2020-04-04T15:23:45.7155162+07:00 0HLUOE5OLCDFP:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-pe/2-pe-cintrine/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.7257480+07:00 0HLUOE5OLCDFE:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-mousse/mut-cnc-emerald-vai-xop-gam/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.7283288+07:00 0HLUOE5OLCDFP:00000002 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-pe/2-pe-cintrine/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-pe\2-pe-cintrine\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.7284507+07:00 0HLUOE5OLCDFP:00000002 [INF] Request finished in 12.9916ms 200 image/png (791a596a)
+2020-04-04T15:23:45.7310810+07:00 0HLUOE5OLCDFE:00000005 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-mousse/mut-cnc-emerald-vai-xop-gam/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-mousse\mut-cnc-emerald-vai-xop-gam\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.7311798+07:00 0HLUOE5OLCDFE:00000005 [INF] Request finished in 5.4869ms 200 image/png (791a596a)
+2020-04-04T15:23:45.7314402+07:00 0HLUOE5OLCDFB:00000007 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-mousse/mut-thong-hoi-topaz-xuat-khau-vai-xop-gam/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-mousse\mut-thong-hoi-topaz-xuat-khau-vai-xop-gam\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.7315421+07:00 0HLUOE5OLCDFB:00000007 [INF] Request finished in 82.2909ms 200 image/png (791a596a)
+2020-04-04T15:23:45.8107768+07:00 0HLUOE5OLCDFD:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-pe/tham-da-nang/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.8131747+07:00 0HLUOE5OLCDFI:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-pe/gap-3-pe-ozon-vai-valize/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.8179365+07:00 0HLUOE5OLCDFD:00000008 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-pe/tham-da-nang/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-pe\tham-da-nang\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.8180598+07:00 0HLUOE5OLCDFD:00000008 [INF] Request finished in 7.3381ms 200 image/png (791a596a)
+2020-04-04T15:23:45.8474785+07:00 0HLUOE5OLCDFI:00000005 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-pe/gap-3-pe-ozon-vai-valize/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-pe\gap-3-pe-ozon-vai-valize\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.8476349+07:00 0HLUOE5OLCDFI:00000005 [INF] Request finished in 34.4973ms 200 image/png (791a596a)
+2020-04-04T15:23:45.8478527+07:00 0HLUOE5OLCDFF:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-pe/pe-thang-topaz-vai-2d/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.8480118+07:00 0HLUOE5OLCDFQ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-pe/nem-gap-3-pe-topaz-vai-2d-co-chan/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.8483123+07:00 0HLUOE5OLCDFG:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-pe/gap-3-pe-citrine-vai-valize/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.8541603+07:00 0HLUOE5OLCDFC:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-pe/pe-thang-citrine-vai-valize/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.8546594+07:00 0HLUOE5OLCDFF:00000004 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-pe/pe-thang-topaz-vai-2d/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-pe\pe-thang-topaz-vai-2d\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.8548776+07:00 0HLUOE5OLCDFF:00000004 [INF] Request finished in 7.0116ms 200 image/png (791a596a)
+2020-04-04T15:23:45.8551830+07:00 0HLUOE5OLCDFN:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-pe/gap-2-pe-topaz-vai-2d/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.8593328+07:00 0HLUOE5OLCDFC:00000007 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-pe/pe-thang-citrine-vai-valize/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-pe\pe-thang-citrine-vai-valize\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.8594623+07:00 0HLUOE5OLCDFC:00000007 [INF] Request finished in 5.354ms 200 image/png (791a596a)
+2020-04-04T15:23:45.8796090+07:00 0HLUOE5OLCDFO:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/Nem-pe/nem-gap-3-pe-cao-cap-sapphire-vai-xop-gam/400-x-277-01.png   (ca22a1cb)
+2020-04-04T15:23:45.8815292+07:00 0HLUOE5OLCDFQ:00000002 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-pe/nem-gap-3-pe-topaz-vai-2d-co-chan/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-pe\nem-gap-3-pe-topaz-vai-2d-co-chan\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.8816512+07:00 0HLUOE5OLCDFQ:00000002 [INF] Request finished in 33.6855ms 200 image/png (791a596a)
+2020-04-04T15:23:45.8959372+07:00 0HLUOE5OLCDFN:00000004 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-pe/gap-2-pe-topaz-vai-2d/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-pe\gap-2-pe-topaz-vai-2d\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.8960684+07:00 0HLUOE5OLCDFN:00000004 [INF] Request finished in 40.8998ms 200 image/png (791a596a)
+2020-04-04T15:23:45.9017993+07:00 0HLUOE5OLCDFL:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/pe-cn/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:45.9052008+07:00 0HLUOE5OLCDFG:00000005 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-pe/gap-3-pe-citrine-vai-valize/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-pe\gap-3-pe-citrine-vai-valize\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.9053118+07:00 0HLUOE5OLCDFG:00000005 [INF] Request finished in 57.0029ms 200 image/png (791a596a)
+2020-04-04T15:23:45.9059248+07:00 0HLUOE5OLCDFO:00000004 [INF] Sending file. Request path: '"/uploaded/images/20191027/Nem-pe/nem-gap-3-pe-cao-cap-sapphire-vai-xop-gam/400-x-277-01.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\Nem-pe\nem-gap-3-pe-cao-cap-sapphire-vai-xop-gam\400-x-277-01.png"' (27b0a520)
+2020-04-04T15:23:45.9060500+07:00 0HLUOE5OLCDFO:00000004 [INF] Request finished in 26.5156ms 200 image/png (791a596a)
+2020-04-04T15:23:45.9518080+07:00 0HLUOE5OLCDFL:00000004 [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/pe-cn/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\pe-cn\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:45.9519345+07:00 0HLUOE5OLCDFL:00000004 [INF] Request finished in 50.1654ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:45.9520136+07:00 0HLUOE5OLCDFA:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/mut-cong-nghiep/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.0446868+07:00 0HLUOE5OLCDFM:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/mut-khang-chay/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.0466972+07:00 0HLUOE5OLCDFA:0000000A [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/mut-cong-nghiep/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\mut-cong-nghiep\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.0468265+07:00 0HLUOE5OLCDFA:0000000A [INF] Request finished in 94.8285ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.0692033+07:00 0HLUOE5OLCDFM:00000004 [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/mut-khang-chay/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\mut-khang-chay\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.0693249+07:00 0HLUOE5OLCDFM:00000004 [INF] Request finished in 24.6645ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.1202934+07:00 0HLUOE5OLCDFR:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/mut-luoi/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.1206985+07:00 0HLUOE5OLCDFS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/fonts/ionicons.ttf?v=2.0.0   (ca22a1cb)
+2020-04-04T15:23:46.1207784+07:00 0HLUOE5OLCDFU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/slide/1.jpg   (ca22a1cb)
+2020-04-04T15:23:46.1215675+07:00 0HLUOE5OLCDFB:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/fonts/Pe-icon-7-stroke.woff?d7yf1v   (ca22a1cb)
+2020-04-04T15:23:46.1545012+07:00 0HLUOE5OLCDFB:00000008 [INF] Sending file. Request path: '"/client/fonts/Pe-icon-7-stroke.woff"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\fonts\Pe-icon-7-stroke.woff"' (27b0a520)
+2020-04-04T15:23:46.1546344+07:00 0HLUOE5OLCDFB:00000008 [INF] Request finished in 33.0803ms 200 application/font-woff (791a596a)
+2020-04-04T15:23:46.1548723+07:00 0HLUOE5OLCDFC:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191028/nem-bong-mousse-7-vung-organic-sleep-02-vo-long-gap-3.png   (ca22a1cb)
+2020-04-04T15:23:46.1892399+07:00 0HLUOE5OLCDG0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191028/nem-gap-bong-dolsan.png   (ca22a1cb)
+2020-04-04T15:23:46.1958291+07:00 0HLUOE5OLCDFQ:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/bong-soi/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.2006750+07:00 0HLUOE5OLCDFI:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/mut-nay-nhanh/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.2096723+07:00 0HLUOE5OLCDFE:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/bong-tam/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.2140147+07:00 0HLUOE5OLCDFI:00000006 [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/mut-nay-nhanh/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\mut-nay-nhanh\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.2141350+07:00 0HLUOE5OLCDFI:00000006 [INF] Request finished in 13.5029ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.2143247+07:00 0HLUOE5OLCDG2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191028/nem-gap-bong-acness.png   (ca22a1cb)
+2020-04-04T15:23:46.2187679+07:00 0HLUOE5OLCDFD:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/bong-kien/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.2241499+07:00 0HLUOE5OLCDFP:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/lo-xo-tui/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.2327307+07:00 0HLUOE5OLCDFT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191028/nem-gap-bong-gam.png   (ca22a1cb)
+2020-04-04T15:23:46.2379731+07:00 0HLUOE5OLCDG1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191028/nem-bong-mousse-7-vung-organic-sleep-02-vo-long-gap-doi.png   (ca22a1cb)
+2020-04-04T15:23:46.2385705+07:00 0HLUOE5OLCDG3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/productCate/nem.png   (ca22a1cb)
+2020-04-04T15:23:46.2482636+07:00 0HLUOE5OLCDG4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/lo-xo-zig-zac/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.2518567+07:00 0HLUOE5OLCDFV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191028/nem-bong-mousse-7-vung-organic-sleep-02-vo-long-hang-thang.png   (ca22a1cb)
+2020-04-04T15:23:46.2683912+07:00 0HLUOE5OLCDFR:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/mut-luoi/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\mut-luoi\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.2685305+07:00 0HLUOE5OLCDFR:00000001 [INF] Request finished in 148.2858ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.2690103+07:00 0HLUOE5OLCDG5:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/fonts/fontawesome-webfont.woff2?v=4.5.0   (ca22a1cb)
+2020-04-04T15:23:46.2881017+07:00 0HLUOE5OLCDFP:00000003 [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/lo-xo-tui/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\lo-xo-tui\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.2882166+07:00 0HLUOE5OLCDFP:00000003 [INF] Request finished in 64.1141ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.2886483+07:00 0HLUOE5OLCDG1:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191028/nem-bong-mousse-7-vung-organic-sleep-02-vo-long-gap-doi.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191028\nem-bong-mousse-7-vung-organic-sleep-02-vo-long-gap-doi.png"' (27b0a520)
+2020-04-04T15:23:46.2887646+07:00 0HLUOE5OLCDG1:00000001 [INF] Request finished in 50.8142ms 200 image/png (791a596a)
+2020-04-04T15:23:46.2893617+07:00 0HLUOE5OLCDG0:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191028/nem-gap-bong-dolsan.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191028\nem-gap-bong-dolsan.png"' (27b0a520)
+2020-04-04T15:23:46.2894704+07:00 0HLUOE5OLCDG0:00000001 [INF] Request finished in 100.2791ms 200 image/png (791a596a)
+2020-04-04T15:23:46.2897644+07:00 0HLUOE5OLCDFQ:00000003 [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/bong-soi/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\bong-soi\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.2898553+07:00 0HLUOE5OLCDFQ:00000003 [INF] Request finished in 94.093ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.2900439+07:00 0HLUOE5OLCDG2:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191028/nem-gap-bong-acness.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191028\nem-gap-bong-acness.png"' (27b0a520)
+2020-04-04T15:23:46.2901194+07:00 0HLUOE5OLCDG2:00000001 [INF] Request finished in 75.8158ms 200 image/png (791a596a)
+2020-04-04T15:23:46.2903515+07:00 0HLUOE5OLCDFE:00000006 [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/bong-tam/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\bong-tam\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.2904516+07:00 0HLUOE5OLCDFE:00000006 [INF] Request finished in 80.8343ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.2906332+07:00 0HLUOE5OLCDFA:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/lien-ket/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.2912526+07:00 0HLUOE5OLCDFD:00000009 [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/bong-kien/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\bong-kien\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.2913396+07:00 0HLUOE5OLCDFD:00000009 [INF] Request finished in 72.622ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.2920075+07:00 0HLUOE5OLCDG3:00000001 [INF] Sending file. Request path: '"/uploaded/productCate/nem.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\productCate\nem.png"' (27b0a520)
+2020-04-04T15:23:46.2921798+07:00 0HLUOE5OLCDG3:00000001 [INF] Request finished in 53.632ms 200 image/png (791a596a)
+2020-04-04T15:23:46.2972074+07:00 0HLUOE5OLCDG4:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/lo-xo-zig-zac/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\lo-xo-zig-zac\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.2973529+07:00 0HLUOE5OLCDG4:00000001 [INF] Request finished in 49.1128ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.2978838+07:00 0HLUOE5OLCDFS:00000001 [INF] Sending file. Request path: '"/client/fonts/ionicons.ttf"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\fonts\ionicons.ttf"' (27b0a520)
+2020-04-04T15:23:46.2980054+07:00 0HLUOE5OLCDFS:00000001 [INF] Request finished in 177.321ms 200 application/x-font-ttf (791a596a)
+2020-04-04T15:23:46.2987203+07:00 0HLUOE5OLCDG5:00000001 [INF] Sending file. Request path: '"/client/fonts/fontawesome-webfont.woff2"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\fonts\fontawesome-webfont.woff2"' (27b0a520)
+2020-04-04T15:23:46.2988393+07:00 0HLUOE5OLCDG5:00000001 [INF] Request finished in 29.8722ms 200 font/woff2 (791a596a)
+2020-04-04T15:23:46.3065830+07:00 0HLUOE5OLCDFT:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191028/nem-gap-bong-gam.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191028\nem-gap-bong-gam.png"' (27b0a520)
+2020-04-04T15:23:46.3067327+07:00 0HLUOE5OLCDFT:00000001 [INF] Request finished in 74.3119ms 200 image/png (791a596a)
+2020-04-04T15:23:46.3070199+07:00 0HLUOE5OLCDFA:0000000B [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/lien-ket/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\lien-ket\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.3071172+07:00 0HLUOE5OLCDFA:0000000B [INF] Request finished in 16.4916ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.3160149+07:00 0HLUOE5OLCDFU:00000001 [INF] Sending file. Request path: '"/uploaded/slide/1.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\slide\1.jpg"' (27b0a520)
+2020-04-04T15:23:46.3161466+07:00 0HLUOE5OLCDFU:00000001 [INF] Request finished in 195.3659ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:46.3351279+07:00 0HLUOE5OLCDFC:00000008 [INF] Sending file. Request path: '"/uploaded/images/20191028/nem-bong-mousse-7-vung-organic-sleep-02-vo-long-gap-3.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191028\nem-bong-mousse-7-vung-organic-sleep-02-vo-long-gap-3.png"' (27b0a520)
+2020-04-04T15:23:46.3352427+07:00 0HLUOE5OLCDFC:00000008 [INF] Request finished in 180.3911ms 200 image/png (791a596a)
+2020-04-04T15:23:46.3636621+07:00 0HLUOE5OLCDFV:00000001 [INF] Sending file. Request path: '"/uploaded/images/20191028/nem-bong-mousse-7-vung-organic-sleep-02-vo-long-hang-thang.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191028\nem-bong-mousse-7-vung-organic-sleep-02-vo-long-hang-thang.png"' (27b0a520)
+2020-04-04T15:23:46.3637695+07:00 0HLUOE5OLCDFV:00000001 [INF] Request finished in 111.9504ms 200 image/png (791a596a)
+2020-04-04T15:23:46.5706176+07:00 0HLUOE5OLCDFH:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/mut-tai-che/400-x-277-01.jpg   (ca22a1cb)
+2020-04-04T15:23:46.6311937+07:00 0HLUOE5OLCDFH:00000003 [INF] Sending file. Request path: '"/uploaded/images/20191027/sp-phuc-vu-cong-nghiep/mut-tai-che/400-x-277-01.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\images\20191027\sp-phuc-vu-cong-nghiep\mut-tai-che\400-x-277-01.jpg"' (27b0a520)
+2020-04-04T15:23:46.6313276+07:00 0HLUOE5OLCDFH:00000003 [INF] Request finished in 60.7533ms 200 image/jpeg (791a596a)
+2020-04-04T15:23:51.2095321+07:00 0HLUOE5OLCDFF:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/favicon.jpg   (ca22a1cb)
+2020-04-04T15:23:51.2119801+07:00 0HLUOE5OLCDFF:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-04T15:23:51.2120895+07:00 0HLUOE5OLCDFF:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-04T15:23:51.2129795+07:00 0HLUOE5OLCDFF:00000005 [INF] Request finished in 3.5393ms 404  (791a596a)
+2020-04-04T15:24:15.2541355+07:00 0HLUOE5OLCDFL:00000005 [INF] Request starting HTTP/1.1 POST http://127.0.0.1:41405/iisintegration  0 (ca22a1cb)
+2020-04-04T15:24:15.2546567+07:00 0HLUOE5OLCDFL:00000005 [INF] Request finished in 1.5019ms 202  (791a596a)

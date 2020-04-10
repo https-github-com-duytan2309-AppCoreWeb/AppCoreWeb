@@ -171,6 +171,7 @@ namespace TeduCoreApp
             services.AddTransient<IFeedbackRepository, FeedbackRepository>();
 
             //Serrvices
+            services.AddTransient<IAddressService, AddressService>();
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IProductService, ProductService>();
@@ -188,7 +189,6 @@ namespace TeduCoreApp
             services.AddTransient<IProductTrademarkService, ProductTrademarkService>();
             services.AddTransient<IViewRenderService, ViewRenderService>();
             services.AddTransient<IAnnouncementService, AnnouncementService>();
-            services.AddTransient<IAddressService, AddressService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();

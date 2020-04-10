@@ -18,11 +18,11 @@ namespace TeduCoreApp.Application.ViewModels.Product
         [StringLength(250)]
         public string Rank { set; get; }
 
+        public int ProvinceId { get; set; }
         public int DistrictId { get; set; }
 
-        public int ProvinceId { get; set; }
-
         public DistrictViewModel District { set; get; }
+
         public ProvinceViewModel Province { set; get; }
         public bool Status { set; get; }
 

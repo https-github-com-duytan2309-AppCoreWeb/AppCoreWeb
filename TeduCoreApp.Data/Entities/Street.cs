@@ -15,16 +15,15 @@ namespace TeduCoreApp.Data.Entities
         }
 
         public Street(int id, string code, string name,
-            string rank, int provinceid, int districtid, int wardid, bool status)
+            string rank, int wardid, int district, bool status)
         {
             Id = id;
             Code = code;
             Name = name;
             Rank = rank;
-            DistrictId = districtid;
             WardId = wardid;
+            DistrictId = district;
             Status = status;
-            ProvinceId = provinceid;
         }
 
         [StringLength(10)]
@@ -38,21 +37,14 @@ namespace TeduCoreApp.Data.Entities
         [StringLength(250)]
         public string Rank { set; get; }
 
-        [Required]
-        public int ProvinceId { get; set; }
-
-        public int DistrictId { get; set; }
         public int WardId { get; set; }
-
+        public int DistrictId { get; set; }
         public bool Status { set; get; }
-
-        [ForeignKey("ProvinceId")]
-        public virtual Province Province { set; get; }
-
-        [ForeignKey("DistrictId")]
-        public virtual District District { set; get; }
 
         [ForeignKey("WardId")]
         public virtual Ward Ward { set; get; }
+
+        [ForeignKey("DistrictId")]
+        public virtual District District { set; get; }
     }
 }

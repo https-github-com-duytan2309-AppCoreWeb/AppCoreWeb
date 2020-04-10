@@ -1,10 +1,14 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
+using TeduCoreApp.Data.EF;
 using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
@@ -20,12 +24,14 @@ namespace TeduCoreApp.Application.Implementation
         private readonly IStreetRepository _streetRepository;
         private readonly IUnitOfWork _unitOfWork;
 
+        private readonly AppDbContext _context;
+
         public AddressService(
-            ProvinceRepository provinceRepository,
-            DistrictRepository disctrictRepository,
-            WardRepository wardRepository,
-            StreetRepository streetRepository,
-            IUnitOfWork unitOfWork
+            IProvinceRepository provinceRepository,
+            IDistrictRepository disctrictRepository,
+            IWardRepository wardRepository,
+            IStreetRepository streetRepository,
+            IUnitOfWork unitOfWork, AppDbContext context
             )
         {
             _provinceRepository = provinceRepository;
@@ -33,41 +39,7 @@ namespace TeduCoreApp.Application.Implementation
             _wardRepository = wardRepository;
             _streetRepository = streetRepository;
             _unitOfWork = unitOfWork;
-        }
-
-        public void CreateDistrict(DistrictViewModel districtVm)
-        {
-            var district = Mapper.Map<DistrictViewModel, District>(districtVm);
-            var wards = Mapper.Map<List<WardViewModel>, List<Ward>>(districtVm.Wards);
-            var streets = Mapper.Map<List<StreetViewModel>, List<Street>>(districtVm.Streets);
-
-            //foreach (var district in districts)
-            //{
-            //    var product = _disctrictRepository.FindById(district.ProvinceId);
-            //    //district. = product.Price;
-            //}
-
-            district.Wards = wards;
-            district.Streets = streets;
-            _disctrictRepository.Add(district);
-        }
-
-        public void CreateProvince(ProvinceViewModel provoinceVm)
-        {
-            var province = Mapper.Map<ProvinceViewModel, Province>(provoinceVm);
-            var districts = Mapper.Map<List<DistrictViewModel>, List<District>>(provoinceVm.Districts);
-            var wards = Mapper.Map<List<WardViewModel>, List<Ward>>(provoinceVm.Wards);
-            var streets = Mapper.Map<List<StreetViewModel>, List<Street>>(provoinceVm.Streets);
-
-            //foreach (var district in districts)
-            //{
-            //    var product = _disctrictRepository.FindById(district.ProvinceId);
-            //    //district. = product.Price;
-            //}
-            province.Districts = districts;
-            province.Wards = wards;
-            province.Streets = streets;
-            _provinceRepository.Add(province);
+            _context = context;
         }
 
         public void CreateStreet(StreetViewModel streetVm)
@@ -76,116 +48,171 @@ namespace TeduCoreApp.Application.Implementation
             _streetRepository.Add(street);
         }
 
-        public void CreateWard(WardViewModel wardVm)
-        {
-            var ward = Mapper.Map<WardViewModel, Ward>(wardVm);
-            var streets = Mapper.Map<List<StreetViewModel>, List<Street>>(wardVm.Streets);
-
-            //foreach (var district in districts)
-            //{
-            //    var product = _disctrictRepository.FindById(district.ProvinceId);
-            //    //district. = product.Price;
-            //}
-
-            ward.Streets = streets;
-            _wardRepository.Add(ward);
-        }
-
-        public StreetViewModel GetDetailDistrict(int districtid, int provinceid)
-        {
-            throw new NotImplementedException();
-        }
-
-        public StreetViewModel GetDetailProvince(int provinceid)
-        {
-            throw new NotImplementedException();
-        }
-
-        public StreetViewModel GetDetailStreet(int streetid, int wardid, int districtid, int provinceid)
-        {
-            throw new NotImplementedException();
-        }
-
-        public StreetViewModel GetDetailWard(int wardid, int districtid, int provinceid)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateDistrict(DistrictViewModel districtVm)
-        {
-            //var province = Mapper.Map<ProvinceViewModel, Province>(provoinceVm);
-        }
-
-        public void UpdateProvince(ProvinceViewModel provoinceVm)
-        {
-            var province = Mapper.Map<ProvinceViewModel, Province>(provoinceVm);
-
-            //District
-            var newdistricts = province.Districts;
-
-            //new districts added
-            var addedDistricts = newdistricts.Where(x => x.Id == 0).ToList();
-
-            //get updated districts
-            var updatedDistricts = newdistricts.Where(x => x.Id != 0).ToList();
-
-            //Existed districts
-            var existedDistricts = _disctrictRepository.FindAll(x => x.ProvinceId == provoinceVm.Id);
-
-            province.Districts.Clear();
-
-            //Ward
-            var newwards = province.Wards;
-
-            //new wards added
-            var addedWards = newwards.Where(x => x.Id == 0).ToList();
-
-            //get updated wards
-            var updatedWards = newwards.Where(x => x.Id != 0).ToList();
-
-            //Existed wards
-            var existedWards = _wardRepository.FindAll(x => x.ProvinceId == provoinceVm.Id);
-
-            province.Wards.Clear();
-
-            var newtreets = province.Streets;
-
-            //new districts added
-            var addedTreets = newtreets.Where(x => x.Id == 0).ToList();
-
-            //get updated districts
-            var updatedTreets = newtreets.Where(x => x.Id != 0).ToList();
-
-            //Existed details
-            var existedTreets = _streetRepository.FindAll(x => x.ProvinceId == provoinceVm.Id);
-            //Clear db
-            province.Streets.Clear();
-
-            foreach (var district in updatedDistricts)
-            {
-                _disctrictRepository.Update(district);
-            }
-            foreach (var ward in updatedWards)
-            {
-                _wardRepository.Update(ward);
-            }
-            foreach (var street in updatedTreets)
-            {
-                _streetRepository.Update(street);
-            }
-        }
-
         public void UpdateStreet(StreetViewModel streetVm)
         {
-            throw new NotImplementedException();
+            var street = Mapper.Map<StreetViewModel, Street>(streetVm);
+            _streetRepository.Update(street);
         }
 
-        public void UpdateWard(WardViewModel wardVm)
+        #region AJAX Request Province
+
+        public List<Province> GetProvinces()
+        {
+            return _provinceRepository.FindAll().ToList();
+        }
+
+        public List<Province> GetProvincesByKeyString(string KeyString)
+        {
+            var lists = _provinceRepository.FindAll().Where(x => x.Name.Contains(KeyString)).ToList();
+            return lists;
+        }
+
+        public Province GetProvinceByNameDistrict(string NameDistrict)
+        {
+            var idProvince = _disctrictRepository.FindSingle(x => x.Name == NameDistrict).ProvinceId;
+            var province = _provinceRepository.FindById(idProvince);
+            return province;
+        }
+
+        public Province GetProvinceByNameWard(string NameWard)
+        {
+            var idProvince = _wardRepository.FindSingle(x => x.Name == NameWard).ProvinceId;
+            var province = _provinceRepository.FindById(idProvince);
+            return province;
+        }
+
+        #endregion AJAX Request Province
+
+        #region AJAX Request District
+
+        public List<District> GetDistricts()
+        {
+            return _disctrictRepository.FindAll().ToList();
+        }
+
+        public List<District> GetDistrictsByNameProvince(string NameProvince)
+        {
+            var idProvice = _provinceRepository.FindSingle(x => x.Name == NameProvince).Id;
+            var lists = _disctrictRepository.FindAll(x => x.ProvinceId == idProvice).ToList();
+            return lists;
+        }
+
+        public District GetDistrictsByNameWard(string NameWard)
+        {
+            int IdDistrict = _wardRepository.FindSingle(x => x.Name == NameWard).DistrictId;
+            var district = _disctrictRepository.FindById(IdDistrict);
+            return district;
+        }
+
+        public List<District> GetDistrictsByKeyString(string KeyString)
+        {
+            var lists = _disctrictRepository.FindAll().Where(x => x.Name.Contains(KeyString)).ToList();
+            return lists;
+        }
+
+        public List<District> GetDistrictsByKeyStringAndNameProvince(string KeyString, string NameProvince)
+        {
+            var idProvice = _provinceRepository.FindSingle(x => x.Name == NameProvince).Id;
+            var lists = _disctrictRepository.FindAll().Where(x => x.Name.Contains(KeyString) && x.ProvinceId == idProvice).ToList();
+            return lists;
+        }
+
+        #endregion AJAX Request District
+
+        #region AJAX Request Ward
+
+        public List<Ward> GetWards()
+        {
+            return _wardRepository.FindAll().ToList();
+        }
+
+        public List<Ward> GetWardsByKeyString(string KeyString)
+        {
+            var lists = _wardRepository.FindAll().Where(x => x.Name.Contains(KeyString)).ToList();
+            return lists;
+        }
+
+        public List<Ward> GetWardsByNameDistrict(string NameDistrict)
+        {
+            var idDistrict = _disctrictRepository.FindSingle(x => x.Name == NameDistrict).Id;
+            var lists = _wardRepository.FindAll().Where(x => x.DistrictId == idDistrict).ToList();
+            return lists;
+        }
+
+        public List<Ward> GetWardsByKeyStringAndNameDistrict(string KeyString, string NameDistrict)
+        {
+            var idDistrict = _disctrictRepository.FindSingle(x => x.Name == NameDistrict).Id;
+            var lists = _wardRepository.FindAll().Where(x => x.Name.Contains(KeyString) && x.DistrictId == idDistrict).ToList();
+            return lists;
+        }
+
+        public Ward GetWardByNameStreet(string NameStreet)
+        {
+            var idWard = _streetRepository.FindSingle(x => x.Name == NameStreet).WardId;
+            var ward = _wardRepository.FindById(idWard);
+            return ward;
+        }
+
+        public List<Ward> GetWardsByKeyStringAndNameProvince(string KeyString, string NameProvince)
+        {
+            var idProvince = _provinceRepository.FindSingle(x => x.Name == NameProvince).Id;
+            var lists = _wardRepository.FindAll().Where(x => x.Name.Contains(KeyString) && x.ProvinceId == idProvince).ToList();
+            return lists;
+        }
+
+        public List<Ward> GetWardsByNameProvince(string NameProvince)
+        {
+            var idProvince = _provinceRepository.FindSingle(x => x.Name == NameProvince).Id;
+            var lists = _wardRepository.FindAll().Where(x => x.ProvinceId == idProvince).ToList();
+            return lists;
+        }
+
+        #endregion AJAX Request Ward
+
+        #region AJAX Request Street
+
+        public List<Street> GetStreets()
+        {
+            return _streetRepository.FindAll().ToList();
+        }
+
+        public List<Street> GetStreetsByKeyString(string KeyString)
+        {
+            var lists = _streetRepository.FindAll().Where(x => x.Name.Contains(KeyString)).ToList();
+            return lists;
+        }
+
+        public List<Street> GetStreetsByNameWard(string NameWard)
+        {
+            var idWard = _wardRepository.FindSingle(x => x.Name == NameWard).Id;
+            var lists = _streetRepository.FindAll().Where(x => x.WardId == idWard).ToList();
+            return lists;
+        }
+
+        public List<Street> GetStreetsByNameDistrict(string NameDistrict)
+        {
+            var idDistrict = _disctrictRepository.FindSingle(x => x.Name == NameDistrict).Id;
+            var lists = _streetRepository.FindAll().Where(x => x.DistrictId == idDistrict).ToList();
+            return lists;
+        }
+
+        public List<Street> GetStreetsByKeyStringAndByNameWard(string KeyString, string NameWard)
+        {
+            var idWard = _wardRepository.FindSingle(x => x.Name == NameWard).Id;
+            var lists = _streetRepository.FindAll().Where(x => x.WardId == idWard && x.Name.Contains(KeyString)).ToList();
+            return lists;
+        }
+
+        public List<Street> GetStreetsByKeyStringAndByNameDistrict(string KeyString, string NameDistrict)
+        {
+            var idDistrict = _disctrictRepository.FindSingle(x => x.Name == NameDistrict).Id;
+            var lists = _streetRepository.FindAll().Where(x => x.DistrictId == idDistrict && x.Name.Contains(KeyString)).ToList();
+            return lists;
+        }
+
+        #endregion AJAX Request Street
+
+        public void Save()
         {
             throw new NotImplementedException();
         }

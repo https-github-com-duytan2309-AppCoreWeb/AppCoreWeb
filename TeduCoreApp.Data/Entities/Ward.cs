@@ -15,7 +15,7 @@ namespace TeduCoreApp.Data.Entities
         }
 
         public Ward(int id, string code, string name,
-            string rank, int provinceid, int districtid, bool status)
+        string rank, int districtid, int provinceid, bool status)
         {
             Id = id;
             Code = code;
@@ -37,14 +37,13 @@ namespace TeduCoreApp.Data.Entities
         [StringLength(250)]
         public string Rank { set; get; }
 
+        public int ProvinceId { get; set; }
+
         [Required]
         public int DistrictId { get; set; }
 
         [ForeignKey("DistrictId")]
         public virtual District District { set; get; }
-
-        [Required]
-        public int ProvinceId { get; set; }
 
         [ForeignKey("ProvinceId")]
         public virtual Province Province { set; get; }

@@ -13,5 +13,6 @@
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <ShowAllFiles>true</ShowAllFiles>
     <WebStackScaffolding_LayoutPageFile>~/Areas/Admin/Views/Shared/_Layout.cshtml</WebStackScaffolding_LayoutPageFile>
+    <NameOfLastUsedPublishProfile>TeduCoreApp - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

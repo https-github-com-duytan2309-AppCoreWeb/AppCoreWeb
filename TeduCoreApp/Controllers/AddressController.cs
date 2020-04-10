@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.EF;
 using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
@@ -13,12 +14,12 @@ namespace TeduCoreApp.Controllers
 {
     public class AddressController : Controller
     {
-        //private readonly IAddressService _addressServices;
+        private readonly IAddressService _addressServices;
         private readonly AppDbContext _context;
 
-        public AddressController(/*IAddressService addressServices,*/ AppDbContext context)
+        public AddressController(IAddressService addressServices, AppDbContext context)
         {
-            //_addressServices = addressServices;
+            _addressServices = addressServices;
             _context = context;
         }
 
@@ -29,168 +30,108 @@ namespace TeduCoreApp.Controllers
 
         #region AJAX Request Province
 
-        //[HttpPost]
-        //public async Task<IActionResult> UpdateMutileWard()
-        //{
-        //    var tolistProvince = await _context.Provinces.ToListAsync();
-        //    var tolistDistrict = await _context.Districts.ToListAsync();
-        //    foreach (var item in tolistProvince)
-        //    {
-        //    }
-        //    return View();
-        //}
-
-        //[HttpGet]
-        //public IActionResult GetAllProvince()
-        //{
-        //    var list = _addressServices.GetAllProvince();
-        //    return new OkObjectResult(list);
-        //}
-
-        //Provinces
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Province>>> GetProvinces()
+        public ActionResult GetProvinces()
         {
-            return new OkObjectResult(await _context.Provinces.ToListAsync());
+            return new OkObjectResult(_addressServices.GetProvinces());
         }
 
-        public async Task<ActionResult<Province>> GetProvincesByKeyString(string KeyString)
+        public IActionResult GetProvincesByKeyString(string KeyString)
         {
-            var list = await _context.Provinces.Where(x => x.Name.Contains(KeyString)).ToListAsync();
-            return new OkObjectResult(list);
+            return new OkObjectResult(_addressServices.GetProvincesByKeyString(KeyString));
         }
 
         [HttpGet]
-        public async Task<ActionResult<Province>> GetProvinceByWard(string NameWard)
+        public IActionResult GetProvinceByNameDistrict(string NameDistrict)
         {
-            int IdProvince = _context.Wards.Where(x => x.Name == NameWard).Select(x => x.ProvinceId).FirstOrDefault();
-            return new OkObjectResult(await _context.Provinces.Where(x => x.Id == IdProvince).FirstOrDefaultAsync());
+            return new OkObjectResult(_addressServices.GetProvinceByNameDistrict(NameDistrict));
         }
 
         [HttpGet]
-        public async Task<ActionResult<Province>> GetProvinceByDistrict(string NameDistrict)
+        public IActionResult GetProvinceByNameWard(string NameWard)
         {
-            int IdProvince = _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.ProvinceId).FirstOrDefault();
-            return new OkObjectResult(await _context.Provinces.Where(x => x.Id == IdProvince).FirstOrDefaultAsync());
+            return new OkObjectResult(_addressServices.GetProvinceByNameWard(NameWard));
         }
 
         #endregion AJAX Request Province
 
         #region AJAX Request District
 
-        //Districts
-        //Get List District
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<District>>> GetDistricts()
+        public ActionResult GetDistricts()
         {
-            return new OkObjectResult(await _context.Districts.ToListAsync());
+            return new OkObjectResult(_addressServices.GetDistricts());
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<District>>> GetDistrictsByNameProvince(string NameProvince)
+        public IActionResult GetDistrictsByNameProvince(string NameProvince)
         {
-            int IdProvince = _context.Provinces.Where(x => x.Name == NameProvince).Select(x => x.Id).FirstOrDefault();
-            return new OkObjectResult(await _context.Districts.Where(x => x.ProvinceId == IdProvince).ToListAsync());
+            return new OkObjectResult(_addressServices.GetDistrictsByNameProvince(NameProvince));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<District>>> GetDistrictsByNameWard(string NameWard)
+        public IActionResult GetDistrictsByNameWard(string NameWard)
         {
-            int IdDistrict = _context.Wards.Where(x => x.Name == NameWard).Select(x => x.DistrictId).FirstOrDefault();
-            return new OkObjectResult(await _context.Districts.Where(x => x.Id == IdDistrict).ToListAsync());
+            return new OkObjectResult(_addressServices.GetDistrictsByNameWard(NameWard));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<District>>> GetDistrictsByKeyString(string KeyString)
+        public IActionResult GetDistrictsByKeyString(string KeyString)
         {
-            return new OkObjectResult(await _context.Districts.Where(x => x.Name.Contains(KeyString)).ToListAsync());
+            return new OkObjectResult(_addressServices.GetDistrictsByKeyString(KeyString));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<District>>> GetDistrictsByKeyStringAndNameProvince(string KeyString, string NameProvince)
+        public IActionResult GetDistrictsByKeyStringAndNameProvince(string KeyString, string NameProvince)
         {
-            int IdProvince = _context.Provinces.Where(x => x.Name == NameProvince).Select(x => x.Id).FirstOrDefault();
-            return new OkObjectResult(await _context.Districts.Where(x => x.Name.Contains(KeyString) && x.ProvinceId == IdProvince).ToListAsync());
-        }
-
-        //Get District
-        //Get DistrictById
-        [HttpGet]
-        public async Task<ActionResult<District>> GetDistrictByWard(string NameWard)
-        {
-            int IdDistrict = _context.Wards.Where(x => x.Name == NameWard).Select(x => x.DistrictId).FirstOrDefault();
-            return new OkObjectResult(await _context.Districts.Where(x => x.Id == IdDistrict).FirstOrDefaultAsync());
+            return new OkObjectResult(_addressServices.GetDistrictsByKeyStringAndNameProvince(KeyString, NameProvince));
         }
 
         #endregion AJAX Request District
 
         #region AJAX Request Ward
 
-        //Wards
-        //Key Ward
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ward>>> GetWardsByKeyString(string KeyString)
+        public IActionResult GetWards()
         {
-            return new OkObjectResult(await _context.Wards.Where(x => x.Name.Contains(KeyString)).ToListAsync());
+            return new JsonResult(_addressServices.GetWards());
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ward>>> GetWardsByKeyStringAndNameProvince(string KeyString, string NameProvince)
+        public IActionResult GetWardsByKeyString(string KeyString)
         {
-            int IdProvince = _context.Provinces.Where(x => x.Name == NameProvince).Select(x => x.Id).FirstOrDefault();
-            return new OkObjectResult(await _context.Wards.Where(x => x.Name.Contains(KeyString) && x.ProvinceId == IdProvince).ToListAsync());
+            return new OkObjectResult(_addressServices.GetWardsByKeyString(KeyString));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ward>>> GetWardsByKeyStringAndNameDistrict(string KeyString, string NameDistrict)
+        public IActionResult GetWardsByKeyStringAndNameProvince(string KeyString, string NameProvince)
         {
-            int IdDistrict = _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).FirstOrDefault();
-            return new OkObjectResult(await _context.Wards.Where(x => x.Name.Contains(KeyString) && x.ProvinceId == IdDistrict).ToListAsync());
+            return new OkObjectResult(_addressServices.GetDistrictsByKeyStringAndNameProvince(KeyString, NameProvince));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ward>>> GetWardsByKeyStringAndNameDistrictAndNameProvince(string KeyString, string NameDistrict, string NameProvince)
+        public IActionResult GetWardsByKeyStringAndNameDistrict(string KeyString, string NameDistrict)
         {
-            int IdDistrict = _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).FirstOrDefault();
-            int IdProvince = _context.Provinces.Where(x => x.Name == NameProvince).Select(x => x.Id).FirstOrDefault();
-            return new OkObjectResult(await _context.Wards.Where(x => x.Name.Contains(KeyString) && x.ProvinceId == IdDistrict && x.ProvinceId == IdProvince).ToListAsync());
+            return new OkObjectResult(_addressServices.GetWardsByKeyStringAndNameDistrict(KeyString, NameDistrict));
         }
 
         //Click Load Data
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ward>>> GetWardsByNameProvince(string NameProvince)
+        public IActionResult GetWardsByNameProvince(string NameProvince)
         {
-            int IdDistrict = _context.Provinces.Where(x => x.Name == NameProvince).Select(x => x.Id).FirstOrDefault();
-            return new OkObjectResult(await _context.Wards.Where(x => x.ProvinceId == IdDistrict).ToListAsync());
+            return new OkObjectResult(_addressServices.GetWardsByNameProvince(NameProvince));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ward>>> GetWardsByNameDistrict(string NameDistrict)
+        public IActionResult GetWardsByNameDistrict(string NameDistrict)
         {
-            int IdDistrict = _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).FirstOrDefault();
-            return new OkObjectResult(await _context.Wards.Where(x => x.DistrictId == IdDistrict).ToListAsync());
+            return new OkObjectResult(_addressServices.GetWardsByNameDistrict(NameDistrict));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ward>>> GetWardsByNameDistrictAndNameProvince(string NameDistrict, string NameProvince)
+        public IActionResult GetWardByNameStreet(string NameStreet)
         {
-            int IdDistrict = _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).FirstOrDefault();
-            int IdProvince = _context.Provinces.Where(x => x.Name == NameProvince).Select(x => x.Id).FirstOrDefault();
-
-            return new OkObjectResult(await _context.Wards.Where(x => x.DistrictId == IdDistrict && x.ProvinceId == IdProvince).ToListAsync());
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ward>>> GetWards()
-        {
-            return new JsonResult(await _context.Wards.Select(x => x.Name).ToListAsync());
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<Ward>> GetWardByNameStreet(string NameStreet)
-        {
-            int IdWard = _context.Streets.Where(x => x.Name == NameStreet).Select(x => x.WardId).FirstOrDefault();
-            return new OkObjectResult(await _context.Wards.Where(x => x.Id == IdWard).FirstOrDefaultAsync());
+            return new OkObjectResult(_addressServices.GetWardByNameStreet(NameStreet));
         }
 
         #endregion AJAX Request Ward
@@ -199,56 +140,39 @@ namespace TeduCoreApp.Controllers
 
         //Streets
         [HttpGet]
-        public async Task<IActionResult> GetStreets()
+        public IActionResult GetStreets()
         {
-            return new OkObjectResult(await _context.Streets.Select(x => x.Name).ToListAsync());
+            return new OkObjectResult(_addressServices.GetStreets());
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByNameWard(string NameWard)
+        public IActionResult GetStreetsByKeyString(string KeyString)
         {
-            int IdWard = await _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).SingleOrDefaultAsync();
-            return new OkObjectResult(await _context.Streets.Where(x => x.WardId == IdWard).ToListAsync());
+            return new OkObjectResult(_addressServices.GetStreetsByKeyString(KeyString));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByKeyString(string KeyString)
+        public IActionResult GetStreetsByNameWard(string NameWard)
         {
-            return new OkObjectResult(await _context.Streets.Where(x => x.Name.Contains(KeyString)).ToListAsync());
+            return new OkObjectResult(_addressServices.GetStreetsByNameWard(NameWard));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByNameWardAndNameDistrict(string NameDistrict, string NameWard)
+        public IActionResult GetStreetsByNameDistrict(string NameDistrict)
         {
-            int IdDistrict = await _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).SingleOrDefaultAsync();
-            int IdWard = await _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).SingleOrDefaultAsync();
-
-            return new OkObjectResult(await _context.Streets.Where(x => x.DistrictId == IdDistrict && x.WardId == IdWard).ToListAsync());
+            return new OkObjectResult(_addressServices.GetStreetsByNameDistrict(NameDistrict));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByNameProvinceAndNameDistrict(string NameDistrict, string NameProvince)
+        public IActionResult GetStreetsByKeyStringAndByNameWard(string KeyString, string NameWard)
         {
-            int IdDistrict = await _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).SingleOrDefaultAsync();
-            int IdProvince = await _context.Provinces.Where(x => x.Name == NameProvince).Select(x => x.Id).SingleOrDefaultAsync();
-
-            return new OkObjectResult(await _context.Streets.Where(x => x.DistrictId == IdDistrict && x.ProvinceId == IdProvince).ToListAsync());
+            return new OkObjectResult(_addressServices.GetStreetsByKeyStringAndByNameWard(KeyString, NameWard));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByKeyStringByWard(string KeyString, string NameWard)
+        public IActionResult GetStreetsByKeyStringAndByNameDistrict(string KeyString, string NameDistrict)
         {
-            int IdWard = await _context.Wards.Where(x => x.Name == NameWard).Select(x => x.Id).SingleOrDefaultAsync();
-
-            return new OkObjectResult(await _context.Streets.Where(x => x.Name.Contains(KeyString) && x.WardId == IdWard).ToListAsync());
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Street>>> GetStreetsByKeyStringByProvinceDistrict(string KeyString, string NameDistrict, string NameProvince)
-        {
-            int IdDistrict = await _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).SingleOrDefaultAsync();
-            int IdProvince = await _context.Provinces.Where(x => x.Name == NameProvince).Select(x => x.Id).SingleOrDefaultAsync();
-            return new OkObjectResult(await _context.Streets.Where(x => x.Name.Contains(KeyString) && x.DistrictId == IdDistrict && x.ProvinceId == IdProvince).ToListAsync());
+            return new OkObjectResult(_addressServices.GetStreetsByKeyStringAndByNameDistrict(KeyString, NameDistrict));
         }
 
         #endregion AJAX Request Street

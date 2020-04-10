@@ -1,0 +1,540 @@
+2020-04-07T10:30:02.2420047+07:00 0HLUQKFQFSIJ6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Home/Index   (ca22a1cb)
+2020-04-07T10:30:02.8944991+07:00 0HLUQKFQFSIJ6:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-07T10:30:02.8951296+07:00 0HLUQKFQFSIJ6:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-07T10:30:03.2755535+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executing endpoint '"TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)"' (500cc934)
+2020-04-07T10:30:03.2974012+07:00 0HLUQKFQFSIJ6:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "TeduCoreApp.Controllers.HomeController" ("TeduCoreApp"). (122b2fdf)
+2020-04-07T10:30:03.7931558+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" - Validation state: Valid (dad538d7)
+2020-04-07T10:30:06.1614299+07:00 0HLUQKFQFSIJ6:00000001 [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T10:30:06.1618225+07:00 0HLUQKFQFSIJ6:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T10:30:06.1619964+07:00 0HLUQKFQFSIJ6:00000001 [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T10:30:06.1623769+07:00 0HLUQKFQFSIJ6:00000001 [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T10:30:06.1624691+07:00 0HLUQKFQFSIJ6:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T10:30:06.1625627+07:00 0HLUQKFQFSIJ6:00000001 [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T10:30:06.1627223+07:00 0HLUQKFQFSIJ6:00000001 [WRN] No type was specified for the decimal column '"CollectionFee"' on entity type '"ShipCode"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T10:30:06.1628531+07:00 0HLUQKFQFSIJ6:00000001 [WRN] No type was specified for the decimal column '"Total"' on entity type '"ShipCode"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T10:30:06.1629717+07:00 0HLUQKFQFSIJ6:00000001 [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T10:30:06.1630583+07:00 0HLUQKFQFSIJ6:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T10:30:06.3794712+07:00 0HLUQKFQFSIJ6:00000001 [INF] Entity Framework Core "2.2.4-servicing-10062" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2020-04-07T10:30:06.7132841+07:00 0HLUQKFQFSIJ6:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2020-04-07T10:30:08.8689711+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("239"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2020-04-07T10:30:09.1426509+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("234"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[HomeOrder], [t].[Id], [c.Products].[Id] AS [Id0], [c.Products].[Name], [c.Products].[CategoryId], [c.Products].[Image], [c.Products].[Price], [c.Products].[PromotionPrice], [c.Products].[OriginalPrice], [c.Products].[Description], [c.Products].[Content], [c.Products].[HomeFlag], [c.Products].[HotFlag], [c.Products].[ViewCount], [c.Products].[Tags], [c.Products].[Unit], [c.Products].[SeoPageTitle], [c.Products].[SeoAlias], [c.Products].[SeoKeywords], [c.Products].[SeoDescription], [c.Products].[DateCreated], [c.Products].[DateModified], [c.Products].[Status], [c.Products].[VAT]
+FROM [Products] AS [c.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [c0].[HomeOrder], [c0].[Id]
+    FROM [ProductCategories] AS [c0]
+    WHERE [c0].[HomeFlag] = 1
+    ORDER BY [c0].[HomeOrder], [c0].[Id]
+) AS [t] ON [c.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[HomeOrder], [t].[Id]" (0723d8ff)
+2020-04-07T10:30:09.2013795+07:00 0HLUQKFQFSIJ6:00000001 [WRN] The Include operation for navigation '"[c].DichVus"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2020-04-07T10:30:09.7305706+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("233"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[MenuId], [c].[HomeOrder], CASE
+    WHEN [c].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [c].[MenuId] AS [Id0], [c.Menu].[Name] AS [Name0], [c.Menu].[Description] AS [Description0], [c.Menu].[Url], [c.Menu].[Target], [c.Menu].[ParentId] AS [ParentId0], [c.Menu].[HomeOrder] AS [HomeOrder0], [c.Menu].[DateCreated], [c.Menu].[DateModified], [c.Menu].[SortOrder], [c.Menu].[Status], [c.Menu].[SeoAlias], [c.Menu].[GroupAlias], [c].[Image], [c].[HomeFlag], [c].[DateCreated] AS [DateCreated0], [c].[DateModified] AS [DateModified0], [c].[SortOrder] AS [SortOrder0], [c].[Status] AS [Status0], [c].[SeoPageTitle], [c].[SeoAlias] AS [SeoAlias0], [c].[SeoKeywords], [c].[SeoDescription], [c.Menu].[Id]
+FROM [DichVuCategory] AS [c]
+LEFT JOIN [Menu] AS [c.Menu] ON [c].[MenuId] = [c.Menu].[Id]
+WHERE ([c].[HomeFlag] = 1) AND [c].[ParentId] IS NULL
+ORDER BY [c].[HomeOrder], [c].[Id], [c.Menu].[Id]" (0723d8ff)
+2020-04-07T10:30:10.0683767+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("232"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x].[VAT], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2020-04-07T10:30:10.4351326+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("231"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x].[VAT], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2020-04-07T10:30:11.2366943+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("250"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.BlogCategory].[Name] AS [Name1], [x.BlogCategory].[Description] AS [Description1], [x.BlogCategory].[ParentId], [x.BlogCategory].[MenuId], [x.BlogCategory].[HomeOrder], [x.BlogCategory].[Image] AS [Image0], [x.BlogCategory].[HomeFlag] AS [HomeFlag0], CASE
+    WHEN [x.BlogCategory].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.BlogCategory.Menu].[Id] AS [Id0], [x.BlogCategory.Menu].[Name] AS [Name0], [x.BlogCategory.Menu].[Description] AS [Description0], [x.BlogCategory.Menu].[Url], [x.BlogCategory.Menu].[Target], [x.BlogCategory.Menu].[ParentId] AS [ParentId0], [x.BlogCategory.Menu].[HomeOrder] AS [HomeOrder0], [x.BlogCategory.Menu].[DateCreated], [x.BlogCategory.Menu].[DateModified], [x.BlogCategory.Menu].[SortOrder], [x.BlogCategory.Menu].[Status], [x.BlogCategory.Menu].[SeoAlias], [x.BlogCategory.Menu].[GroupAlias], [x.BlogCategory].[DateCreated] AS [DateCreated0], [x.BlogCategory].[DateModified] AS [DateModified0], [x.BlogCategory].[SortOrder] AS [SortOrder0], [x.BlogCategory].[Status] AS [Status0], [x.BlogCategory].[SeoPageTitle], [x.BlogCategory].[SeoAlias] AS [SeoAlias0], [x.BlogCategory].[SeoKeywords], [x.BlogCategory].[SeoDescription], [x].[DateCreated] AS [DateCreated1], [x].[DateModified] AS [DateModified1], [x].[Status] AS [Status1], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias1], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x.BlogCategory.Menu].[Id], [x.BlogCategory].[Id]
+FROM [Blogs] AS [x]
+INNER JOIN [BlogCategory] AS [x.BlogCategory] ON [x].[CategoryId] = [x.BlogCategory].[Id]
+LEFT JOIN [Menu] AS [x.BlogCategory.Menu] ON [x.BlogCategory].[MenuId] = [x.BlogCategory.Menu].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated1] DESC, [x].[Id], [x.BlogCategory.Menu].[Id], [x.BlogCategory].[Id]" (0723d8ff)
+2020-04-07T10:30:12.6221295+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("233"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[CategoryId], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.DichVuCategory].[Name] AS [Name1], [x.DichVuCategory].[Description] AS [Description1], [x.DichVuCategory].[ParentId], [x.DichVuCategory].[MenuId], [x.DichVuCategory].[HomeOrder], CASE
+    WHEN [x.DichVuCategory].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.DichVuCategory.Menu].[Id] AS [Id0], [x.DichVuCategory.Menu].[Name] AS [Name0], [x.DichVuCategory.Menu].[Description] AS [Description0], [x.DichVuCategory.Menu].[Url], [x.DichVuCategory.Menu].[Target], [x.DichVuCategory.Menu].[ParentId] AS [ParentId0], [x.DichVuCategory.Menu].[HomeOrder] AS [HomeOrder0], [x.DichVuCategory.Menu].[DateCreated], [x.DichVuCategory.Menu].[DateModified], [x.DichVuCategory.Menu].[SortOrder], [x.DichVuCategory.Menu].[Status], [x.DichVuCategory.Menu].[SeoAlias], [x.DichVuCategory.Menu].[GroupAlias], [x.DichVuCategory].[Image] AS [Image0], [x.DichVuCategory].[HomeFlag] AS [HomeFlag0], [x.DichVuCategory].[DateCreated] AS [DateCreated0], [x.DichVuCategory].[DateModified] AS [DateModified0], [x.DichVuCategory].[SortOrder] AS [SortOrder0], [x.DichVuCategory].[Status] AS [Status0], [x.DichVuCategory].[SeoPageTitle], [x.DichVuCategory].[SeoAlias] AS [SeoAlias0], [x.DichVuCategory].[SeoKeywords], [x.DichVuCategory].[SeoDescription], [x].[DateCreated] AS [DateCreated1], [x].[DateModified] AS [DateModified1], [x].[Status] AS [Status1], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias1], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x.DichVuCategory.Menu].[Id], [x.DichVuCategory].[Id]
+FROM [DichVu] AS [x]
+INNER JOIN [DichVuCategory] AS [x.DichVuCategory] ON [x].[CategoryId] = [x.DichVuCategory].[Id]
+LEFT JOIN [Menu] AS [x.DichVuCategory.Menu] ON [x.DichVuCategory].[MenuId] = [x.DichVuCategory.Menu].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated1] DESC, [x].[Id], [x.DichVuCategory.Menu].[Id], [x.DichVuCategory].[Id]" (0723d8ff)
+2020-04-07T10:30:12.9035897+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("238"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2020-04-07T10:30:12.9169409+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 9115.6785ms. (50a9e262)
+2020-04-07T10:30:13.8544668+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2020-04-07T10:30:17.2344187+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("235"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-07T10:30:17.4982551+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("257"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-07T10:30:17.7401478+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("232"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-07T10:30:18.3422568+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("233"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2020-04-07T10:30:18.5773787+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("231"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status], [x.Products].[VAT]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2020-04-07T10:30:19.0028274+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("231"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-07T10:30:19.2540314+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("245"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-07T10:30:19.4886549+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("234"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-07T10:30:20.2304062+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("230"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2020-04-07T10:30:20.8098191+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("234"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-07T10:30:21.2641725+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed DbCommand ("235"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-07T10:30:21.5201589+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed ViewResult - view "Index" executed in 8547.6448ms. (f66409e9)
+2020-04-07T10:30:21.5211472+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 18223.2725ms (afa2e885)
+2020-04-07T10:30:21.5212491+07:00 0HLUQKFQFSIJ6:00000001 [INF] Executed endpoint '"TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)"' (99874f2b)
+2020-04-07T10:30:24.6920780+07:00 0HLUQKFQFSIJ6:00000001 [INF] Request finished in 22458.2554ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-07T10:30:24.7907035+07:00 0HLUQKFQFSIJ6:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/bootstrap.min.css   (ca22a1cb)
+2020-04-07T10:30:24.8067633+07:00 0HLUQKFQFSIJ7:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/icons.css   (ca22a1cb)
+2020-04-07T10:30:24.8752129+07:00 0HLUQKFQFSIJ6:00000002 [INF] Sending file. Request path: '"/client/css/bootstrap.min.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\bootstrap.min.css"' (27b0a520)
+2020-04-07T10:30:24.8992010+07:00 0HLUQKFQFSIJ7:00000001 [INF] Sending file. Request path: '"/client/css/icons.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\icons.css"' (27b0a520)
+2020-04-07T10:30:24.9203357+07:00 0HLUQKFQFSIJ7:00000001 [INF] Request finished in 113.5816ms 200 text/css (791a596a)
+2020-04-07T10:30:24.9224022+07:00 0HLUQKFQFSIJ6:00000002 [INF] Request finished in 131.8408ms 200 text/css (791a596a)
+2020-04-07T10:30:25.0213847+07:00 0HLUQKFQFSIJ7:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/plugins.css   (ca22a1cb)
+2020-04-07T10:30:25.0487730+07:00 0HLUQKFQFSIJ7:00000002 [INF] Sending file. Request path: '"/client/css/plugins.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\plugins.css"' (27b0a520)
+2020-04-07T10:30:25.0488948+07:00 0HLUQKFQFSIJ7:00000002 [INF] Request finished in 27.7334ms 200 text/css (791a596a)
+2020-04-07T10:30:25.1151854+07:00 0HLUQKFQFSIJ6:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/style.css   (ca22a1cb)
+2020-04-07T10:30:25.1350082+07:00 0HLUQKFQFSIJ6:00000003 [INF] Sending file. Request path: '"/client/css/style.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\style.css"' (27b0a520)
+2020-04-07T10:30:25.1351491+07:00 0HLUQKFQFSIJ6:00000003 [INF] Request finished in 19.9742ms 200 text/css (791a596a)
+2020-04-07T10:30:25.1889846+07:00 0HLUQKFQFSIJ7:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/responsive.css   (ca22a1cb)
+2020-04-07T10:30:25.2149410+07:00 0HLUQKFQFSIJ7:00000003 [INF] Sending file. Request path: '"/client/css/responsive.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\responsive.css"' (27b0a520)
+2020-04-07T10:30:25.2150864+07:00 0HLUQKFQFSIJ7:00000003 [INF] Request finished in 26.2292ms 200 text/css (791a596a)
+2020-04-07T10:30:25.3006475+07:00 0HLUQKFQFSIJ6:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2020-04-07T10:30:25.3194603+07:00 0HLUQKFQFSIJ6:00000004 [INF] Sending file. Request path: '"/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\assets\plugins\general\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2020-04-07T10:30:25.3195721+07:00 0HLUQKFQFSIJ6:00000004 [INF] Request finished in 19.0422ms 200 text/css (791a596a)
+2020-04-07T10:30:25.3480173+07:00 0HLUQKFQFSIJ7:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/css/slide.css   (ca22a1cb)
+2020-04-07T10:30:25.3749985+07:00 0HLUQKFQFSIJ7:00000004 [INF] Sending file. Request path: '"/client/css/slide.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\css\slide.css"' (27b0a520)
+2020-04-07T10:30:25.3751045+07:00 0HLUQKFQFSIJ7:00000004 [INF] Request finished in 27.2204ms 200 text/css (791a596a)
+2020-04-07T10:30:25.8217471+07:00 0HLUQKFQFSIJ6:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/vendor/modernizr-2.8.3.min.js   (ca22a1cb)
+2020-04-07T10:30:25.8588478+07:00 0HLUQKFQFSIJ7:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/jssor.slider.min.js   (ca22a1cb)
+2020-04-07T10:30:25.9098617+07:00 0HLUQKFQFSIJ6:00000005 [INF] Sending file. Request path: '"/client/js/vendor/modernizr-2.8.3.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\vendor\modernizr-2.8.3.min.js"' (27b0a520)
+2020-04-07T10:30:25.9099723+07:00 0HLUQKFQFSIJ6:00000005 [INF] Request finished in 88.3536ms 200 application/javascript (791a596a)
+2020-04-07T10:30:25.9535568+07:00 0HLUQKFQFSIJ6:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Client/css/slide.css   (ca22a1cb)
+2020-04-07T10:30:25.9598055+07:00 0HLUQKFQFSIJ6:00000006 [INF] Sending file. Request path: '"/Client/css/slide.css"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\Client\css\slide.css"' (27b0a520)
+2020-04-07T10:30:25.9600122+07:00 0HLUQKFQFSIJ6:00000006 [INF] Request finished in 6.5034ms 200 text/css (791a596a)
+2020-04-07T10:30:25.9783851+07:00 0HLUQKFQFSIJ7:00000005 [INF] Sending file. Request path: '"/client/js/jssor.slider.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\jssor.slider.min.js"' (27b0a520)
+2020-04-07T10:30:25.9785944+07:00 0HLUQKFQFSIJ7:00000005 [INF] Request finished in 119.7828ms 200 application/javascript (791a596a)
+2020-04-07T10:30:29.2490179+07:00 0HLUQKFQFSIJ6:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/jquery.min.js   (ca22a1cb)
+2020-04-07T10:30:29.4280285+07:00 0HLUQKFQFSIJ6:00000007 [INF] Sending file. Request path: '"/client/js/jquery.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\jquery.min.js"' (27b0a520)
+2020-04-07T10:30:29.4282257+07:00 0HLUQKFQFSIJ6:00000007 [INF] Request finished in 179.8255ms 200 application/javascript (791a596a)
+2020-04-07T10:30:29.4832672+07:00 0HLUQKFQFSIJ7:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/jquery-ui.js   (ca22a1cb)
+2020-04-07T10:30:29.5826211+07:00 0HLUQKFQFSIJ7:00000006 [INF] Sending file. Request path: '"/client/js/jquery-ui.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\jquery-ui.js"' (27b0a520)
+2020-04-07T10:30:29.5827219+07:00 0HLUQKFQFSIJ7:00000006 [INF] Request finished in 100.0242ms 200 application/javascript (791a596a)
+2020-04-07T10:30:29.6685888+07:00 0HLUQKFQFSIJ6:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/plugins/general/jquery-validation/dist/jquery.validate.min.js   (ca22a1cb)
+2020-04-07T10:30:29.7332868+07:00 0HLUQKFQFSIJ6:00000008 [INF] Sending file. Request path: '"/assets/plugins/general/jquery-validation/dist/jquery.validate.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\assets\plugins\general\jquery-validation\dist\jquery.validate.min.js"' (27b0a520)
+2020-04-07T10:30:29.7335745+07:00 0HLUQKFQFSIJ6:00000008 [INF] Request finished in 65.0847ms 200 application/javascript (791a596a)
+2020-04-07T10:30:31.3096659+07:00 0HLUQKFQFSIJ7:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/fonts/ionicons.ttf?v=2.0.0   (ca22a1cb)
+2020-04-07T10:30:31.3455254+07:00 0HLUQKFQFSIJ7:00000007 [INF] Sending file. Request path: '"/client/fonts/ionicons.ttf"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\fonts\ionicons.ttf"' (27b0a520)
+2020-04-07T10:30:31.3457022+07:00 0HLUQKFQFSIJ7:00000007 [INF] Request finished in 36.488ms 200 application/x-font-ttf (791a596a)
+2020-04-07T10:30:31.5024733+07:00 0HLUQKFQFSIJ6:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/fonts/Pe-icon-7-stroke.woff?d7yf1v   (ca22a1cb)
+2020-04-07T10:30:31.5210380+07:00 0HLUQKFQFSIJ6:00000009 [INF] Sending file. Request path: '"/client/fonts/Pe-icon-7-stroke.woff"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\fonts\Pe-icon-7-stroke.woff"' (27b0a520)
+2020-04-07T10:30:31.5211779+07:00 0HLUQKFQFSIJ6:00000009 [INF] Request finished in 18.9348ms 200 application/font-woff (791a596a)
+2020-04-07T10:30:31.5603609+07:00 0HLUQKFQFSIJ7:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/fonts/fontawesome-webfont.woff2?v=4.5.0   (ca22a1cb)
+2020-04-07T10:30:31.5770933+07:00 0HLUQKFQFSIJ7:00000008 [INF] Sending file. Request path: '"/client/fonts/fontawesome-webfont.woff2"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\fonts\fontawesome-webfont.woff2"' (27b0a520)
+2020-04-07T10:30:31.5772431+07:00 0HLUQKFQFSIJ7:00000008 [INF] Request finished in 16.9879ms 200 font/woff2 (791a596a)
+2020-04-07T10:30:31.6043016+07:00 0HLUQKFQFSIJ6:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/slide/2.jpg   (ca22a1cb)
+2020-04-07T10:30:31.6192976+07:00 0HLUQKFQFSIJ7:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/slide/3.jpg   (ca22a1cb)
+2020-04-07T10:30:31.6378397+07:00 0HLUQKFQFSIJ6:0000000A [INF] Sending file. Request path: '"/uploaded/slide/2.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\slide\2.jpg"' (27b0a520)
+2020-04-07T10:30:31.6379650+07:00 0HLUQKFQFSIJ6:0000000A [INF] Request finished in 34.6532ms 200 image/jpeg (791a596a)
+2020-04-07T10:30:31.6475944+07:00 0HLUQKFQFSIJ7:00000009 [INF] Sending file. Request path: '"/uploaded/slide/3.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\slide\3.jpg"' (27b0a520)
+2020-04-07T10:30:31.6477076+07:00 0HLUQKFQFSIJ7:00000009 [INF] Request finished in 28.4829ms 200 image/jpeg (791a596a)
+2020-04-07T10:30:31.7705787+07:00 0HLUQKFQFSIJ6:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/slide/1.jpg   (ca22a1cb)
+2020-04-07T10:30:31.7921048+07:00 0HLUQKFQFSIJ6:0000000B [INF] Sending file. Request path: '"/uploaded/slide/1.jpg"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\slide\1.jpg"' (27b0a520)
+2020-04-07T10:30:31.7922213+07:00 0HLUQKFQFSIJ6:0000000B [INF] Request finished in 21.7151ms 200 image/jpeg (791a596a)
+2020-04-07T10:30:31.9485803+07:00 0HLUQKFQFSIJ7:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44344/Home/assets/img/logo/logo-11.png   (ca22a1cb)
+2020-04-07T10:30:31.9570971+07:00 0HLUQKFQFSIJ7:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-07T10:30:31.9572097+07:00 0HLUQKFQFSIJ7:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-07T10:30:31.9836219+07:00 0HLUQKFQFSIJ7:0000000A [INF] Request finished in 34.9592ms 404  (791a596a)
+2020-04-07T10:30:33.0424313+07:00 0HLUQKFQFSIJ6:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/popper.js   (ca22a1cb)
+2020-04-07T10:30:33.0604638+07:00 0HLUQKFQFSIJ7:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/bootstrap.min.js   (ca22a1cb)
+2020-04-07T10:30:33.0971579+07:00 0HLUQKFQFSIJ6:0000000C [INF] Sending file. Request path: '"/client/js/popper.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\popper.js"' (27b0a520)
+2020-04-07T10:30:33.0972687+07:00 0HLUQKFQFSIJ6:0000000C [INF] Request finished in 55.0909ms 200 application/javascript (791a596a)
+2020-04-07T10:30:33.1474077+07:00 0HLUQKFQFSIJ6:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/ajax-mail.js   (ca22a1cb)
+2020-04-07T10:30:33.1643767+07:00 0HLUQKFQFSIJ7:0000000B [INF] Sending file. Request path: '"/client/js/bootstrap.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\bootstrap.min.js"' (27b0a520)
+2020-04-07T10:30:33.1645087+07:00 0HLUQKFQFSIJ7:0000000B [INF] Request finished in 104.9866ms 200 application/javascript (791a596a)
+2020-04-07T10:30:33.1695679+07:00 0HLUQKFQFSIJ6:0000000D [INF] Sending file. Request path: '"/client/js/ajax-mail.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\ajax-mail.js"' (27b0a520)
+2020-04-07T10:30:33.1696862+07:00 0HLUQKFQFSIJ6:0000000D [INF] Request finished in 23.3647ms 200 application/javascript (791a596a)
+2020-04-07T10:30:33.2047156+07:00 0HLUQKFQFSIJ6:0000000E [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/plugins.js   (ca22a1cb)
+2020-04-07T10:30:33.2680009+07:00 0HLUQKFQFSIJ7:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/main.js   (ca22a1cb)
+2020-04-07T10:30:33.2949097+07:00 0HLUQKFQFSIJ7:0000000C [INF] Sending file. Request path: '"/client/js/main.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\main.js"' (27b0a520)
+2020-04-07T10:30:33.2950216+07:00 0HLUQKFQFSIJ7:0000000C [INF] Request finished in 27.5915ms 200 application/javascript (791a596a)
+2020-04-07T10:30:33.3294661+07:00 0HLUQKFQFSIJ7:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/js/revolution-slider.js   (ca22a1cb)
+2020-04-07T10:30:33.4950981+07:00 0HLUQKFQFSIJ7:0000000D [INF] Sending file. Request path: '"/client/js/revolution-slider.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\revolution-slider.js"' (27b0a520)
+2020-04-07T10:30:33.4952396+07:00 0HLUQKFQFSIJ7:0000000D [INF] Request finished in 166.3684ms 200 application/javascript (791a596a)
+2020-04-07T10:30:33.5023157+07:00 0HLUQKFQFSIJ6:0000000E [INF] Sending file. Request path: '"/client/js/plugins.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\client\js\plugins.js"' (27b0a520)
+2020-04-07T10:30:33.5024287+07:00 0HLUQKFQFSIJ6:0000000E [INF] Request finished in 298.0733ms 200 application/javascript (791a596a)
+2020-04-07T10:30:33.9104790+07:00 0HLUQKFQFSIJ7:0000000E [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/plugins/general/notifyjs/dist/notify.js   (ca22a1cb)
+2020-04-07T10:30:33.9742608+07:00 0HLUQKFQFSIJ7:0000000E [INF] Sending file. Request path: '"/assets/plugins/general/notifyjs/dist/notify.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\assets\plugins\general\notifyjs\dist\notify.js"' (27b0a520)
+2020-04-07T10:30:33.9744777+07:00 0HLUQKFQFSIJ7:0000000E [INF] Request finished in 64.8324ms 200 application/javascript (791a596a)
+2020-04-07T10:30:35.3004691+07:00 0HLUQKFQFSIJ6:0000000F [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/plugins/general/mustache/mustache.min.js   (ca22a1cb)
+2020-04-07T10:30:35.3363377+07:00 0HLUQKFQFSIJ6:0000000F [INF] Sending file. Request path: '"/assets/plugins/general/mustache/mustache.min.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\assets\plugins\general\mustache\mustache.min.js"' (27b0a520)
+2020-04-07T10:30:35.3365233+07:00 0HLUQKFQFSIJ6:0000000F [INF] Request finished in 36.7559ms 200 application/javascript (791a596a)
+2020-04-07T10:30:35.8321422+07:00 0HLUQKFQFSIJ7:0000000F [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2020-04-07T10:30:35.8475477+07:00 0HLUQKFQFSIJ7:0000000F [INF] Sending file. Request path: '"/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\assets\plugins\general\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2020-04-07T10:30:35.8477122+07:00 0HLUQKFQFSIJ7:0000000F [INF] Request finished in 15.6121ms 200 application/javascript (791a596a)
+2020-04-07T10:30:35.8863488+07:00 0HLUQKFQFSIJ6:00000010 [INF] Request starting HTTP/1.1 GET http://localhost:44344/clientapp/shared/localize/resources.en-US.js   (ca22a1cb)
+2020-04-07T10:30:35.9326121+07:00 0HLUQKFQFSIJ6:00000010 [INF] Sending file. Request path: '"/clientapp/shared/localize/resources.en-US.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\clientapp\shared\localize\resources.en-US.js"' (27b0a520)
+2020-04-07T10:30:35.9327923+07:00 0HLUQKFQFSIJ6:00000010 [INF] Request finished in 46.4781ms 200 application/javascript (791a596a)
+2020-04-07T10:30:35.9781522+07:00 0HLUQKFQFSIJ7:00000010 [INF] Request starting HTTP/1.1 GET http://localhost:44344/clientapp/shared/tedu.js   (ca22a1cb)
+2020-04-07T10:30:36.0213390+07:00 0HLUQKFQFSIJ7:00000010 [INF] Sending file. Request path: '"/clientapp/shared/tedu.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\clientapp\shared\tedu.js"' (27b0a520)
+2020-04-07T10:30:36.0214446+07:00 0HLUQKFQFSIJ7:00000010 [INF] Request finished in 43.3826ms 200 application/javascript (791a596a)
+2020-04-07T10:30:36.0695293+07:00 0HLUQKFQFSIJ6:00000011 [INF] Request starting HTTP/1.1 GET http://localhost:44344/clientapp/controllers/base/index.js   (ca22a1cb)
+2020-04-07T10:30:36.1175969+07:00 0HLUQKFQFSIJ6:00000011 [INF] Sending file. Request path: '"/clientapp/controllers/base/index.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\clientapp\controllers\base\index.js"' (27b0a520)
+2020-04-07T10:30:36.1178274+07:00 0HLUQKFQFSIJ6:00000011 [INF] Request finished in 48.3474ms 200 application/javascript (791a596a)
+2020-04-07T10:30:37.9954534+07:00 0HLUQKFQFSIJ7:00000011 [INF] Request starting HTTP/1.1 GET http://localhost:44344/clientapp/controllers/home/index.js   (ca22a1cb)
+2020-04-07T10:30:38.0578064+07:00 0HLUQKFQFSIJ7:00000011 [INF] Sending file. Request path: '"/clientapp/controllers/home/index.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\clientapp\controllers\home\index.js"' (27b0a520)
+2020-04-07T10:30:38.0580415+07:00 0HLUQKFQFSIJ7:00000011 [INF] Request finished in 63.1825ms 200 application/javascript (791a596a)
+2020-04-07T10:30:39.4628641+07:00 0HLUQKFQFSIJ6:00000012 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Content/Client/img/svg/loading/static-svg/spin.svg   (ca22a1cb)
+2020-04-07T10:30:39.4643204+07:00 0HLUQKFQFSIJ6:00000012 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-07T10:30:39.4644154+07:00 0HLUQKFQFSIJ6:00000012 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-07T10:30:39.4646462+07:00 0HLUQKFQFSIJ6:00000012 [INF] Request finished in 2.3345ms 404  (791a596a)
+2020-04-07T10:30:39.5058907+07:00 0HLUQKFQFSIJ7:00000012 [INF] Request starting HTTP/1.1 GET http://localhost:44344/uploaded/productCate/nem.png   (ca22a1cb)
+2020-04-07T10:30:39.5120099+07:00 0HLUQKFQFSIJ7:00000012 [INF] Sending file. Request path: '"/uploaded/productCate/nem.png"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\uploaded\productCate\nem.png"' (27b0a520)
+2020-04-07T10:30:39.5121249+07:00 0HLUQKFQFSIJ7:00000012 [INF] Request finished in 6.288ms 200 image/png (791a596a)
+2020-04-07T10:30:39.7767721+07:00 0HLUQKFQFSIJ6:00000013 [INF] Request starting HTTP/1.1 GET http://localhost:44344/favicon.jpg   (ca22a1cb)
+2020-04-07T10:30:39.7791723+07:00 0HLUQKFQFSIJ6:00000013 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-07T10:30:39.7792553+07:00 0HLUQKFQFSIJ6:00000013 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-07T10:30:39.7801069+07:00 0HLUQKFQFSIJ6:00000013 [INF] Request finished in 3.3481ms 404  (791a596a)
+2020-04-07T10:33:14.1775660+07:00 0HLUQKFQFSIJ8:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/dang-ky.html   (ca22a1cb)
+2020-04-07T10:33:14.1792766+07:00 0HLUQKFQFSIJ8:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-07T10:33:14.1794030+07:00 0HLUQKFQFSIJ8:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-07T10:33:14.1796698+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executing endpoint '"TeduCoreApp.Controllers.AccountController.Register (TeduCoreApp)"' (500cc934)
+2020-04-07T10:33:14.2029722+07:00 0HLUQKFQFSIJ8:00000001 [INF] Route matched with "{action = \"Register\", controller = \"Account\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Register(System.String)" on controller "TeduCoreApp.Controllers.AccountController" ("TeduCoreApp"). (122b2fdf)
+2020-04-07T10:33:14.2490438+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executing action method "TeduCoreApp.Controllers.AccountController.Register (TeduCoreApp)" - Validation state: Valid (dad538d7)
+2020-04-07T10:33:14.2498162+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed action method "TeduCoreApp.Controllers.AccountController.Register (TeduCoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.5287ms. (50a9e262)
+2020-04-07T10:33:14.2559113+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executing ViewResult, running view "Register". (c83d0e25)
+2020-04-07T10:33:14.3694702+07:00 0HLUQKFQFSIJ8:00000001 [INF] Entity Framework Core "2.2.4-servicing-10062" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2020-04-07T10:33:14.6068647+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed DbCommand ("233"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-07T10:33:14.8381983+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed DbCommand ("231"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-07T10:33:15.0725830+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed DbCommand ("234"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-07T10:33:15.3332690+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed DbCommand ("256"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-07T10:33:15.5642703+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed DbCommand ("231"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-07T10:33:15.7954296+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed DbCommand ("231"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-07T10:33:16.0298292+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed DbCommand ("232"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2020-04-07T10:33:16.2686461+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed DbCommand ("234"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-07T10:33:16.5033538+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed DbCommand ("232"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-07T10:33:16.6321544+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed ViewResult - view "Register" executed in 2381.8877ms. (f66409e9)
+2020-04-07T10:33:16.6351430+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed action "TeduCoreApp.Controllers.AccountController.Register (TeduCoreApp)" in 2432.0456ms (afa2e885)
+2020-04-07T10:33:16.6352288+07:00 0HLUQKFQFSIJ8:00000001 [INF] Executed endpoint '"TeduCoreApp.Controllers.AccountController.Register (TeduCoreApp)"' (99874f2b)
+2020-04-07T10:33:16.6936055+07:00 0HLUQKFQFSIJ8:00000001 [INF] Request finished in 2516.0973ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-07T10:33:17.0334140+07:00 0HLUQKFQFSIJ8:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/lib/jquery-validation/dist/jquery.validate.js   (ca22a1cb)
+2020-04-07T10:33:17.1507745+07:00 0HLUQKFQFSIJ8:00000002 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/jquery.validate.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\lib\jquery-validation\dist\jquery.validate.js"' (27b0a520)
+2020-04-07T10:33:17.1509762+07:00 0HLUQKFQFSIJ8:00000002 [INF] Request finished in 117.6346ms 200 application/javascript (791a596a)
+2020-04-07T10:33:17.4343323+07:00 0HLUQKFQFSIJ8:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js   (ca22a1cb)
+2020-04-07T10:33:17.4478267+07:00 0HLUQKFQFSIJ9:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/logo/logo-11.png   (ca22a1cb)
+2020-04-07T10:33:17.4494970+07:00 0HLUQKFQFSIJ9:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-07T10:33:17.4496110+07:00 0HLUQKFQFSIJ9:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-07T10:33:17.4499873+07:00 0HLUQKFQFSIJ9:00000001 [INF] Request finished in 2.3478ms 404  (791a596a)
+2020-04-07T10:33:17.4645611+07:00 0HLUQKFQFSIJ8:00000003 [INF] Sending file. Request path: '"/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"'. Physical path: '"E:\Project\TeduCoreApp\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js"' (27b0a520)
+2020-04-07T10:33:17.4647710+07:00 0HLUQKFQFSIJ8:00000003 [INF] Request finished in 30.517ms 200 application/javascript (791a596a)
+2020-04-07T15:00:48.8361302+07:00 0HLUQP74AVI61:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Home/Index   (ca22a1cb)
+2020-04-07T15:00:49.5571017+07:00 0HLUQP74AVI61:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-07T15:00:49.5575751+07:00 0HLUQP74AVI61:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-07T15:00:49.7690390+07:00 0HLUQP74AVI61:00000001 [INF] Executing endpoint '"TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)"' (500cc934)
+2020-04-07T15:00:49.7994135+07:00 0HLUQP74AVI61:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "TeduCoreApp.Controllers.HomeController" ("TeduCoreApp"). (122b2fdf)
+2020-04-07T15:00:50.6797402+07:00 0HLUQP74AVI61:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" - Validation state: Valid (dad538d7)
+2020-04-07T15:00:52.9220445+07:00 0HLUQP74AVI61:00000001 [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T15:00:52.9223642+07:00 0HLUQP74AVI61:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T15:00:52.9224730+07:00 0HLUQP74AVI61:00000001 [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T15:00:52.9227564+07:00 0HLUQP74AVI61:00000001 [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T15:00:52.9228532+07:00 0HLUQP74AVI61:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T15:00:52.9229663+07:00 0HLUQP74AVI61:00000001 [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T15:00:52.9231434+07:00 0HLUQP74AVI61:00000001 [WRN] No type was specified for the decimal column '"CollectionFee"' on entity type '"ShipCode"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T15:00:52.9232973+07:00 0HLUQP74AVI61:00000001 [WRN] No type was specified for the decimal column '"Total"' on entity type '"ShipCode"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T15:00:52.9234381+07:00 0HLUQP74AVI61:00000001 [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T15:00:52.9235398+07:00 0HLUQP74AVI61:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-07T15:00:53.0368493+07:00 0HLUQP74AVI61:00000001 [INF] Entity Framework Core "2.2.4-servicing-10062" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2020-04-07T15:00:53.2682232+07:00 0HLUQP74AVI61:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2020-04-07T15:00:55.3560055+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("238"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2020-04-07T15:00:55.6395471+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("242"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[HomeOrder], [t].[Id], [c.Products].[Id] AS [Id0], [c.Products].[Name], [c.Products].[CategoryId], [c.Products].[Image], [c.Products].[Price], [c.Products].[PromotionPrice], [c.Products].[OriginalPrice], [c.Products].[Description], [c.Products].[Content], [c.Products].[HomeFlag], [c.Products].[HotFlag], [c.Products].[ViewCount], [c.Products].[Tags], [c.Products].[Unit], [c.Products].[SeoPageTitle], [c.Products].[SeoAlias], [c.Products].[SeoKeywords], [c.Products].[SeoDescription], [c.Products].[DateCreated], [c.Products].[DateModified], [c.Products].[Status], [c.Products].[VAT]
+FROM [Products] AS [c.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [c0].[HomeOrder], [c0].[Id]
+    FROM [ProductCategories] AS [c0]
+    WHERE [c0].[HomeFlag] = 1
+    ORDER BY [c0].[HomeOrder], [c0].[Id]
+) AS [t] ON [c.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[HomeOrder], [t].[Id]" (0723d8ff)
+2020-04-07T15:00:55.7104805+07:00 0HLUQP74AVI61:00000001 [WRN] The Include operation for navigation '"[c].DichVus"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2020-04-07T15:00:56.2391284+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("231"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[MenuId], [c].[HomeOrder], CASE
+    WHEN [c].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [c].[MenuId] AS [Id0], [c.Menu].[Name] AS [Name0], [c.Menu].[Description] AS [Description0], [c.Menu].[Url], [c.Menu].[Target], [c.Menu].[ParentId] AS [ParentId0], [c.Menu].[HomeOrder] AS [HomeOrder0], [c.Menu].[DateCreated], [c.Menu].[DateModified], [c.Menu].[SortOrder], [c.Menu].[Status], [c.Menu].[SeoAlias], [c.Menu].[GroupAlias], [c].[Image], [c].[HomeFlag], [c].[DateCreated] AS [DateCreated0], [c].[DateModified] AS [DateModified0], [c].[SortOrder] AS [SortOrder0], [c].[Status] AS [Status0], [c].[SeoPageTitle], [c].[SeoAlias] AS [SeoAlias0], [c].[SeoKeywords], [c].[SeoDescription], [c.Menu].[Id]
+FROM [DichVuCategory] AS [c]
+LEFT JOIN [Menu] AS [c.Menu] ON [c].[MenuId] = [c.Menu].[Id]
+WHERE ([c].[HomeFlag] = 1) AND [c].[ParentId] IS NULL
+ORDER BY [c].[HomeOrder], [c].[Id], [c.Menu].[Id]" (0723d8ff)
+2020-04-07T15:00:56.6023194+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("234"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x].[VAT], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2020-04-07T15:00:57.3230863+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("594"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x].[VAT], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2020-04-07T15:00:57.9509131+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("309"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.BlogCategory].[Name] AS [Name1], [x.BlogCategory].[Description] AS [Description1], [x.BlogCategory].[ParentId], [x.BlogCategory].[MenuId], [x.BlogCategory].[HomeOrder], [x.BlogCategory].[Image] AS [Image0], [x.BlogCategory].[HomeFlag] AS [HomeFlag0], CASE
+    WHEN [x.BlogCategory].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.BlogCategory.Menu].[Id] AS [Id0], [x.BlogCategory.Menu].[Name] AS [Name0], [x.BlogCategory.Menu].[Description] AS [Description0], [x.BlogCategory.Menu].[Url], [x.BlogCategory.Menu].[Target], [x.BlogCategory.Menu].[ParentId] AS [ParentId0], [x.BlogCategory.Menu].[HomeOrder] AS [HomeOrder0], [x.BlogCategory.Menu].[DateCreated], [x.BlogCategory.Menu].[DateModified], [x.BlogCategory.Menu].[SortOrder], [x.BlogCategory.Menu].[Status], [x.BlogCategory.Menu].[SeoAlias], [x.BlogCategory.Menu].[GroupAlias], [x.BlogCategory].[DateCreated] AS [DateCreated0], [x.BlogCategory].[DateModified] AS [DateModified0], [x.BlogCategory].[SortOrder] AS [SortOrder0], [x.BlogCategory].[Status] AS [Status0], [x.BlogCategory].[SeoPageTitle], [x.BlogCategory].[SeoAlias] AS [SeoAlias0], [x.BlogCategory].[SeoKeywords], [x.BlogCategory].[SeoDescription], [x].[DateCreated] AS [DateCreated1], [x].[DateModified] AS [DateModified1], [x].[Status] AS [Status1], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias1], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x.BlogCategory.Menu].[Id], [x.BlogCategory].[Id]
+FROM [Blogs] AS [x]
+INNER JOIN [BlogCategory] AS [x.BlogCategory] ON [x].[CategoryId] = [x.BlogCategory].[Id]
+LEFT JOIN [Menu] AS [x.BlogCategory.Menu] ON [x.BlogCategory].[MenuId] = [x.BlogCategory.Menu].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated1] DESC, [x].[Id], [x.BlogCategory.Menu].[Id], [x.BlogCategory].[Id]" (0723d8ff)
+2020-04-07T15:00:58.5665102+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("314"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[CategoryId], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.DichVuCategory].[Name] AS [Name1], [x.DichVuCategory].[Description] AS [Description1], [x.DichVuCategory].[ParentId], [x.DichVuCategory].[MenuId], [x.DichVuCategory].[HomeOrder], CASE
+    WHEN [x.DichVuCategory].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.DichVuCategory.Menu].[Id] AS [Id0], [x.DichVuCategory.Menu].[Name] AS [Name0], [x.DichVuCategory.Menu].[Description] AS [Description0], [x.DichVuCategory.Menu].[Url], [x.DichVuCategory.Menu].[Target], [x.DichVuCategory.Menu].[ParentId] AS [ParentId0], [x.DichVuCategory.Menu].[HomeOrder] AS [HomeOrder0], [x.DichVuCategory.Menu].[DateCreated], [x.DichVuCategory.Menu].[DateModified], [x.DichVuCategory.Menu].[SortOrder], [x.DichVuCategory.Menu].[Status], [x.DichVuCategory.Menu].[SeoAlias], [x.DichVuCategory.Menu].[GroupAlias], [x.DichVuCategory].[Image] AS [Image0], [x.DichVuCategory].[HomeFlag] AS [HomeFlag0], [x.DichVuCategory].[DateCreated] AS [DateCreated0], [x.DichVuCategory].[DateModified] AS [DateModified0], [x.DichVuCategory].[SortOrder] AS [SortOrder0], [x.DichVuCategory].[Status] AS [Status0], [x.DichVuCategory].[SeoPageTitle], [x.DichVuCategory].[SeoAlias] AS [SeoAlias0], [x.DichVuCategory].[SeoKeywords], [x.DichVuCategory].[SeoDescription], [x].[DateCreated] AS [DateCreated1], [x].[DateModified] AS [DateModified1], [x].[Status] AS [Status1], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias1], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x.DichVuCategory.Menu].[Id], [x.DichVuCategory].[Id]
+FROM [DichVu] AS [x]
+INNER JOIN [DichVuCategory] AS [x.DichVuCategory] ON [x].[CategoryId] = [x.DichVuCategory].[Id]
+LEFT JOIN [Menu] AS [x.DichVuCategory.Menu] ON [x.DichVuCategory].[MenuId] = [x.DichVuCategory.Menu].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated1] DESC, [x].[Id], [x.DichVuCategory.Menu].[Id], [x.DichVuCategory].[Id]" (0723d8ff)
+2020-04-07T15:00:59.1773088+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("563"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2020-04-07T15:00:59.1919500+07:00 0HLUQP74AVI61:00000001 [INF] Executed action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 8503.1913ms. (50a9e262)
+2020-04-07T15:00:59.3027466+07:00 0HLUQP74AVI61:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2020-04-07T15:01:00.5664539+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("234"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-07T15:01:00.8070956+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("233"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-07T15:01:01.0502299+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("234"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-07T15:01:01.6614127+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("467"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2020-04-07T15:01:01.9014940+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("237"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status], [x.Products].[VAT]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2020-04-07T15:01:02.1930521+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("233"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-07T15:01:02.4325703+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("239"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-07T15:01:02.6641893+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("231"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-07T15:01:03.4030322+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("230"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2020-04-07T15:01:03.8329334+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("243"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-07T15:01:04.0974865+07:00 0HLUQP74AVI61:00000001 [INF] Executed DbCommand ("232"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-07T15:01:04.2135798+07:00 0HLUQP74AVI61:00000001 [INF] Executed ViewResult - view "Index" executed in 4997.77ms. (f66409e9)
+2020-04-07T15:01:04.2147594+07:00 0HLUQP74AVI61:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 14414.9726ms (afa2e885)
+2020-04-07T15:01:04.2148674+07:00 0HLUQP74AVI61:00000001 [INF] Executed endpoint '"TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)"' (99874f2b)
+2020-04-07T15:01:06.3727388+07:00 0HLUQP74AVI61:00000001 [INF] Request finished in 17549.0143ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-07T15:01:06.7080299+07:00 0HLUQP74AVI61:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Home/assets/img/logo/logo-11.png   (ca22a1cb)
+2020-04-07T15:01:06.7138958+07:00 0HLUQP74AVI61:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-07T15:01:06.7139753+07:00 0HLUQP74AVI61:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-07T15:01:06.7475518+07:00 0HLUQP74AVI61:00000002 [INF] Request finished in 39.5404ms 404  (791a596a)
+2020-04-07T15:01:07.3838662+07:00 0HLUQP74AVI61:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Content/Client/img/svg/loading/static-svg/spin.svg   (ca22a1cb)
+2020-04-07T15:01:07.3851903+07:00 0HLUQP74AVI61:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-07T15:01:07.3852926+07:00 0HLUQP74AVI61:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-07T15:01:07.3856046+07:00 0HLUQP74AVI61:00000003 [INF] Request finished in 1.7418ms 404  (791a596a)
+2020-04-07T15:01:08.7648047+07:00 0HLUQP74AVI61:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/favicon.jpg   (ca22a1cb)
+2020-04-07T15:01:08.7661002+07:00 0HLUQP74AVI61:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-07T15:01:08.7661850+07:00 0HLUQP74AVI61:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-07T15:01:08.7669956+07:00 0HLUQP74AVI61:00000004 [INF] Request finished in 2.6927ms 404  (791a596a)
+2020-04-07T15:46:23.8499414+07:00 0HLUQP74AVI62:00000001 [INF] Request starting HTTP/1.1 POST http://127.0.0.1:41833/iisintegration  0 (ca22a1cb)
+2020-04-07T15:46:23.8547272+07:00 0HLUQP74AVI62:00000001 [INF] Request finished in 10.8472ms 202  (791a596a)

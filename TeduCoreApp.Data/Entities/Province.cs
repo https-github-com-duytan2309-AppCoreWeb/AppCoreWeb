@@ -39,6 +39,5 @@ namespace TeduCoreApp.Data.Entities
 
         public virtual ICollection<District> Districts { set; get; }
         public virtual ICollection<Ward> Wards { set; get; }
-        public virtual ICollection<Street> Streets { set; get; }
     }
 }

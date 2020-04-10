@@ -81,7 +81,7 @@ namespace TeduCoreApp.Application.AutoMapper
                 .ConstructUsing(c => new AnnouncementUser(c.AnnouncementId, c.UserId, c.HasRead));
 
             CreateMap<StreetViewModel, Street>()
-                    .ConstructUsing(c => new Street(c.Id, c.Code, c.Name, c.Rank, c.ProvinceId, c.DistrictId, c.WardId, c.Status));
+                    .ConstructUsing(c => new Street(c.Id, c.Code, c.Name, c.Rank, c.WardId, c.DistrictId, c.Status));
 
             CreateMap<WardViewModel, Ward>()
                     .ConstructUsing(c => new Ward(c.Id, c.Code, c.Name, c.Rank, c.ProvinceId, c.DistrictId, c.Status));

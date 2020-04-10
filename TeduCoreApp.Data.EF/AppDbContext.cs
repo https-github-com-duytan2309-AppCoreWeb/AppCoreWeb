@@ -81,7 +81,8 @@ namespace TeduCoreApp.Data.EF
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=TAN-IT\\SqlExpress;Database=TeduCore;Trusted_Connection=True;MultipleActiveResultSets=true");
+            //optionsBuilder.UseSqlServer("Server=tcp:servertan.database.windows.net,1433;Initial Catalog=databasetanDB;Persist Security Info=False;User ID=tanit2309;Password=Tan@23091995;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            optionsBuilder.UseSqlServer("Server=tan-it\\sqlexpress;Database=TeduCore;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -151,7 +152,6 @@ namespace TeduCoreApp.Data.EF
             builder.AddConfiguration(new SystemConfigConfiguration());
             builder.AddConfiguration(new AdvertistmentPositionConfiguration());
             builder.AddConfiguration(new DichVuTagConfiguration());
-            //base.OnModelCreating(builder);
         }
 
         public override int SaveChanges()

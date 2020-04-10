@@ -21,12 +21,12 @@ namespace TeduCoreApp.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public IActionResult GetAddressId()
-        {
-            var id = _context.Provinces.Where(x => x.Name == "Thành phố Hồ Chí Minh").Select(x => x.Id).FirstOrDefault();
-            return new OkObjectResult(id);
-        }
+        //[HttpGet]
+        //public IActionResult GetAddressId()
+        //{
+        //    var id = _context.Provinces.Where(x => x.Name == "Thành phố Hồ Chí Minh").Select(x => x.Id).FirstOrDefault();
+        //    return new OkObjectResult(id);
+        //}
 
         // GET: api/ShipCodes
         [HttpGet]
