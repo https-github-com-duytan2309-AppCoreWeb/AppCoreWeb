@@ -3,8 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>aspnet-TeduCoreApp-C4D92190-4731-4D06-88EE-9CFEEBF9F478</UserSecretsId>
-    <AspNetCoreModuleName>AspNetCoreModule</AspNetCoreModuleName>
-    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -85,8 +83,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Logs\" />
     <Folder Include="wwwroot\clientapp\controllers\Blog\" />
     <Folder Include="wwwroot\clientapp\controllers\Service\" />
     <Folder Include="wwwroot\files\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Test.cshtml" />
   </ItemGroup>
 </Project>

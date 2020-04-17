@@ -135,11 +135,24 @@
             }
         }
         return roots;
-    }
+    },
+    notifypermission: function (message, iconHtml) {
+        Swal.fire({
+            title: '<strong><h1>Notify</h1></strong>',
+            icon: iconHtml,
+            html: '<h2>' + message + '</h2>',
+            showCloseButton: true,
+            showCancelButton: false,
+            focusConfirm: false,
+            customClass: 'swal-wide',
+            closeButtonText: '',
+            closeButtonAriaLabel: 'Close',
+        });
+    },
 }
 
 $(document).ajaxSend(function (e, xhr, options) {
-    if (options.type.toUpperCase() == "POST" || options.type.toUpperCase() == "PUT") {
+    if (options.type.toUpperCase() === "POST" || options.type.toUpperCase() === "PUT") {
         var token = $('form').find("input[name='__RequestVerificationToken']").val();
         xhr.setRequestHeader("RequestVerificationToken", token);
     }

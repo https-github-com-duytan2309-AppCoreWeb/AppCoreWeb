@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Identity;
 using TeduCoreApp.Data.Entities;
 using System.Net.Mail;
 using System.Net.Mime;
+using TeduCoreApp.Data.IRepositories;
+using TeduCoreApp.Data.EF;
 
 namespace TeduCoreApp.Controllers
 {
@@ -27,11 +29,24 @@ namespace TeduCoreApp.Controllers
         private IViewRenderService _viewRenderService;
         private IConfiguration _configuration;
         private IEmailSender _emailSender;
+
+        private readonly IProvinceRepository _provinceRepository;
+        private readonly IDistrictRepository _disctrictRepository;
+        private readonly IWardRepository _wardRepository;
+        private readonly IStreetRepository _streetRepository;
+        private readonly IAddressService _addressServices;
+        private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
 
         public CartController(IProductService productService,
             IViewRenderService viewRenderService, IEmailSender emailSender,
             IConfiguration configuration, IBillService billService,
+            IAddressService addressServices,
+            IProvinceRepository provinceRepository,
+            IDistrictRepository disctrictRepository,
+            IWardRepository wardRepository,
+            IStreetRepository streetRepository,
+             AppDbContext context,
             UserManager<AppUser> userManager
             )
         {
@@ -40,6 +55,13 @@ namespace TeduCoreApp.Controllers
             _viewRenderService = viewRenderService;
             _configuration = configuration;
             _emailSender = emailSender;
+
+            _provinceRepository = provinceRepository;
+            _disctrictRepository = disctrictRepository;
+            _wardRepository = wardRepository;
+            _streetRepository = streetRepository;
+            _addressServices = addressServices;
+            _context = context;
             _userManager = userManager;
         }
 
@@ -60,12 +82,6 @@ namespace TeduCoreApp.Controllers
             {
                 return Redirect("/cart.html");
             }
-
-            //Attachment data = new Attachment(
-            //                        "wwwroot/files/mansion.png",
-            //                        MediaTypeNames.Application.Octet);
-            //ViewBag.LinkImages = data.ContentStream;
-
             model.Carts = session;
             return View(model);
         }
@@ -79,6 +95,11 @@ namespace TeduCoreApp.Controllers
             var random = new System.Random();
             if (ModelState.IsValid)
             {
+                //if (model.ShipCodeId == 0)
+                //{
+                //    model.ShipCodeId = AddStreetAndShipCodeInCheckout(model.Province, model.District, model.Ward, model.Street);
+                //}
+
                 if (session != null)
                 {
                     var details = new List<BillDetailViewModel>();
@@ -98,7 +119,7 @@ namespace TeduCoreApp.Controllers
                     {
                         CustomerMobile = model.CustomerMobile,
                         BillStatus = BillStatus.New,
-                        CustomerAddress = model.Province + ", " + model.District + ", " + model.Ward + ", " + model.Street,
+                        CustomerAddress = model.Street + ", " + model.Ward + ", " + model.District + ", " + model.Province,
                         CustomerName = model.CustomerName,
                         CustomerMessage = model.CustomerMessage,
                         BillDetails = details,
@@ -116,11 +137,9 @@ namespace TeduCoreApp.Controllers
                     try
                     {
                         _billService.Save();
-
                         var content = await _viewRenderService.RenderToStringAsync("Cart/_BillMail", billViewModel);
                         var contentAdmin = await _viewRenderService.RenderToStringAsync("Cart/_BillMailForAdmin", billViewModel);
                         List<string> images = new List<string>();
-
                         foreach (var item in details)
                         {
                             images.Add(@item.Product.Image.Replace('/', '\\'));
@@ -145,6 +164,38 @@ namespace TeduCoreApp.Controllers
             model.Carts = session;
 
             return View(model);
+        }
+
+        //[HttpPost]
+        public long AddStreetAndShipCodeInCheckout(string Province, string NameDistrict, string NameWard, string Street)
+        {
+            var idProvince = _provinceRepository.FindSingle(x => x.Name == Province).Id;
+            var idDistrict = _provinceRepository.FindSingle(x => x.Name == NameDistrict).Id;
+            var idWard = _wardRepository.FindSingle(x => x.Name == NameWard).Id;
+
+            StreetViewModel streetVm = new StreetViewModel();
+            streetVm.Name = Street;
+            streetVm.DistrictId = idDistrict;
+            streetVm.WardId = idWard;
+            streetVm.Status = false;
+            _addressServices.CreateStreet(streetVm);
+            _addressServices.Save();
+
+            Address address = new Address();
+            address.ProvinceId = idProvince;
+            address.DistrictId = idDistrict;
+            address.WardId = idWard;
+            _context.Add(address);
+            _context.SaveChanges();
+
+            var idAddress = _context.Address.Where(x => x.WardId == idWard && x.DistrictId == idDistrict).FirstOrDefault();
+            ShipCode ship = new ShipCode();
+            ship.IdAddress = idAddress.Id;
+            _context.Add(ship);
+            _context.SaveChanges();
+
+            var result = _context.ShipCodes.Where(x => x.IdAddress == ship.IdAddress).FirstOrDefault().Id;
+            return result;
         }
 
         #region AJAX Request

@@ -6,7 +6,6 @@
                 <div class="header-top-left">
                     <div class="language-currency">
                         @await Html.PartialAsync("_SelectLanguagePartial")
-
                     </div>
                     <div class="language-currency lang-curr-mrg">
                         <span>@Localizer["Hỗ trợ trực tuyến"]: </span>
@@ -22,12 +21,11 @@
                             <li>
                                 <div class="dropdown">
                                     <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span>@User.GetSpecificClaim("FullName")</span> <i class="fa fa-angle-down"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a class=""></a></li>
-                                        <li><a href="/account.html">Thông tin Tài khoản</a></li>
-                                        @*<li><a href="/wishlist.html">Danh sách yêu thích</a></li>
-                                        <li><a href="/orders-list.html">Lịch sử đơn hàng</a></li>*@
-                                    </ul>
+                                    <div class="dropdown-menu" role="menu">
+                                        @*<li><a  class=""></a></li>*@
+                                        <div><a class="btn btn-outline-primary dropdown-item" href="/account.html">Thông tin Tài khoản</a></div>
+                                        <div><a class="btn btn-outline-primary dropdown-item" href="/thong-tin-bill.html">Thông Hóa Đơn Của Bạn</a></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
@@ -44,9 +42,6 @@
                     </ul>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>
-
-

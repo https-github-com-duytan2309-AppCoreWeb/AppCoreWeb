@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TeduCoreApp.Application.ViewModels.System;
+using Microsoft.AspNetCore.Authorization;
+using TeduCoreApp.Authorization;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
@@ -13,14 +15,19 @@ namespace TeduCoreApp.Areas.Admin.Controllers
     public class RoleController : Controller
     {
         private readonly IRoleService _roleService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public RoleController(IRoleService roleService)
+        public RoleController(IRoleService roleService, IAuthorizationService authorizationService)
         {
             _roleService = roleService;
+            _authorizationService = authorizationService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "ROLE", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Login/Index");
             return View();
         }
 

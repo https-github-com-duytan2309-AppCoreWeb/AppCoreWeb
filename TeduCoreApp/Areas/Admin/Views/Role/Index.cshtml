@@ -1,17 +1,23 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Role list";
 }
 @section Styles{
+
     <link href="~/lib/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet" />
 }
 @section Scripts{
+
     <script src="~/lib/jquery-treegrid/js/jquery.treegrid.js"></script>
     <script src="~/app/controllers/role/index.js" asp-append-version="true"></script>
     <script>
         var roleObj = new RoleController();
         roleObj.initialize();
     </script>
+}
+@{
+    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "ROLE", Operations.Create);
+    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "ROLE", Operations.Delete);
+    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "ROLE", Operations.Update);
 }
 <div class="">
     <div class="page-title">
@@ -21,7 +27,10 @@
 
         <div class="title_right">
             <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
-                <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                @if (resultCreate.Succeeded)
+                {
+                    <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                }
             </div>
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
@@ -30,9 +39,7 @@
                         <button class="btn btn-default" id="btn-search" type="button">Search!</button>
                     </span>
                 </div>
-
             </div>
-
         </div>
     </div>
 
@@ -73,21 +80,34 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
 
     <script id="table-template" type="x-tmpl-mustache">
         <tr>
             <td>{{Name}}</td>
             <td>{{Description}}</td>
             <td>
-                <a href="#" data-id="{{Id}}" class="btn  btn-xs btn-primary btn-grant"><i class="fa fa-eye-slash"></i></a>
-                <a href="#" data-id="{{Id}}" class="btn  btn-xs btn-info btn-edit"><i class="fa fa-pencil-square-o"></i></a>
-                <a href="#" data-id="{{Id}}" class="btn btn-xs  btn-danger btn-delete"><i class="fa fa-trash-o"></i></a>
+
+                <a data-id="{{Id}}" class="btn  btn-xs btn-primary btn-grant"><i class="fa fa-eye-slash"></i></a>
+                @if (resultUpdate.Succeeded)
+                {
+                    <a data-id="{{Id}}" class="btn  btn-xs btn-info btn-edit"><i class="fa fa-pencil-square-o"></i></a>
+                }
+                else
+                {
+                    <a data-id="{{Id}}" class="btn  btn-xs btn-info btn-not-permission" disabled><i class="fa fa-pencil-square-o"></i></a>
+                }
+                @if (resultDelete.Succeeded)
+                {
+                    <a class="btn btn-xs  btn-danger btn-delete"><i class="fa fa-trash-o"></i></a>
+                }
+                else
+                {
+                    <a class="btn btn-xs  btn-danger btn-not-permission" disabled><i class="fa fa-trash-o"></i></a>
+                }
             </td>
         </tr>
     </script>

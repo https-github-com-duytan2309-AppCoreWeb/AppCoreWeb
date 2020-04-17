@@ -54,6 +54,25 @@ namespace TeduCoreApp.Application.Implementation
             _streetRepository.Update(street);
         }
 
+        //public void AddStreetAndShipCodeInCheckout(string NameDistrict, string NameWard, string Street)
+        //{
+        //    var idDistrict = _provinceRepository.FindSingle(x => x.Name == NameDistrict).Id;
+        //    var idWard = _provinceRepository.FindSingle(x => x.Name == NameWard).Id;
+        //    StreetViewModel streetVm = new StreetViewModel();
+        //    streetVm.Name = Street;
+        //    streetVm.DistrictId = idDistrict;
+        //    streetVm.WardId = idWard;
+        //    streetVm.Status = false;
+        //    var street = Mapper.Map<StreetViewModel, Street>(streetVm);
+        //    _streetRepository.Add(street);
+
+        //    var idAddress = _context.Address.Where(x => x.WardId == idWard && x.DistrictId == idDistrict).FirstOrDefault();
+        //    ShipCode ship = new ShipCode();
+        //    ship.IdAddress = idAddress.Id;
+        //    _context.Add(ship);
+        //    _context.SaveChanges();
+        //}
+
         #region AJAX Request Province
 
         public List<Province> GetProvinces()
@@ -191,7 +210,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<Street> GetStreetsByNameDistrict(string NameDistrict)
         {
-            var idDistrict = _disctrictRepository.FindSingle(x => x.Name == NameDistrict).Id;
+            var idDistrict = _disctrictRepository.FindAll(x => x.Name == NameDistrict).Select(x => x.Id).FirstOrDefault();
             var lists = _streetRepository.FindAll().Where(x => x.DistrictId == idDistrict).ToList();
             return lists;
         }
@@ -214,7 +233,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
     }
 }

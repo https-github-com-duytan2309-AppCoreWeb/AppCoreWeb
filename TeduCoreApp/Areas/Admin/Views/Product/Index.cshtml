@@ -29,7 +29,11 @@
         </script>
     </environment>
 
-
+}
+@{
+    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
+    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete);
+    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update);
 }
 <div class="page-title">
     <div class="title_left">
@@ -52,11 +56,14 @@
             </select>
         </div>
         <div class="col-md-6 col-sm-12  form-group pull-right">
-            <button id="btnCreate" class="btn btn-success">Create</button>
+            @if (resultCreate.Succeeded)
+            {
+                <button id="btnCreate" class="btn btn-success">Create</button>
+            }
+
             <a class="btn btn-danger" href="~/templates/ProductImportTemplate.xlsx">Template</a>
             <button class="btn btn-primary" id="btn-import" type="button"><i class="fa fa-file-excel-o"></i></button>
             <button class="btn btn-default" id="btn-export" type="button"><i class="fa fa-forward"></i></button>
-
         </div>
     </div>
 </div>
@@ -76,7 +83,7 @@
                             <th>Image</th>
                             <th>Created Date</th>
                             <th>Status</th>
-                            <th width="20%">#</th>
+                            <th width="20%">Chức Năng</th>
                         </tr>
                     </thead>
                     <tbody id="tbl-content"></tbody>
@@ -116,11 +123,17 @@
         <td>{{CreatedDate}}</td>
         <td>{{{Status}}}</td>
         <th scope="row">
-            <a class="btn  btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pencil"></i></a>
-            <a class="btn  btn-sm btn-delete" data-id="{{Id}}"><i class="fa fa-trash"></i></a>
-            <a href="javascript;" data-id="{{Id}}" class="btn btn-xs btn-images"><i class="fa fa-image"></i></a>
-            <a href="javascript;" data-id="{{Id}}" class="btn btn-xs btn-quantity"><i class="fa fa-hourglass-start"></i></a>
-            <a href="javascript;" data-id="{{Id}}" class="btn btn-xs btn-whole-price"><i class="fa fa-money"></i></a>
+            @if (resultUpdate.Succeeded)
+            {
+                <a class="btn btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pencil"></i></a>
+            }
+            @if (resultDelete.Succeeded)
+            {
+                <a class="btn btn-sm btn-delete" data-id="{{Id}}"><i class="fa fa-trash"></i></a>
+            }
+            <a data-id="{{Id}}" class="btn btn-xs btn-images"><i class="fa fa-image"></i></a>
+            <a data-id="{{Id}}" class="btn btn-xs btn-quantity"><i class="fa fa-hourglass-start"></i></a>
+            <a data-id="{{Id}}" class="btn btn-xs btn-whole-price"><i class="fa fa-money"></i></a>
         </th>
     </tr>
 </script>

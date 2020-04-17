@@ -49,7 +49,6 @@
             resetFormMaintainance();
             initTreeDropDownCategory();
             $('#modal-add-edit').modal('show');
-
         });
 
         $('#btnSelectImg').on('click', function () {
@@ -72,7 +71,6 @@
                 success: function (path) {
                     $('#txtImage').val(path);
                     tedu.notify('Upload image succesful!', 'success');
-
                 },
                 error: function () {
                     tedu.notify('There was error uploading files!', 'error');
@@ -105,13 +103,13 @@
             var fileUpload = $("#fileInputExcel").get(0);
             var files = fileUpload.files;
 
-            // Create FormData object  
+            // Create FormData object
             var fileData = new FormData();
-            // Looping over all files and add it to FormData object  
+            // Looping over all files and add it to FormData object
             for (var i = 0; i < files.length; i++) {
                 fileData.append("files", files[i]);
             }
-            // Adding one more key to FormData object  
+            // Adding one more key to FormData object
             fileData.append('categoryId', $('#ddlCategoryIdImportExcel').combotree('getValue'));
             $.ajax({
                 url: '/Admin/Product/ImportExcel',
@@ -122,7 +120,6 @@
                 success: function (data) {
                     $('#modal-import-excel').modal('hide');
                     loadData();
-
                 }
             });
             return false;
@@ -145,6 +142,11 @@
                 }
             });
         });
+
+        $('body').on('click', '.btn-not-permission', function (e) {
+            e.preventDefault();
+            tedu.notifypermission('You not has pemission is this action', 'warning');
+        });
     }
 
     function registerControls() {
@@ -165,7 +167,6 @@
                     }
                 }, this));
         };
-
     }
 
     function saveProduct(e) {
@@ -262,7 +263,7 @@
         });
     }
 
-    function loadDetails(id) {
+    function loadDetails(that) {
         $.ajax({
             type: "GET",
             url: "/Admin/Product/GetById",
@@ -299,7 +300,6 @@
 
                 $('#modal-add-edit').modal('show');
                 tedu.stopLoading();
-
             },
             error: function (status) {
                 tedu.notify('Có lỗi xảy ra', 'error');
@@ -332,7 +332,7 @@
                 $('#ddlCategoryIdImportExcel').combotree({
                     data: arr
                 });
-                if (selectedId != undefined) {
+                if (selectedId !== undefined) {
                     $('#ddlCategoryIdM').combotree('setValue', selectedId);
                 }
             }
@@ -363,7 +363,6 @@
         $('#ckStatusM').prop('checked', true);
         $('#ckHotM').prop('checked', false);
         $('#ckShowHomeM').prop('checked', false);
-
     }
 
     function loadCategories() {
@@ -404,16 +403,15 @@
                     render += Mustache.render(template, {
                         Id: item.Id,
                         Name: item.Name,
-                        Image: item.Image == null ? '<img src="/admin-side/images/user.png" width=25' : '<img src="' + item.Image + '" width=25 />',
+                        Image: item.Image === null ? '<img src="/admin-side/images/user.png" width=25' : '<img src="' + item.Image + '" width=25 />',
                         CategoryName: item.ProductCategory.Name,
                         Price: tedu.formatNumber(item.Price, 0),
                         CreatedDate: tedu.dateTimeFormatJson(item.DateCreated),
                         Status: tedu.getStatus(item.Status)
                     });
-                    
                 });
                 $('#lblTotalRecords').text(response.RowCount);
-                if (render != '') {
+                if (render !== '') {
                     $('#tbl-content').html(render);
                 }
                 wrapPaging(response.RowCount, function () {

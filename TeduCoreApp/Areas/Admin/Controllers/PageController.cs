@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Blog;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Authorization;
+using TeduCoreApp.Authorization;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
@@ -13,14 +15,19 @@ namespace TeduCoreApp.Areas.Admin.Controllers
     public class PageController : Controller
     {
         public IPageService _pageService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public PageController(IPageService pageService)
+        public PageController(IPageService pageService, IAuthorizationService authorizationService)
         {
             _pageService = pageService;
+            _authorizationService = authorizationService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    //[Authorize]
     public class BaseController : Controller
     {
     }

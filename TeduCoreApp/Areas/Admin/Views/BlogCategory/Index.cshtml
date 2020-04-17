@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/app/controllers/blog-category/index.js" asp-append-version="true"></script>
+    <script>
+        var blogCategory = new blogCategoryController();
+        blogCategory.initialize();
+    </script>
+}
+@{
+    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "BLOG", Operations.Create);
+    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "BLOG", Operations.Delete);
+    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "BLOG", Operations.Update);
+}
+<div class="kt-subheader kt-grid__item" id="kt_subheader">
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">
+                Danh mục sản phẩm
+            </h3>
+            <span class="kt-subheader__separator kt-hidden"></span>
+            <div class="kt-subheader__breadcrumbs">
+                <a asp-controller="Home" asp-action="Index" asp-area="Admin" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                <span class="kt-subheader__breadcrumbs-separator"></span>
+                <a href="" class="kt-subheader__breadcrumbs-link">
+                    Quản lí sản phẩm
+                </a>
+                <span class="kt-subheader__breadcrumbs-separator"></span>
+                <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Danh mục sản phẩm</span>
+            </div>
+        </div>
+        <div class="kt-subheader__toolbar">
+        </div>
+    </div>
+</div>
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="kt-portlet">
+                <div class="kt-portlet__head kt-portlet__head--lg">
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="kt-font-brand flaticon2-line-chart"></i>
+                        </span>
+                        <h3 class="kt-portlet__head-title">
+                            Danh mục dịch vụ
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <a href="#" class="btn btn-clean btn-icon-sm">
+                                <i class="la la-long-arrow-left"></i>
+                                Quay lại
+                            </a>
+                            &nbsp;
+                            @if (resultCreate.Succeeded)
+                            {
+                                <a href="#" id="btnCreate" class="btn btn-clean btn-icon-sm">
+                                    <i class="la la-plus"></i>
+                                    Thêm mới
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-portlet__body">
+                    <div id="kt_tree_1" class="tree-demo jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_1" aria-busy="false">
+                        <ul id="treeProductCategory"></ul>
+                        <div id="contextMenu" class="easyui-menu" style="width:120px;">
+                            @if (resultUpdate.Succeeded)
+                            {
+                                <div id="btnEdit" data-options="iconCls:'icon-edit'">Sửa</div>
+                            }
+                            @if (resultDelete.Succeeded)
+                            {
+                                <div id="btnDelete" data-options="iconCls:'icon-remove'">Xoá</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+@await Html.PartialAsync("_AddEditModal.cshtml")

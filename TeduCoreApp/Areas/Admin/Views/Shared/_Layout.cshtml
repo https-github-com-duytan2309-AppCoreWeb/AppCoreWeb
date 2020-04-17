@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Trang Quản Trị</title>
 
     <!-- Bootstrap -->
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
@@ -18,6 +18,7 @@
     <link href="~/lib/nprogress/nprogress.css" rel="stylesheet" />
     <!-- bootstrap-daterangepicker -->
     <link href="~/lib/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+
     <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
     <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
     <!-- Custom Theme Style -->
@@ -29,6 +30,14 @@
     <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ejgrid.responsive.css" rel="stylesheet" />
     <link href="~/lib/syncfusion-javascript/Content/ej/web/ej.widgets.core.bootstrap.min.css" rel="stylesheet" />
 
+    <!--sweetalert2 -->
+    <style>
+        .swal-wide {
+            width: 600px !important;
+            height: 300px;
+        }
+    </style>
+    <link href="~/lib/sweetaler2/dist/sweetalert2.min.css" rel="stylesheet" />
     @RenderSection("Styles", required: false)
 </head>
 
@@ -217,14 +226,6 @@
     <script src="~/client/js/ejs/properties.js"></script>
     <ej-script-manager></ej-script-manager>
 
-    @*<script>
-
-            $("#UploadLogo").ejUploadbox({
-                saveUrl: "/Files/PostUploadProfilePicture",
-
-            });
-        </script>*@
-
     <environment names="Development">
         <script src="~/app/shared/tedu.js"></script>
     </environment>
@@ -232,6 +233,7 @@
         <script src="~/bundled/site-admin.min.js"></script>
     </environment>
 
+    <script src="~/lib/sweetaler2/dist/sweetalert2.all.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

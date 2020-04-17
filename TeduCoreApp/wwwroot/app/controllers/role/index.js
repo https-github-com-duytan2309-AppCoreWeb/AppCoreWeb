@@ -36,7 +36,6 @@
         $("#btn-create").on('click', function () {
             resetFormMaintainance();
             $('#modal-add-edit').modal('show');
-
         });
         //Grant permission
         $('body').on('click', '.btn-grant', function () {
@@ -64,7 +63,6 @@
                     $('#txtDescription').val(data.Description);
                     $('#modal-add-edit').modal('show');
                     tedu.stopLoading();
-
                 },
                 error: function (status) {
                     tedu.notify('Có lỗi xảy ra', 'error');
@@ -106,7 +104,6 @@
                 });
                 return false;
             }
-
         });
 
         $('body').on('click', '.btn-delete', function (e) {
@@ -166,6 +163,11 @@
                 }
             });
         });
+
+        $('body').on('click', '.btn-not-permission', function (e) {
+            e.preventDefault();
+            tedu.notifypermission('You not has pemission is this action', 'warning');
+        });
     };
 
     function loadFunctionList(callback) {
@@ -183,7 +185,7 @@
                 $.each(response, function (i, item) {
                     render += Mustache.render(template, {
                         Name: item.Name,
-                        treegridparent: item.ParentId != null ? "treegrid-parent-" + item.ParentId : "",
+                        treegridparent: item.ParentId !== null ? "treegrid-parent-" + item.ParentId : "",
                         Id: item.Id,
                         AllowCreate: item.AllowCreate ? "checked" : "",
                         AllowEdit: item.AllowEdit ? "checked" : "",
@@ -192,7 +194,7 @@
                         Status: tedu.getStatus(item.Status),
                     });
                 });
-                if (render != undefined) {
+                if (render !== undefined) {
                     $('#lst-data-function').html(render);
                 }
                 $('.tree').treegrid();
@@ -212,34 +214,34 @@
                 });
 
                 $('.ckView').on('click', function () {
-                    if ($('.ckView:checked').length == response.length) {
+                    if ($('.ckView:checked').length === response.length) {
                         $('#ckCheckAllView').prop('checked', true);
                     } else {
                         $('#ckCheckAllView').prop('checked', false);
                     }
                 });
                 $('.ckAdd').on('click', function () {
-                    if ($('.ckAdd:checked').length == response.length) {
+                    if ($('.ckAdd:checked').length === response.length) {
                         $('#ckCheckAllCreate').prop('checked', true);
                     } else {
                         $('#ckCheckAllCreate').prop('checked', false);
                     }
                 });
                 $('.ckEdit').on('click', function () {
-                    if ($('.ckEdit:checked').length == response.length) {
+                    if ($('.ckEdit:checked').length === response.length) {
                         $('#ckCheckAllEdit').prop('checked', true);
                     } else {
                         $('#ckCheckAllEdit').prop('checked', false);
                     }
                 });
                 $('.ckDelete').on('click', function () {
-                    if ($('.ckDelete:checked').length == response.length) {
+                    if ($('.ckDelete:checked').length === response.length) {
                         $('#ckCheckAllDelete').prop('checked', true);
                     } else {
                         $('#ckCheckAllDelete').prop('checked', false);
                     }
                 });
-                if (callback != undefined) {
+                if (callback !== undefined) {
                     callback();
                 }
                 tedu.stopLoading();
@@ -266,7 +268,7 @@
                 var litsPermission = response;
                 $.each($('#tblFunction tbody tr'), function (i, item) {
                     $.each(litsPermission, function (j, jitem) {
-                        if (jitem.FunctionId == $(item).data('id')) {
+                        if (jitem.FunctionId === $(item).data('id')) {
                             $(item).find('.ckView').first().prop('checked', jitem.CanRead);
                             $(item).find('.ckAdd').first().prop('checked', jitem.CanCreate);
                             $(item).find('.ckEdit').first().prop('checked', jitem.CanUpdate);
@@ -275,22 +277,22 @@
                     });
                 });
 
-                if ($('.ckView:checked').length == $('#tblFunction tbody tr .ckView').length) {
+                if ($('.ckView:checked').length === $('#tblFunction tbody tr .ckView').length) {
                     $('#ckCheckAllView').prop('checked', true);
                 } else {
                     $('#ckCheckAllView').prop('checked', false);
                 }
-                if ($('.ckAdd:checked').length == $('#tblFunction tbody tr .ckAdd').length) {
+                if ($('.ckAdd:checked').length === $('#tblFunction tbody tr .ckAdd').length) {
                     $('#ckCheckAllCreate').prop('checked', true);
                 } else {
                     $('#ckCheckAllCreate').prop('checked', false);
                 }
-                if ($('.ckEdit:checked').length == $('#tblFunction tbody tr .ckEdit').length) {
+                if ($('.ckEdit:checked').length === $('#tblFunction tbody tr .ckEdit').length) {
                     $('#ckCheckAllEdit').prop('checked', true);
                 } else {
                     $('#ckCheckAllEdit').prop('checked', false);
                 }
-                if ($('.ckDelete:checked').length == $('#tblFunction tbody tr .ckDelete').length) {
+                if ($('.ckDelete:checked').length === $('#tblFunction tbody tr .ckDelete').length) {
                     $('#ckCheckAllDelete').prop('checked', true);
                 } else {
                     $('#ckCheckAllDelete').prop('checked', false);
@@ -336,13 +338,10 @@
                     $("#lbl-total-records").text(response.RowCount);
                     if (render != undefined) {
                         $('#tbl-content').html(render);
-
                     }
                     wrapPaging(response.RowCount, function () {
                         loadData();
                     }, isPageChanged);
-
-
                 }
                 else {
                     $('#tbl-content').html('');
@@ -377,5 +376,4 @@
             }
         });
     }
-
 }

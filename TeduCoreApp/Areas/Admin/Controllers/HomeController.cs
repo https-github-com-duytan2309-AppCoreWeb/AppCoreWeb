@@ -6,17 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Extensions;
 using TeduCoreApp.Application.Dapper.Interfaces;
 using TeduCoreApp.Admin.Filter;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class HomeController : Controller
+    //[Area("Admin")]
+    //[ServiceFilter(typeof(FilterActionAttribute))]
+    public class HomeController : BaseController
     {
         private readonly IReportService _reportService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public HomeController(IReportService reportService)
+        public HomeController(IReportService reportService, IAuthorizationService authorizationService)
         {
             _reportService = reportService;
+            _authorizationService = authorizationService;
         }
 
         public IActionResult Index()

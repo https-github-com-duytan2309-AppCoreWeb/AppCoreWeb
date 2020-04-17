@@ -13,6 +13,8 @@ using TeduCoreApp.Utilities.Extensions;
 using System.IO;
 using OfficeOpenXml;
 using TeduCoreApp.Utilities.Helpers;
+using Microsoft.AspNetCore.Authorization;
+using TeduCoreApp.Authorization;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
@@ -21,15 +23,22 @@ namespace TeduCoreApp.Areas.Admin.Controllers
     {
         private readonly IBillService _billService;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IAuthorizationService _authorizationService;
 
-        public BillController(IBillService billService, IHostingEnvironment hostingEnvironment)
+        public BillController(IBillService billService, IHostingEnvironment hostingEnvironment
+            , IAuthorizationService authorizationService
+            )
         {
             _billService = billService;
             _hostingEnvironment = hostingEnvironment;
+            _authorizationService = authorizationService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "BILL_LIST", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 

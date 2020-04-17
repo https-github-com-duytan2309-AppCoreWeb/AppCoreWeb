@@ -91,6 +91,9 @@ namespace TeduCoreApp.Application.AutoMapper
 
             CreateMap<ProvinceViewModel, Province>()
                     .ConstructUsing(c => new Province(c.Id, c.Code, c.Name, c.Rank, c.Status));
+
+            CreateMap<ShipCodeViewModel, ShipCode>()
+                    .ConstructUsing(c => new ShipCode(c.Id, c.Carriers, c.DeliveryTime, c.CollectionFee, c.Total, c.ZipCode, c.IdAddress));
         }
     }
 }

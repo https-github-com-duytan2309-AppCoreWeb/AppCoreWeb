@@ -2,7 +2,11 @@
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
+@{
+    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
+    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete);
+    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update);
+}
 <h2>Index</h2>
 <form method="post" asp-action="UpdateBusinessAdmin">
     <input placeholder="Update Permission" name="returnUrl" value="Index" />

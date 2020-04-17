@@ -1,0 +1,1072 @@
+2020-04-16T00:26:13.7115779+07:00 0HLV1C8CBO90P:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Home/Index   (ca22a1cb)
+2020-04-16T00:26:14.1666353+07:00 0HLV1C8CBO90P:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:26:14.1672297+07:00 0HLV1C8CBO90P:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:26:14.4600048+07:00 0HLV1C8CBO90P:00000001 [INF] Executing endpoint '"TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)"' (500cc934)
+2020-04-16T00:26:14.5103592+07:00 0HLV1C8CBO90P:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "TeduCoreApp.Controllers.HomeController" ("TeduCoreApp"). (122b2fdf)
+2020-04-16T00:26:15.2658538+07:00 0HLV1C8CBO90P:00000001 [INF] Executing action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" - Validation state: Valid (dad538d7)
+2020-04-16T00:26:18.4030591+07:00 0HLV1C8CBO90P:00000001 [WRN] No type was specified for the decimal column '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-16T00:26:18.4033714+07:00 0HLV1C8CBO90P:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-16T00:26:18.4034579+07:00 0HLV1C8CBO90P:00000001 [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-16T00:26:18.4037343+07:00 0HLV1C8CBO90P:00000001 [WRN] No type was specified for the decimal column '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-16T00:26:18.4038822+07:00 0HLV1C8CBO90P:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-16T00:26:18.4039728+07:00 0HLV1C8CBO90P:00000001 [WRN] No type was specified for the decimal column '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-16T00:26:18.4041327+07:00 0HLV1C8CBO90P:00000001 [WRN] No type was specified for the decimal column '"CollectionFee"' on entity type '"ShipCode"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-16T00:26:18.4042456+07:00 0HLV1C8CBO90P:00000001 [WRN] No type was specified for the decimal column '"Total"' on entity type '"ShipCode"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-16T00:26:18.4043711+07:00 0HLV1C8CBO90P:00000001 [WRN] No type was specified for the decimal column '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-16T00:26:18.4044653+07:00 0HLV1C8CBO90P:00000001 [WRN] No type was specified for the decimal column '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'. (3a0db05f)
+2020-04-16T00:26:18.6469564+07:00 0HLV1C8CBO90P:00000001 [INF] Entity Framework Core "2.2.4-servicing-10062" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2020-04-16T00:26:19.1673887+07:00 0HLV1C8CBO90P:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2020-04-16T00:26:22.9263739+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("62"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2020-04-16T00:26:23.0377836+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("61"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[HomeOrder], [t].[Id], [c.Products].[Id] AS [Id0], [c.Products].[Name], [c.Products].[CategoryId], [c.Products].[Image], [c.Products].[Price], [c.Products].[PromotionPrice], [c.Products].[OriginalPrice], [c.Products].[Description], [c.Products].[Content], [c.Products].[HomeFlag], [c.Products].[HotFlag], [c.Products].[ViewCount], [c.Products].[Tags], [c.Products].[Unit], [c.Products].[SeoPageTitle], [c.Products].[SeoAlias], [c.Products].[SeoKeywords], [c.Products].[SeoDescription], [c.Products].[DateCreated], [c.Products].[DateModified], [c.Products].[Status], [c.Products].[VAT]
+FROM [Products] AS [c.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [c0].[HomeOrder], [c0].[Id]
+    FROM [ProductCategories] AS [c0]
+    WHERE [c0].[HomeFlag] = 1
+    ORDER BY [c0].[HomeOrder], [c0].[Id]
+) AS [t] ON [c.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[HomeOrder], [t].[Id]" (0723d8ff)
+2020-04-16T00:26:23.1706833+07:00 0HLV1C8CBO90P:00000001 [WRN] The Include operation for navigation '"[c].DichVus"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2020-04-16T00:26:23.9801157+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("243"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[MenuId], [c].[HomeOrder], CASE
+    WHEN [c].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [c].[MenuId] AS [Id0], [c.Menu].[Name] AS [Name0], [c.Menu].[Description] AS [Description0], [c.Menu].[Url], [c.Menu].[Target], [c.Menu].[ParentId] AS [ParentId0], [c.Menu].[HomeOrder] AS [HomeOrder0], [c.Menu].[DateCreated], [c.Menu].[DateModified], [c.Menu].[SortOrder], [c.Menu].[Status], [c.Menu].[SeoAlias], [c.Menu].[GroupAlias], [c].[Image], [c].[HomeFlag], [c].[DateCreated] AS [DateCreated0], [c].[DateModified] AS [DateModified0], [c].[SortOrder] AS [SortOrder0], [c].[Status] AS [Status0], [c].[SeoPageTitle], [c].[SeoAlias] AS [SeoAlias0], [c].[SeoKeywords], [c].[SeoDescription], [c.Menu].[Id]
+FROM [DichVuCategory] AS [c]
+LEFT JOIN [Menu] AS [c.Menu] ON [c].[MenuId] = [c.Menu].[Id]
+WHERE ([c].[HomeFlag] = 1) AND [c].[ParentId] IS NULL
+ORDER BY [c].[HomeOrder], [c].[Id], [c.Menu].[Id]" (0723d8ff)
+2020-04-16T00:26:24.5549712+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("236"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x].[VAT], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2020-04-16T00:26:24.8063119+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("224"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[VAT]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) AND ([x0].[HotFlag] = 1)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2020-04-16T00:26:26.1987843+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("55"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x].[VAT], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2020-04-16T00:26:26.2315670+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("26"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [t].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status], [x.ProductCategory.Products].[VAT]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id], [x.ProductCategory0].[Id] AS [Id0]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id], [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductCategory.Products].[CategoryId] = [t].[Id0]
+ORDER BY [t].[DateCreated] DESC, [t].[Id], [t].[Id0]" (0723d8ff)
+2020-04-16T00:26:27.0316152+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("26"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.BlogCategory].[Name] AS [Name1], [x.BlogCategory].[Description] AS [Description1], [x.BlogCategory].[ParentId], [x.BlogCategory].[MenuId], [x.BlogCategory].[HomeOrder], [x.BlogCategory].[Image] AS [Image0], [x.BlogCategory].[HomeFlag] AS [HomeFlag0], CASE
+    WHEN [x.BlogCategory].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.BlogCategory.Menu].[Id] AS [Id0], [x.BlogCategory.Menu].[Name] AS [Name0], [x.BlogCategory.Menu].[Description] AS [Description0], [x.BlogCategory.Menu].[Url], [x.BlogCategory.Menu].[Target], [x.BlogCategory.Menu].[ParentId] AS [ParentId0], [x.BlogCategory.Menu].[HomeOrder] AS [HomeOrder0], [x.BlogCategory.Menu].[DateCreated], [x.BlogCategory.Menu].[DateModified], [x.BlogCategory.Menu].[SortOrder], [x.BlogCategory.Menu].[Status], [x.BlogCategory.Menu].[SeoAlias], [x.BlogCategory.Menu].[GroupAlias], [x.BlogCategory].[DateCreated] AS [DateCreated0], [x.BlogCategory].[DateModified] AS [DateModified0], [x.BlogCategory].[SortOrder] AS [SortOrder0], [x.BlogCategory].[Status] AS [Status0], [x.BlogCategory].[SeoPageTitle], [x.BlogCategory].[SeoAlias] AS [SeoAlias0], [x.BlogCategory].[SeoKeywords], [x.BlogCategory].[SeoDescription], [x].[DateCreated] AS [DateCreated1], [x].[DateModified] AS [DateModified1], [x].[Status] AS [Status1], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias1], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x.BlogCategory.Menu].[Id], [x.BlogCategory].[Id]
+FROM [Blogs] AS [x]
+INNER JOIN [BlogCategory] AS [x.BlogCategory] ON [x].[CategoryId] = [x.BlogCategory].[Id]
+LEFT JOIN [Menu] AS [x.BlogCategory.Menu] ON [x.BlogCategory].[MenuId] = [x.BlogCategory.Menu].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated1] DESC, [x].[Id], [x.BlogCategory.Menu].[Id], [x.BlogCategory].[Id]" (0723d8ff)
+2020-04-16T00:26:27.9542334+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("111"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[CategoryId], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.DichVuCategory].[Name] AS [Name1], [x.DichVuCategory].[Description] AS [Description1], [x.DichVuCategory].[ParentId], [x.DichVuCategory].[MenuId], [x.DichVuCategory].[HomeOrder], CASE
+    WHEN [x.DichVuCategory].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.DichVuCategory.Menu].[Id] AS [Id0], [x.DichVuCategory.Menu].[Name] AS [Name0], [x.DichVuCategory.Menu].[Description] AS [Description0], [x.DichVuCategory.Menu].[Url], [x.DichVuCategory.Menu].[Target], [x.DichVuCategory.Menu].[ParentId] AS [ParentId0], [x.DichVuCategory.Menu].[HomeOrder] AS [HomeOrder0], [x.DichVuCategory.Menu].[DateCreated], [x.DichVuCategory.Menu].[DateModified], [x.DichVuCategory.Menu].[SortOrder], [x.DichVuCategory.Menu].[Status], [x.DichVuCategory.Menu].[SeoAlias], [x.DichVuCategory.Menu].[GroupAlias], [x.DichVuCategory].[Image] AS [Image0], [x.DichVuCategory].[HomeFlag] AS [HomeFlag0], [x.DichVuCategory].[DateCreated] AS [DateCreated0], [x.DichVuCategory].[DateModified] AS [DateModified0], [x.DichVuCategory].[SortOrder] AS [SortOrder0], [x.DichVuCategory].[Status] AS [Status0], [x.DichVuCategory].[SeoPageTitle], [x.DichVuCategory].[SeoAlias] AS [SeoAlias0], [x.DichVuCategory].[SeoKeywords], [x.DichVuCategory].[SeoDescription], [x].[DateCreated] AS [DateCreated1], [x].[DateModified] AS [DateModified1], [x].[Status] AS [Status1], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias1], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x.DichVuCategory.Menu].[Id], [x.DichVuCategory].[Id]
+FROM [DichVu] AS [x]
+INNER JOIN [DichVuCategory] AS [x.DichVuCategory] ON [x].[CategoryId] = [x.DichVuCategory].[Id]
+LEFT JOIN [Menu] AS [x.DichVuCategory.Menu] ON [x.DichVuCategory].[MenuId] = [x.DichVuCategory.Menu].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated1] DESC, [x].[Id], [x.DichVuCategory.Menu].[Id], [x.DichVuCategory].[Id]" (0723d8ff)
+2020-04-16T00:26:28.1079053+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("74"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2020-04-16T00:26:28.1265334+07:00 0HLV1C8CBO90P:00000001 [INF] Executed action method "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 12851.3958ms. (50a9e262)
+2020-04-16T00:26:28.5495234+07:00 0HLV1C8CBO90P:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2020-04-16T00:26:30.4869607+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-16T00:26:30.5234907+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("23"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-16T00:26:30.5485816+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("10"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-16T00:26:30.9306055+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("23"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2020-04-16T00:26:31.0056209+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("71"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status], [x.Products].[VAT]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id]" (0723d8ff)
+2020-04-16T00:26:32.7177718+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("16"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-16T00:26:32.7346681+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("16"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-16T00:26:32.7359802+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-16T00:26:33.1672694+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("61"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2020-04-16T00:26:33.6686066+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("80"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-16T00:26:34.0395192+07:00 0HLV1C8CBO90P:00000001 [INF] Executed DbCommand ("104"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-16T00:26:34.4688133+07:00 0HLV1C8CBO90P:00000001 [INF] Executed ViewResult - view "Index" executed in 6308.5217ms. (f66409e9)
+2020-04-16T00:26:34.4825610+07:00 0HLV1C8CBO90P:00000001 [INF] Executed action "TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)" in 19971.3342ms (afa2e885)
+2020-04-16T00:26:34.4827180+07:00 0HLV1C8CBO90P:00000001 [INF] Executed endpoint '"TeduCoreApp.Controllers.HomeController.Index (TeduCoreApp)"' (99874f2b)
+2020-04-16T00:26:38.0520807+07:00 0HLV1C8CBO90P:00000001 [INF] Request finished in 24375.6242ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-16T00:26:45.8144309+07:00 0HLV1C8CBO90P:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Home/assets/img/logo/logo-11.png   (ca22a1cb)
+2020-04-16T00:26:45.8215422+07:00 0HLV1C8CBO90P:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:26:45.8216582+07:00 0HLV1C8CBO90P:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:26:45.8468772+07:00 0HLV1C8CBO90P:00000002 [INF] Request finished in 32.1955ms 404  (791a596a)
+2020-04-16T00:26:50.7717186+07:00 0HLV1C8CBO90P:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Content/Client/img/svg/loading/static-svg/spin.svg   (ca22a1cb)
+2020-04-16T00:26:50.7731708+07:00 0HLV1C8CBO90P:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:26:50.7732546+07:00 0HLV1C8CBO90P:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:26:50.7735246+07:00 0HLV1C8CBO90P:00000003 [INF] Request finished in 1.8954ms 404  (791a596a)
+2020-04-16T00:27:43.0509803+07:00 0HLV1C8CBO90P:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/favicon.jpg   (ca22a1cb)
+2020-04-16T00:27:43.0545702+07:00 0HLV1C8CBO90P:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:27:43.0546817+07:00 0HLV1C8CBO90P:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:27:43.0615808+07:00 0HLV1C8CBO90P:00000004 [INF] Request finished in 10.7677ms 404  (791a596a)
+2020-04-16T00:33:12.3453033+07:00 0HLV1C8CBO90Q:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/dich-vu.html   (ca22a1cb)
+2020-04-16T00:33:12.3477757+07:00 0HLV1C8CBO90Q:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:12.3479793+07:00 0HLV1C8CBO90Q:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:12.3481803+07:00 0HLV1C8CBO90Q:00000001 [INF] Executing endpoint '"TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)"' (500cc934)
+2020-04-16T00:33:12.3536238+07:00 0HLV1C8CBO90Q:00000001 [INF] Route matched with "{action = \"Index\", controller = \"DichVu\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "TeduCoreApp.Controllers.DichVuController" ("TeduCoreApp"). (122b2fdf)
+2020-04-16T00:33:12.3570772+07:00 0HLV1C8CBO90Q:00000001 [INF] Executing action method "TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)" - Validation state: Valid (dad538d7)
+2020-04-16T00:33:12.3603901+07:00 0HLV1C8CBO90Q:00000001 [INF] Entity Framework Core "2.2.4-servicing-10062" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2020-04-16T00:33:12.6865353+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[MenuId], [x].[HomeOrder], CASE
+    WHEN [x].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x].[MenuId] AS [Id0], [x.Menu].[Name] AS [Name0], [x.Menu].[Description] AS [Description0], [x.Menu].[Url], [x.Menu].[Target], [x.Menu].[ParentId] AS [ParentId0], [x.Menu].[HomeOrder] AS [HomeOrder0], [x.Menu].[DateCreated], [x.Menu].[DateModified], [x.Menu].[SortOrder], [x.Menu].[Status], [x.Menu].[SeoAlias], [x.Menu].[GroupAlias], [x].[Image], [x].[HomeFlag], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[SortOrder] AS [SortOrder0], [x].[Status] AS [Status0], [x].[SeoPageTitle], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords], [x].[SeoDescription], [x.Menu].[Id]
+FROM [DichVuCategory] AS [x]
+LEFT JOIN [Menu] AS [x.Menu] ON [x].[MenuId] = [x.Menu].[Id]
+ORDER BY [x].[ParentId], [x].[Id], [x.Menu].[Id]" (0723d8ff)
+2020-04-16T00:33:12.6956666+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t5].[ParentId], [t5].[Id], [x.DichVus].[Id] AS [Id0], [x.DichVus].[Name], [x.DichVus].[Image], [x.DichVus].[Description], [x.DichVus].[Content], [x.DichVus].[CategoryId], [x.DichVus].[HomeFlag], [x.DichVus].[HotFlag], [x.DichVus].[ViewCount], [x.DichVus].[Tags], [x.DichVus].[DateCreated], [x.DichVus].[DateModified], [x.DichVus].[Status], [x.DichVus].[SeoPageTitle], [x.DichVus].[SeoAlias], [x.DichVus].[SeoKeywords], [x.DichVus].[SeoDescription]
+FROM [DichVu] AS [x.DichVus]
+INNER JOIN (
+    SELECT [x4].[ParentId], [x4].[Id]
+    FROM [DichVuCategory] AS [x4]
+    LEFT JOIN [Menu] AS [x.Menu4] ON [x4].[MenuId] = [x.Menu4].[Id]
+) AS [t5] ON [x.DichVus].[CategoryId] = [t5].[Id]
+ORDER BY [t5].[ParentId], [t5].[Id]" (0723d8ff)
+2020-04-16T00:33:12.7031461+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed action method "TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 345.8819ms. (50a9e262)
+2020-04-16T00:33:12.8504576+07:00 0HLV1C8CBO90Q:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2020-04-16T00:33:12.8995776+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-16T00:33:12.9050083+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:12.9115528+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:12.9165798+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-16T00:33:12.9185802+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:12.9193393+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:12.9252487+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2020-04-16T00:33:12.9317556+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-16T00:33:12.9343036+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-16T00:33:12.9375404+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed ViewResult - view "Index" executed in 233.9672ms. (f66409e9)
+2020-04-16T00:33:12.9377707+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed action "TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)" in 584.0413ms (afa2e885)
+2020-04-16T00:33:12.9378445+07:00 0HLV1C8CBO90Q:00000001 [INF] Executed endpoint '"TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)"' (99874f2b)
+2020-04-16T00:33:13.0615197+07:00 0HLV1C8CBO90Q:00000001 [INF] Request finished in 716.6188ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-16T00:33:13.1322490+07:00 0HLV1C8CBO90Q:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/logo/logo-11.png   (ca22a1cb)
+2020-04-16T00:33:13.1346902+07:00 0HLV1C8CBO90Q:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.1348844+07:00 0HLV1C8CBO90Q:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.1356120+07:00 0HLV1C8CBO90Q:00000002 [INF] Request finished in 3.3939ms 404  (791a596a)
+2020-04-16T00:33:13.1381748+07:00 0HLV1C8CBO90R:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/banner/banner-49.jpg   (ca22a1cb)
+2020-04-16T00:33:13.1404965+07:00 0HLV1C8CBO90R:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.1406666+07:00 0HLV1C8CBO90R:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.1408654+07:00 0HLV1C8CBO90R:00000001 [INF] Request finished in 2.7982ms 404  (791a596a)
+2020-04-16T00:33:13.1595675+07:00 0HLV1C8CBO90Q:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-1.jpg   (ca22a1cb)
+2020-04-16T00:33:13.1612486+07:00 0HLV1C8CBO90Q:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.1613447+07:00 0HLV1C8CBO90Q:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.1615489+07:00 0HLV1C8CBO90Q:00000003 [INF] Request finished in 2.0459ms 404  (791a596a)
+2020-04-16T00:33:13.1650368+07:00 0HLV1C8CBO90R:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-2.jpg   (ca22a1cb)
+2020-04-16T00:33:13.1661853+07:00 0HLV1C8CBO90R:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.1662643+07:00 0HLV1C8CBO90R:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.1665938+07:00 0HLV1C8CBO90R:00000002 [INF] Request finished in 1.6262ms 404  (791a596a)
+2020-04-16T00:33:13.1841411+07:00 0HLV1C8CBO90Q:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-3.jpg   (ca22a1cb)
+2020-04-16T00:33:13.1855796+07:00 0HLV1C8CBO90Q:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.1856591+07:00 0HLV1C8CBO90Q:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.1858448+07:00 0HLV1C8CBO90Q:00000004 [INF] Request finished in 1.7756ms 404  (791a596a)
+2020-04-16T00:33:13.2016282+07:00 0HLV1C8CBO90R:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-4.jpg   (ca22a1cb)
+2020-04-16T00:33:13.2041861+07:00 0HLV1C8CBO90R:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.2043064+07:00 0HLV1C8CBO90R:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.2045271+07:00 0HLV1C8CBO90R:00000003 [INF] Request finished in 2.9797ms 404  (791a596a)
+2020-04-16T00:33:13.4327182+07:00 0HLV1C8CBO90Q:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-7.jpg   (ca22a1cb)
+2020-04-16T00:33:13.4351410+07:00 0HLV1C8CBO90Q:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.4359796+07:00 0HLV1C8CBO90Q:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.4371074+07:00 0HLV1C8CBO90Q:00000005 [INF] Request finished in 10.8117ms 404  (791a596a)
+2020-04-16T00:33:13.4398458+07:00 0HLV1C8CBO90R:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-6.jpg   (ca22a1cb)
+2020-04-16T00:33:13.4422293+07:00 0HLV1C8CBO90T:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-8.jpg   (ca22a1cb)
+2020-04-16T00:33:13.4422296+07:00 0HLV1C8CBO90R:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.4434249+07:00 0HLV1C8CBO90R:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.4453245+07:00 0HLV1C8CBO90R:00000004 [INF] Request finished in 5.6546ms 404  (791a596a)
+2020-04-16T00:33:13.4454940+07:00 0HLV1C8CBO90S:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-5.jpg   (ca22a1cb)
+2020-04-16T00:33:13.4457237+07:00 0HLV1C8CBO90T:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.4458064+07:00 0HLV1C8CBO90T:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.4459842+07:00 0HLV1C8CBO90T:00000001 [INF] Request finished in 3.776ms 404  (791a596a)
+2020-04-16T00:33:13.4473273+07:00 0HLV1C8CBO90S:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.4474193+07:00 0HLV1C8CBO90S:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.4476143+07:00 0HLV1C8CBO90S:00000001 [INF] Request finished in 2.1212ms 404  (791a596a)
+2020-04-16T00:33:13.5328291+07:00 0HLV1C8CBO90S:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-10.jpg   (ca22a1cb)
+2020-04-16T00:33:13.5354436+07:00 0HLV1C8CBO90S:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.5355292+07:00 0HLV1C8CBO90S:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.5357257+07:00 0HLV1C8CBO90S:00000002 [INF] Request finished in 3.0481ms 404  (791a596a)
+2020-04-16T00:33:13.5362998+07:00 0HLV1C8CBO90T:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-9.jpg   (ca22a1cb)
+2020-04-16T00:33:13.5376499+07:00 0HLV1C8CBO90T:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.5378095+07:00 0HLV1C8CBO90T:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.5380283+07:00 0HLV1C8CBO90T:00000002 [INF] Request finished in 1.7572ms 404  (791a596a)
+2020-04-16T00:33:13.5743031+07:00 0HLV1C8CBO90Q:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-5.png   (ca22a1cb)
+2020-04-16T00:33:13.5745446+07:00 0HLV1C8CBO90U:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-3.png   (ca22a1cb)
+2020-04-16T00:33:13.5755061+07:00 0HLV1C8CBO90U:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.5755228+07:00 0HLV1C8CBO90Q:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.5755922+07:00 0HLV1C8CBO90U:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.5756034+07:00 0HLV1C8CBO90Q:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.5757648+07:00 0HLV1C8CBO90Q:00000006 [INF] Request finished in 1.5158ms 404  (791a596a)
+2020-04-16T00:33:13.5757672+07:00 0HLV1C8CBO90U:00000001 [INF] Request finished in 1.2352ms 404  (791a596a)
+2020-04-16T00:33:13.5759232+07:00 0HLV1C8CBO90R:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-2.png   (ca22a1cb)
+2020-04-16T00:33:13.5759219+07:00 0HLV1C8CBO90S:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-4.png   (ca22a1cb)
+2020-04-16T00:33:13.5769678+07:00 0HLV1C8CBO90S:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.5770510+07:00 0HLV1C8CBO90S:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.5772364+07:00 0HLV1C8CBO90S:00000003 [INF] Request finished in 1.3169ms 404  (791a596a)
+2020-04-16T00:33:13.5797913+07:00 0HLV1C8CBO90R:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.5798807+07:00 0HLV1C8CBO90R:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.5800822+07:00 0HLV1C8CBO90R:00000005 [INF] Request finished in 4.1645ms 404  (791a596a)
+2020-04-16T00:33:13.5907927+07:00 0HLV1C8CBO90T:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-1.png   (ca22a1cb)
+2020-04-16T00:33:13.5919596+07:00 0HLV1C8CBO90T:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.5920492+07:00 0HLV1C8CBO90T:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.5922458+07:00 0HLV1C8CBO90T:00000003 [INF] Request finished in 1.4936ms 404  (791a596a)
+2020-04-16T00:33:13.6000275+07:00 0HLV1C8CBO90S:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-1.jpg   (ca22a1cb)
+2020-04-16T00:33:13.6012994+07:00 0HLV1C8CBO90S:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.6013882+07:00 0HLV1C8CBO90S:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.6015802+07:00 0HLV1C8CBO90S:00000004 [INF] Request finished in 1.6088ms 404  (791a596a)
+2020-04-16T00:33:13.6090375+07:00 0HLV1C8CBO90Q:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Assets/client/img/icon-img/shop.png   (ca22a1cb)
+2020-04-16T00:33:13.6102499+07:00 0HLV1C8CBO90Q:00000007 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.6103369+07:00 0HLV1C8CBO90Q:00000007 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.6105375+07:00 0HLV1C8CBO90Q:00000007 [INF] Request finished in 1.5376ms 404  (791a596a)
+2020-04-16T00:33:13.6107110+07:00 0HLV1C8CBO90U:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-3.jpg   (ca22a1cb)
+2020-04-16T00:33:13.6118385+07:00 0HLV1C8CBO90U:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:13.6119241+07:00 0HLV1C8CBO90U:00000002 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:13.6121180+07:00 0HLV1C8CBO90U:00000002 [INF] Request finished in 1.4117ms 404  (791a596a)
+2020-04-16T00:33:15.3429256+07:00 0HLV1C8CBO90R:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-2.jpg   (ca22a1cb)
+2020-04-16T00:33:15.3531742+07:00 0HLV1C8CBO90R:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:15.3532741+07:00 0HLV1C8CBO90R:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:15.3537316+07:00 0HLV1C8CBO90R:00000006 [INF] Request finished in 10.8117ms 404  (791a596a)
+2020-04-16T00:33:15.3659131+07:00 0HLV1C8CBO90T:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-4.jpg   (ca22a1cb)
+2020-04-16T00:33:15.3676437+07:00 0HLV1C8CBO90T:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:15.3702890+07:00 0HLV1C8CBO90T:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:15.3705180+07:00 0HLV1C8CBO90T:00000004 [INF] Request finished in 4.6402ms 404  (791a596a)
+2020-04-16T00:33:17.7210399+07:00 0HLV1C8CBO90S:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/dich-vu.html   (ca22a1cb)
+2020-04-16T00:33:17.7302717+07:00 0HLV1C8CBO90S:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:17.7304218+07:00 0HLV1C8CBO90S:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:17.7306035+07:00 0HLV1C8CBO90S:00000005 [INF] Executing endpoint '"TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)"' (500cc934)
+2020-04-16T00:33:17.7318831+07:00 0HLV1C8CBO90S:00000005 [INF] Route matched with "{action = \"Index\", controller = \"DichVu\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "TeduCoreApp.Controllers.DichVuController" ("TeduCoreApp"). (122b2fdf)
+2020-04-16T00:33:17.7326461+07:00 0HLV1C8CBO90S:00000005 [INF] Executing action method "TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)" - Validation state: Valid (dad538d7)
+2020-04-16T00:33:17.7378377+07:00 0HLV1C8CBO90S:00000005 [INF] Entity Framework Core "2.2.4-servicing-10062" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2020-04-16T00:33:17.7612185+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("22"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[MenuId], [x].[HomeOrder], CASE
+    WHEN [x].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x].[MenuId] AS [Id0], [x.Menu].[Name] AS [Name0], [x.Menu].[Description] AS [Description0], [x.Menu].[Url], [x.Menu].[Target], [x.Menu].[ParentId] AS [ParentId0], [x.Menu].[HomeOrder] AS [HomeOrder0], [x.Menu].[DateCreated], [x.Menu].[DateModified], [x.Menu].[SortOrder], [x.Menu].[Status], [x.Menu].[SeoAlias], [x.Menu].[GroupAlias], [x].[Image], [x].[HomeFlag], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[SortOrder] AS [SortOrder0], [x].[Status] AS [Status0], [x].[SeoPageTitle], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords], [x].[SeoDescription], [x.Menu].[Id]
+FROM [DichVuCategory] AS [x]
+LEFT JOIN [Menu] AS [x.Menu] ON [x].[MenuId] = [x.Menu].[Id]
+ORDER BY [x].[ParentId], [x].[Id], [x.Menu].[Id]" (0723d8ff)
+2020-04-16T00:33:17.7766929+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t5].[ParentId], [t5].[Id], [x.DichVus].[Id] AS [Id0], [x.DichVus].[Name], [x.DichVus].[Image], [x.DichVus].[Description], [x.DichVus].[Content], [x.DichVus].[CategoryId], [x.DichVus].[HomeFlag], [x.DichVus].[HotFlag], [x.DichVus].[ViewCount], [x.DichVus].[Tags], [x.DichVus].[DateCreated], [x.DichVus].[DateModified], [x.DichVus].[Status], [x.DichVus].[SeoPageTitle], [x.DichVus].[SeoAlias], [x.DichVus].[SeoKeywords], [x.DichVus].[SeoDescription]
+FROM [DichVu] AS [x.DichVus]
+INNER JOIN (
+    SELECT [x4].[ParentId], [x4].[Id]
+    FROM [DichVuCategory] AS [x4]
+    LEFT JOIN [Menu] AS [x.Menu4] ON [x4].[MenuId] = [x.Menu4].[Id]
+) AS [t5] ON [x.DichVus].[CategoryId] = [t5].[Id]
+ORDER BY [t5].[ParentId], [t5].[Id]" (0723d8ff)
+2020-04-16T00:33:17.7778763+07:00 0HLV1C8CBO90S:00000005 [INF] Executed action method "TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 45.1148ms. (50a9e262)
+2020-04-16T00:33:17.7789590+07:00 0HLV1C8CBO90S:00000005 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2020-04-16T00:33:17.7878377+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-16T00:33:17.7907584+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:17.8005249+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("7"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:17.8091005+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("5"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-16T00:33:17.8191505+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("9"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:17.8203419+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:17.8224606+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2020-04-16T00:33:17.8242902+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-16T00:33:17.8259143+07:00 0HLV1C8CBO90S:00000005 [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-16T00:33:17.8275686+07:00 0HLV1C8CBO90S:00000005 [INF] Executed ViewResult - view "Index" executed in 49.5447ms. (f66409e9)
+2020-04-16T00:33:17.8277317+07:00 0HLV1C8CBO90S:00000005 [INF] Executed action "TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)" in 95.5473ms (afa2e885)
+2020-04-16T00:33:17.8277983+07:00 0HLV1C8CBO90S:00000005 [INF] Executed endpoint '"TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)"' (99874f2b)
+2020-04-16T00:33:17.9333208+07:00 0HLV1C8CBO90S:00000005 [INF] Request finished in 214.8174ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-16T00:33:18.0195546+07:00 0HLV1C8CBO90Q:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/logo/logo-11.png   (ca22a1cb)
+2020-04-16T00:33:18.0208930+07:00 0HLV1C8CBO90Q:00000008 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.0209811+07:00 0HLV1C8CBO90Q:00000008 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.0211779+07:00 0HLV1C8CBO90Q:00000008 [INF] Request finished in 1.6961ms 404  (791a596a)
+2020-04-16T00:33:18.0225644+07:00 0HLV1C8CBO90U:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/banner/banner-49.jpg   (ca22a1cb)
+2020-04-16T00:33:18.0239887+07:00 0HLV1C8CBO90U:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.0240935+07:00 0HLV1C8CBO90U:00000003 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.0242749+07:00 0HLV1C8CBO90U:00000003 [INF] Request finished in 1.7521ms 404  (791a596a)
+2020-04-16T00:33:18.0398392+07:00 0HLV1C8CBO90R:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-1.jpg   (ca22a1cb)
+2020-04-16T00:33:18.0413465+07:00 0HLV1C8CBO90R:00000007 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.0414245+07:00 0HLV1C8CBO90R:00000007 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.0417448+07:00 0HLV1C8CBO90R:00000007 [INF] Request finished in 1.9433ms 404  (791a596a)
+2020-04-16T00:33:18.0688116+07:00 0HLV1C8CBO90T:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-2.jpg   (ca22a1cb)
+2020-04-16T00:33:18.0702027+07:00 0HLV1C8CBO90T:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.0702838+07:00 0HLV1C8CBO90T:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.0704667+07:00 0HLV1C8CBO90T:00000005 [INF] Request finished in 1.8056ms 404  (791a596a)
+2020-04-16T00:33:18.0715721+07:00 0HLV1C8CBO90S:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-3.jpg   (ca22a1cb)
+2020-04-16T00:33:18.0726982+07:00 0HLV1C8CBO90S:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.0727838+07:00 0HLV1C8CBO90S:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.0729687+07:00 0HLV1C8CBO90S:00000006 [INF] Request finished in 1.4283ms 404  (791a596a)
+2020-04-16T00:33:18.0937455+07:00 0HLV1C8CBO90Q:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-4.jpg   (ca22a1cb)
+2020-04-16T00:33:18.0951945+07:00 0HLV1C8CBO90Q:00000009 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.0952720+07:00 0HLV1C8CBO90Q:00000009 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.0954490+07:00 0HLV1C8CBO90Q:00000009 [INF] Request finished in 2.4937ms 404  (791a596a)
+2020-04-16T00:33:18.0997735+07:00 0HLV1C8CBO90U:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-5.jpg   (ca22a1cb)
+2020-04-16T00:33:18.1016408+07:00 0HLV1C8CBO90U:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1017343+07:00 0HLV1C8CBO90U:00000004 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1019372+07:00 0HLV1C8CBO90U:00000004 [INF] Request finished in 2.2039ms 404  (791a596a)
+2020-04-16T00:33:18.1391290+07:00 0HLV1C8CBO90R:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-6.jpg   (ca22a1cb)
+2020-04-16T00:33:18.1393632+07:00 0HLV1C8CBO90T:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-7.jpg   (ca22a1cb)
+2020-04-16T00:33:18.1404994+07:00 0HLV1C8CBO90T:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1405780+07:00 0HLV1C8CBO90T:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1407414+07:00 0HLV1C8CBO90T:00000006 [INF] Request finished in 1.3997ms 404  (791a596a)
+2020-04-16T00:33:18.1408363+07:00 0HLV1C8CBO90R:00000008 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1409093+07:00 0HLV1C8CBO90R:00000008 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1410611+07:00 0HLV1C8CBO90R:00000008 [INF] Request finished in 3.0208ms 404  (791a596a)
+2020-04-16T00:33:18.1574221+07:00 0HLV1C8CBO90S:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-9.jpg   (ca22a1cb)
+2020-04-16T00:33:18.1589731+07:00 0HLV1C8CBO90S:00000007 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1590579+07:00 0HLV1C8CBO90S:00000007 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1592726+07:00 0HLV1C8CBO90S:00000007 [INF] Request finished in 1.9435ms 404  (791a596a)
+2020-04-16T00:33:18.1642838+07:00 0HLV1C8CBO90U:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-8.jpg   (ca22a1cb)
+2020-04-16T00:33:18.1647425+07:00 0HLV1C8CBO90Q:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-10.jpg   (ca22a1cb)
+2020-04-16T00:33:18.1658706+07:00 0HLV1C8CBO90U:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1660270+07:00 0HLV1C8CBO90U:00000005 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1662668+07:00 0HLV1C8CBO90U:00000005 [INF] Request finished in 2.0177ms 404  (791a596a)
+2020-04-16T00:33:18.1664697+07:00 0HLV1C8CBO90T:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-1.png   (ca22a1cb)
+2020-04-16T00:33:18.1674210+07:00 0HLV1C8CBO90Q:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1674212+07:00 0HLV1C8CBO90T:00000007 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1674944+07:00 0HLV1C8CBO90Q:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1675021+07:00 0HLV1C8CBO90T:00000007 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1677300+07:00 0HLV1C8CBO90T:00000007 [INF] Request finished in 1.2686ms 404  (791a596a)
+2020-04-16T00:33:18.1686012+07:00 0HLV1C8CBO90Q:0000000A [INF] Request finished in 4.3175ms 404  (791a596a)
+2020-04-16T00:33:18.1758165+07:00 0HLV1C8CBO90R:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-3.png   (ca22a1cb)
+2020-04-16T00:33:18.1769225+07:00 0HLV1C8CBO90S:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-2.png   (ca22a1cb)
+2020-04-16T00:33:18.1786977+07:00 0HLV1C8CBO90S:00000008 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1787228+07:00 0HLV1C8CBO90R:00000009 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1788965+07:00 0HLV1C8CBO90R:00000009 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1789045+07:00 0HLV1C8CBO90S:00000008 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1790950+07:00 0HLV1C8CBO90R:00000009 [INF] Request finished in 3.3192ms 404  (791a596a)
+2020-04-16T00:33:18.1790953+07:00 0HLV1C8CBO90S:00000008 [INF] Request finished in 2.2232ms 404  (791a596a)
+2020-04-16T00:33:18.1884530+07:00 0HLV1C8CBO90Q:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-4.png   (ca22a1cb)
+2020-04-16T00:33:18.1904792+07:00 0HLV1C8CBO90Q:0000000B [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1905641+07:00 0HLV1C8CBO90Q:0000000B [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1907643+07:00 0HLV1C8CBO90Q:0000000B [INF] Request finished in 2.3489ms 404  (791a596a)
+2020-04-16T00:33:18.1935627+07:00 0HLV1C8CBO90U:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-5.png   (ca22a1cb)
+2020-04-16T00:33:18.1947354+07:00 0HLV1C8CBO90U:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1948142+07:00 0HLV1C8CBO90U:00000006 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1950054+07:00 0HLV1C8CBO90U:00000006 [INF] Request finished in 1.4818ms 404  (791a596a)
+2020-04-16T00:33:18.1953161+07:00 0HLV1C8CBO90T:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-1.jpg   (ca22a1cb)
+2020-04-16T00:33:18.1954717+07:00 0HLV1C8CBO90R:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-2.jpg   (ca22a1cb)
+2020-04-16T00:33:18.1968011+07:00 0HLV1C8CBO90R:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1969624+07:00 0HLV1C8CBO90R:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.1974304+07:00 0HLV1C8CBO90R:0000000A [INF] Request finished in 1.957ms 404  (791a596a)
+2020-04-16T00:33:18.1997351+07:00 0HLV1C8CBO90T:00000008 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.1998230+07:00 0HLV1C8CBO90T:00000008 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.2000180+07:00 0HLV1C8CBO90T:00000008 [INF] Request finished in 4.7158ms 404  (791a596a)
+2020-04-16T00:33:18.2012556+07:00 0HLV1C8CBO90S:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-3.jpg   (ca22a1cb)
+2020-04-16T00:33:18.2028299+07:00 0HLV1C8CBO90S:00000009 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.2030059+07:00 0HLV1C8CBO90S:00000009 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.2034824+07:00 0HLV1C8CBO90S:00000009 [INF] Request finished in 2.1673ms 404  (791a596a)
+2020-04-16T00:33:18.2044268+07:00 0HLV1C8CBO90Q:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44344/Assets/client/img/icon-img/shop.png   (ca22a1cb)
+2020-04-16T00:33:18.2063230+07:00 0HLV1C8CBO90Q:0000000C [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.2064373+07:00 0HLV1C8CBO90Q:0000000C [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.2070235+07:00 0HLV1C8CBO90Q:0000000C [INF] Request finished in 2.6043ms 404  (791a596a)
+2020-04-16T00:33:18.7968642+07:00 0HLV1C8CBO90U:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-4.jpg   (ca22a1cb)
+2020-04-16T00:33:18.7981054+07:00 0HLV1C8CBO90U:00000007 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:18.7981824+07:00 0HLV1C8CBO90U:00000007 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:18.7984011+07:00 0HLV1C8CBO90U:00000007 [INF] Request finished in 1.576ms 404  (791a596a)
+2020-04-16T00:33:20.7236455+07:00 0HLV1C8CBO90R:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44344/tin-tuc.html   (ca22a1cb)
+2020-04-16T00:33:20.7263270+07:00 0HLV1C8CBO90R:0000000B [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:20.7264109+07:00 0HLV1C8CBO90R:0000000B [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:20.7265659+07:00 0HLV1C8CBO90R:0000000B [INF] Executing endpoint '"TeduCoreApp.Controllers.BlogController.Index (TeduCoreApp)"' (500cc934)
+2020-04-16T00:33:20.7317360+07:00 0HLV1C8CBO90R:0000000B [INF] Route matched with "{action = \"Index\", controller = \"Blog\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "TeduCoreApp.Controllers.BlogController" ("TeduCoreApp"). (122b2fdf)
+2020-04-16T00:33:20.7328190+07:00 0HLV1C8CBO90R:0000000B [INF] Executing action method "TeduCoreApp.Controllers.BlogController.Index (TeduCoreApp)" - Validation state: Valid (dad538d7)
+2020-04-16T00:33:20.7357863+07:00 0HLV1C8CBO90R:0000000B [INF] Entity Framework Core "2.2.4-servicing-10062" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2020-04-16T00:33:20.8700740+07:00 0HLV1C8CBO90R:0000000B [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[MenuId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], CASE
+    WHEN [x].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x].[MenuId] AS [Id0], [x.Menu].[Name] AS [Name0], [x.Menu].[Description] AS [Description0], [x.Menu].[Url], [x.Menu].[Target], [x.Menu].[ParentId] AS [ParentId0], [x.Menu].[HomeOrder] AS [HomeOrder0], [x.Menu].[DateCreated], [x.Menu].[DateModified], [x.Menu].[SortOrder], [x.Menu].[Status], [x.Menu].[SeoAlias], [x.Menu].[GroupAlias], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[SortOrder] AS [SortOrder0], [x].[Status] AS [Status0], [x].[SeoPageTitle], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords], [x].[SeoDescription], [x.Menu].[Id]
+FROM [BlogCategory] AS [x]
+LEFT JOIN [Menu] AS [x.Menu] ON [x].[MenuId] = [x.Menu].[Id]
+ORDER BY [x].[ParentId], [x].[Id], [x.Menu].[Id]" (0723d8ff)
+2020-04-16T00:33:20.8818084+07:00 0HLV1C8CBO90R:0000000B [INF] Executed action method "TeduCoreApp.Controllers.BlogController.Index (TeduCoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 148.8431ms. (50a9e262)
+2020-04-16T00:33:20.9285341+07:00 0HLV1C8CBO90R:0000000B [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2020-04-16T00:33:20.9692283+07:00 0HLV1C8CBO90R:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-16T00:33:20.9698918+07:00 0HLV1C8CBO90R:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:20.9705049+07:00 0HLV1C8CBO90R:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:20.9752884+07:00 0HLV1C8CBO90R:0000000B [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-16T00:33:20.9760125+07:00 0HLV1C8CBO90R:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:20.9765280+07:00 0HLV1C8CBO90R:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:20.9787216+07:00 0HLV1C8CBO90R:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2020-04-16T00:33:20.9813976+07:00 0HLV1C8CBO90R:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-16T00:33:20.9841403+07:00 0HLV1C8CBO90R:0000000B [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-16T00:33:20.9867266+07:00 0HLV1C8CBO90R:0000000B [INF] Executed ViewResult - view "Index" executed in 104.7142ms. (f66409e9)
+2020-04-16T00:33:20.9868904+07:00 0HLV1C8CBO90R:0000000B [INF] Executed action "TeduCoreApp.Controllers.BlogController.Index (TeduCoreApp)" in 255.0809ms (afa2e885)
+2020-04-16T00:33:20.9869599+07:00 0HLV1C8CBO90R:0000000B [INF] Executed endpoint '"TeduCoreApp.Controllers.BlogController.Index (TeduCoreApp)"' (99874f2b)
+2020-04-16T00:33:21.0551255+07:00 0HLV1C8CBO90R:0000000B [INF] Request finished in 331.5282ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-16T00:33:21.1158404+07:00 0HLV1C8CBO90T:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/logo/logo-11.png   (ca22a1cb)
+2020-04-16T00:33:21.1187533+07:00 0HLV1C8CBO90T:00000009 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.1188471+07:00 0HLV1C8CBO90T:00000009 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.1190703+07:00 0HLV1C8CBO90T:00000009 [INF] Request finished in 3.4991ms 404  (791a596a)
+2020-04-16T00:33:21.1252625+07:00 0HLV1C8CBO90S:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/product/related-product-1.jpg   (ca22a1cb)
+2020-04-16T00:33:21.1266746+07:00 0HLV1C8CBO90S:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.1267551+07:00 0HLV1C8CBO90S:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.1269354+07:00 0HLV1C8CBO90S:0000000A [INF] Request finished in 1.7869ms 404  (791a596a)
+2020-04-16T00:33:21.1537201+07:00 0HLV1C8CBO90Q:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/product/related-product-2.jpg   (ca22a1cb)
+2020-04-16T00:33:21.1568305+07:00 0HLV1C8CBO90Q:0000000D [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.1569168+07:00 0HLV1C8CBO90Q:0000000D [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.1571116+07:00 0HLV1C8CBO90Q:0000000D [INF] Request finished in 3.539ms 404  (791a596a)
+2020-04-16T00:33:21.1594328+07:00 0HLV1C8CBO90U:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/product/related-product-3.jpg   (ca22a1cb)
+2020-04-16T00:33:21.1607034+07:00 0HLV1C8CBO90U:00000008 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.1607863+07:00 0HLV1C8CBO90U:00000008 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.1610223+07:00 0HLV1C8CBO90U:00000008 [INF] Request finished in 1.7784ms 404  (791a596a)
+2020-04-16T00:33:21.1816829+07:00 0HLV1C8CBO90R:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/blog/blog-2.jpg   (ca22a1cb)
+2020-04-16T00:33:21.1831101+07:00 0HLV1C8CBO90R:0000000C [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.1831893+07:00 0HLV1C8CBO90R:0000000C [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.1833778+07:00 0HLV1C8CBO90R:0000000C [INF] Request finished in 1.7465ms 404  (791a596a)
+2020-04-16T00:33:21.2055887+07:00 0HLV1C8CBO90T:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/blog/blog-1.jpg   (ca22a1cb)
+2020-04-16T00:33:21.2070126+07:00 0HLV1C8CBO90T:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.2070894+07:00 0HLV1C8CBO90T:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.2073240+07:00 0HLV1C8CBO90T:0000000A [INF] Request finished in 1.7326ms 404  (791a596a)
+2020-04-16T00:33:21.2618271+07:00 0HLV1C8CBO90S:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/blog/blog-3.jpg   (ca22a1cb)
+2020-04-16T00:33:21.2632873+07:00 0HLV1C8CBO90S:0000000B [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.2633705+07:00 0HLV1C8CBO90S:0000000B [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.2635453+07:00 0HLV1C8CBO90S:0000000B [INF] Request finished in 1.7638ms 404  (791a596a)
+2020-04-16T00:33:21.2638504+07:00 0HLV1C8CBO90Q:0000000E [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/blog/blog-14.jpg   (ca22a1cb)
+2020-04-16T00:33:21.2651880+07:00 0HLV1C8CBO90Q:0000000E [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.2669668+07:00 0HLV1C8CBO90Q:0000000E [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.2672062+07:00 0HLV1C8CBO90Q:0000000E [INF] Request finished in 3.3375ms 404  (791a596a)
+2020-04-16T00:33:21.2673947+07:00 0HLV1C8CBO90U:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/blog/blog-11.jpg   (ca22a1cb)
+2020-04-16T00:33:21.2687046+07:00 0HLV1C8CBO90U:00000009 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.2688166+07:00 0HLV1C8CBO90U:00000009 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.2690184+07:00 0HLV1C8CBO90U:00000009 [INF] Request finished in 1.6071ms 404  (791a596a)
+2020-04-16T00:33:21.2697936+07:00 0HLV1C8CBO90R:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/blog/blog-15.jpg   (ca22a1cb)
+2020-04-16T00:33:21.2725156+07:00 0HLV1C8CBO90R:0000000D [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.2726255+07:00 0HLV1C8CBO90R:0000000D [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.2728508+07:00 0HLV1C8CBO90R:0000000D [INF] Request finished in 3.0533ms 404  (791a596a)
+2020-04-16T00:33:21.2730107+07:00 0HLV1C8CBO90T:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/blog/blog-8.jpg   (ca22a1cb)
+2020-04-16T00:33:21.2743509+07:00 0HLV1C8CBO90T:0000000B [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.2744859+07:00 0HLV1C8CBO90T:0000000B [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.2747117+07:00 0HLV1C8CBO90T:0000000B [INF] Request finished in 1.6722ms 404  (791a596a)
+2020-04-16T00:33:21.3010082+07:00 0HLV1C8CBO90S:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-1.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3010287+07:00 0HLV1C8CBO90Q:0000000F [INF] Request starting HTTP/1.1 GET http://localhost:44344/assets/img/blog/blog-10.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3021410+07:00 0HLV1C8CBO90Q:0000000F [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3022322+07:00 0HLV1C8CBO90Q:0000000F [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3024367+07:00 0HLV1C8CBO90Q:0000000F [INF] Request finished in 1.4194ms 404  (791a596a)
+2020-04-16T00:33:21.3028811+07:00 0HLV1C8CBO90T:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/banner/banner-49.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3032362+07:00 0HLV1C8CBO90S:0000000C [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3033242+07:00 0HLV1C8CBO90S:0000000C [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3036627+07:00 0HLV1C8CBO90S:0000000C [INF] Request finished in 2.5368ms 404  (791a596a)
+2020-04-16T00:33:21.3041990+07:00 0HLV1C8CBO90T:0000000C [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3042873+07:00 0HLV1C8CBO90T:0000000C [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3048919+07:00 0HLV1C8CBO90T:0000000C [INF] Request finished in 1.9797ms 404  (791a596a)
+2020-04-16T00:33:21.3074046+07:00 0HLV1C8CBO90U:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-2.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3089523+07:00 0HLV1C8CBO90U:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3090334+07:00 0HLV1C8CBO90U:0000000A [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3092758+07:00 0HLV1C8CBO90U:0000000A [INF] Request finished in 1.9115ms 404  (791a596a)
+2020-04-16T00:33:21.3149911+07:00 0HLV1C8CBO90R:0000000E [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-3.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3167391+07:00 0HLV1C8CBO90R:0000000E [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3168331+07:00 0HLV1C8CBO90R:0000000E [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3171190+07:00 0HLV1C8CBO90R:0000000E [INF] Request finished in 2.1652ms 404  (791a596a)
+2020-04-16T00:33:21.3174327+07:00 0HLV1C8CBO90Q:00000010 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-4.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3191562+07:00 0HLV1C8CBO90Q:00000010 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3192409+07:00 0HLV1C8CBO90Q:00000010 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3194298+07:00 0HLV1C8CBO90Q:00000010 [INF] Request finished in 2.0415ms 404  (791a596a)
+2020-04-16T00:33:21.3228939+07:00 0HLV1C8CBO90S:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-5.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3254218+07:00 0HLV1C8CBO90S:0000000D [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3255109+07:00 0HLV1C8CBO90S:0000000D [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3256922+07:00 0HLV1C8CBO90S:0000000D [INF] Request finished in 2.8438ms 404  (791a596a)
+2020-04-16T00:33:21.3260500+07:00 0HLV1C8CBO90T:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-6.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3280649+07:00 0HLV1C8CBO90T:0000000D [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3284212+07:00 0HLV1C8CBO90T:0000000D [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3286423+07:00 0HLV1C8CBO90T:0000000D [INF] Request finished in 2.6066ms 404  (791a596a)
+2020-04-16T00:33:21.3289060+07:00 0HLV1C8CBO90U:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-8.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3308414+07:00 0HLV1C8CBO90U:0000000B [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3309252+07:00 0HLV1C8CBO90U:0000000B [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3311084+07:00 0HLV1C8CBO90U:0000000B [INF] Request finished in 2.2464ms 404  (791a596a)
+2020-04-16T00:33:21.3311545+07:00 0HLV1C8CBO90Q:00000011 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-7.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3324038+07:00 0HLV1C8CBO90Q:00000011 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3324932+07:00 0HLV1C8CBO90Q:00000011 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3326798+07:00 0HLV1C8CBO90Q:00000011 [INF] Request finished in 1.5323ms 404  (791a596a)
+2020-04-16T00:33:21.3329790+07:00 0HLV1C8CBO90R:0000000F [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-10.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3348937+07:00 0HLV1C8CBO90R:0000000F [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3350656+07:00 0HLV1C8CBO90R:0000000F [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3353062+07:00 0HLV1C8CBO90R:0000000F [INF] Request finished in 2.3387ms 404  (791a596a)
+2020-04-16T00:33:21.3355906+07:00 0HLV1C8CBO90T:0000000E [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/product/product-9.jpg   (ca22a1cb)
+2020-04-16T00:33:21.3375011+07:00 0HLV1C8CBO90T:0000000E [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3375832+07:00 0HLV1C8CBO90T:0000000E [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3379140+07:00 0HLV1C8CBO90T:0000000E [INF] Request finished in 2.3325ms 404  (791a596a)
+2020-04-16T00:33:21.3429388+07:00 0HLV1C8CBO90S:0000000E [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-2.png   (ca22a1cb)
+2020-04-16T00:33:21.3467082+07:00 0HLV1C8CBO90S:0000000E [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3468257+07:00 0HLV1C8CBO90S:0000000E [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3470896+07:00 0HLV1C8CBO90S:0000000E [INF] Request finished in 4.1667ms 404  (791a596a)
+2020-04-16T00:33:21.3477641+07:00 0HLV1C8CBO90Q:00000012 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-1.png   (ca22a1cb)
+2020-04-16T00:33:21.3490389+07:00 0HLV1C8CBO90Q:00000012 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3491763+07:00 0HLV1C8CBO90Q:00000012 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3497233+07:00 0HLV1C8CBO90Q:00000012 [INF] Request finished in 1.963ms 404  (791a596a)
+2020-04-16T00:33:21.3511387+07:00 0HLV1C8CBO90U:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-3.png   (ca22a1cb)
+2020-04-16T00:33:21.3522962+07:00 0HLV1C8CBO90U:0000000C [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3523829+07:00 0HLV1C8CBO90U:0000000C [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3525897+07:00 0HLV1C8CBO90U:0000000C [INF] Request finished in 1.4845ms 404  (791a596a)
+2020-04-16T00:33:21.3527499+07:00 0HLV1C8CBO90R:00000010 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-4.png   (ca22a1cb)
+2020-04-16T00:33:21.3544340+07:00 0HLV1C8CBO90R:00000010 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3546070+07:00 0HLV1C8CBO90R:00000010 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3548074+07:00 0HLV1C8CBO90R:00000010 [INF] Request finished in 2.0575ms 404  (791a596a)
+2020-04-16T00:33:21.3551556+07:00 0HLV1C8CBO90T:0000000F [INF] Request starting HTTP/1.1 GET http://localhost:44344/Assets/client/img/icon-img/shop.png   (ca22a1cb)
+2020-04-16T00:33:21.3569741+07:00 0HLV1C8CBO90T:0000000F [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3570701+07:00 0HLV1C8CBO90T:0000000F [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3571362+07:00 0HLV1C8CBO90Q:00000013 [INF] Request starting HTTP/1.1 GET http://localhost:44344/client/img/brand-logo/brand-logo-5.png   (ca22a1cb)
+2020-04-16T00:33:21.3572633+07:00 0HLV1C8CBO90T:0000000F [INF] Request finished in 2.1511ms 404  (791a596a)
+2020-04-16T00:33:21.3583026+07:00 0HLV1C8CBO90Q:00000013 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:21.3585452+07:00 0HLV1C8CBO90Q:00000013 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:21.3587806+07:00 0HLV1C8CBO90Q:00000013 [INF] Request finished in 1.6576ms 404  (791a596a)
+2020-04-16T00:33:25.8932303+07:00 0HLV1C8CBO90S:0000000F [INF] Request starting HTTP/1.1 GET http://localhost:44344/dich-vu.html   (ca22a1cb)
+2020-04-16T00:33:25.8949376+07:00 0HLV1C8CBO90S:0000000F [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported cultures '["vi", "fr-FR", "fr"]'. (70503d1b)
+2020-04-16T00:33:25.8950160+07:00 0HLV1C8CBO90S:0000000F [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi", "fr-FR", "fr"]'. (31a7522c)
+2020-04-16T00:33:25.8951933+07:00 0HLV1C8CBO90S:0000000F [INF] Executing endpoint '"TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)"' (500cc934)
+2020-04-16T00:33:25.8953442+07:00 0HLV1C8CBO90S:0000000F [INF] Route matched with "{action = \"Index\", controller = \"DichVu\", area = \"\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Index()" on controller "TeduCoreApp.Controllers.DichVuController" ("TeduCoreApp"). (122b2fdf)
+2020-04-16T00:33:25.8957452+07:00 0HLV1C8CBO90S:0000000F [INF] Executing action method "TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)" - Validation state: Valid (dad538d7)
+2020-04-16T00:33:25.8971893+07:00 0HLV1C8CBO90S:0000000F [INF] Entity Framework Core "2.2.4-servicing-10062" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=TeduCoreApp.Data.EF " (9958f5bb)
+2020-04-16T00:33:25.8998640+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[MenuId], [x].[HomeOrder], CASE
+    WHEN [x].[MenuId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x].[MenuId] AS [Id0], [x.Menu].[Name] AS [Name0], [x.Menu].[Description] AS [Description0], [x.Menu].[Url], [x.Menu].[Target], [x.Menu].[ParentId] AS [ParentId0], [x.Menu].[HomeOrder] AS [HomeOrder0], [x.Menu].[DateCreated], [x.Menu].[DateModified], [x.Menu].[SortOrder], [x.Menu].[Status], [x.Menu].[SeoAlias], [x.Menu].[GroupAlias], [x].[Image], [x].[HomeFlag], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[SortOrder] AS [SortOrder0], [x].[Status] AS [Status0], [x].[SeoPageTitle], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords], [x].[SeoDescription], [x.Menu].[Id]
+FROM [DichVuCategory] AS [x]
+LEFT JOIN [Menu] AS [x.Menu] ON [x].[MenuId] = [x.Menu].[Id]
+ORDER BY [x].[ParentId], [x].[Id], [x.Menu].[Id]" (0723d8ff)
+2020-04-16T00:33:25.9005900+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t5].[ParentId], [t5].[Id], [x.DichVus].[Id] AS [Id0], [x.DichVus].[Name], [x.DichVus].[Image], [x.DichVus].[Description], [x.DichVus].[Content], [x.DichVus].[CategoryId], [x.DichVus].[HomeFlag], [x.DichVus].[HotFlag], [x.DichVus].[ViewCount], [x.DichVus].[Tags], [x.DichVus].[DateCreated], [x.DichVus].[DateModified], [x.DichVus].[Status], [x.DichVus].[SeoPageTitle], [x.DichVus].[SeoAlias], [x.DichVus].[SeoKeywords], [x.DichVus].[SeoDescription]
+FROM [DichVu] AS [x.DichVus]
+INNER JOIN (
+    SELECT [x4].[ParentId], [x4].[Id]
+    FROM [DichVuCategory] AS [x4]
+    LEFT JOIN [Menu] AS [x.Menu4] ON [x4].[MenuId] = [x.Menu4].[Id]
+) AS [t5] ON [x.DichVus].[CategoryId] = [t5].[Id]
+ORDER BY [t5].[ParentId], [t5].[Id]" (0723d8ff)
+2020-04-16T00:33:25.9020819+07:00 0HLV1C8CBO90S:0000000F [INF] Executed action method "TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 5.9744ms. (50a9e262)
+2020-04-16T00:33:25.9022357+07:00 0HLV1C8CBO90S:0000000F [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2020-04-16T00:33:25.9063836+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-16T00:33:25.9071212+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:25.9077079+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:25.9108988+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Url], [x].[Target], [x].[ParentId], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Menu] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)
+ORDER BY [x].[Id]" (0723d8ff)
+2020-04-16T00:33:25.9119031+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("1"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.DichVuCategories].[Id] AS [Id0], [x.DichVuCategories].[Name], [x.DichVuCategories].[Description], [x.DichVuCategories].[ParentId], [x.DichVuCategories].[MenuId], [x.DichVuCategories].[HomeOrder], [x.DichVuCategories].[Image], [x.DichVuCategories].[HomeFlag], [x.DichVuCategories].[DateCreated], [x.DichVuCategories].[DateModified], [x.DichVuCategories].[SortOrder], [x.DichVuCategories].[Status], [x.DichVuCategories].[SeoPageTitle], [x.DichVuCategories].[SeoAlias], [x.DichVuCategories].[SeoKeywords], [x.DichVuCategories].[SeoDescription]
+FROM [DichVuCategory] AS [x.DichVuCategories]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Menu] AS [x0]
+    WHERE ([x0].[Status] = 1) AND ([x0].[GroupAlias] = @__groupAlias_0)
+) AS [t] ON [x.DichVuCategories].[MenuId] = [t].[Id]
+ORDER BY [t].[Id], [x.DichVuCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:25.9126048+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [x.BlogCategories].[Id] AS [Id0], [x.BlogCategories].[Name], [x.BlogCategories].[Description], [x.BlogCategories].[ParentId], [x.BlogCategories].[MenuId], [x.BlogCategories].[HomeOrder], [x.BlogCategories].[Image], [x.BlogCategories].[HomeFlag], [x.BlogCategories].[DateCreated], [x.BlogCategories].[DateModified], [x.BlogCategories].[SortOrder], [x.BlogCategories].[Status], [x.BlogCategories].[SeoPageTitle], [x.BlogCategories].[SeoAlias], [x.BlogCategories].[SeoKeywords], [x.BlogCategories].[SeoDescription]
+FROM [BlogCategory] AS [x.BlogCategories]
+INNER JOIN (
+    SELECT [x2].[Id]
+    FROM [Menu] AS [x2]
+    WHERE ([x2].[Status] = 1) AND ([x2].[GroupAlias] = @__groupAlias_0)
+) AS [t2] ON [x.BlogCategories].[MenuId] = [t2].[Id]
+ORDER BY [t2].[Id], [x.BlogCategories].[Id]" (0723d8ff)
+2020-04-16T00:33:25.9142425+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?' (Size = 255)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Address], [x].[Email], [x].[Lat], [x].[Lng], [x].[Name], [x].[Other], [x].[Phone], [x].[Status], [x].[Website]
+FROM [ContactDetails] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2020-04-16T00:33:25.9158332+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-16T00:33:25.9172688+07:00 0HLV1C8CBO90S:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Alias], [x].[Content], [x].[Status], [x].[HomeOrder], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[SeoAlias], [x].[GroupAlias]
+FROM [Pages] AS [x]
+WHERE [x].[GroupAlias] = @__groupAlias_0" (0723d8ff)
+2020-04-16T00:33:25.9187709+07:00 0HLV1C8CBO90S:0000000F [INF] Executed ViewResult - view "Index" executed in 16.5587ms. (f66409e9)
+2020-04-16T00:33:25.9188847+07:00 0HLV1C8CBO90S:0000000F [INF] Executed action "TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)" in 23.4745ms (afa2e885)
+2020-04-16T00:33:25.9189554+07:00 0HLV1C8CBO90S:0000000F [INF] Executed endpoint '"TeduCoreApp.Controllers.DichVuController.Index (TeduCoreApp)"' (99874f2b)
+2020-04-16T00:33:25.9760701+07:00 0HLV1C8CBO90S:0000000F [INF] Request finished in 82.8485ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-16T00:48:21.8051727+07:00  [FTL] Application startup exception (6c57a5ba)
+System.InvalidOperationException: The AuthorizationPolicy named: 'ApiUser' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.GetFilter(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.OnProvidersExecuting(ApplicationModelProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.BuildModel()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.Initialize()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.GetChangeToken()
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource.<>c__DisplayClass7_0.<.ctor>b__0()
+   at Microsoft.Extensions.Primitives.ChangeToken.OnChange(Func`1 changeTokenProducer, Action changeTokenConsumer)
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource..ctor(IActionDescriptorCollectionProvider actions, MvcEndpointInvokerFactory invokerFactory, ParameterPolicyFactory parameterPolicyFactory)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitSingleton(SingletonCallSite singletonCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc(IApplicationBuilder app, Action`1 configureRoutes)
+   at TeduCoreApp.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) in E:\Project\TeduCoreApp\Startup.cs:line 307
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Server.IISIntegration.IISSetupFilter.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2020-04-16T00:48:22.1844782+07:00 0HLV1CKOA3DQ0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Home/Index   (ca22a1cb)
+2020-04-16T00:48:22.2794967+07:00 0HLV1CKOA3DQ0:00000001 [INF] Request finished in 96.961ms 500 text/html; charset=utf-8 (791a596a)
+2020-04-16T02:07:46.2350097+07:00  [FTL] Application startup exception (6c57a5ba)
+System.InvalidOperationException: The AuthorizationPolicy named: 'ApiUser' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.GetFilter(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.OnProvidersExecuting(ApplicationModelProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.BuildModel()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.Initialize()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.GetChangeToken()
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource.<>c__DisplayClass7_0.<.ctor>b__0()
+   at Microsoft.Extensions.Primitives.ChangeToken.OnChange(Func`1 changeTokenProducer, Action changeTokenConsumer)
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource..ctor(IActionDescriptorCollectionProvider actions, MvcEndpointInvokerFactory invokerFactory, ParameterPolicyFactory parameterPolicyFactory)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitSingleton(SingletonCallSite singletonCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc(IApplicationBuilder app, Action`1 configureRoutes)
+   at TeduCoreApp.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) in E:\Project\TeduCoreApp\Startup.cs:line 307
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Server.IISIntegration.IISSetupFilter.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2020-04-16T02:07:46.5652292+07:00 0HLV1E147E5RC:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Home/Index   (ca22a1cb)
+2020-04-16T02:07:46.6219773+07:00 0HLV1E147E5RC:00000001 [INF] Request finished in 58.2151ms 500 text/html; charset=utf-8 (791a596a)
+2020-04-16T02:09:02.0365871+07:00  [FTL] Application startup exception (6c57a5ba)
+System.InvalidOperationException: The AuthorizationPolicy named: 'ApiUser' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.GetFilter(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.OnProvidersExecuting(ApplicationModelProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.BuildModel()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.Initialize()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.GetChangeToken()
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource.<>c__DisplayClass7_0.<.ctor>b__0()
+   at Microsoft.Extensions.Primitives.ChangeToken.OnChange(Func`1 changeTokenProducer, Action changeTokenConsumer)
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource..ctor(IActionDescriptorCollectionProvider actions, MvcEndpointInvokerFactory invokerFactory, ParameterPolicyFactory parameterPolicyFactory)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitSingleton(SingletonCallSite singletonCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc(IApplicationBuilder app, Action`1 configureRoutes)
+   at TeduCoreApp.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) in E:\Project\TeduCoreApp\Startup.cs:line 307
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Server.IISIntegration.IISSetupFilter.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2020-04-16T02:09:02.3834490+07:00 0HLV1E1QQGEIS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/   (ca22a1cb)
+2020-04-16T02:09:02.4189510+07:00 0HLV1E1QQGEIS:00000001 [INF] Request finished in 37.2766ms 500 text/html; charset=utf-8 (791a596a)
+2020-04-16T02:09:54.5126178+07:00  [FTL] Application startup exception (6c57a5ba)
+System.InvalidOperationException: The AuthorizationPolicy named: 'ApiUser' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.GetFilter(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.OnProvidersExecuting(ApplicationModelProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.BuildModel()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.Initialize()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.GetChangeToken()
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource.<>c__DisplayClass7_0.<.ctor>b__0()
+   at Microsoft.Extensions.Primitives.ChangeToken.OnChange(Func`1 changeTokenProducer, Action changeTokenConsumer)
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource..ctor(IActionDescriptorCollectionProvider actions, MvcEndpointInvokerFactory invokerFactory, ParameterPolicyFactory parameterPolicyFactory)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitSingleton(SingletonCallSite singletonCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc(IApplicationBuilder app, Action`1 configureRoutes)
+   at TeduCoreApp.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) in E:\Project\TeduCoreApp\Startup.cs:line 307
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Server.IISIntegration.IISSetupFilter.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2020-04-16T02:09:54.9643728+07:00 0HLV1E2AFQ9FJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Home/Index   (ca22a1cb)
+2020-04-16T02:09:54.9994664+07:00 0HLV1E2AFQ9FJ:00000001 [INF] Request finished in 36.7802ms 500 text/html; charset=utf-8 (791a596a)
+2020-04-16T02:30:14.3804286+07:00  [FTL] Application startup exception (6c57a5ba)
+System.InvalidOperationException: The AuthorizationPolicy named: 'ApiUser' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.GetFilter(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.OnProvidersExecuting(ApplicationModelProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.BuildModel()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.Initialize()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.GetChangeToken()
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource.<>c__DisplayClass7_0.<.ctor>b__0()
+   at Microsoft.Extensions.Primitives.ChangeToken.OnChange(Func`1 changeTokenProducer, Action changeTokenConsumer)
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource..ctor(IActionDescriptorCollectionProvider actions, MvcEndpointInvokerFactory invokerFactory, ParameterPolicyFactory parameterPolicyFactory)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitSingleton(SingletonCallSite singletonCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc(IApplicationBuilder app, Action`1 configureRoutes)
+   at TeduCoreApp.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) in E:\Project\TeduCoreApp\Startup.cs:line 307
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Server.IISIntegration.IISSetupFilter.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2020-04-16T02:30:14.6744264+07:00 0HLV1EDM03E30:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/   (ca22a1cb)
+2020-04-16T02:30:14.7016958+07:00 0HLV1EDM03E30:00000001 [INF] Request finished in 29.3185ms 500 text/html; charset=utf-8 (791a596a)
+2020-04-16T02:36:24.0256555+07:00 0HLV1EDM03E31:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/   (ca22a1cb)
+2020-04-16T02:36:24.0416976+07:00 0HLV1EDM03E31:00000001 [INF] Request finished in 16.012ms 500 text/html; charset=utf-8 (791a596a)
+2020-04-16T02:40:18.2709318+07:00  [FTL] Application startup exception (6c57a5ba)
+System.InvalidOperationException: The AuthorizationPolicy named: 'ApiUser' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.GetFilter(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authData)
+   at Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider.OnProvidersExecuting(ApplicationModelProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.BuildModel()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.GetDescriptors()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider.OnProvidersExecuting(ActionDescriptorProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.UpdateCollection()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.Initialize()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.DefaultActionDescriptorCollectionProvider.GetChangeToken()
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource.<>c__DisplayClass7_0.<.ctor>b__0()
+   at Microsoft.Extensions.Primitives.ChangeToken.OnChange(Func`1 changeTokenProducer, Action changeTokenConsumer)
+   at Microsoft.AspNetCore.Mvc.Internal.MvcEndpointDataSource..ctor(IActionDescriptorCollectionProvider actions, MvcEndpointInvokerFactory invokerFactory, ParameterPolicyFactory parameterPolicyFactory)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitSingleton(SingletonCallSite singletonCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc(IApplicationBuilder app, Action`1 configureRoutes)
+   at TeduCoreApp.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) in E:\Project\TeduCoreApp\Startup.cs:line 308
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Server.IISIntegration.IISSetupFilter.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2020-04-16T02:40:18.6036814+07:00 0HLV1EJ9V9B04:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44344/Home/Index   (ca22a1cb)
+2020-04-16T02:40:18.6762087+07:00 0HLV1EJ9V9B04:00000001 [INF] Request finished in 75.0951ms 500 text/html; charset=utf-8 (791a596a)

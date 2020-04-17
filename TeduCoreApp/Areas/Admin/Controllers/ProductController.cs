@@ -46,16 +46,14 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            //var model = _productService.GetAll();
-            var model = await _context.Products.ToListAsync();
+            var model = _productService.GetAll();
             return new OkObjectResult(model);
         }
 
         [HttpGet]
         public IActionResult GetAllCategories()
         {
-            //var model = _productCategoryService.GetAll();
-            var model = _context.ProductCategories.ToListAsync();
+            var model = _productCategoryService.GetAll();
             return new OkObjectResult(model);
         }
 

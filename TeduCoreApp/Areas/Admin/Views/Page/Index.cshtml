@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Pages";
 }
 @section Scripts{
@@ -13,6 +12,11 @@
 @section Styles{
 
 }
+@{
+    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
+    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete);
+    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update);
+}
 <input type="hidden" id="hid-category-id" value="0" />
 <div class="">
     <div class="page-title">
@@ -22,7 +26,10 @@
 
         <div class="title_right">
             <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
-                <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                @if (resultCreate.Succeeded)
+                {
+                    <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                }
             </div>
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
@@ -31,9 +38,7 @@
                         <button class="btn btn-default" id="btn-search" type="button">Search!</button>
                     </span>
                 </div>
-
             </div>
-
         </div>
     </div>
 
@@ -76,12 +81,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
 
     <script id="table-template" type="x-tmpl-mustache">
         <tr>
@@ -90,8 +93,14 @@
             <td>{{Alias}}</td>
             <td>{{{Status}}}</td>
             <td>
-                <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o"></i></a>
-                <a href="#" data-id="{{Id}}" class="btn-delete"><i class="fa fa-trash-o"></i></a>
+                @if (resultUpdate.Succeeded)
+                {
+                    <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o"></i></a>
+                }
+                @if (resultDelete.Succeeded)
+                {
+                    <a href="#" data-id="{{Id}}" class="btn-delete"><i class="fa fa-trash-o"></i></a>
+                }
             </td>
         </tr>
     </script>

@@ -13,6 +13,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         void UpdateStreet(StreetViewModel streetVm);
 
+        //void AddStreetAndShipCodeInCheckout(string NameDistrict, string NameWard, string Street);
+
         #region AJAX Request Province
 
         List<Province> GetProvinces();

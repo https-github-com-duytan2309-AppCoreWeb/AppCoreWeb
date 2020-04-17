@@ -207,6 +207,11 @@
                 }
             });
         });
+
+        $('body').on('click', '.btn-not-permission', function (e) {
+            e.preventDefault();
+            tedu.notifypermission('You not has pemission is this action', 'warning');
+        });
     }
 
     function loadBillStatus() {

@@ -48,6 +48,7 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Ward, WardViewModel>();
             CreateMap<District, DistrictViewModel>();
             CreateMap<Province, ProvinceViewModel>();
+            CreateMap<ShipCode, ShipCodeViewModel>();
         }
     }
 }

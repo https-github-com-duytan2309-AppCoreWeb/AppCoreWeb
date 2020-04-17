@@ -24,8 +24,10 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         public UserController(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
-            IUserService userService,
-            IAuthorizationService authorizationService)
+            IUserService userService
+            ,
+            IAuthorizationService authorizationService
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -40,9 +42,9 @@ namespace TeduCoreApp.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var result = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Read);
-            //if (result.Succeeded == false)
-            //    return new RedirectResult("/Admin/Login/Index");
+            var result = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Login/Index");
 
             return View("Index");
         }

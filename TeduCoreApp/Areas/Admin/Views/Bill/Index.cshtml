@@ -12,29 +12,38 @@
 @section Styles{
     <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 }
+@{
+    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "BILL_LIST", Operations.Create);
+    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "BILL_LIST", Operations.Delete);
+    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "BILL_LIST", Operations.Update);
+
+}
 <input type="hidden" id="hid-category-id" value="0" />
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Bill management</h3>
+            <h3>Quản Lý Hóa Đơn</h3>
         </div>
 
         <div class="title_right">
 
             <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                <input type="text" id="txtFromDate" class="form-control" placeholder="From Date">
+                <input type="text" id="txtFromDate" class="form-control" placeholder="Từ Ngày">
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 form-group">
-                <input type="text" id="txtToDate" class="form-control" placeholder="To date">
+                <input type="text" id="txtToDate" class="form-control" placeholder="Đến Ngày">
             </div>
             <div class="col-md-2 col-sm-3 col-xs-12 form-group">
                 <input type="text" id="txtSearchKeyword" class="form-control" placeholder="Tìm kiếm...">
             </div>
             <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                <button class="btn btn-default" id="btn-search" type="button">Search!</button>
+                <button class="btn btn-default" id="btn-search" type="button">Tìm Kiếm!</button>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                @if (resultCreate.Succeeded)
+                {
+                    <button class="btn btn-success" id="btn-create" type="button">Tạo Đơn</button>
+                }
             </div>
         </div>
     </div>
@@ -48,12 +57,12 @@
                     <table id="tbl-product" class="table table-striped table-bordered nowrap">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Customer name</th>
-                                <th>Payment method</th>
-                                <th>Order date</th>
-                                <th>Status</th>
-                                <th>Detail</th>
+                                <th>Mã</th>
+                                <th>Họ Tên</th>
+                                <th>Hình Thức Thanh Toán</th>
+                                <th>Ngày Tạo</th>
+                                <th>Trạng Thái Bill</th>
+                                <th>Chi Tiết Bill</th>
                             </tr>
                         </thead>
                         <tbody id="tbl-content"></tbody>

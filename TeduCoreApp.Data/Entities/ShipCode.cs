@@ -13,8 +13,9 @@ namespace TeduCoreApp.Data.Entities
         {
         }
 
-        public ShipCode(string carriers, DateTime dilivery, decimal collectionFee, decimal total, string zipCode, int idadress)
+        public ShipCode(long id, string carriers, DateTime dilivery, decimal collectionFee, decimal total, string zipCode, int idadress)
         {
+            Id = id;
             Carriers = carriers;
             DeliveryTime = dilivery;
             CollectionFee = collectionFee;

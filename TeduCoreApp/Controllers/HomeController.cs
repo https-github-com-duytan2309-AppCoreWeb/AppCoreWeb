@@ -11,6 +11,7 @@ using TeduCoreApp.Application.Interfaces;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
+using System.Security.Claims;
 
 namespace TeduCoreApp.Controllers
 {
@@ -40,8 +41,10 @@ namespace TeduCoreApp.Controllers
 
         public IActionResult Test()
         {
-            ViewBag.Test = Guid.NewGuid();
-            return View();
+            var roles = ((ClaimsPrincipal)User).GetSpecificClaim("Roles");
+            string[] stringRoles = roles.Split(";");
+            ViewBag.Test = stringRoles;
+            return new OkObjectResult(stringRoles);
         }
 
         //[ResponseCache(CacheProfileName = "Default")]

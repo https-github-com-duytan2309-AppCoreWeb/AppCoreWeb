@@ -1,151 +1,90 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Application.ViewModels.Product;
+using TeduCoreApp.Authorization;
 using TeduCoreApp.Data.EF;
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Extensions;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
     public class ShipCodesController : BaseController
     {
-        private readonly AppDbContext _context;
+        private readonly IShipCodeService _shipcodeService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public ShipCodesController(AppDbContext context)
+        public ShipCodesController(IShipCodeService shipcodeService,
+            IAuthorizationService authorizationService
+            )
         {
-            _context = context;
+            _shipcodeService = shipcodeService;
+            _authorizationService = authorizationService;
         }
 
-        // GET: Admin/ShipCodes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ShipCodes.ToListAsync());
-        }
-
-        // GET: Admin/ShipCodes/Details/5
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var shipCode = await _context.ShipCodes
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (shipCode == null)
-            {
-                return NotFound();
-            }
-
-            return View(shipCode);
-        }
-
-        // GET: Admin/ShipCodes/Create
-        public IActionResult Create()
-        {
+            //var email = User.GetSpecificClaim("Email");
+            var result = await _authorizationService.AuthorizeAsync(User, "SHIPER", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Login/Index");
             return View();
         }
 
-        // POST: Admin/ShipCodes/Create To protect from overposting attacks, please enable the
-        // specific properties you want to bind to, for more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpGet]
+        public IActionResult GetById(long id)
+        {
+            var model = _shipcodeService.GetById(id);
+            return new OkObjectResult(model);
+        }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Carriers,DeliveryTime,CollectionFee,ZipCode,Total,IdAddress,Id")] ShipCode shipCode)
+        public IActionResult Delete(long id)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(shipCode);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
             }
-            return View(shipCode);
+            _shipcodeService.Delete(id);
+            _shipcodeService.Save();
+            return new OkObjectResult("Success");
         }
 
-        // GET: Admin/ShipCodes/Edit/5
-        public async Task<IActionResult> Edit(long? id)
+        // GET: Admin/ShipCodes
+        public IActionResult GetAllPaging(int page, int pageSize)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var shipCode = await _context.ShipCodes.FindAsync(id);
-            if (shipCode == null)
-            {
-                return NotFound();
-            }
-            return View(shipCode);
+            var model = _shipcodeService.GetAllPaging(page, pageSize);
+            return new OkObjectResult(model);
         }
 
-        // POST: Admin/ShipCodes/Edit/5 To protect from overposting attacks, please enable the
-        // specific properties you want to bind to, for more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Carriers,DeliveryTime,CollectionFee,ZipCode,Total,IdAddress,Id")] ShipCode shipCode)
+        public IActionResult SaveEntity(ShipCodeViewModel shipVm)
         {
-            if (id != shipCode.Id)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
             }
-
-            if (ModelState.IsValid)
+            if (shipVm.Id == 0)
             {
-                try
-                {
-                    _context.Update(shipCode);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ShipCodeExists(shipCode.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _shipcodeService.Create(shipVm);
             }
-            return View(shipCode);
-        }
-
-        // GET: Admin/ShipCodes/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null)
+            else
             {
-                return NotFound();
+                _shipcodeService.Update(shipVm);
             }
-
-            var shipCode = await _context.ShipCodes
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (shipCode == null)
-            {
-                return NotFound();
-            }
-
-            return View(shipCode);
-        }
-
-        // POST: Admin/ShipCodes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long id)
-        {
-            var shipCode = await _context.ShipCodes.FindAsync(id);
-            _context.ShipCodes.Remove(shipCode);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ShipCodeExists(long id)
-        {
-            return _context.ShipCodes.Any(e => e.Id == id);
+            _shipcodeService.Save();
+            return new OkObjectResult(shipVm);
         }
     }
 }

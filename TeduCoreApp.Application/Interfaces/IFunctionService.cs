@@ -11,6 +11,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         Task<List<FunctionViewModel>> GetAll(string filter);
 
+        Task<List<FunctionViewModel>> GetAllAllowPermission(string RolesId);
+
         IEnumerable<FunctionViewModel> GetAllWithParentId(string parentId);
 
         FunctionViewModel GetById(string id);

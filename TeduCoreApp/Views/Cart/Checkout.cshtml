@@ -58,22 +58,26 @@
                     <div class="checkout-wrapper">
                         @if (ViewData["Success"] != null)
                         {
-                            if ((bool)ViewData["Success"] == true)
-                            {
+                            <div class="alert alert-success">
+                                Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ sớm xác nhận đơn hàng của bạn.
+                                <br /> Xem chi tiết đơn hàng của bạn  <a class="alert-link" href="/thong-tin-bill.html"><h5>Tại Đây</h5></a>
+                            </div>
+                            @*if ((bool)ViewData["Success"] == true)
+                                {
 
-                                <div class="alert alert-success">
-                                    Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ sớm xác nhận đơn hàng của bạn.
-                                    <br /> Xem chi tiết đơn hàng của bạn
-                                </div>
-                                <a href="/thong-tin-bill.html" class="alert-success note-color"><h5>Tại Đây</h5></a>
-                            }
-                            else
-                            {
-                                <div class="alert alert-danger">
-                                    Có một lỗi trong tiến trình đặt hàng. Vui lòng liên hệ với quản trị viên. (0967422230)
-                                </div>
+                                    <div class="alert alert-success">
+                                        Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ sớm xác nhận đơn hàng của bạn.
+                                        <br /> Xem chi tiết đơn hàng của bạn  <a class="alert-link" href="/thong-tin-bill.html"><h5>Tại Đây</h5></a>
+                                    </div>
 
-                            }
+                                }
+                                else
+                                {
+                                    <div class="alert alert-danger">
+                                        Có một lỗi trong tiến trình đặt hàng. Vui lòng liên hệ với quản trị viên. (0967422230)
+                                    </div>
+
+                                }*@
 
                         }
                         else
@@ -107,7 +111,7 @@
                                                         <div class="col-lg-3 col-md-6">
                                                             <div id="divProvince" class="billing-info">
                                                                 <label asp-for="Province"></label>
-                                                                <input asp-for="Province" id="Province" class="input form-control" placeholder="Tỉnh, Thành Phố" data-toggle="dropdown" type="text">
+                                                                <input value="Thành phố Hồ Chí Minh" asp-for="Province" id="Province" class="input form-control" placeholder="Tỉnh, Thành Phố" data-toggle="dropdown" type="text">
                                                                 <span asp-validation-for="Province"></span>
 
                                                                 <ul style="overflow: scroll; width: 250px; height:400px;" class="dropdown-menu province" id="tbl-province-details">
@@ -121,7 +125,7 @@
                                                         <div class="col-lg-3 col-md-6">
                                                             <div class="billing-info">
                                                                 <label asp-for="District"></label>
-                                                                <input asp-for="District" id="District" class="input form-control" placeholder="Quận, Huyện" data-toggle="dropdown" type="text">
+                                                                <input value="Quận 1" asp-for="District" id="District" class="input form-control" placeholder="Quận, Huyện" data-toggle="dropdown" type="text">
                                                                 <span asp-validation-for="District"></span>
                                                                 <ul style="overflow: scroll; width: 250px; height:400px;" class="dropdown-menu district" id="tbl-district-details">
                                                                 </ul>
@@ -147,7 +151,8 @@
                                                         <div class="col-lg-3 col-md-6">
                                                             <div class="billing-info">
                                                                 <label asp-for="Street"></label>
-                                                                <input asp-for="Street" id="Street" class="input form-control" placeholder="Đường" data-toggle="dropdown" type="text" disabled>
+                                                                @*disabled*@
+                                                                <input asp-for="Street" id="Street" class="input form-control" placeholder="Đường" data-toggle="dropdown" type="text">
                                                                 <span asp-validation-for="Street"></span>
                                                                 <ul style="overflow: scroll; width: 250px; height: 400px;" class="dropdown-menu street" id="tbl-street-details">
                                                                 </ul>
@@ -212,42 +217,6 @@
                                             <h5 class="panel-title"><span>3.</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-6">Phương Thức Giao Hàng</a></h5>
                                         </div>
                                         <div id="payment-6" class="panel-collapse collapse">
-                                            @*<div class="panel-body">
-                                                    <div class="order-review-wrapper">
-                                                        <div class="order-review">
-                                                            <div class="table-responsive">
-                                                                <table class="table">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th class="width-1">Hãng</th>
-                                                                            <th class="width-2">Chi Phí Vận Chuyển</th>
-                                                                            <th class="width-3">Mã Bưu Chính</th>
-                                                                            <th class="width-4">VAT</th>
-                                                                            <th class="width-5">Thời Gian</th>
-                                                                            <th class="width-6">Tổng Phụ Thu</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody id="template-shipcode">
-                                                                    </tbody>
-                                                                </table>
-
-                                                                <script type="x-tmpl-mustache" id="template-table-shipcode">
-                                                                    <tr>
-                                                                        <td>{{{Carriers}}}</td>
-                                                                        <td>{{{CollectionFee}}}</td>
-                                                                        <td>{{{ZipCode}}}</td>
-                                                                        <td>10%</td>
-                                                                        <td>{{{DiliveryTime}}}</td>
-                                                                        <td>{{{Total}}}</td>
-                                                                    </tr>
-                                                                </script>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>*@
-                                            @*<script id="template-table-district-details" type="x-tmpl-mustache">
-                                                    <li><a>{{{Carriers}}}</a></li>
-                                                </script>*@
                                             <div class="panel-body">
                                                 <div class="billing-information-wrapper">
                                                     <div class="row">
@@ -255,21 +224,18 @@
                                                             <div class="billing-info">
                                                                 <label>Nhà Vận Chuyển</label>
                                                                 <input id="Carriers" class="input form-control" placeholder="Chọn Hãng" data-toggle="dropdown" type="text">
-                                                                <ul style="overflow: scroll; width: 250px; height: 300px" class="dropdown-menu" id="template-shipcode">
+                                                                <ul style="overflow: scroll; width: 250px; height: 100px" class="dropdown-menu carriess" id="template-shipcode">
                                                                 </ul>
                                                                 <script id="template-table-shipcode" type="x-tmpl-mustache">
-                                                                    <li><a data-id="{{Id}}">{{{Carriers}}}</a></li>
+                                                                    <li><a data-id="{{IdCarriers}}">{{{Carriers}}}</a></li>
                                                                 </script>
                                                             </div>
                                                         </div>
                                                         <div>
-
-                                                            @*<input id="AddressId" type="hidden" />*@
                                                             <input id="ShipCodeId" asp-for="ShipCodeId" type="hidden" />
                                                         </div>
                                                         <div class="col-lg-3 col-md-6">
                                                             <div class="billing-info">
-
                                                                 <label>Chi Phí Vận Chuyển</label>
                                                                 <input id="CollectionFee" class="input form-control" data-toggle="dropdown" type="text" disabled>
                                                             </div>
@@ -400,9 +366,9 @@
                 else
                 {
                     <div>
-                        You must login to Processc!!!! SigIn <br />
-                        <a class="btn btn-success" href="/dang-ky.html">Here</a>
-                        Or You Has a<a class="btn btn-success" href="/dang-nhap.html">Account</a>
+                        <div class="alert alert-danger" role="alert">
+                            Bạn phải đăng nhập <a class="alert-link" href="/dang-nhap.html">Tại Đây</a> để thanh toán!!!!
+                        </div>
                     </div>
 
                 }

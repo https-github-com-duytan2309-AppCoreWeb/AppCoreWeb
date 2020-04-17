@@ -36,9 +36,9 @@ namespace TeduCoreApp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ShipCode>> GetShipCodeById(string id)
+        public async Task<ActionResult<ShipCode>> GetShipCodeById(string IdShipCode)
         {
-            return new OkObjectResult(await _context.ShipCodes.Where(x => x.Id.ToString() == id).SingleOrDefaultAsync());
+            return new OkObjectResult(await _context.ShipCodes.Where(x => x.Id.ToString() == IdShipCode).SingleOrDefaultAsync());
         }
 
         // GET: api/ShipCodes/5

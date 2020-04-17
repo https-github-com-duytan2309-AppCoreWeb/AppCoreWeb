@@ -3,4 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2> @ViewBag.Test</h2>
+@foreach (var word in ViewBag.Test)
+{
+    word.ToString();
+}

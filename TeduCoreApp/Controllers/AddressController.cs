@@ -9,16 +9,30 @@ using TeduCoreApp.Application.ViewModels.Product;
 using TeduCoreApp.Data.EF;
 using TeduCoreApp.Data.EF.Repositories;
 using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.IRepositories;
 
 namespace TeduCoreApp.Controllers
 {
     public class AddressController : Controller
     {
+        private readonly IProvinceRepository _provinceRepository;
+        private readonly IDistrictRepository _disctrictRepository;
+        private readonly IWardRepository _wardRepository;
+        private readonly IStreetRepository _streetRepository;
         private readonly IAddressService _addressServices;
         private readonly AppDbContext _context;
 
-        public AddressController(IAddressService addressServices, AppDbContext context)
+        public AddressController(IAddressService addressServices,
+            IProvinceRepository provinceRepository,
+            IDistrictRepository disctrictRepository,
+            IWardRepository wardRepository,
+            IStreetRepository streetRepository,
+            AppDbContext context)
         {
+            _provinceRepository = provinceRepository;
+            _disctrictRepository = disctrictRepository;
+            _wardRepository = wardRepository;
+            _streetRepository = streetRepository;
             _addressServices = addressServices;
             _context = context;
         }
@@ -26,6 +40,28 @@ namespace TeduCoreApp.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddStreetAndShipCodeInCheckout(string NameDistrict, string NameWard, string Street)
+        {
+            var idDistrict = _provinceRepository.FindSingle(x => x.Name == NameDistrict).Id;
+            var idWard = _wardRepository.FindSingle(x => x.Name == NameWard).Id;
+            StreetViewModel streetVm = new StreetViewModel();
+            streetVm.Name = Street;
+            streetVm.DistrictId = idDistrict;
+            streetVm.WardId = idWard;
+            streetVm.Status = false;
+            _addressServices.CreateStreet(streetVm);
+            _addressServices.Save();
+
+            var idAddress = _context.Address.Where(x => x.WardId == idWard && x.DistrictId == idDistrict).FirstOrDefault();
+            ShipCode ship = new ShipCode();
+            ship.IdAddress = idAddress.Id;
+            _context.Add(ship);
+            _context.SaveChanges();
+
+            return new OkObjectResult("Success");
         }
 
         #region AJAX Request Province
@@ -160,7 +196,9 @@ namespace TeduCoreApp.Controllers
         [HttpGet]
         public IActionResult GetStreetsByNameDistrict(string NameDistrict)
         {
-            return new OkObjectResult(_addressServices.GetStreetsByNameDistrict(NameDistrict));
+            var idDistrict = _context.Districts.Where(x => x.Name == NameDistrict).Select(x => x.Id).FirstOrDefault();
+            var listStreets = _context.Streets.Where(x => x.DistrictId == idDistrict).ToList();
+            return new OkObjectResult(listStreets);
         }
 
         [HttpGet]
