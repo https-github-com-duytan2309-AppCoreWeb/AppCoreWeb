@@ -14,11 +14,7 @@
         blogCategory.initialize();
     </script>
 }
-@{
-    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "BLOG", Operations.Create);
-    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "BLOG", Operations.Delete);
-    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "BLOG", Operations.Update);
-}
+
 <div class="kt-subheader kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
@@ -61,7 +57,7 @@
                                 Quay lại
                             </a>
                             &nbsp;
-                            @if (resultCreate.Succeeded)
+                            @if ((await AuthorizationService.AuthorizeAsync(User, "BLOG", Operations.Create)).Succeeded)
                             {
                                 <a href="#" id="btnCreate" class="btn btn-clean btn-icon-sm">
                                     <i class="la la-plus"></i>
@@ -75,11 +71,12 @@
                     <div id="kt_tree_1" class="tree-demo jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_1" aria-busy="false">
                         <ul id="treeProductCategory"></ul>
                         <div id="contextMenu" class="easyui-menu" style="width:120px;">
-                            @if (resultUpdate.Succeeded)
+                            @if ((await AuthorizationService.AuthorizeAsync(User, "BLOG", Operations.Update)).Succeeded)
                             {
                                 <div id="btnEdit" data-options="iconCls:'icon-edit'">Sửa</div>
                             }
-                            @if (resultDelete.Succeeded)
+
+                            @if ((await AuthorizationService.AuthorizeAsync(User, "BLOG", Operations.Delete)).Succeeded)
                             {
                                 <div id="btnDelete" data-options="iconCls:'icon-remove'">Xoá</div>
                             }

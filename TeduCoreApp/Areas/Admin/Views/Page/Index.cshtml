@@ -12,11 +12,6 @@
 @section Styles{
 
 }
-@{
-    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
-    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete);
-    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update);
-}
 <input type="hidden" id="hid-category-id" value="0" />
 <div class="">
     <div class="page-title">
@@ -26,9 +21,13 @@
 
         <div class="title_right">
             <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
-                @if (resultCreate.Succeeded)
+                @if ((await AuthorizationService.AuthorizeAsync(User, "PAGE", Operations.Create)).Succeeded)
                 {
                     <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                }
+                else
+                {
+                    <a class="btn btn-success btn-not-permission" disabled>Create</a>
                 }
             </div>
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -93,13 +92,21 @@
             <td>{{Alias}}</td>
             <td>{{{Status}}}</td>
             <td>
-                @if (resultUpdate.Succeeded)
+                @if ((await AuthorizationService.AuthorizeAsync(User, "PAGE", Operations.Update)).Succeeded)
                 {
                     <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o"></i></a>
                 }
-                @if (resultDelete.Succeeded)
+                else
+                {
+                    <a class="btn btn-xs btn-info btn-not-permission" disabled><i class="fa fa-pencil-square-o"></i></a>
+                }
+                @if ((await AuthorizationService.AuthorizeAsync(User, "PAGE", Operations.Delete)).Succeeded)
                 {
                     <a href="#" data-id="{{Id}}" class="btn-delete"><i class="fa fa-trash-o"></i></a>
+                }
+                else
+                {
+                    <a class="btn btn-xs  btn-danger btn-not-permission" disabled><i class="fa fa-trash-o"></i></a>
                 }
             </td>
         </tr>

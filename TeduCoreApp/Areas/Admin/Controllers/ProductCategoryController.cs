@@ -7,6 +7,8 @@ using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TeduCoreApp.Utilities.Helpers;
+using Microsoft.AspNetCore.Authorization;
+using TeduCoreApp.Authorization;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
@@ -14,14 +16,20 @@ namespace TeduCoreApp.Areas.Admin.Controllers
     public class ProductCategoryController : Controller
     {
         private IProductCategoryService _productCategoryService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public ProductCategoryController(IProductCategoryService productCategoryService)
+        public ProductCategoryController(IProductCategoryService productCategoryService
+          , IAuthorizationService authorizationService)
         {
             _productCategoryService = productCategoryService;
+            _authorizationService = authorizationService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "PRODUCT_CATEGORY", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 

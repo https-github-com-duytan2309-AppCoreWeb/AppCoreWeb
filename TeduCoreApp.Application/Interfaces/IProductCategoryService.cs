@@ -13,6 +13,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         void Delete(int id);
 
+        List<ProductCategoryViewModel> GetAllFiter(int filter);
+
         List<ProductCategoryViewModel> GetAll();
 
         List<ProductCategoryViewModel> GetAll(string keyword);
@@ -22,12 +24,10 @@ namespace TeduCoreApp.Application.Interfaces
         ProductCategoryViewModel GetById(int id);
 
         void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items);
+
         void ReOrder(int sourceId, int targetId);
 
         List<ProductCategoryViewModel> GetHomeCategories(int top);
-
-       
-
 
         void Save();
     }

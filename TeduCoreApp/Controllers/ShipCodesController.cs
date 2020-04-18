@@ -10,8 +10,6 @@ using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Controllers
 {
-    //[Route("api/[controller]")]
-    //[ApiController]
     public class ShipCodesController : Controller
     {
         private readonly AppDbContext _context;
@@ -20,13 +18,6 @@ namespace TeduCoreApp.Controllers
         {
             _context = context;
         }
-
-        //[HttpGet]
-        //public IActionResult GetAddressId()
-        //{
-        //    var id = _context.Provinces.Where(x => x.Name == "Thành phố Hồ Chí Minh").Select(x => x.Id).FirstOrDefault();
-        //    return new OkObjectResult(id);
-        //}
 
         // GET: api/ShipCodes
         [HttpGet]

@@ -30,12 +30,17 @@ namespace TeduCoreApp.Application.Implementation
             var productCategory = Mapper.Map<ProductCategoryViewModel, ProductCategory>(productCategoryVm);
             _productCategoryRepository.Add(productCategory);
             return productCategoryVm;
-
         }
 
         public void Delete(int id)
         {
             _productCategoryRepository.Remove(id);
+        }
+
+        public List<ProductCategoryViewModel> GetAllFiter(int filter)
+        {
+            return _productCategoryRepository.FindAll().OrderBy(x => x.ParentId).Take(filter)
+                  .ProjectTo<ProductCategoryViewModel>().ToList();
         }
 
         public List<ProductCategoryViewModel> GetAll()
@@ -119,7 +124,7 @@ namespace TeduCoreApp.Application.Implementation
 
             //Get all sibling
             var sibling = _productCategoryRepository.FindAll(x => items.ContainsKey(x.Id));
-            foreach(var child in sibling)
+            foreach (var child in sibling)
             {
                 child.SortOrder = items[child.Id];
                 _productCategoryRepository.Update(child);

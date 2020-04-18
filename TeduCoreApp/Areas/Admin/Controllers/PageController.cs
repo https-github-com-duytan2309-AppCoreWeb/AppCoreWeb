@@ -25,7 +25,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var result = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Read);
+            var result = await _authorizationService.AuthorizeAsync(User, "PAGE", Operations.Read);
             if (result.Succeeded == false)
                 return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -13,6 +14,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
+using TeduCoreApp.Authorization;
 using TeduCoreApp.Data.EF;
 using TeduCoreApp.Utilities.Helpers;
 
@@ -25,10 +27,12 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         private IProductCategoryService _productCategoryService;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly AppDbContext _context;
+        private readonly IAuthorizationService _authorizationService;
 
         public ProductController(IProductService productService,
             IProductCategoryService productCategoryService,
-            IHostingEnvironment hostingEnvironment, AppDbContext context)
+            IHostingEnvironment hostingEnvironment, AppDbContext context
+            , IAuthorizationService authorizationService)
         {
             _productService = productService;
             _productCategoryService = productCategoryService;
@@ -36,8 +40,11 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "PRODUCT_LIST", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 

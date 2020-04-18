@@ -76,22 +76,22 @@ namespace TeduCoreApp
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings
-                options.Password.RequireDigit = true;
+                options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
 
-                // Lockout settings options.Lockout.DefaultLockoutTimeSpan =
-                TimeSpan.FromMinutes(30); options.Lockout.MaxFailedAccessAttempts = 10;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
                 options.Lockout.AllowedForNewUsers = true;
 
                 // User settings
 
-                //Definde Token
-                options.SignIn.RequireConfirmedEmail = true;
-                //email duy nhất
-                options.User.RequireUniqueEmail = true;
+                ////Definde Token
+                //options.SignIn.RequireConfirmedEmail = true;
+                ////email duy nhất
+                //options.User.RequireUniqueEmail = true;
                 options.User.AllowedUserNameCharacters =
                                         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
             });
@@ -100,16 +100,12 @@ namespace TeduCoreApp
 
             #region EFAndMap
 
-            //Services for Files
-            services.AddSingleton<IFileProvider>(
-                    new PhysicalFileProvider(
-                                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
             services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
             services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
-            //services.AddTransient<DbInitializer>();
+            services.AddTransient<DbInitializer>();
 
             #endregion EFAndMap
 
@@ -147,6 +143,10 @@ namespace TeduCoreApp
 
             #region Serrvices
 
+            //Services for Files
+            services.AddSingleton<IFileProvider>(
+                    new PhysicalFileProvider(
+                                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
             //Serrvices
             services.AddTransient<IAddressService, AddressService>();
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -226,24 +226,16 @@ namespace TeduCoreApp
               .AddDataAnnotationsLocalization()
               .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
               .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
-              .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
-              .AddRazorPagesOptions(options =>
-                  {
-                      //options.Conventions.AuthorizePage("/Contact");
-                      //options.Conventions.AuthorizeFolder("/Private");
-                      //options.Conventions.AllowAnonymousToPage("/Private/PublicPage");
-                      //options.Conventions.AllowAnonymousToFolder("/Private/PublicPages");
-                  });
+              .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
             services.AddTransient<GooglereCaptchaService>();
             services.AddMvcCore();
-            //services.AddCors();
+            services.AddCors();
 
             // api user claim policy
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("ApiUser", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
-                //options.AddPolicy(Operations.Create, policy =>
-                //            policy.Requirements.Add(new Operations()));
             });
 
             //services.AddTransient<FilterActionAttribute>();
@@ -254,7 +246,7 @@ namespace TeduCoreApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            //loggerFactory.AddFile("Logs/tedu-{Date}.txt");
+            loggerFactory.AddFile("Logs/tedu-{Date}.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -294,6 +286,28 @@ namespace TeduCoreApp
             app.UseHttpsRedirection();
 
             //app.UseHttpContextItemsMiddleware();
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
+                RequestPath = "/MyImages"
+            });
+
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
+            //    RequestPath = "/images"
+            //});
+
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //      Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "app", "controllers")),
+            //    RequestPath = "/role"
+            //});
+
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
 

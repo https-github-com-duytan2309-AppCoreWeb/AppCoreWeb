@@ -13,13 +13,13 @@ namespace TeduCoreApp.Controllers
 {
     public class ProductController : Controller
     {
+        private AppDbContext _context;
+        private IProductService _productService;
+        private IBillService _billService;
+        private IProductCategoryService _productCategoryService;
+        private IProductTrademarkService _productTrademarkService;
+        private IConfiguration _configuration;
 
-        private AppDbContext _context ;
-        IProductService _productService;
-        IBillService _billService;
-        IProductCategoryService _productCategoryService;
-        IProductTrademarkService _productTrademarkService;
-        IConfiguration _configuration;
         public ProductController(IProductService productService, IConfiguration configuration,
             IBillService billService,
             IProductCategoryService productCategoryService,
@@ -35,12 +35,25 @@ namespace TeduCoreApp.Controllers
             _context = context;
         }
 
-        //[Route("san-pham.html")]
-        //public IActionResult Index()
-        //{
-            
-        //    return View(_context.Products.ToList());
-        //}
+        public IActionResult GetAll()
+        {
+            var model = _productCategoryService.GetAll();
+            return new OkObjectResult(model);
+        }
+
+        public IActionResult GetAllFilter(int filter)
+        {
+            if (string.IsNullOrEmpty(filter.ToString()) || filter.ToString() == "0")
+            {
+                var model = _productCategoryService.GetAll();
+                return new OkObjectResult(model);
+            }
+            else
+            {
+                var model = _productCategoryService.GetAllFiter(filter);
+                return new OkObjectResult(model);
+            }
+        }
 
         [Route("san-pham.html")]
         public IActionResult Index()
@@ -48,7 +61,6 @@ namespace TeduCoreApp.Controllers
             var categories = _productCategoryService.GetAll();
             return View(categories);
         }
-
 
         [Route("/danh-muc/{alias}-c.{id}.html")]
         public IActionResult Catalog(int id, int? pageSize, string sortBy, int page = 1)
@@ -81,7 +93,6 @@ namespace TeduCoreApp.Controllers
 
             return View(trademark);
         }
-
 
         [Route("tim-kiem.html")]
         public IActionResult Search(string keyword, int? pageSize, string sortBy, int page = 1)
@@ -124,6 +135,5 @@ namespace TeduCoreApp.Controllers
 
             return View(model);
         }
-
     }
 }

@@ -1,7 +1,4 @@
-﻿@using Microsoft.AspNetCore.Authorization
-@using TeduCoreApp.Authorization
-@inject IAuthorizationService AuthorizationService
-@{
+﻿@{
     ViewData["Title"] = "User List";
 }
 @section Scripts{
@@ -25,12 +22,14 @@
         </div>
         <div class="title_right">
             <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
-                @{
-                    var result = await AuthorizationService.AuthorizeAsync(User, "ROLE", Operations.Create);
-                }
-                @if (result.Succeeded)
+
+                @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create)).Succeeded)
                 {
                     <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                }
+                else
+                {
+                    <a class="btn btn-success btn-not-permission" disabled>Create</a>
                 }
             </div>
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -58,7 +57,6 @@
                                 <th>Avatar</th>
                                 <th>Ngày Đăng Ký</th>
                                 <th>Trạng Thái</th>
-                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -107,10 +105,8 @@
                 }
                 else
                 {
-                    <a class="btn btn-xs  btn-danger btn-not-permission" disabled><i class="fa fa-square-o"></i></a>
+                    <a class="btn btn-xs btn-info btn-not-permission" disabled><i class="fa fa-pencil-square-o"></i></a>
                 }
-            </td>
-            <td>
                 @if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
                 {
                     <a href="#" data-id="{{Id}}" class="btn-delete"><i class="fa fa-trash-o"></i></a>

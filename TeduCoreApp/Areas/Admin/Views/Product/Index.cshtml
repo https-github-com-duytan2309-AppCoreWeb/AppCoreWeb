@@ -30,11 +30,7 @@
     </environment>
 
 }
-@{
-    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Create);
-    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete);
-    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update);
-}
+
 <div class="page-title">
     <div class="title_left">
         <h3>Products <small>List products</small></h3>
@@ -56,11 +52,14 @@
             </select>
         </div>
         <div class="col-md-6 col-sm-12  form-group pull-right">
-            @if (resultCreate.Succeeded)
+            @if ((await AuthorizationService.AuthorizeAsync(User, "PRODUCT_LIST", Operations.Create)).Succeeded)
             {
                 <button id="btnCreate" class="btn btn-success">Create</button>
             }
-
+            else
+            {
+                <a class="btn btn-success btn-not-permission" disabled>Create</a>
+            }
             <a class="btn btn-danger" href="~/templates/ProductImportTemplate.xlsx">Template</a>
             <button class="btn btn-primary" id="btn-import" type="button"><i class="fa fa-file-excel-o"></i></button>
             <button class="btn btn-default" id="btn-export" type="button"><i class="fa fa-forward"></i></button>
@@ -123,13 +122,21 @@
         <td>{{CreatedDate}}</td>
         <td>{{{Status}}}</td>
         <th scope="row">
-            @if (resultUpdate.Succeeded)
+            @if ((await AuthorizationService.AuthorizeAsync(User, "PRODUCT_LIST", Operations.Update)).Succeeded)
             {
                 <a class="btn btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pencil"></i></a>
             }
-            @if (resultDelete.Succeeded)
+            else
+            {
+                <a class="btn btn-sm btn-not-permission" disabled><i class="fa fa-pencil"></i></a>
+            }
+            @if ((await AuthorizationService.AuthorizeAsync(User, "PRODUCT_LIST", Operations.Delete)).Succeeded)
             {
                 <a class="btn btn-sm btn-delete" data-id="{{Id}}"><i class="fa fa-trash"></i></a>
+            }
+            else
+            {
+                <a class="btn btn-sm btn-not-permission" disabled><i class="fa fa-trash"></i></a>
             }
             <a data-id="{{Id}}" class="btn btn-xs btn-images"><i class="fa fa-image"></i></a>
             <a data-id="{{Id}}" class="btn btn-xs btn-quantity"><i class="fa fa-hourglass-start"></i></a>
