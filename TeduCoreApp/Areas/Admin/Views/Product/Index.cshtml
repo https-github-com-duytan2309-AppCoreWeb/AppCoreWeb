@@ -2,10 +2,33 @@
     ViewData["Title"] = "Index";
 }
 @section Styles{
+    <!--sweetalert2 -->
+    <style>
+        .swal-wide {
+            width: 600px !important;
+            height: 300px;
+        }
+    </style>
+    <link href="~/lib/sweetaler2/dist/sweetalert2.min.css" rel="stylesheet" />
     <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
     <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
 }
 @section Scripts{
+    <!--Script Sweetaler2-->
+    <script src="~/lib/sweetaler2/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $('body').on('click', '.btn-not-permission', function () {
+            Swal.fire({
+                title: '<strong><h1>Notify</h1></strong>',
+                icon: 'warning',
+                html: '<h2>' + 'You not has pemission is this action' + '</h2>',
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+                customClass: 'swal-wide'
+            });
+        });
+    </script>
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
 
     <environment names="Development">

@@ -3,7 +3,8 @@
     ViewData["Title"] = "Pages";
 }
 @section Scripts{
-
+    <!--Script Sweetaler2-->
+    <script src="~/lib/sweetaler2/dist/sweetalert2.all.min.js"></script>
     <script src="~/app/controllers/page/index.js" asp-append-version="true"></script>
     <script>
         var pageObj = new PageController();
@@ -11,7 +12,14 @@
     </script>
 }
 @section Styles{
-
+    <!--sweetalert2 -->
+    <style>
+        .swal-wide {
+            width: 600px !important;
+            height: 300px;
+        }
+    </style>
+    <link href="~/lib/sweetaler2/dist/sweetalert2.min.css" rel="stylesheet" />
 }
 <input type="hidden" id="hid-category-id" value="0" />
 <div class="">

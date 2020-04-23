@@ -245,6 +245,11 @@ namespace TeduCoreApp
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); ;
+
+            //services.AddDirectoryBrowser();
+            //services.AddTransient<FilterActionAttribute>();
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
+            services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -282,12 +287,31 @@ namespace TeduCoreApp
 
             app.UseCaptcha(Configuration);
             app.UseImageResizer();
-            app.UseStaticFiles();
+
             app.UseMinResponse();
             app.UseAuthentication();
             app.UseSession();
             app.UseHttpsRedirection();
             //app.UseHttpContextItemsMiddleware();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            //app.UseFileServer(enableDirectoryBrowsing: true);
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
+                RequestPath = "/images"
+            });
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                  Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "app", "controllers")),
+                RequestPath = "/role"
+            });
+
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

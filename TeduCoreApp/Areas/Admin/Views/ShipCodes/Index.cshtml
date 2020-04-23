@@ -5,7 +5,68 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<<<<<<< Updated upstream
 <h2>Index</h2>
+=======
+@section Scripts{
+    <!--Script Sweetaler2-->
+    <script src="~/lib/sweetaler2/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $('body').on('click', '.btn-not-permission', function () {
+            Swal.fire({
+                title: '<strong><h1>Notify</h1></strong>',
+                icon: 'warning',
+                html: '<h2>' + 'You not has pemission is this action' + '</h2>',
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+                customClass: 'swal-wide'
+            });
+        });
+    </script>
+    <script src="~/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="~/app/controllers/shipments/index.js" asp-append-version="true"></script>
+    <script>
+        var shipObj = new ShipController();
+        shipObj.initialize();
+    </script>
+}
+@section Styles{
+    <!--sweetalert2 -->
+    <style>
+        .swal-wide {
+            width: 600px !important;
+            height: 300px;
+        }
+    </style>
+    <link href="~/lib/sweetaler2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Quản Lý Vận Chuyển</h3>
+        </div>
+
+        <div class="title_right">
+
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                <input type="text" id="txtFromDate" class="form-control" placeholder="Từ Ngày">
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group">
+                <input type="text" id="txtToDate" class="form-control" placeholder="Đến Ngày">
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-12 form-group">
+                <input type="text" id="txtSearchKeyword" class="form-control" placeholder="Tìm kiếm...">
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                <button class="btn btn-default" id="btn-search" type="button">Tìm Kiếm!</button>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+>>>>>>> Stashed changes
 
 <p>
     <a asp-action="Create">Create New</a>

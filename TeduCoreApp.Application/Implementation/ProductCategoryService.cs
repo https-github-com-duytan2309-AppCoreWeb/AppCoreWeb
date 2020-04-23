@@ -10,6 +10,7 @@ using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.IRepositories;
 using TeduCoreApp.Infrastructure.Interfaces;
+using TeduCoreApp.Utilities.Dtos;
 
 namespace TeduCoreApp.Application.Implementation
 {
@@ -30,7 +31,6 @@ namespace TeduCoreApp.Application.Implementation
             var productCategory = Mapper.Map<ProductCategoryViewModel, ProductCategory>(productCategoryVm);
             _productCategoryRepository.Add(productCategory);
             return productCategoryVm;
-
         }
 
         public void Delete(int id)
@@ -44,6 +44,17 @@ namespace TeduCoreApp.Application.Implementation
                  .ProjectTo<ProductCategoryViewModel>().ToList();
         }
 
+        public List<ProductCategoryViewModel> GetAllFilterOrName(int filter, string name)
+        {
+            var model = _productCategoryRepository.FindAll(x => x.Status == Status.Active).OrderBy(x => x.ParentId).OrderByDescending(x => x.DateCreated)
+                 .ProjectTo<ProductCategoryViewModel>().Take(filter).ToList();
+
+            if (!string.IsNullOrEmpty(name) && name == "Name")
+                model = model.OrderByDescending(x => x.Name).ToList();
+
+            return model;
+        }
+
         public List<ProductCategoryViewModel> GetAll(string keyword)
         {
             if (!string.IsNullOrEmpty(keyword))
@@ -54,6 +65,30 @@ namespace TeduCoreApp.Application.Implementation
                 return _productCategoryRepository.FindAll().OrderBy(x => x.ParentId)
                     .ProjectTo<ProductCategoryViewModel>()
                     .ToList();
+        }
+
+        public PagedResult<ProductCategoryViewModel> GetAllPaging(string keyword, int page, int pageSize)
+        {
+            var query = _productCategoryRepository.FindAll(x => x.Status == Status.Active);
+            if (!string.IsNullOrEmpty(keyword))
+                query = query.Where(x => x.Name.Contains(keyword));
+
+            int totalRow = query.Count();
+
+            query = query.OrderByDescending(x => x.DateCreated)
+                .Skip((page - 1) * pageSize).Take(pageSize);
+
+            var data = query.ProjectTo<ProductCategoryViewModel>().ToList();
+
+            var paginationSet = new PagedResult<ProductCategoryViewModel>()
+            {
+                Results = data,
+                CurrentPage = page,
+                RowCount = totalRow,
+                PageSize = pageSize
+            };
+
+            return paginationSet;
         }
 
         public List<ProductCategoryViewModel> GetAllByParentId(int parentId)
@@ -119,7 +154,7 @@ namespace TeduCoreApp.Application.Implementation
 
             //Get all sibling
             var sibling = _productCategoryRepository.FindAll(x => items.ContainsKey(x.Id));
-            foreach(var child in sibling)
+            foreach (var child in sibling)
             {
                 child.SortOrder = items[child.Id];
                 _productCategoryRepository.Update(child);

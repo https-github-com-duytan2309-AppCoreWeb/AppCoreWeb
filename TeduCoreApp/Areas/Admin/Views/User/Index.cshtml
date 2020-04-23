@@ -1,11 +1,22 @@
-﻿@using Microsoft.AspNetCore.Authorization
-@using TeduCoreApp.Authorization
-@inject IAuthorizationService AuthorizationService
-@{
+﻿@{
     ViewData["Title"] = "User List";
 }
 @section Scripts{
-
+    <!--Script Sweetaler2-->
+    <script src="~/lib/sweetaler2/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $('body').on('click', '.btn-not-permission', function () {
+            Swal.fire({
+                title: '<strong><h1>Notify</h1></strong>',
+                icon: 'warning',
+                html: '<h2>' + 'You not has pemission is this action' + '</h2>',
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+                customClass: 'swal-wide'
+            });
+        });
+    </script>
     <script src="~/app/controllers/user/index.js" asp-append-version="true"></script>
     <script>
         var userObj = new UserController();
@@ -14,7 +25,14 @@
 
 }
 @section Styles{
-
+    <!--sweetalert2 -->
+    <style>
+        .swal-wide {
+            width: 600px !important;
+            height: 300px;
+        }
+    </style>
+    <link href="~/lib/sweetaler2/dist/sweetalert2.min.css" rel="stylesheet" />
 }
 
 <input type="hidden" id="hid-category-id" value="0" />

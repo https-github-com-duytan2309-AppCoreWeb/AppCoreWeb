@@ -135,7 +135,22 @@
             }
         }
         return roots;
+<<<<<<< Updated upstream
     }
+=======
+    },
+    notifypermission: function (message, iconHtml) {
+        Swal.fire({
+            title: '<strong><h1>Notify</h1></strong>',
+            icon: iconHtml,
+            html: '<h2>' + message + '</h2>',
+            showCloseButton: true,
+            showCancelButton: false,
+            focusConfirm: false,
+            customClass: 'swal-wide'
+        });
+    },
+>>>>>>> Stashed changes
 }
 
 $(document).ajaxSend(function (e, xhr, options) {

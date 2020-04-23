@@ -2,6 +2,16 @@
     ViewData["Title"] = "Bill management";
 }
 @section Scripts{
+    <!--sweetalert2 -->
+    <style>
+        .swal-wide {
+            width: 600px !important;
+            height: 300px;
+        }
+    </style>
+    <link href="~/lib/sweetaler2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <!--Script Sweetaler2-->
+    <script src="~/lib/sweetaler2/dist/sweetalert2.all.min.js"></script>
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script src="~/app/controllers/bill/index.js" asp-append-version="true"></script>
     <script>

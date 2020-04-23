@@ -24,36 +24,35 @@
                     </h4>
                     <div class="shop-catigory">
                         <ul id="faq">
-                                        @*<li>
-                                            <a data-toggle="collapse" data-parent="#faq" href="#shop-catigory-1" aria-expanded="false" class="collapsed text-uppercase">@item1.Name <i class="ion-ios-arrow-down"></i></a>
-                                            <ul id="shop-catigory-1" class="panel-collapse collapse show" style="">
-                                                @foreach (var item2 in Model.RelatedProductCate)
-                                                {
-                                                    <li class=""><a href="/danh-muc/@item2.SeoAlias-c.@(item2.Id).html" class="text-uppercase">@item2.Name <span class="pull-right text-gray">@item2.Products.Count()</span></a></li>
-                                                }
-                                            </ul>
-                                        </li>*@
+                            @*<li>
+                                    <a data-toggle="collapse" data-parent="#faq" href="#shop-catigory-1" aria-expanded="false" class="collapsed text-uppercase">@item1.Name <i class="ion-ios-arrow-down"></i></a>
+                                    <ul id="shop-catigory-1" class="panel-collapse collapse show" style="">
+                                        @foreach (var item2 in Model.RelatedProductCate)
+                                        {
+                                            <li class=""><a href="/danh-muc/@item2.SeoAlias-c.@(item2.Id).html" class="text-uppercase">@item2.Name <span class="pull-right text-gray">@item2.Products.Count()</span></a></li>
+                                        }
+                                    </ul>
+                                </li>*@
                             @foreach (var item in Model.RelatedProductCate)
                             {
                                 <li class=""><a class="text-uppercase" href="/danh-muc/@item.SeoAlias-c.@(item.Id).html">@item.Name <span class="pull-right text-gray">@item.Products.Count()</span></a></li>
                             }
-
                         </ul>
                     </div>
                 </div>
                 @*<div class="shop-price-filter mt-10 shop-sidebar-border pt-35">
-                    <h4 class="shop-sidebar-title">Bộ lọc giá</h4>
-                    <div class="price_filter mt-25">
-                        <span>Phạm vi:  $100.00 - 1.300.00 </span>
-                        <div id="slider-range"></div>
-                        <div class="price_slider_amount">
-                            <div class="label-input">
-                                <input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                        <h4 class="shop-sidebar-title">Bộ lọc giá</h4>
+                        <div class="price_filter mt-25">
+                            <span>Phạm vi:  $100.00 - 1.300.00 </span>
+                            <div id="slider-range"></div>
+                            <div class="price_slider_amount">
+                                <div class="label-input">
+                                    <input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                                </div>
+                                <button type="button" class="btn-default">Lọc giá</button>
                             </div>
-                            <button type="button" class="btn-default">Lọc giá</button>
                         </div>
-                    </div>
-                </div>*@
+                    </div>*@
                 <div class="shop-widget mt-10 pt-35">
                     <h4 class="shop-sidebar-title">
                         Thương hiệu
@@ -61,7 +60,6 @@
                     <div class="sidebar-list-style mt-20 shop-sidebar-border">
                         <ul>
                             <li><a href="/san-pham/thuong-hieu-" class="">Name <span class="pull-right text-gray">Count</span></a></li>
-
                         </ul>
                     </div>
                 </div>
@@ -72,7 +70,6 @@
                     <div class="sidebar-list-style mt-20 shop-sidebar-border">
                         <ul>
                             <li><a href="/san-pham/nha-san-xuat-" class="">.Name <span class="pull-right text-gray"> Count</span></a></li>
-
                         </ul>
                     </div>
                 </div>
@@ -92,7 +89,7 @@
                 </div>
             </div>
             <div class="col-lg-9 pull-right bg-white">
-               
+
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="shop-topbar-wrapper">
                         <div class="shop-topbar-left">
@@ -171,7 +168,6 @@
                                                 <p>@Html.Raw(item.Description)</p>
                                                 <div class="product-action">
                                                     <a class="action-cart add-to-cart" href="#" data-id="@item.Id" title="Thêm giỏ hàng"> Thêm giỏ hàng </a>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -183,10 +179,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
-
-
-

@@ -1,0 +1,125 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section Styles{
+    <!--sweetalert2 -->
+    <style>
+        .swal-wide {
+            width: 600px !important;
+            height: 300px;
+        }
+    </style>
+    <link href="~/lib/sweetaler2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+}
+@section Scripts{
+    <!--Script Sweetaler2-->
+    <script src="~/lib/sweetaler2/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $('body').on('click', '.btn-not-permission', function () {
+            Swal.fire({
+                title: '<strong><h1>Notify</h1></strong>',
+                icon: 'warning',
+                html: '<h2>' + 'You not has pemission is this action' + '</h2>',
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+                customClass: 'swal-wide'
+            });
+        });
+    </script>
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/app/controllers/service-category/index.js" asp-append-version="true"></script>
+    <script>
+        var dichvuCategory = new dichvuCategoryController();
+        dichvuCategory.initialize();
+    </script>
+}
+@{
+    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "SERVICE_CATEGORY", Operations.Create);
+    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "SERVICE_CATEGORY", Operations.Delete);
+    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "SERVICE_CATEGORY", Operations.Update);
+}
+<div class="kt-subheader kt-grid__item" id="kt_subheader">
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">
+                Danh mục sản phẩm
+            </h3>
+            <span class="kt-subheader__separator kt-hidden"></span>
+            <div class="kt-subheader__breadcrumbs">
+                <a asp-controller="Home" asp-action="Index" asp-area="Admin" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                <span class="kt-subheader__breadcrumbs-separator"></span>
+                <a href="" class="kt-subheader__breadcrumbs-link">
+                    Quản lí sản phẩm
+                </a>
+                <span class="kt-subheader__breadcrumbs-separator"></span>
+                <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Danh mục sản phẩm</span>
+            </div>
+        </div>
+        <div class="kt-subheader__toolbar">
+        </div>
+    </div>
+</div>
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="kt-portlet">
+                <div class="kt-portlet__head kt-portlet__head--lg">
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="kt-font-brand flaticon2-line-chart"></i>
+                        </span>
+                        <h3 class="kt-portlet__head-title">
+                            Danh mục dịch vụ
+                        </h3>
+                    </div>
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <a href="#" class="btn btn-clean btn-icon-sm">
+                                <i class="la la-long-arrow-left"></i>
+                                Quay lại
+                            </a>
+                            &nbsp;
+                            @if (resultCreate.Succeeded)
+                            {
+                                <a href="#" id="btnCreate" class="btn btn-clean btn-icon-sm">
+                                    <i class="la la-plus"></i>
+                                    Thêm mới
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-portlet__body">
+                    <div id="kt_tree_1" class="tree-demo jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_1" aria-busy="false">
+                        <ul id="treeProductCategory"></ul>
+                        <div id="contextMenu" class="easyui-menu" style="width:120px;">
+                            @if (resultUpdate.Succeeded)
+                            {
+                                <div id="btnEdit" data-options="iconCls:'icon-edit'">Sửa</div>
+                            }
+                            else
+                            {
+                                <a class="btn btn-xs  btn-danger btn-not-permission" disabled><i class="fa fa-pencil-o"></i></a>
+                            }
+                            @if (resultDelete.Succeeded)
+                            {
+                                <div id="btnDelete" data-options="iconCls:'icon-remove'">Xoá</div>
+                            }
+                            else
+                            {
+                                <a class="btn btn-xs  btn-danger btn-not-permission" disabled><i class="fa fa-trash-o"></i></a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+@await Html.PartialAsync("_AddEditModal.cshtml")

@@ -8,23 +8,26 @@ using TeduCoreApp.Application.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TeduCoreApp.Data.EF;
+using TeduCoreApp.Models;
+using Org.BouncyCastle.Utilities;
+using TeduCoreApp.Application.ViewModels.Product;
+using TeduCoreApp.Application.Implementation;
 
 namespace TeduCoreApp.Controllers
 {
     public class ProductController : Controller
     {
+        private IProductService _productService;
+        private IBillService _billService;
+        private IProductCategoryService _productCategoryService;
+        private IProductTrademarkService _productTrademarkService;
+        private IConfiguration _configuration;
 
-        private AppDbContext _context ;
-        IProductService _productService;
-        IBillService _billService;
-        IProductCategoryService _productCategoryService;
-        IProductTrademarkService _productTrademarkService;
-        IConfiguration _configuration;
-        public ProductController(IProductService productService, IConfiguration configuration,
+        public ProductController(IProductService productService,
+            IConfiguration configuration,
             IBillService billService,
             IProductCategoryService productCategoryService,
-            IProductTrademarkService productTrademarkService,
-            AppDbContext context
+            IProductTrademarkService productTrademarkService
             )
         {
             _productService = productService;
@@ -32,15 +35,42 @@ namespace TeduCoreApp.Controllers
             _productTrademarkService = productTrademarkService;
             _configuration = configuration;
             _billService = billService;
-            _context = context;
         }
 
-        //[Route("san-pham.html")]
-        //public IActionResult Index()
-        //{
-            
-        //    return View(_context.Products.ToList());
-        //}
+        public IActionResult GetAll()
+        {
+            var product = _productService.GetAll();
+            return new OkObjectResult(product);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
+        {
+            var model = _productService.GetAllPaging(categoryId, keyword, page, pageSize);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllPagingCategory(string keyword, int page, int pageSize)
+        {
+            var model = _productCategoryService.GetAllPaging(keyword, page, pageSize);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllPagingFilterOrName(int filter, string data)
+        {
+            if (!string.IsNullOrEmpty(filter.ToString()) && filter != 0)
+            {
+                var model = _productCategoryService.GetAllFilterOrName(filter, data);
+                return new OkObjectResult(model);
+            }
+            else
+            {
+                var model = _productCategoryService.GetAll();
+                return new OkObjectResult(model);
+            }
+        }
 
         [Route("san-pham.html")]
         public IActionResult Index()
@@ -49,8 +79,7 @@ namespace TeduCoreApp.Controllers
             return View(categories);
         }
 
-
-        [Route("/danh-muc/{alias}-c.{id}.html")]
+        [Route("{alias}-c.{id}.html")]
         public IActionResult Catalog(int id, int? pageSize, string sortBy, int page = 1)
         {
             var catalog = new CatalogViewModel();
@@ -63,6 +92,7 @@ namespace TeduCoreApp.Controllers
             catalog.Data = _productService.GetAllPaging(id, string.Empty, page, pageSize.Value);
             catalog.Category = _productCategoryService.GetById(id);
             //catalog.RelatedProductCate = _productCategoryService.GetRelatedProductCategory(id);
+
             return View(catalog);
         }
 
@@ -81,7 +111,6 @@ namespace TeduCoreApp.Controllers
 
             return View(trademark);
         }
-
 
         [Route("tim-kiem.html")]
         public IActionResult Search(string keyword, int? pageSize, string sortBy, int page = 1)
@@ -124,6 +153,5 @@ namespace TeduCoreApp.Controllers
 
             return View(model);
         }
-
     }
 }

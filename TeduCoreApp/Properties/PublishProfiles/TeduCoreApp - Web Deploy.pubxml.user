@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAluYc5azndkGoz3gW5rtD0AAAAAACAAAAAAAQZgAAAAEAACAAAAAfJYIyHzYR3dKQvrtzsIuJJtkSA7yFZJokYbsGKNFW1wAAAAAOgAAAAAIAACAAAACaxE44gbbdBJSOJs6vQEur/Qb0EiWhnidZdk0PX8ltCoAAAACi4W0Vd3zL4JvsIy1VXlczChSrvh7CG+905/26BNJjgguw5wLnkNdWWCDN3xikYe5u1IPZNlLZeUlK8U/SViSgFVpgz7r4QkAXpq93pygIUGiw9XphBJBY7e8GLc8MBzYLiXg9QYwdllUmRRxXdsP+hdHJ8F1XEdJh6obcbSVYlkAAAABidU2KKbNL2dix4FghNICvThRN6haG4ZoTJFajfV9vqhvtNiUb7a8u4XP7tKW7oJPqLonJ0O7zxkDOcmk3P+zZ</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=tcp:servertan.database.windows.net,1433%3bInitial Catalog=databasetanDB%3bPersist Security Info=False%3bUser ID=tanit2309%3bPassword=Tan%4023091995%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=60%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

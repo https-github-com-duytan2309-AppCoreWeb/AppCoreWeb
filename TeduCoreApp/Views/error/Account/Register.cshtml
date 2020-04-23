@@ -1,0 +1,64 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Đăng ký tài khoản";
+}
+<div class="breadcrumb-area gray-bg-7">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                <li class="active"> Đăng ký tài khoản </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="login-register-area pt-60 pb-65">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <a class="active">
+                            <h4> Đăng ký </h4>
+                        </a>
+                    </div>
+                    <div class="login-form-container">
+                        <div class="login-register-form">
+                            <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                                <div class="col-md-12">
+                                    <div class="check-title">
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                    </div>
+                                </div>
+                                <input type="text" asp-for="FullName" placeholder="Họ tên" name="fullName">
+                                <input type="text" asp-for="Email" placeholder="Email" name="email">
+                                <input type="password" asp-for="Password" placeholder="Mật khẩu" name="password">
+                                <input type="password" asp-for="ConfirmPassword" placeholder="Xác nhận mật khẩu" name="confirmPassword">
+                                <input type="date" asp-for="BirthDay" name="birthDay" placeholder="">
+                                <input type="text" name="phoneNumber" asp-for="PhoneNumber" placeholder="Điện thoại">
+                                <input type="text" name="address" asp-for="Address" placeholder="Địa chỉ">
+                                <div>
+                                    @*<recaptcha />*@
+                                    @*<div class="form-group">
+                                            <div class="g-recaptcha" data-sitekey="6LeF4NgUAAAAAFNq_gYGos9NeAYtMq46FZGSlOuM"></div>
+                                        </div>
+                                        <span class="text-danger" id="recaptchaErrorMessage"></span>*@
+                                </div>
+                                <div class="button-box mt-20">
+                                    <center>
+                                        <button type="submit"><span>Đăng ký</span></button>
+                                    </center>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
+}

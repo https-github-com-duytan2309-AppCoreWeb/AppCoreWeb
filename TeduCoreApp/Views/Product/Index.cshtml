@@ -1,8 +1,24 @@
-﻿@model List<TeduCoreApp.Application.ViewModels.Product.ProductViewModel>
+﻿@*@model List<TeduCoreApp.Application.ViewModels.Product.ProductCategoryViewModel>*@
+
 @{
-    ViewData["Title"] = "";
-    ViewData["MetaDescription"] = "";
+    ViewData["Title"] = "All product  categories";
+    ViewData["MetaDescription"] = "All our products";
 }
+
+@section Styles{
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/clientapp/controllers/product/category.js"></script>
+    <script>
+        var productCategory = new productCategoryController();
+        productCategory.initialize();
+    </script>
+
+}
+
 <div class="breadcrumb-area gray-bg-7">
     <div class="container">
         <div class="breadcrumb-content">
@@ -31,18 +47,22 @@
                     <div class="product-sorting-wrapper">
                         <div class="product-shorting shorting-style">
                             <label>View:</label>
-                            <select>
-                                <option value=""> 20</option>
-                                <option value=""> 23</option>
-                                <option value=""> 30</option>
+                            <select id="select-view-filter">
+                                <option selected value="0"> Choose...</option>
+                                <option value="5"> 5 </option>
+                                <option value="10"> 10 </option>
+                                <option value="20"> 20 </option>
+                                <option value="30"> 30 </option>
+                                <option value="30"> 40 </option>
+                                <option value="0"> All </option>
                             </select>
                         </div>
                         <div class="product-show shorting-style">
                             <label>Sort by:</label>
-                            <select>
-                                <option value="">Default</option>
-                                <option value=""> Name</option>
-                                <option value=""> price</option>
+                            <select id="select-view-name">
+                                <option value="Default">Default</option>
+                                <option value="Name"> Name</option>
+                                @*<option value="Price"> Price</option>*@
                             </select>
                         </div>
                     </div>
@@ -50,93 +70,150 @@
                 <div class="tab-content jump">
                     <div class="tab-pane active pb-20" id="product-grid">
                         <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
-                                <div class="devita-product-2 mrg-inherit">
-                                    <div class="product-img">
-                                        <div class="product-img-slider">
-                                            <a href=""><img src="/client/img/product/product-1.jpg" alt=""></a>
-                                            <a href=""><img src="/client/img/product/product-2.jpg" alt=""></a>
-                                            <a href=""><img src="/client/img/product/product-3.jpg" alt=""></a>
-                                        </div>
-                                        <span>-29%</span>
-                                    </div>
-                                    <div class="list-col">
-                                        <div class="gridview">
-                                            <div class="product-content text-center">
-                                                <span>Remote, Accessories</span>
-                                                <h4><a href="">Phantom Remote Control Ver 2018</a></h4>
-                                                <div class="product-price-wrapper">
-                                                    <span>$260.00</span>
-                                                    <span class="product-price-old">$162.00 </span>
+                            <div id="list-products-mustache-A"></div>
+                            <script id="list-template-A" type="x-tmpl-mustache">
+                                <!--foreach for product-->
+                                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-30 list">
+                                    <div class="devita-product-2 mrg-inherit">
+                                        <div class="product-img">
+                                            <!--Load All Images of Product by Id -->
+                                            <div id="carouselExampleControls_{{IdA}}" class="carousel slide" data-ride="carousel">
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                        <a href="{{{urlA}}}"><img class="d-block w-100" src="{{ImagesA}}" alt="{{NameA}}"></a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a href="{{{urlA}}}"><img class="d-block w-100" src="{{ImagesA}}" alt="{{NameA}}"></a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a href="{{{urlA}}}"><img class="d-block w-100" src="{{ImagesA}}" alt="{{NameA}}"></a>
+                                                    </div>
                                                 </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleControls_{{IdA}}" role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleControls_{{IdA}}" role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
                                             </div>
-                                            <div class="product-action-wrapper-2 text-center">
-                                                <div class="product-rating">
-                                                    <i class="ion-android-star-outline theme-star"></i>
-                                                    <i class="ion-android-star-outline theme-star"></i>
-                                                    <i class="ion-android-star-outline theme-star"></i>
-                                                    <i class="ion-android-star-outline theme-star"></i>
-                                                    <i class="ion-android-star-outline"></i>
+                                            <!--Sales on-->
+                                            @*<span>-29%</span>*@
+                                        </div>
+                                        <div class="list-col">
+                                            <!--Detail Product-->
+                                            <div class="gridview">
+                                                <div class="product-content text-center">
+                                                    <!--Name-->
+                                                    @*<span class="w3-text-yellow">Remote, Accessories</span>*@
+                                                    <h5><a href="{{{urlA}}}" alt="{{NameA}}">{{NameA}}</a></h5>
+                                                    <div class="product-price-wrapper">
+                                                    </div>
                                                 </div>
-                                                <p> Quam elit phasellus nibh sed eget, sed nunc in ultricies sodales sapien, non velit scelerisque...</p>
-                                                <div class="product-action">
-                                                    <a class="same-action" title="Wishlist" href="#">
-                                                        <i class="fa fa-heart-o"></i>
-                                                    </a>
-                                                    <a class="action-cart" title="Add To Cart" href="#">
-                                                        Add to Cart
-                                                    </a>
-                                                    <a class="same-action compare-mrg" data-target="#exampleCompare" data-toggle="modal" title="Compare" href="#">
-                                                        <i class="fa fa-sliders fa-rotate-90"></i>
-                                                    </a>
+                                                <div class="product-action-wrapper-2 text-center">
+                                                    <!--Start-->
+                                                    <div class="product-rating">
+                                                        <i class="glyphicon glyphicon-minus"></i>
+                                                        <i class="glyphicon glyphicon-minus"></i>
+                                                        <i class="glyphicon glyphicon-minus"></i>
+                                                        <i class="glyphicon glyphicon-minus"></i>
+                                                    </div>
+                                                    <!--Description-->
+                                                    <p>{{DescriptionA}}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </script>
                         </div>
                     </div>
                     <div class="tab-pane" id="product-list">
+
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="product-list-wrapper shop-border mb-40 pb-40">
-                                    <div class="product-img">
-                                        <div class="product-img-slider">
-                                            <a href=""><img src="/client/img/product/product-1.jpg" alt=""></a>
-                                            <a href=""><img src="/client/img/product/product-2.jpg" alt=""></a>
-                                            <a href=""><img src="/client/img/product/product-3.jpg" alt=""></a>
+                            <div id="list-products-mustache-B">
+                            </div>
+                            <script id="list-template-B" type="x-tmpl-mustache">
+                                <div class="col-lg-12">
+                                    <div class="product-list-wrapper shop-border mb-40 pb-40">
+                                        <div class="product-img">
+                                            <!--Load All Images of Product by Id -->
+                                            <div id="carouselExampleControls_{{IdB}}" class="carousel slide" data-ride="carousel">
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                        <a href="{{{urlB}}}"><img class="d-block w-100" src="{{ImagesB}}" alt="{{NameB}}"></a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a href="{{{urlB}}}"><img class="d-block w-100" src="{{ImagesB}}" alt="{{NameB}}"></a>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <a href="{{{urlB}}}"><img class="d-block w-100" src="{{ImagesB}}" alt="{{NameB}}"></a>
+                                                    </div>
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleControls_{{IdB}}" role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleControls_{{IdB}}" role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="product-list-content">
-                                        <span>Watch, Accessories</span>
-                                        <h4><a href="#">Phantom Remote Control Ver 2018</a></h4>
-                                        <div class="product-rating">
-                                            <i class="ion-android-star-outline theme-star"></i>
-                                            <i class="ion-android-star-outline theme-star"></i>
-                                            <i class="ion-android-star-outline theme-star"></i>
-                                            <i class="ion-android-star-outline theme-star"></i>
-                                            <i class="ion-android-star-outline"></i>
-                                        </div>
-                                        <div class="product-price-wrapper">
-                                            <span>$260.00</span>
-                                            <span class="product-price-old">$162.00 </span>
-                                        </div>
-                                        <p>Mirum est notare quam littera gothica quam putamus parum claram, anteposuerit litterarum formas humanitatis per seacula.</p>
-                                        <div class="product-action">
-                                            <a class="action-cart" href="#" title="Add To Cart"> Add to Cart </a>
-                                            <a class="same-action" href="#" title="Wishlist">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                            <a class="same-action compare-mrg" href="#" title="Compare" data-toggle="modal" data-target="#exampleCompare">
-                                                <i class="fa fa-sliders fa-rotate-90"></i>
-                                            </a>
+                                        <div class="product-list-content">
+                                            <span>Name</span>
+                                            <h4><a href="{{{urlB}}}" alt="{{NameB}}">{{NameB}}</a></h4>
+                                            <div class="product-rating">
+                                                <i class="ion-android-star-outline theme-star"></i>
+                                                <i class="ion-android-star-outline theme-star"></i>
+                                                <i class="ion-android-star-outline theme-star"></i>
+                                                <i class="ion-android-star-outline theme-star"></i>
+                                                <i class="ion-android-star-outline"></i>
+                                            </div>
+                                            <div class="product-price-wrapper">
+                                                @*<span>$260.00</span>
+                                                    <span class="product-price-old">$162.00 </span>*@
+                                            </div>
+                                            <p>{{DescriptionB}}</p>
+                                            <div class="product-action">
+                                                @*<a class="action-cart" href="#" title="Add To Cart"> Add to Cart </a>
+                                                    <a class="same-action" href="#" title="Wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </a>
+                                                    <a class="same-action compare-mrg" href="#" title="Compare" data-toggle="modal" data-target="#exampleCompare">
+                                                        <i class="fa fa-sliders fa-rotate-90"></i>
+                                                    </a>*@
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </script>
                         </div>
                     </div>
+
+                    <!--Paging-->
+                    @*<div class="row">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                                    <select id="ddl-show-page">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        recors/page.
+                                    </span>
+                                    Total records: <strong id="lbl-total-records"></strong>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginate">
+                                    <ul id="paginationUL"></ul>
+                                </div>
+                            </div>
+                        </div>*@
                 </div>
             </div>
             <div class="col-lg-3">
@@ -245,43 +322,6 @@
                                 <li><a href="#">Devita</a></li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="main-container col1-layout">
-    <div class="container">
-        <div class="row">
-            <div class="col-main col-sm-12 col-xs-12">
-                <div class="shop-inner">
-                    <div class="page-title">
-                        <h2>Product categories</h2>
-                    </div>
-                    <div class="product-grid-area">
-                        <ul class="products-grid">
-                            @foreach (var item in Model)
-                            {
-                                var url = "/" + item.SeoAlias + "-c." + item.Id + ".html";
-                                <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6 ">
-                                    <div class="product-item">
-                                        <div class="item-inner">
-                                            <div class="product-thumbnail">
-                                                <div class="icon-sale-label sale-left">Sale</div>
-                                                <div class="icon-new-label new-right">New</div>
-                                                <div class="pr-img-area">
-                                                    <a title="@item.Name" href="@url">
-                                                        <figure> <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name"></figure>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                            }
-                        </ul>
                     </div>
                 </div>
             </div>

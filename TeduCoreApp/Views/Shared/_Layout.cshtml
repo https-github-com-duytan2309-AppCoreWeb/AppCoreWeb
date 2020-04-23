@@ -26,9 +26,7 @@
     <link rel="stylesheet" href="/client/css/style.css">
     <link rel="stylesheet" href="/client/css/responsive.css">
     <link href="~/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
-
     <script src="/client/js/vendor/modernizr-2.8.3.min.js"></script>
-
     <link href="~/client/css/slide.css" rel="stylesheet" />
 
     <style>
@@ -86,7 +84,9 @@
             </div>
         </div>
     </header>
+
     @RenderBody()
+
     <footer class="footer-area gray-bg-3 pt-60">
         <partial name="_Footer.cshtml" />
         <div class="footer-bottom pb-25 pt-25 white-bg border-top-2">
@@ -109,7 +109,8 @@
         </div>
     </footer>
 
-    <script src="~/client/js/jquery.min.js"></script>
+    @*<script src="~/client/js/jquery.min.js"></script>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/client/js/jquery-ui.js"></script>
     <script src="~/assets/plugins/general/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/client/js/popper.js"></script>

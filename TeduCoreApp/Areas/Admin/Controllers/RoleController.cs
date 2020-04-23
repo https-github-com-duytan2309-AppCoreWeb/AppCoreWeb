@@ -6,19 +6,28 @@ using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TeduCoreApp.Application.ViewModels.System;
+using Microsoft.AspNetCore.Authorization;
+using TeduCoreApp.Authorization;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
     public class RoleController : BaseController
     {
         private readonly IRoleService _roleService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public RoleController(IRoleService roleService)
+        public RoleController(IRoleService roleService, IAuthorizationService authorizationService)
         {
             _roleService = roleService;
+            _authorizationService = authorizationService;
         }
-        public IActionResult Index()
+
+        public async Task<IActionResult> Index()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "ROLE", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
+
             return View();
         }
 
@@ -28,6 +37,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
 
             return new OkObjectResult(model);
         }
+
         [HttpGet]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -72,7 +82,6 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             await _roleService.DeleteAsync(id);
             return new OkObjectResult(id);
         }
-
 
         [HttpPost]
         public IActionResult ListAllFunction(Guid roleId)

@@ -3,9 +3,39 @@
     ViewData["Title"] = "Role list";
 }
 @section Styles{
+<<<<<<< Updated upstream
     <link href="~/lib/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet" />
 }
 @section Scripts{
+=======
+    <!--sweetalert2 -->
+    <style>
+        .swal-wide {
+            width: 600px !important;
+            height: 300px;
+        }
+    </style>
+    <link href="~/lib/sweetaler2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/lib/jquery-treegrid/css/jquery.treegrid.css" rel="stylesheet" />
+}
+@section Scripts{
+    <!--Script Sweetaler2-->
+    <script src="~/lib/sweetaler2/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $('body').on('click', '.btn-not-permission', function () {
+            Swal.fire({
+                title: '<strong><h1>Notify</h1></strong>',
+                icon: 'warning',
+                html: '<h2>' + 'You not has pemission is this action' + '</h2>',
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+                customClass: 'swal-wide'
+            });
+        });
+    </script>
+
+>>>>>>> Stashed changes
     <script src="~/lib/jquery-treegrid/js/jquery.treegrid.js"></script>
     <script src="~/app/controllers/role/index.js" asp-append-version="true"></script>
     <script>

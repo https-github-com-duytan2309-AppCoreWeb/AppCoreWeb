@@ -155,6 +155,14 @@
                 });
             });
         });
+<<<<<<< Updated upstream
+=======
+
+        //$('body').on('click', '.btn-not-permission', function (e) {
+        //    e.preventDefault();
+        //    tedu.notifypermission('You not has pemission is this action', 'warning');
+        //});
+>>>>>>> Stashed changes
     }
 
     function disableFieldEdit(disabled) {

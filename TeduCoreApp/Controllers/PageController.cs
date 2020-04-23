@@ -16,7 +16,7 @@ namespace TeduCoreApp.Controllers
             _pageService = pageService;
         }
 
-        [Route("{alias}.html", Name = "Page")]
+        [Route("page/{alias}.html", Name = "Page")]
         public IActionResult Index(string alias)
         {
             var page = _pageService.GetByAlias(alias);
