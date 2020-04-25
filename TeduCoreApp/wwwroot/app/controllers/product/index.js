@@ -145,7 +145,13 @@
 
         $('body').on('click', '.btn-not-permission', function (e) {
             e.preventDefault();
-            tedu.notifypermission('You not has pemission is this action', 'warning');
+            Swal.fire({
+                icon: 'error',
+                title: '<strong class="text-danger">Thông Báo</strong>',
+                html: '<h3>Bạn không có quyền sử dụng chức năng này!</h3>',
+                footer: '<a href="/admin/login/index"><h4>Đăng nhập với tài khoản quản trị khác</h4></a>',
+                customClass: 'swal-wide'
+            });
         });
     }
 
@@ -192,7 +198,7 @@
             var seoAlias = $('#txtSeoAliasM').val();
 
             var content = CKEDITOR.instances.txtContent.getData();
-            var status = $('#ckStatusM').prop('checked') == true ? 1 : 0;
+            var status = $('#ckStatusM').prop('checked') === true ? 1 : 0;
             var hot = $('#ckHotM').prop('checked');
             var showHome = $('#ckShowHomeM').prop('checked');
 
@@ -403,7 +409,7 @@
                     render += Mustache.render(template, {
                         Id: item.Id,
                         Name: item.Name,
-                        Image: item.Image === null ? '<img src="/admin-side/images/user.png" width=25' : '<img src="' + item.Image + '" width=25 />',
+                        Image: item.Image === null ? '<img  src="/admin-side/images/user.png" width="50px"' : '<img  src="' + item.Image + '" width="50px" />',
                         CategoryName: item.ProductCategory.Name,
                         Price: tedu.formatNumber(item.Price, 0),
                         CreatedDate: tedu.dateTimeFormatJson(item.DateCreated),

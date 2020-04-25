@@ -88,10 +88,10 @@ namespace TeduCoreApp
 
                 // User settings
 
-                ////Definde Token
-                //options.SignIn.RequireConfirmedEmail = true;
-                ////email duy nhất
-                //options.User.RequireUniqueEmail = true;
+                //Definde Token
+                options.SignIn.RequireConfirmedEmail = true;
+                //email duy nhất
+                options.User.RequireUniqueEmail = true;
                 options.User.AllowedUserNameCharacters =
                                         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
             });
@@ -137,7 +137,7 @@ namespace TeduCoreApp
             services.AddTransient<IDistrictRepository, DistrictRepository>();
             services.AddTransient<IWardRepository, WardRepository>();
             services.AddTransient<IStreetRepository, StreetRepository>();
-            services.AddTransient<IFeedbackRepository, FeedbackRepository>();
+            services.AddTransient<IFeedbacksRepository, FeedbacksRepository>();
 
             #endregion Repositories
 

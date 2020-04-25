@@ -22,12 +22,10 @@ namespace TeduCoreApp.Application.Interfaces
         DichVuCategoryViewModel GetById(int id);
 
         void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items);
+
         void ReOrder(int sourceId, int targetId);
 
         List<DichVuCategoryViewModel> GetHomeCategories(int top);
-
-       
-
 
         void Save();
     }

@@ -14,89 +14,77 @@
         dichvuCategory.initialize();
     </script>
 }
-@{
-    var resultCreate = await AuthorizationService.AuthorizeAsync(User, "SERVICE_LIST", Operations.Create);
-    var resultDelete = await AuthorizationService.AuthorizeAsync(User, "SERVICE_LIST", Operations.Delete);
-    var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "SERVICE_LIST", Operations.Update);
-}
-<div class="kt-subheader kt-grid__item" id="kt_subheader">
-    <div class="kt-container  kt-container--fluid ">
-        <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">
-                Danh mục sản phẩm
-            </h3>
-            <span class="kt-subheader__separator kt-hidden"></span>
-            <div class="kt-subheader__breadcrumbs">
-                <a asp-controller="Home" asp-action="Index" asp-area="Admin" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
-                <span class="kt-subheader__breadcrumbs-separator"></span>
-                <a href="" class="kt-subheader__breadcrumbs-link">
-                    Quản lí sản phẩm
-                </a>
-                <span class="kt-subheader__breadcrumbs-separator"></span>
-                <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Danh mục sản phẩm</span>
-            </div>
-        </div>
-        <div class="kt-subheader__toolbar">
+@*@{
+        var resultCreate = await AuthorizationService.AuthorizeAsync(User, "SERVICE_CATEGORY", Operations.Create);
+        var resultDelete = await AuthorizationService.AuthorizeAsync(User, "SERVICE_CATEGORY", Operations.Delete);
+        var resultUpdate = await AuthorizationService.AuthorizeAsync(User, "SERVICE_CATEGORY", Operations.Update);
+    }*@
+
+<div class="page-title">
+    <div class="title_left">
+        <h3>Danh Mục Dịch Vụ</h3>
+    </div>
+
+    <div class="title_right">
+        <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right">
+            @if ((await AuthorizationService.AuthorizeAsync(User, "SERVICE_CATEGORY", Operations.Create)).Succeeded)
+            {
+                <button class="btn btn-success" id="btnCreate" type="button">Tạo Mới</button>
+            }
+            else
+            {
+                <button class="btn disabled" disabled><i class="fa fa-plus"></i>Tạo Mới</button>
+            }
         </div>
     </div>
 </div>
-<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-    <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
-            <div class="kt-portlet">
-                <div class="kt-portlet__head kt-portlet__head--lg">
-                    <div class="kt-portlet__head-label">
-                        <span class="kt-portlet__head-icon">
-                            <i class="kt-font-brand flaticon2-line-chart"></i>
-                        </span>
-                        <h3 class="kt-portlet__head-title">
-                            Danh mục dịch vụ
-                        </h3>
-                    </div>
-                    <div class="kt-portlet__head-toolbar">
-                        <div class="kt-portlet__head-wrapper">
-                            <a href="#" class="btn btn-clean btn-icon-sm">
-                                <i class="la la-long-arrow-left"></i>
-                                Quay lại
-                            </a>
-                            &nbsp;
-                            @if (resultCreate.Succeeded)
-                            {
-                                <a href="#" id="btnCreate" class="btn btn-clean btn-icon-sm">
-                                    <i class="la la-plus"></i>
-                                    Thêm mới
-                                </a>
-                            }
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Danh sách danh mục dịch vụ</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
                         </div>
-                    </div>
-                </div>
-                <div class="kt-portlet__body">
-                    <div id="kt_tree_1" class="tree-demo jstree jstree-1 jstree-default" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="j1_1" aria-busy="false">
-                        <ul id="treeProductCategory"></ul>
-                        <div id="contextMenu" class="easyui-menu" style="width:120px;">
-                            @if (resultUpdate.Succeeded)
-                            {
-                                <div id="btnEdit" data-options="iconCls:'icon-edit'">Sửa</div>
-                            }
-                            else
-                            {
-                                <a class="btn btn-xs  btn-danger btn-not-permission" disabled><i class="fa fa-pencil-o"></i></a>
-                            }
-                            @if (resultDelete.Succeeded)
-                            {
-                                <div id="btnDelete" data-options="iconCls:'icon-remove'">Xoá</div>
-                            }
-                            else
-                            {
-                                <a class="btn btn-xs  btn-danger btn-not-permission" disabled><i class="fa fa-trash-o"></i></a>
-                            }
-                        </div>
-                    </div>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <ul id="treeProductCategory"></ul>
+                <div id="contextMenu" class="easyui-menu" style="width:120px;">
+                    @if ((await AuthorizationService.AuthorizeAsync(User, "SERVICE_CATEGORY", Operations.Update)).Succeeded)
+                    {
+                        <div id="btnEdit" data-options="iconCls:'icon-edit'">Sửa</div>
+                    }
+                    @*else
+                        {
+                            <a class="btn-not-permission" data-options="iconCls:'icon-edit'" disabled></a>
+                        }*@
+
+                    @if ((await AuthorizationService.AuthorizeAsync(User, "SERVICE_CATEGORY", Operations.Delete)).Succeeded)
+                    {
+                        <div id="btnDelete" data-options="iconCls:'icon-remove'">Xoá</div>
+                    }
+                    @*else
+                        {
+                            <a class="btn-not-permission" data-options="iconCls:'icon-edit'" disabled></a>
+                        }*@
                 </div>
             </div>
         </div>
-        <div class="col-lg-2"></div>
     </div>
 </div>
 @await Html.PartialAsync("_AddEditModal.cshtml")

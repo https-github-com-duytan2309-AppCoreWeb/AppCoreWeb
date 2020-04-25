@@ -61,7 +61,7 @@ namespace TeduCoreApp.Controllers
             var categories = _productCategoryService.GetAll();
             return View(categories);
         }
-
+        // /danh-muc/
         [Route("/danh-muc/{alias}-c.{id}.html")]
         public IActionResult Catalog(int id, int? pageSize, string sortBy, int page = 1)
         {

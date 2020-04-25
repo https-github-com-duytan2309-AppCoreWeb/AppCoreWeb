@@ -10,9 +10,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
-    //[Area("Admin")]
     //[ServiceFilter(typeof(FilterActionAttribute))]
-    public class HomeController : BaseController
+    [Area("Admin")]
+    [Authorize(Roles = "Admin, Staff, Customer")]
+    public class HomeController : Controller
     {
         private readonly IReportService _reportService;
         private readonly IAuthorizationService _authorizationService;

@@ -1,5 +1,4 @@
-﻿@*@model List<TeduCoreApp.Application.ViewModels.Product.ProductCategoryViewModel>*@
-
+﻿@*@model TeduCoreApp.Models.ProductViewModels.*@
 @{
     ViewData["Title"] = "All product  categories";
     ViewData["MetaDescription"] = "All our products";
@@ -9,7 +8,7 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 }
 @section Scripts{
-    <script src="~/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
+    @*<script src="~/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>*@
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/clientapp/controllers/product/category.js"></script>
     <script>
@@ -69,65 +68,65 @@
                 </div>
                 <div class="tab-content jump">
                     <div class="tab-pane active pb-20" id="product-grid">
-                        <div class="row">
-                            <div id="list-products-mustache-A"></div>
-                            <script id="list-template-A" type="x-tmpl-mustache">
-                                <!--foreach for product-->
-                                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-30 list">
-                                    <div class="devita-product-2 mrg-inherit">
-                                        <div class="product-img">
-                                            <!--Load All Images of Product by Id -->
-                                            <div id="carouselExampleControls_{{IdA}}" class="carousel slide" data-ride="carousel">
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <a href="{{{urlA}}}"><img class="d-block w-100" src="{{ImagesA}}" alt="{{NameA}}"></a>
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <a href="{{{urlA}}}"><img class="d-block w-100" src="{{ImagesA}}" alt="{{NameA}}"></a>
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <a href="{{{urlA}}}"><img class="d-block w-100" src="{{ImagesA}}" alt="{{NameA}}"></a>
-                                                    </div>
+                        <div id="list-products-mustache-A" class="row">
+                            @*<div id="list-products-mustache-A"></div>*@
+                        </div>
+                        <script id="list-template-A" type="x-tmpl-mustache">
+                            <!--foreach for product-->
+                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-30 list">
+                                <div class="devita-product-2 mrg-inherit">
+                                    <div class="product-img">
+                                        <!--Load All Images of Product by Id -->
+                                        <div id="carouselExampleControls_{{IdA}}" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <a href="{{{urlA}}}"><img class="d-block w-100" src="{{ImagesA}}" alt="{{NameA}}"></a>
                                                 </div>
-                                                <a class="carousel-control-prev" href="#carouselExampleControls_{{IdA}}" role="button" data-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                                <a class="carousel-control-next" href="#carouselExampleControls_{{IdA}}" role="button" data-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
+                                                <div class="carousel-item">
+                                                    <a href="{{{urlA}}}"><img class="d-block w-100" src="{{ImagesA}}" alt="{{NameA}}"></a>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <a href="{{{urlA}}}"><img class="d-block w-100" src="{{ImagesA}}" alt="{{NameA}}"></a>
+                                                </div>
                                             </div>
-                                            <!--Sales on-->
-                                            @*<span>-29%</span>*@
+                                            <a class="carousel-control-prev" href="#carouselExampleControls_{{IdA}}" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleControls_{{IdA}}" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
                                         </div>
-                                        <div class="list-col">
-                                            <!--Detail Product-->
-                                            <div class="gridview">
-                                                <div class="product-content text-center">
-                                                    <!--Name-->
-                                                    @*<span class="w3-text-yellow">Remote, Accessories</span>*@
-                                                    <h5><a href="{{{urlA}}}" alt="{{NameA}}">{{NameA}}</a></h5>
-                                                    <div class="product-price-wrapper">
-                                                    </div>
+                                        <!--Sales on-->
+                                        @*<span>-29%</span>*@
+                                    </div>
+                                    <div class="list-col">
+                                        <!--Detail Product-->
+                                        <div class="gridview">
+                                            <div class="product-content text-center">
+                                                <!--Name-->
+                                                @*<span class="w3-text-yellow">Remote, Accessories</span>*@
+                                                <h5><a href="{{{urlA}}}" alt="{{NameA}}">{{NameA}}</a></h5>
+                                                <div class="product-price-wrapper">
                                                 </div>
-                                                <div class="product-action-wrapper-2 text-center">
-                                                    <!--Start-->
-                                                    <div class="product-rating">
-                                                        <i class="glyphicon glyphicon-minus"></i>
-                                                        <i class="glyphicon glyphicon-minus"></i>
-                                                        <i class="glyphicon glyphicon-minus"></i>
-                                                        <i class="glyphicon glyphicon-minus"></i>
-                                                    </div>
-                                                    <!--Description-->
-                                                    <p>{{DescriptionA}}</p>
+                                            </div>
+                                            <div class="product-action-wrapper-2 text-center">
+                                                <!--Start-->
+                                                <div class="product-rating">
+                                                    <i class="glyphicon glyphicon-minus"></i>
+                                                    <i class="glyphicon glyphicon-minus"></i>
+                                                    <i class="glyphicon glyphicon-minus"></i>
+                                                    <i class="glyphicon glyphicon-minus"></i>
                                                 </div>
+                                                <!--Description-->
+                                                <p>{{DescriptionA}}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </script>
-                        </div>
+                            </div>
+                        </script>
                     </div>
                     <div class="tab-pane" id="product-list">
 

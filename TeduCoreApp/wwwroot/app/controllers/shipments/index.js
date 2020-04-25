@@ -133,7 +133,13 @@
 
         $('body').on('click', '.btn-not-permission', function (e) {
             e.preventDefault();
-            tedu.notifypermission('You not has pemission is this action', 'warning');
+            Swal.fire({
+                icon: 'error',
+                title: '<strong class="text-danger">Thông Báo</strong>',
+                html: '<h3>Bạn không có quyền sử dụng chức năng này!</h3>',
+                footer: '<a href="/admin/login/index"><h4>Đăng nhập với tài khoản quản trị khác</h4></a>',
+                customClass: 'swal-wide'
+            });
         });
     }
     function loadData(isPageChanged) {

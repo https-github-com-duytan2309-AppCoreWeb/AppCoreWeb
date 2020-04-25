@@ -15,10 +15,10 @@ namespace TeduCoreApp.Application.Implementation
 {
     public class FeedbackService : IFeedbackService
     {
-        private IFeedbackRepository _feedbackRepository;
+        private IFeedbacksRepository _feedbackRepository;
         private IUnitOfWork _unitOfWork;
 
-        public FeedbackService(IFeedbackRepository feedbackRepository,
+        public FeedbackService(IFeedbacksRepository feedbackRepository,
             IUnitOfWork unitOfWork)
         {
             _feedbackRepository = feedbackRepository;
@@ -27,7 +27,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public void Add(FeedbackViewModel feedbackVm)
         {
-            var page = Mapper.Map<FeedbackViewModel, Feedback>(feedbackVm);
+            var page = Mapper.Map<FeedbackViewModel, Feedbacks>(feedbackVm);
             _feedbackRepository.Add(page);
         }
 
@@ -70,7 +70,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public FeedbackViewModel GetById(int id)
         {
-            return Mapper.Map<Feedback, FeedbackViewModel>(_feedbackRepository.FindById(id));
+            return Mapper.Map<Feedbacks, FeedbackViewModel>(_feedbackRepository.FindById(id));
         }
 
         public void SaveChanges()
@@ -80,7 +80,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public void Update(FeedbackViewModel feedbackVm)
         {
-            var page = Mapper.Map<FeedbackViewModel, Feedback>(feedbackVm);
+            var page = Mapper.Map<FeedbackViewModel, Feedbacks>(feedbackVm);
             _feedbackRepository.Update(page);
         }
     }

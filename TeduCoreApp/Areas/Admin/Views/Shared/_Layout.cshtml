@@ -1,43 +1,39 @@
 ﻿@using TeduCoreApp.Extensions;
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Trang Quản Trị</title>
-
-    <!-- Bootstrap -->
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <!-- Font Awesome -->
-    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!-- NProgress -->
-    <link href="~/lib/nprogress/nprogress.css" rel="stylesheet" />
-    <!-- bootstrap-daterangepicker -->
-    <link href="~/lib/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
-
-    <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
-    <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
-    <!-- Custom Theme Style -->
-    <link href="~/admin-side/css/custom.css" rel="stylesheet" />
-
-    <!--Snycfusion-->
+    <title>Trang quản trị! | </title>
+    <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link href="~/admin-side/js/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/admin-side/js/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/admin-side/js/vendor/nprogress/nprogress.css" rel="stylesheet">
+    <link href="~/admin-side/js/vendor/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="~/admin-side/js/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="~/admin-side/js/vendor/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <link href="~/admin-side/js/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <link href="~/lib/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
     <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ej.responsive.css" rel="stylesheet" />
     <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ejgrid.responsive.css" rel="stylesheet" />
     <link href="~/lib/syncfusion-javascript/Content/ej/web/ej.widgets.core.bootstrap.min.css" rel="stylesheet" />
-
-    <!--sweetalert2 -->
-    <style>
-        .swal-wide {
-            width: 600px !important;
-            height: 300px;
-        }
-    </style>
-    <link href="~/lib/sweetaler2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <!-- Datatables -->
+    <link href="~/admin-side/js/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="~/admin-side/js/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="~/admin-side/js/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="~/admin-side/js/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="~/admin-side/js/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- sweetalert2 -->
+    <link href="~/lib/sweetaler2/dist/sweetalert2.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="~/admin-side/build/css/custom.css" rel="stylesheet" />
+    <!-- Notifyjs Style -->
+    <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
 
     @RenderSection("Styles", required: false)
 </head>
@@ -45,12 +41,10 @@
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
-            @*<i class="fa fa-user"></i>*@
-
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="/admin/home/index" class="site_title"><i class="fa fa-bullhorn"></i><span>Trang Quản Trị</span></a>
+                        <a href="admin/home/" class="site_title"><i class="fa fa-paw"></i> <span>Trang Quản Trị!</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -58,14 +52,15 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="/admin-side/images/img.jpg" alt="..." class="img-circle profile_img">
+                            <img src="@User.GetSpecificClaim("Avatar")" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Chào Mừng,</span>
+                            <span>Welcome,</span>
                             <h2>@User.GetSpecificClaim("FullName")</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
+
                     <br />
 
                     <!-- sidebar menu -->
@@ -93,80 +88,15 @@
             <!-- top navigation -->
             <div class="top_nav">
                 <div class="nav_menu">
-                    <nav>
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="">
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <nav class="nav navbar-nav">
+                        <ul class=" navbar-right">
+                            <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 @await Html.PartialAsync("_LoginPartial")
                             </li>
-
-                            <li role="presentation" class="dropdown">
-                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <span class="badge bg-green">6</span>
-                                </a>
-                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="/admin-side/images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>@User.GetSpecificClaim("FullName")</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="text-center">
-                                            <a>
-                                                <strong>See All Alerts</strong>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+                            <!--Partial-->
                         </ul>
                     </nav>
                 </div>
@@ -174,15 +104,14 @@
             <!-- /top navigation -->
             <!-- page content -->
             <div class="right_col" role="main">
-                <div class="">
-                    @RenderBody()
-                </div>
+
+                @RenderBody()
             </div>
             <!-- /page content -->
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
-                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                    Được phát triển bởi <a href="https://ppweb.com">ppweb</a>
                 </div>
                 <div class="clearfix"></div>
             </footer>
@@ -191,34 +120,54 @@
     </div>
 
     <!-- jQuery -->
-    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/admin-side/js/vendor/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/admin-side/js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->
-    <script src="~/lib/fastclick/lib/fastclick.js"></script>
+    <script src="~/admin-side/js/vendor/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="~/lib/nprogress/nprogress.js"></script>
+    <script src="~/admin-side/js/vendor/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="~/lib/mustache/mustache.js"></script>
+    <script src="~/admin-side/js/vendor/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="~/admin-side/js/vendor/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/admin-side/js/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/admin-side/js/vendor/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="~/admin-side/js/vendor/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="~/admin-side/js/vendor/Flot/jquery.flot.js"></script>
+    <script src="~/admin-side/js/vendor/Flot/jquery.flot.pie.js"></script>
+    <script src="~/admin-side/js/vendor/Flot/jquery.flot.time.js"></script>
+    <script src="~/admin-side/js/vendor/Flot/jquery.flot.stack.js"></script>
+    <script src="~/admin-side/js/vendor/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="~/admin-side/js/vendor/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="~/admin-side/js/vendor/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="~/admin-side/js/vendor/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="~/admin-side/js/vendor/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="~/admin-side/js/vendor/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="~/admin-side/js/vendor/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/admin-side/js/vendor/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/admin-side/js/vendor/moment/min/moment.min.js"></script>
+    <script src="~/admin-side/js/vendor/bootstrap-daterangepicker/daterangepicker.js"></script>
 
-    <script src="~/lib/Chart.js/dist/Chart.js"></script>
-    <!-- jQuery Sparklines -->
+    <!--tws-Paging-->
     <script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>
-    <script src="~/lib/jquery-sparkline/dist/jquery.sparkline.js"></script>
 
+    <!--jquery validate-->
+    <script src="~/lib/jquery-sparkline/dist/jquery.sparkline.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-    <script src="~/lib/ckeditor/ckeditor.js"></script>
 
-    <!-- bootstrap-daterangepicker -->
-    <script src="~/lib/moment/moment.js"></script>
-    <script src="~/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="~/lib/notifyjs/dist/notify.js" type="text/javascript"></script>
-    <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
-    <script src="~/lib/bootbox/bootbox.js"></script>
-    <!-- Custom Theme Scripts -->
-    <script src="~/admin-side/js/custom.min.js"></script>
+    <!--Mustache-->
+    <script src="~/lib/mustache/mustache.js"></script>
 
     <!--Syncfusion-->
     <script src="~/client/js/ejs/jsondata.min.js"></script>
@@ -227,15 +176,37 @@
     <script src="~/client/js/ejs/properties.js"></script>
     <ej-script-manager></ej-script-manager>
 
+    <!-- Datatables -->
+    <script src="~/admin-side/js/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/admin-side/js/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/admin-side/js/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/admin-side/js/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/admin-side/js/vendors/pdfmake/build/vfs_fonts.js"></script>
+
     <environment names="Development">
         <script src="~/app/shared/tedu.js"></script>
     </environment>
-    <environment names="Staging,Production">
-        <script src="~/bundled/site-admin.min.js"></script>
-    </environment>
 
     <!--Script Sweetaler2-->
-    <script src="~/lib/sweetaler2/dist/sweetalert2.all.min.js"></script>
+    <script src="~/lib/sweetaler2/dist/sweetalert2.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="~/admin-side/build/js/custom.min.js"></script>
+
+    <!-- Notifyjs Scripts -->
+    <script src="~/lib/notifyjs/dist/notify.js"></script>
+    <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -27,7 +27,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public void Add(ContactViewModel pageVm)
         {
-            var page = Mapper.Map<ContactViewModel, Contact>(pageVm);
+            var page = Mapper.Map<ContactViewModel, ContactDetails>(pageVm);
             _contactRepository.Add(page);
         }
 
@@ -71,7 +71,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public ContactViewModel GetById(string id)
         {
-            return Mapper.Map<Contact, ContactViewModel>(_contactRepository.FindById(id));
+            return Mapper.Map<ContactDetails, ContactViewModel>(_contactRepository.FindById(id));
         }
 
         public void SaveChanges()
@@ -81,7 +81,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public void Update(ContactViewModel pageVm)
         {
-            var page = Mapper.Map<ContactViewModel, Contact>(pageVm);
+            var page = Mapper.Map<ContactViewModel, ContactDetails>(pageVm);
             _contactRepository.Update(page);
         }
     }

@@ -8,9 +8,8 @@
     "gulp-cssmin": "0.1.7",
     "gulp-uglify": "2.0.1",
     "rimraf": "2.6.1",
-    "syncfusion-javascript": "*",
-    "sweetalert2": "9.10.12",
-    "syncfusion-javascript": "^18.1.42"
+    "syncfusion-javascript": "^18.1.42",
+    "sweetalert2": "9.10.12"
   },
   "dependencies": {
     "ej": "^1.0.4"

@@ -64,11 +64,11 @@ namespace TeduCoreApp.Application.AutoMapper
                 .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId,
                 c.Quantity, c.Price, c.ColorId, c.SizeId, c.PromotionPrice));
 
-            CreateMap<ContactViewModel, Contact>()
-                .ConstructUsing(c => new Contact(c.Id, c.Name, c.Phone, c.Email, c.Website, c.Address, c.Other, c.Lng, c.Lat, c.Status));
+            CreateMap<ContactViewModel, ContactDetails>()
+                .ConstructUsing(c => new ContactDetails(c.Id, c.Name, c.Phone, c.Email, c.Website, c.Address, c.Other, c.Lng, c.Lat, c.Status));
 
-            CreateMap<FeedbackViewModel, Feedback>()
-                .ConstructUsing(c => new Feedback(c.Id, c.Name, c.Email, c.Message, c.Status));
+            CreateMap<FeedbackViewModel, Feedbacks>()
+                .ConstructUsing(c => new Feedbacks(c.Id, c.Name, c.Email, c.Message, c.Status));
 
             CreateMap<PageViewModel, Page>()
                 .ConstructUsing(c => new Page(c.Id, c.Name, c.Alias, c.Content, c.Status, c.HomeOrder,
@@ -94,6 +94,9 @@ namespace TeduCoreApp.Application.AutoMapper
 
             CreateMap<ShipCodeViewModel, ShipCode>()
                     .ConstructUsing(c => new ShipCode(c.Id, c.Carriers, c.DeliveryTime, c.CollectionFee, c.Total, c.ZipCode, c.IdAddress));
+
+            CreateMap<RecruitmentViewModel, Recruitment>()
+                    .ConstructUsing(c => new Recruitment(c.Id, c.Name, c.Image, c.Description, c.Content, c.Status, c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription));
         }
     }
 }

@@ -38,6 +38,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _productCategoryService = productCategoryService;
             _hostingEnvironment = hostingEnvironment;
             _context = context;
+            _authorizationService = authorizationService;
         }
 
         public async Task<IActionResult> Index()

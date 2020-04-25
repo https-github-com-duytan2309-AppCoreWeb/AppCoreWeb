@@ -25,8 +25,6 @@ using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 namespace TeduCoreApp.Controllers
 {
     [Authorize]
-    //[Route("api/[controller]")]
-    //[ApiController]
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

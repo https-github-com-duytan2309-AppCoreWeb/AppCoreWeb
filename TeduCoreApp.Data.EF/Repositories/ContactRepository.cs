@@ -6,7 +6,7 @@ using TeduCoreApp.Data.IRepositories;
 
 namespace TeduCoreApp.Data.EF.Repositories
 {
-    public class ContactRepository : EFRepository<Contact, string>, IContactRepository
+    public class ContactRepository : EFRepository<ContactDetails, string>, IContactRepository
     {
         public ContactRepository(AppDbContext context) : base(context)
         {

@@ -7,20 +7,28 @@ using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TeduCoreApp.Utilities.Helpers;
+using TeduCoreApp.Authorization;
+using Microsoft.AspNetCore.Authorization;
+using TeduCoreApp.Application.ViewModels.DichVu;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
     public class DichVuCategoryController : BaseController
     {
-        private IProductCategoryService _dichvuCategoryService;
+        private IDichVuCategoryService _dichvuCategoryService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public DichVuCategoryController(IProductCategoryService dichvuCategoryService)
+        public DichVuCategoryController(IDichVuCategoryService dichvuCategoryService, IAuthorizationService authorizationService)
         {
             _dichvuCategoryService = dichvuCategoryService;
+            _authorizationService = authorizationService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "SERVICE_CATEGORY", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 
@@ -35,7 +43,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveEntity(ProductCategoryViewModel dichvuVm)
+        public IActionResult SaveEntity(DichVuCategoryViewModel dichvuVm)
         {
             if (!ModelState.IsValid)
             {

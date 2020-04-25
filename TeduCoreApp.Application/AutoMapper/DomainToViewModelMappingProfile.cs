@@ -41,14 +41,16 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<SystemConfig, SystemConfigViewModel>().MaxDepth(2);
             CreateMap<Footer, FooterViewModel>().MaxDepth(2);
 
-            CreateMap<Feedback, FeedbackViewModel>().MaxDepth(2);
-            CreateMap<Contact, ContactViewModel>().MaxDepth(2);
+            CreateMap<Feedbacks, FeedbackViewModel>().MaxDepth(2);
+            CreateMap<ContactDetails, ContactViewModel>().MaxDepth(2);
             CreateMap<Page, PageViewModel>();
             CreateMap<Street, StreetViewModel>();
             CreateMap<Ward, WardViewModel>();
             CreateMap<District, DistrictViewModel>();
             CreateMap<Province, ProvinceViewModel>();
             CreateMap<ShipCode, ShipCodeViewModel>();
+
+            CreateMap<Recruitment, RecruitmentViewModel>();
         }
     }
 }

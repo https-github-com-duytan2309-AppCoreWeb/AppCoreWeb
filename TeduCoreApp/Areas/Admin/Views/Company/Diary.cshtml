@@ -1,0 +1,181 @@
+﻿@using TeduCoreApp.Extensions;
+@{
+    ViewData["Title"] = "_Diary";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Trang Liên Hệ: <small>Liên hệ</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a class="dropdown-item" href="#">Settings 1</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                @if (User.GetSpecificClaim("Roles").Contains("Admin"))
+                {
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="name" value="@Model.Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                Phone <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="phone" value="@Model.Phone" class="form-control">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Email</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="email" class="form-control" value="@Model.Email" type="text">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Website</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="email" class="form-control" value="@Model.Website" type="text">
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Địa Chỉ</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="address" class="form-control" value="@Model.Address" type="text">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Một số ghi chú khác</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="other" class="form-control" value="@Model.Other" />
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Một số ghi chú khác</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="lat" class="form-control" value="@Model.Lat" type="text">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Một số ghi chú khác</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="lng" class="form-control" value="@Model.Lng" type="text">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Trạng Thái</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input value="@Model.Status" type="checkbox" />
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary btn-reset" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success text-left btn-edit">Edit</button>
+                            </div>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="name" value="@Model.Name" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                Phone <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="phone" value="@Model.Phone" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Email</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="email" class="form-control" value="@Model.Email" type="text" disabled>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Website</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="email" class="form-control" value="@Model.Website" type="text" disabled>
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Địa Chỉ</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="address" class="form-control" value="@Model.Address" type="text" disabled>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Một số ghi chú khác</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="other" class="form-control" value="@Model.Other" disabled />
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Một số ghi chú khác</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="lat" class="form-control" value="@Model.Lat" type="text" disabled>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Một số ghi chú khác</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="lng" class="form-control" value="@Model.Lng" type="text" disabled>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Trạng Thái</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input value="@Model.Status" type="checkbox" disabled />
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary btn-reset" type="reset" disabled>Reset</button>
+                                <button type="submit" class="btn btn-success text-left btn-edit" disabled>Edit</button>
+                            </div>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,7 +6,7 @@ using TeduCoreApp.Infrastructure.Interfaces;
 
 namespace TeduCoreApp.Data.IRepositories
 {
-    public interface IContactRepository : IRepository<Contact, string>
+    public interface IContactRepository : IRepository<ContactDetails, string>
     {
     }
 }

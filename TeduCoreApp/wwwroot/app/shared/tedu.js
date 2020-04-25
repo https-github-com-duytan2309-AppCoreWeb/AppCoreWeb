@@ -76,7 +76,7 @@
         return day + "/" + month + "/" + year;
     },
     dateTimeFormatJson: function (datetime) {
-        if (datetime == null || datetime == '')
+        if (datetime === null || datetime === '')
             return '';
         var newdate = new Date(parseInt(datetime.substr(6)));
         var month = newdate.getMonth() + 1;
@@ -136,17 +136,13 @@
         }
         return roots;
     },
-    notifypermission: function (message, iconHtml) {
+    notifypermission: function () {
         Swal.fire({
-            title: '<strong><h1>Notify</h1></strong>',
-            icon: iconHtml,
-            html: '<h2>' + message + '</h2>',
-            showCloseButton: true,
-            showCancelButton: false,
-            focusConfirm: false,
-            customClass: 'swal-wide',
-            closeButtonText: '',
-            closeButtonAriaLabel: 'Close',
+            icon: 'error',
+            title: '<strong></strong>',
+            text: 'Something went wrong!',
+            footer: '<a href>Why do I have this issue?</a>',
+            customClass: 'swal-wide'
         });
     },
 }

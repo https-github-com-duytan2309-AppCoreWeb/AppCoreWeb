@@ -62,7 +62,7 @@ namespace TeduCoreApp.Data.EF
             }
             if (!_context.Contacts.Any())
             {
-                _context.Contacts.Add(new Contact()
+                _context.Contacts.Add(new ContactDetails()
                 {
                     Id = CommonConstants.DefaultContactId,
                     Address ="No 36 Lane 133 Nguyen Phong Sac Cau Giay",

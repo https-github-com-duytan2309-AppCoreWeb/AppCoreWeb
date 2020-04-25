@@ -46,8 +46,8 @@ namespace TeduCoreApp.Data.EF
         public DbSet<Blog> Blogs { set; get; }
         public DbSet<BlogTag> BlogTags { set; get; }
         public DbSet<Color> Colors { set; get; }
-        public DbSet<Contact> Contacts { set; get; }
-        public DbSet<Feedback> Feedbacks { set; get; }
+        public DbSet<ContactDetails> Contacts { set; get; }
+        public DbSet<Feedbacks> Feedbacks { set; get; }
         public DbSet<Footer> Footers { set; get; }
         public DbSet<Page> Pages { set; get; }
         public DbSet<Product> Products { set; get; }

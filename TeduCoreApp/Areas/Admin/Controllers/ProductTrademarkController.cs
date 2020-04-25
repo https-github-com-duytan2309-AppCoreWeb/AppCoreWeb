@@ -7,20 +7,26 @@ using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels.Product;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TeduCoreApp.Utilities.Helpers;
+using Microsoft.AspNetCore.Authorization;
+using TeduCoreApp.Authorization;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
     public class ProductTrademarkController : BaseController
     {
         private IProductTrademarkService _productTrademarkService;
+        private readonly IAuthorizationService _authorizationService;
 
-        public ProductTrademarkController(IProductTrademarkService productTrademarkService)
+        public ProductTrademarkController(IProductTrademarkService productTrademarkService, IAuthorizationService authorizationService)
         {
             _productTrademarkService = productTrademarkService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "PRODUCT_TRADEMARK", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 
