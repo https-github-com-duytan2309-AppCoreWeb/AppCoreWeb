@@ -16,22 +16,22 @@
     <link rel="shortcut icon" type="image/x-icon" href="">
     <meta name="author" content="ppweb.vn" />
     <link href="/favicon.jpg" rel="shortcut icon" type="image/jpg">
-    <link href="/Content/Client/images/apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="/Content/Client/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-    <link href="/Content/Client/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
-    <link href="/Content/Client/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+
+    @*<link href="/Content/Client/images/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="/Content/Client/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+        <link href="/Content/Client/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+        <link href="/Content/Client/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">*@
+
     <link rel="stylesheet" href="/client/css/bootstrap.min.css">
     <link rel="stylesheet" href="/client/css/icons.css">
     <link rel="stylesheet" href="/client/css/plugins.css">
     <link rel="stylesheet" href="/client/css/style.css">
     <link rel="stylesheet" href="/client/css/responsive.css">
-    <link href="~/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
-
-    <script src="/client/js/vendor/modernizr-2.8.3.min.js"></script>
-
+    <link href="~/client/js/vendor/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
     <link href="~/client/css/slide.css" rel="stylesheet" />
 
     <style>
+
         .nameproduct {
             text-overflow: ellipsis;
             overflow: hidden;
@@ -111,19 +111,21 @@
 
     <script src="~/client/js/jquery.min.js"></script>
     <script src="~/client/js/jquery-ui.js"></script>
-    <script src="~/assets/plugins/general/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/client/js/popper.js"></script>
     <script src="~/client/js/bootstrap.min.js"></script>
     <script src="~/client/js/ajax-mail.js"></script>
     <script src="~/client/js/plugins.js"></script>
     <script src="~/client/js/main.js"></script>
     <script src="~/client/js/revolution-slider.js"></script>
-    <script src="~/assets/plugins/general/notifyjs/dist/notify.js"></script>
-    <script src="~/assets/plugins/general/mustache/mustache.min.js"></script>
-    <script src="~/assets/plugins/general/notifyjs/dist/styles/metro/notify-metro.js"></script>
-    <script src="~/clientapp/shared/localize/resources.@(requestCulture.RequestCulture.Culture.Name).js"></script>
-    <script src="~/clientapp/shared/tedu.js"></script>
 
+    <script src="~/client/js/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/client/js/vendor/notifyjs/dist/notify.js"></script>
+    <script src="~/client/js/vendor/mustache/mustache.min.js"></script>
+    <script src="~/client/js/vendor/notifyjs/dist/styles/metro/notify-metro.js"></script>
+
+    <script src="~/client/app/shared/localize/resources.@(requestCulture.RequestCulture.Culture.Name).js"></script>
+    <script src="~/client/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="~/client/app/shared/tedu.js"></script>
     <script src="~/clientapp/controllers/base/index.js"></script>
     <script>
         var baseObj = new BaseController();

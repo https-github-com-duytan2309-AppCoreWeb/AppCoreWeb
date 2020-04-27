@@ -412,7 +412,7 @@ namespace TeduCoreApp.Controllers
                 // please visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme);
-                await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                await _emailSender.SendEmailAsync(model.Email, "Lấy lại mật khẩu",
                    $"Vui lòng đặt lại mật khẩu của bạn bằng cách nhấn vào đây: <a href='{callbackUrl}'>Vào đây</a>");
                 return RedirectToAction(nameof(ForgotPasswordConfirmation));
             }

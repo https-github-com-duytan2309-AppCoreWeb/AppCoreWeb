@@ -2,29 +2,44 @@
     ViewData["Title"] = "Access Denied";
     Layout = null;
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-<style>
-    a:hover {
-        cursor: pointer;
-        color: crimson;
-    }
-</style>
 
-<div class="text-center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/admin/js/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
 
-    <h1 class="text-danger">Thông báo</h1>
-    <h4 class="text-success">Bạn không có quyền Vào trang này! Xin liên hệ Quản trị viên</h4>
-    <h4 class="text-primary">
-        <a href="/">
-            Quay lại trang chủ
-        </a>
-        hoặc
-        <a href="~/admin/login/index">
-            đăng nhập
-        </a>
-        với quyền quản trị
-    </h4>
-    <img src="~/uploaded/img_287253.png" style="width:300px; height:300px" />
-</div>
-<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        a:hover {
+            cursor: pointer;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+
+        <h1 class="text-danger">Thông báo</h1>
+        <h4 class="text-success">Bạn không có quyền Vào trang này! Xin liên hệ Quản trị viên</h4>
+        <h4 class="text-success">
+            <a class="text-primary" href="/">
+                Quay lại trang chủ
+            </a>
+            hoặc
+            <a class="text-primary" href="/admin-trang-chu.html">
+                đăng nhập
+            </a>
+            với quyền quản trị
+        </h4>
+        <br />
+        <br />
+
+        <img src="~/uploaded/img_287253.png" style="width:300px; height:300px" />
+    </div>
+    <script src="~/admin/js/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -5,6 +5,12 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+@section Scripts{
+<script>
+    var comC = new CompanyController();
+    comC.initialize();
+</script>
+}
 <div class="row">
     <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
@@ -33,7 +39,7 @@
             </div>
             <div class="x_content">
                 <br />
-                @if (User.GetSpecificClaim("Roles").Contains("Admin"))
+                @if ((await AuthorizationService.AuthorizeAsync(User, "CONTACT", Operations.Update)).Succeeded)
                 {
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
@@ -62,7 +68,7 @@
                         <div class="item form-group">
                             <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Website</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input id="email" class="form-control" value="@Model.Website" type="text">
+                                <input id="website" class="form-control" value="@Model.Website" type="text">
                             </div>
                         </div>
 
@@ -78,7 +84,7 @@
                                 <input type="text" id="other" class="form-control" value="@Model.Other" />
                             </div>
                         </div>
-                        <div class="item form-group">
+                        @*<div class="item form-group">
                             <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Một số ghi chú khác</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input id="lat" class="form-control" value="@Model.Lat" type="text">
@@ -89,7 +95,7 @@
                             <div class="col-md-6 col-sm-6 ">
                                 <input id="lng" class="form-control" value="@Model.Lng" type="text">
                             </div>
-                        </div>
+                        </div>*@
                         <div class="item form-group">
                             <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Trạng Thái</label>
                             <div class="col-md-6 col-sm-6 ">
@@ -100,7 +106,7 @@
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
                                 <button class="btn btn-primary btn-reset" type="reset">Reset</button>
-                                <button type="submit" class="btn btn-success text-left btn-edit">Edit</button>
+                                <button type="submit" class="btn btn-success text-left btn-edit" id="btn-edit-contact">Edit</button>
                             </div>
                         </div>
                     </form>
@@ -114,7 +120,7 @@
                                 Name <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="text" id="name" value="@Model.Name" class="form-control" disabled>
+                                <input type="text" id="name" value="@Model.Name" class="form-control disabled" disabled>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -122,35 +128,35 @@
                                 Phone <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="text" id="phone" value="@Model.Phone" class="form-control" disabled>
+                                <input type="text" id="phone" value="@Model.Phone" class="form-control disabled" disabled>
                             </div>
                         </div>
                         <div class="item form-group">
                             <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Email</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input id="email" class="form-control" value="@Model.Email" type="text" disabled>
+                                <input id="email" class="form-control disabled" value="@Model.Email" type="text" disabled>
                             </div>
                         </div>
                         <div class="item form-group">
                             <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Website</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input id="email" class="form-control" value="@Model.Website" type="text" disabled>
+                                <input id="email" class="form-control disabled" value="@Model.Website" type="text" disabled>
                             </div>
                         </div>
 
                         <div class="item form-group">
                             <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Địa Chỉ</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input id="address" class="form-control" value="@Model.Address" type="text" disabled>
+                                <input id="address" class="form-control disabled" value="@Model.Address" type="text" disabled>
                             </div>
                         </div>
                         <div class="item form-group">
                             <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Một số ghi chú khác</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="text" id="other" class="form-control" value="@Model.Other" disabled />
+                                <input type="text" id="other" class="form-control disabled" value="@Model.Other" disabled />
                             </div>
                         </div>
-                        <div class="item form-group">
+                        @*<div class="item form-group">
                             <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Một số ghi chú khác</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input id="lat" class="form-control" value="@Model.Lat" type="text" disabled>
@@ -161,11 +167,11 @@
                             <div class="col-md-6 col-sm-6 ">
                                 <input id="lng" class="form-control" value="@Model.Lng" type="text" disabled>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="item form-group">
                             <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Trạng Thái</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input value="@Model.Status" type="checkbox" disabled />
+                                <input value="@Model.Status" class="disabled" type="checkbox" disabled />
                             </div>
                         </div>
                         <div class="ln_solid"></div>

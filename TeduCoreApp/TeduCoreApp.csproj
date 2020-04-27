@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\clientapp\**" />
+    <Compile Remove="wwwroot\files\**" />
+    <Content Remove="wwwroot\clientapp\**" />
+    <Content Remove="wwwroot\files\**" />
+    <EmbeddedResource Remove="wwwroot\clientapp\**" />
+    <EmbeddedResource Remove="wwwroot\files\**" />
+    <None Remove="wwwroot\clientapp\**" />
+    <None Remove="wwwroot\files\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0" />
     <PackageReference Include="Captcha" Version="4.4.2" />
@@ -23,6 +34,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" PrivateAssets="All" />
     <PackageReference Include="MimeKit" Version="2.5.1" />
+    <PackageReference Include="Node.js" Version="5.3.0" />
     <PackageReference Include="PaulMiami.AspNetCore.Mvc.Recaptcha" Version="1.2.1" />
     <PackageReference Include="SendGrid" Version="9.13.0" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
@@ -85,9 +97,7 @@
 
   <ItemGroup>
     <Folder Include="Logs\" />
-    <Folder Include="wwwroot\clientapp\controllers\Blog\" />
-    <Folder Include="wwwroot\clientapp\controllers\Service\" />
-    <Folder Include="wwwroot\files\" />
+    <Folder Include="wwwroot\export-files\" />
   </ItemGroup>
 
   <ItemGroup>

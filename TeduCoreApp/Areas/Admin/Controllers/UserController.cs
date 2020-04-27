@@ -40,11 +40,12 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             return View();
         }
 
+        [Route("danh-sach-nguoi-dung.html")]
         public async Task<IActionResult> Index()
         {
             var result = await _authorizationService.AuthorizeAsync(User, "USER", Operations.Read);
             if (result.Succeeded == false)
-                return new RedirectResult("/Admin/Notify/AccessDenied");
+                return new RedirectResult("/notify-denied.html");
 
             return View("Index");
         }

@@ -23,7 +23,7 @@ namespace TeduCoreApp.Data.Entities
             string description, string content, bool? homeFlag, bool? hotFlag,
             string tags, string unit, Status status, string seoPageTitle,
             string seoAlias, string seoMetaKeyword,
-            string seoMetaDescription, string vat)
+            string seoMetaDescription, string vat, string code)
         {
             Name = name;
             CategoryId = categoryId;
@@ -44,6 +44,7 @@ namespace TeduCoreApp.Data.Entities
             SeoDescription = seoMetaDescription;
             ProductTags = new List<ProductTag>();
             VAT = vat;
+            Code = code;
         }
 
         public Product(int id, string name, int categoryId, string thumbnailImage,
@@ -51,7 +52,7 @@ namespace TeduCoreApp.Data.Entities
              string description, string content, bool? homeFlag, bool? hotFlag,
              string tags, string unit, Status status, string seoPageTitle,
              string seoAlias, string seoMetaKeyword,
-             string seoMetaDescription, string vat)
+             string seoMetaDescription, string vat, string code)
         {
             Id = id;
             Name = name;
@@ -73,6 +74,7 @@ namespace TeduCoreApp.Data.Entities
             SeoDescription = seoMetaDescription;
             ProductTags = new List<ProductTag>();
             VAT = vat;
+            Code = code;
         }
 
         [StringLength(255)]
@@ -137,5 +139,7 @@ namespace TeduCoreApp.Data.Entities
 
         public Status Status { set; get; }
         public string VAT { set; get; }
+
+        public string Code { set; get; }
     }
 }

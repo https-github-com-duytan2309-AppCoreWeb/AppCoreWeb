@@ -69,7 +69,7 @@ namespace TeduCoreApp
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.AccessDeniedPath = new PathString("/Admin/Notify/AccessDenied");
+                options.AccessDeniedPath = new PathString("/notify-denied.html");
             });
 
             //Configure Identity
@@ -287,12 +287,12 @@ namespace TeduCoreApp
 
             //app.UseHttpContextItemsMiddleware();
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
-                RequestPath = "/MyImages"
-            });
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
+            //    RequestPath = "/MyImages"
+            //});
 
             //app.UseStaticFiles(new StaticFileOptions
             //{

@@ -8,6 +8,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
 {
     public class ReportController : BaseController
     {
+        [Route("bao-cao.html")]
         public IActionResult Index()
         {
             return View();

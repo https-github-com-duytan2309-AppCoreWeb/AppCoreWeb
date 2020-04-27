@@ -1,0 +1,72 @@
+{
+  "_from": "jsondata",
+  "_id": "jsondata@1.1.1",
+  "_inBundle": false,
+  "_integrity": "sha1-UNqDtDHcN1b1NkV9SAbGB5I6EJY=",
+  "_location": "/jsondata",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "jsondata",
+    "name": "jsondata",
+    "escapedName": "jsondata",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/jsondata/-/jsondata-1.1.1.tgz",
+  "_shasum": "50da83b431dc3756f536457d4806c607923a1096",
+  "_spec": "jsondata",
+  "_where": "E:\\Project",
+  "author": {
+    "name": "Joey Sham",
+    "email": "sham.joey@gmail.com",
+    "url": "http://www.joeyism.com"
+  },
+  "bugs": {
+    "url": "https://github.com/joeyism/node-jsondata/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "async": "^1.4.2",
+    "chai": "^3.2.0",
+    "istanbul": "^0.3.17",
+    "merge": "^1.2.0",
+    "mocha": "^2.2.5",
+    "xcept": "^1.0.0"
+  },
+  "deprecated": false,
+  "description": "A module that saves and loads json data from a file",
+  "homepage": "https://github.com/joeyism/node-jsondata#readme",
+  "keywords": [
+    "json",
+    "data",
+    "save",
+    "load",
+    "config",
+    "loader",
+    "management",
+    "json",
+    "file",
+    "read",
+    "write",
+    "add",
+    "remove"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "jsondata",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeyism/node-jsondata.git"
+  },
+  "scripts": {
+    "test": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha"
+  },
+  "version": "1.1.1"
+}

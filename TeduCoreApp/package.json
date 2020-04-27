@@ -9,7 +9,8 @@
     "gulp-uglify": "2.0.1",
     "rimraf": "2.6.1",
     "syncfusion-javascript": "^18.1.42",
-    "sweetalert2": "9.10.12"
+    "sweetalert2": "9.10.12",
+    "@types/jquery": "3.3.35"
   },
   "dependencies": {
     "ej": "^1.0.4"

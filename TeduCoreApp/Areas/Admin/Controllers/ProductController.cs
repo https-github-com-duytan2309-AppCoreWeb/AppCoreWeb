@@ -41,15 +41,23 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _authorizationService = authorizationService;
         }
 
+        [Route("danh-sach-san-pham.html")]
         public async Task<IActionResult> Index()
         {
             var result = await _authorizationService.AuthorizeAsync(User, "PRODUCT_LIST", Operations.Read);
             if (result.Succeeded == false)
-                return new RedirectResult("/Admin/Notify/AccessDenied");
+                return new RedirectResult("/notify-denied.html");
             return View();
         }
 
         #region AJAX API
+
+        [HttpGet]
+        public async Task<IActionResult> GetIdFromCategory(string nameCategory)
+        {
+            var model = _productCategoryService.GetIdByName(nameCategory);
+            return new OkObjectResult(model.Id);
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()

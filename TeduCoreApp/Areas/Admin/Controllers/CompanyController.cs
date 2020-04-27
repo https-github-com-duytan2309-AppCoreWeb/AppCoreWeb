@@ -4,15 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Application.ViewModels.Common;
+using TeduCoreApp.Authorization;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
     public class CompanyController : BaseController
     {
         private readonly IContactService _contactService;
-        private readonly IFeedbackService _feedbackService;
-        private readonly IRecruitmentService _recruitmentService;
+        //private readonly IFeedbackService _feedbackService;
+        //private readonly IRecruitmentService _recruitmentService;
 
         private readonly IAuthorizationService _authorizationService;
 
@@ -27,38 +30,87 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        [Route("admin-lien-he.html")]
+        public async Task<IActionResult> Contact()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "CONTACT", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/notify-denied.html");
             return View(_contactService.GetById("default"));
         }
 
-        public IActionResult Introduction()
+        public async Task<IActionResult> SaveEntityContact(ContactViewModel ctVM)
         {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+
+            if (ctVM.Id.ToString() != "Default")
+            {
+                _contactService.Add(ctVM);
+            }
+            else
+            {
+                _contactService.Update(ctVM);
+            }
+            _contactService.SaveChanges();
+
+            return new OkObjectResult(ctVM);
+        }
+
+        [Route("gioi-thieu.html")]
+        public async Task<IActionResult> Introduction()
+        {
+            var result = await _authorizationService.AuthorizeAsync(User, "ABOUT", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 
-        public IActionResult Recruitment()
+        [Route("tuyen-dung.html")]
+        public async Task<IActionResult> Recruitment()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "RECRUITMENT", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 
-        public IActionResult Partner()
+        [Route("doi-tac.html")]
+        public async Task<IActionResult> Partner()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "CLIENT", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 
-        public IActionResult Diary()
+        [Route("nhat-ky.html")]
+        public async Task<IActionResult> Diary()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "DIARY", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 
-        public IActionResult FeedBack()
+        [Route("phan-hoi.html")]
+        public async Task<IActionResult> FeedBack()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "FEEDBACK", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
 
-        public IActionResult Helper()
+        [Route("hoi-dap.html")]
+        public async Task<IActionResult> FAQ()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "FAQ", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/Admin/Notify/AccessDenied");
             return View();
         }
     }

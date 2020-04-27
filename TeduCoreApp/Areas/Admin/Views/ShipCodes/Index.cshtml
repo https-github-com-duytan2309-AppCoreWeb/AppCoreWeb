@@ -4,14 +4,14 @@
 }
 
 @section Scripts{
-    <script src="~/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
 
-    <script>
+    <script src="~/admin-side/js/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/admin-side/js/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    @*<script>
         $(document).ready(function () {
             $('#tbl-product').DataTable();
         })
-    </script>
+    </script>*@
 
     <script src="~/app/controllers/shipments/index.js" asp-append-version="true"></script>
     <script>
@@ -20,9 +20,9 @@
     </script>
 }
 @section Styles{
-    <link href="~/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 
+    <link href="~/admin-side/js/vendor/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="~/admin-side/js/vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 }
 
 <div class="">
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
         <div class="clearfix"></div>
 
         <div class="row">
@@ -163,6 +163,6 @@
                 </td>
             </tr>
         </script>
-    </div>
+    
 </div>
 @await Html.PartialAsync("_Modal.cshtml")

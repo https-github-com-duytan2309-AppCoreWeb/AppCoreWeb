@@ -23,11 +23,12 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _authorizationService = authorizationService;
         }
 
+        [Route("danh-muc-tin-tuc.html")]
         public async Task<IActionResult> Index()
         {
             var result = await _authorizationService.AuthorizeAsync(User, "BLOG_CATELOGY", Operations.Read);
             if (result.Succeeded == false)
-                return new RedirectResult("/Admin/Notify/AccessDenied");
+                return new RedirectResult("/notify-denied.html");
             return View();
         }
 

@@ -34,6 +34,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [Route("/notify-denied.html")]
         public IActionResult AccessDenied()
         {
             ViewData["Title"] = "Access Denied";

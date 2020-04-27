@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,12 @@ namespace TeduCoreApp.Application.Implementation
         {
             return _productCategoryRepository.FindAll().OrderBy(x => x.ParentId).Take(filter)
                   .ProjectTo<ProductCategoryViewModel>().ToList();
+        }
+
+        public ProductCategoryViewModel GetIdByName(string name)
+        {
+            var product = _productCategoryRepository.FindAll(x => x.Name == name).OrderBy(x => x.ParentId).ProjectTo<ProductCategoryViewModel>().FirstOrDefault();
+            return product;
         }
 
         public List<ProductCategoryViewModel> GetAll()

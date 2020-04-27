@@ -27,6 +27,9 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("/admin-dang-nhap.html")]
         public IActionResult Index()
         {
             return View();

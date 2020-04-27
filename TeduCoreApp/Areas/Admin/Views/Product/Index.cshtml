@@ -2,27 +2,26 @@
     ViewData["Title"] = "Index";
 }
 @section Styles{
-    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
-    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/admin/js/vendors/jquery-easyui/themes/icon.css" rel="stylesheet" />
 }
 @section Scripts{
-    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
-
+    <script src="~/admin/js/vendors/jquery-easyui/jquery.easyui.min.js"></script>
+    <script src="~/admin/js/vendors/bootbox/bootbox.js"></script>
     <environment names="Development">
-        <script src="~/app/controllers/product/image-management.js"></script>
-        <script src="~/app/controllers/product/quantity-management.js"></script>
-        <script src="~/app/controllers/product/whole-price-management.js"></script>
-        <script src="~/app/controllers/product/index.js"></script>
+        <script src="~/admin/app/controllers/product/image-management.js"></script>
+        <script src="~/admin/app/controllers/product/quantity-management.js"></script>
+        <script src="~/admin/app/controllers/product/whole-price-management.js"></script>
+        <script src="~/admin/app/controllers/product/index.js"></script>
         <script>
             var product = new productController();
             product.initialize();
         </script>
     </environment>
     <environment names="Staging,Production">
-        <script src="~/app/controllers/product/image-management.js"></script>
-        <script src="~/app/controllers/product/quantity-management.js"></script>
-        <script src="~/app/controllers/product/whole-price-management.js"></script>
-        <script src="~/app/controllers/product/index.js"></script>
+        <script src="~/admin/app/controllers/product/image-management.js"></script>
+        <script src="~/admin/app/controllers/product/quantity-management.js"></script>
+        <script src="~/admin/app/controllers/product/whole-price-management.js"></script>
+        <script src="~/admin/app/controllers/product/index.js"></script>
         <script>
             var product = new productController();
             product.initialize();
@@ -33,7 +32,7 @@
 
 <div class="page-title">
     <div class="title_left">
-        <h3>Products <small>List products</small></h3>
+        <h3>Sản Phẩm:  <small>danh sách sản phẩm</small></h3>
     </div>
 
     <div class="title_right">
@@ -47,8 +46,9 @@
             </div>
         </div>
         <div class="col-md-3 col-sm-12  form-group pull-right">
+            <input id="IdCategory" type="hidden" />
             <select class="form-control" id="ddlCategorySearch">
-                <option>--Select category--</option>
+                @*<option>--Chọn Theo Danh Mục--</option>*@
             </select>
         </div>
         <div class="col-md-6 col-sm-12  form-group pull-right">
@@ -96,7 +96,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-
+                            <th class="text-center">CategoryId</th>
                             <th class="text-center">Tên</th>
                             <th class="text-center">Danh Mục</th>
                             <th class="text-center">Giá</th>
@@ -135,7 +135,7 @@
 </div>
 <script id="table-template" type="x-tmpl-mustache">
     <tr>
-
+        <td class="text-center">{{CategoryId}}</td>
         <td class="text-center">{{Name}}</td>
         <td class="text-center">{{CategoryName}}</td>
         <td class="text-center">{{Price}}</td>

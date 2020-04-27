@@ -25,6 +25,10 @@
                                         @*<li><a  class=""></a></li>*@
                                         <div><a class="btn btn-outline-primary dropdown-item" href="/account.html">Thông tin Tài khoản</a></div>
                                         <div><a class="btn btn-outline-primary dropdown-item" href="/thong-tin-bill.html">Thông Hóa Đơn Của Bạn</a></div>
+                                        @if (User.GetSpecificClaim("Roles").Contains("Admin") || User.GetSpecificClaim("Roles").Contains("Staff") || User.GetSpecificClaim("Roles").Contains("Customer"))
+                                        {
+                                            <div><a class="btn btn-outline-primary dropdown-item" href="/admin-dang-nhap.html">Đi đến trang quảng trị</a></div>
+                                        }
                                     </div>
                                 </div>
                             </li>

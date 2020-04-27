@@ -65,5 +65,6 @@ namespace TeduCoreApp.Application.ViewModels.Product
 
         public Status Status { set; get; }
         public string VAT { set; get; }
+        public string Code { set; get; }
     }
 }

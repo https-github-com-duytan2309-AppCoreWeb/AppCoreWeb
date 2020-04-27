@@ -1,8 +1,8 @@
 [
   {
-    "outputFileName": "wwwroot/css/site.min.css",
+    "outputFileName": "wwwroot/admin/js/custom.min.js",
     "inputFiles": [
-      "wwwroot/css/site.css"
+      "wwwroot/admin/js/custom.js"
     ]
   },
   {
@@ -14,17 +14,6 @@
       "enabled": true,
       "renameLocals": true
     }
-  },
-  {
-    "outputFileName": "wwwroot/app/controllers/bill/index.min.js",
-    "inputFiles": [
-      "wwwroot/app/controllers/bill/index.js"
-    ]
-  },
-  {
-    "outputFileName": "wwwroot/admin-side/js/custom.min.js",
-    "inputFiles": [
-      "wwwroot/admin-side/js/custom.js"
-    ]
   }
+
 ]

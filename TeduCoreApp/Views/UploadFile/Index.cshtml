@@ -6,9 +6,11 @@
 @section Scripts{
 
     <!--Syncfusion-->
-    <script src="~/client/js/ejs/jsondata.min.js"></script>
-    <script src="~/client/js/ejs/jsrender.min.js"></script>
-    <script src="~/lib/syncfusion-javascript/Scripts/ej/web/ej.web.all.min.js"></script>
+    @*<script src="~/client/js/ejs/jsondata.min.js"></script>*@
+
+    <script src="~/client/js/vendor/jsondata/index.js"></script>
+    <script src="~/client/js/vendor/jsrender/jsrender.min.js"></script>
+    <script src="~/client/js/vendor/syncfusion-javascript/Scripts/ej/web/ej.web.all.min.js"></script>
     <script>
         $("#UploadAvatar").ejUploadbox({
             saveUrl: "/UploadFile/UploadFile",
@@ -26,10 +28,10 @@
 }
 @section Styles{
     <!--Snycfusion-->
-    <link href="~/lib/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
-    <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ej.responsive.css" rel="stylesheet" />
-    <link href="~/lib/syncfusion-javascript/Content/ej/web/responsive-css/ejgrid.responsive.css" rel="stylesheet" />
-    <link href="~/lib/syncfusion-javascript/Content/ej/web/ej.widgets.core.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/client/js/vendor/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="~/client/js/vendor/syncfusion-javascript/Content/ej/web/responsive-css/ej.responsive.css" rel="stylesheet" />
+    <link href="~/client/js/vendor/syncfusion-javascript/Content/ej/web/responsive-css/ejgrid.responsive.css" rel="stylesheet" />
+    <link href="~/client/js/vendor/syncfusion-javascript/Content/ej/web/ej.widgets.core.bootstrap.min.css" rel="stylesheet" />
 
 }
 

@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using TeduCoreApp.Extensions;
 using TeduCoreApp.Application.Dapper.Interfaces;
 using TeduCoreApp.Admin.Filter;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
     //[ServiceFilter(typeof(FilterActionAttribute))]
     [Area("Admin")]
-    [Authorize(Roles = "Admin, Staff, Customer")]
     public class HomeController : Controller
     {
         private readonly IReportService _reportService;
@@ -24,6 +23,8 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _authorizationService = authorizationService;
         }
 
+        [Authorize(Roles = "Admin,Customer,Staff")]
+        [Route("admin-trang-chu.html")]
         public IActionResult Index()
         {
             var email = User.GetSpecificClaim("Email");
@@ -31,9 +32,9 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<IActionResult> GetRevenue(string fromDate, string toDate)
-        {
-            return new OkObjectResult(await _reportService.GetReportAsync(fromDate, toDate));
-        }
+        //public async Task<IActionResult> GetRevenue(string fromDate, string toDate)
+        //{
+        //    return new OkObjectResult(await _reportService.GetReportAsync(fromDate, toDate));
+        //}
     }
 }

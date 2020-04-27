@@ -23,6 +23,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
 
         #endregion Initialize
 
+        [Route("nghiep-vu.html")]
         public IActionResult Index()
         {
             return View();

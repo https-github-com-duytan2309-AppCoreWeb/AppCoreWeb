@@ -15,6 +15,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductCategoryViewModel> GetAllFiter(int filter);
 
+        ProductCategoryViewModel GetIdByName(string name);
+
         List<ProductCategoryViewModel> GetAll();
 
         List<ProductCategoryViewModel> GetAll(string keyword);
