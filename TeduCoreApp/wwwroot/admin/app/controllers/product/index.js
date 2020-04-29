@@ -42,9 +42,8 @@
         $('#ddlCategorySearch').on('change', function () {
             var e = document.getElementById("ddlCategorySearch");
             var IdCategory = e.options[e.selectedIndex].value;
-            $("#IdCategory").val(IdCategory);
-            alert($("#IdCategory").val());
-            loadData(true);
+            //alert(IdCategory);
+            LoadProductFromCategoryId(IdCategory);
         });
 
         $('#txtKeyword').on('keypress', function (e) {
@@ -150,17 +149,6 @@
                 }
             });
         });
-
-        //$('body').on('click', '.btn-not-permission', function (e) {
-        //    e.preventDefault();
-        //    Swal.fire({
-        //        icon: 'error',
-        //        title: '<strong class="text-danger">Thông Báo</strong>',
-        //        html: '<h3>Bạn không có quyền sử dụng chức năng này!</h3>',
-        //        footer: '<a href="/admin/login/index"><h4>Đăng nhập với tài khoản quản trị khác</h4></a>',
-        //        customClass: 'swal-wide'
-        //    });
-        //});
     }
 
     function registerControls() {
@@ -398,19 +386,28 @@
         });
     }
 
-    function GetIdCategories(NameCategory) {
+    function LoadProductFromCategoryId(CategoryId) {
         $.ajax({
             type: 'GET',
-            data: { nameCategory: NameCategory },
-            url: '/admin/product/GetIdFromCategory',
+            data: { IdCategory: parseInt(CategoryId) },
+            url: "/Admin/Product/CheckProductFromCategoryId",
+            cache: false,
+            async: true,
             dataType: 'json',
             success: function (response) {
-                $('#IdCategory').val(response);
-                //tedu.notify('Load data succses', 'success');
+                console.log(response);
+                if (response === "NO") {
+                    tedu.notify('Không có sản phẩm từ danh mục này. Vui lòng chọn danh mục khác!', 'success');
+                    loadCategories();
+                }
+                else {
+                    $("#IdCategory").val(CategoryId);
+                    loadData(true);
+                }
             },
             error: function (status) {
                 console.log(status);
-                tedu.notify('Cannot loading product category data', 'error');
+                tedu.notify('Không thể load Sản Phẩm', 'error');
             }
         });
     }

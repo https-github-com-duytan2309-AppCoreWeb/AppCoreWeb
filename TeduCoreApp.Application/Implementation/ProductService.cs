@@ -114,6 +114,11 @@ namespace TeduCoreApp.Application.Implementation
             return _productRepository.FindAll(x => x.ProductCategory).ProjectTo<ProductViewModel>().ToList();
         }
 
+        public List<ProductViewModel> CheckProductFromCategoryId(string CategoryId)
+        {
+            return _productRepository.FindAll(x => x.CategoryId.ToString() == CategoryId).ProjectTo<ProductViewModel>().ToList();
+        }
+
         public PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
             var query = _productRepository.FindAll(x => x.Status == Status.Active);

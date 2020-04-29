@@ -23,7 +23,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _authorizationService = authorizationService;
         }
 
-        //[Route("danh-muc-dich-vu.html")]
+        [Route("trang-page.html")]
         public async Task<IActionResult> Index()
         {
             var result = await _authorizationService.AuthorizeAsync(User, "PAGE", Operations.Read);

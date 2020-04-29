@@ -15,6 +15,7 @@ namespace TeduCoreApp.Data.EF
         private readonly AppDbContext _context;
         private UserManager<AppUser> _userManager;
         private RoleManager<AppRole> _roleManager;
+
         public DbInitializer(AppDbContext context, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
         {
             _context = context;
@@ -65,7 +66,7 @@ namespace TeduCoreApp.Data.EF
                 _context.Contacts.Add(new ContactDetails()
                 {
                     Id = CommonConstants.DefaultContactId,
-                    Address ="No 36 Lane 133 Nguyen Phong Sac Cau Giay",
+                    Address = "No 36 Lane 133 Nguyen Phong Sac Cau Giay",
                     Email = "pandashop@gmail.com",
                     Name = "Panda Shop",
                     Phone = "0942 324 543",
@@ -121,17 +122,17 @@ namespace TeduCoreApp.Data.EF
                 });
             }
 
-            if (_context.Colors.Count() == 0)
-            {
-                List<Color> listColor = new List<Color>()
-                {
-                    new Color() {Name="Black", Code="#000000" },
-                    new Color() {Name="White", Code="#FFFFFF"},
-                    new Color() {Name="Red", Code="#ff0000" },
-                    new Color() {Name="Blue", Code="#1000ff" },
-                };
-                _context.Colors.AddRange(listColor);
-            }
+            //if (_context.Colors.Count() == 0)
+            //{
+            //    List<Color> listColor = new List<Color>()
+            //    {
+            //        new Color() {Name="Black", Code="#000000" },
+            //        new Color() {Name="White", Code="#FFFFFF"},
+            //        new Color() {Name="Red", Code="#ff0000" },
+            //        new Color() {Name="Blue", Code="#1000ff" },
+            //    };
+            //    _context.Colors.AddRange(listColor);
+            //}
             if (_context.AdvertistmentPages.Count() == 0)
             {
                 List<AdvertistmentPage> pages = new List<AdvertistmentPage>()
@@ -147,11 +148,9 @@ namespace TeduCoreApp.Data.EF
                         AdvertistmentPositions = new List<AdvertistmentPosition>(){
                         new AdvertistmentPosition(){Id="product-detail-left",Name="Bên trái"}
                     } },
-
                 };
                 _context.AdvertistmentPages.AddRange(pages);
             }
-
 
             if (_context.Slides.Count() == 0)
             {
@@ -176,20 +175,19 @@ namespace TeduCoreApp.Data.EF
                 _context.Slides.AddRange(slides);
             }
 
-
-            if (_context.Sizes.Count() == 0)
-            {
-                List<Size> listSize = new List<Size>()
-                {
-                    new Size() { Name="XXL" },
-                    new Size() { Name="XL"},
-                    new Size() { Name="L" },
-                    new Size() { Name="M" },
-                    new Size() { Name="S" },
-                    new Size() { Name="XS" }
-                };
-                _context.Sizes.AddRange(listSize);
-            }
+            //if (_context.Sizes.Count() == 0)
+            //{
+            //    List<Size> listSize = new List<Size>()
+            //    {
+            //        new Size() { Name="XXL" },
+            //        new Size() { Name="XL"},
+            //        new Size() { Name="L" },
+            //        new Size() { Name="M" },
+            //        new Size() { Name="S" },
+            //        new Size() { Name="XS" }
+            //    };
+            //    _context.Sizes.AddRange(listSize);
+            //}
 
             if (_context.ProductCategories.Count() == 0)
             {
@@ -267,7 +265,6 @@ namespace TeduCoreApp.Data.EF
                 });
             }
             await _context.SaveChangesAsync();
-
         }
     }
 }

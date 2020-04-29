@@ -58,7 +58,7 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<BillViewModel, Bill>()
                 .ConstructUsing(c => new Bill(c.Id, c.CustomerName, c.CustomerAddress,
                 c.CustomerMobile, c.CustomerMessage, c.BillStatus,
-                c.PaymentMethod, c.Status, c.CustomerId, c.Code, c.ShipCodeId));
+                c.PaymentMethod, c.Status, c.CustomerId, c.Code, c.ShipCodeId, c.AdminId));
 
             CreateMap<BillDetailViewModel, BillDetail>()
                 .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId,
@@ -97,6 +97,12 @@ namespace TeduCoreApp.Application.AutoMapper
 
             CreateMap<RecruitmentViewModel, Recruitment>()
                     .ConstructUsing(c => new Recruitment(c.Id, c.Name, c.Image, c.Description, c.Content, c.Status, c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription));
+
+            CreateMap<ColorViewModel, Color>()
+                       .ConstructUsing(c => new Color(c.Id, c.Name, c.Code));
+
+            CreateMap<SizeViewModel, Size>()
+                       .ConstructUsing(c => new Size(c.Id, c.Name));
         }
     }
 }

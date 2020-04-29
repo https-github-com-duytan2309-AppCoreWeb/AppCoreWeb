@@ -46,5 +46,7 @@ namespace TeduCoreApp.Application.ViewModels.Product
         public string Code { get; set; }
 
         public long ShipCodeId { get; set; }
+
+        public Guid? AdminId { set; get; }
     }
 }

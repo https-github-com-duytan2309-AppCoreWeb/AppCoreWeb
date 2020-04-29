@@ -1,20 +1,21 @@
-﻿@{
+﻿@using TeduCoreApp.Extensions
+@{
     ViewData["Title"] = "Bill management";
 }
 @section Scripts{
-    <script src="~/admin/app/js/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="~/admin/app/js/vendor/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="~/admin/app/js/vendor/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="~/app/controllers/bill/index.js" asp-append-version="true"></script>
+    <script src="~/admin/js/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/admin/js/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/admin/js/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/admin/app/controllers/bill/index.js" asp-append-version="true"></script>
     <script>
         var billObj = new BillController();
         billObj.initialize();
     </script>
 }
 @section Styles{
-    <link href="~/admin/app/js/vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-    <link href="~/admin/app/js/vendor/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet" />
-    <link href="~/admin/app/js/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="~/admin/js/vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/admin/js/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="~/admin/js/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
 }
 
 <input type="hidden" id="hid-category-id" value="0" />
@@ -41,6 +42,7 @@
             <div class="col-md-2 col-sm-2 col-xs-12 form-group">
                 @if ((await AuthorizationService.AuthorizeAsync(User, "BILL_LIST", Operations.Create)).Succeeded)
                 {
+                    <input id="ddlAdminId" value="@User.GetSpecificClaim("UserId")" type="hidden" />
                     <button class="btn btn-success" id="btn-create" type="button"><i class="fa fa-plus"></i>Tạo Đơn</button>
                 }
                 else
@@ -122,7 +124,9 @@
             <td>{{{PaymentMethod}}}</td>
             <td>{{{DateCreated}}}</td>
             <td>{{{BillStatus}}}</td>
-            <td><a href="#" data-id="{{Id}}" class="btn-view"><i class="fa fa-eye"></i></a></td>
+            <td>
+                <a href="#" data-id="{{Id}}" class="btn-view"><i class="fa fa-eye"></i></a>
+            </td>
         </tr>
     </script>
 </div>

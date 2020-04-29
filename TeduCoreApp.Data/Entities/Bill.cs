@@ -17,7 +17,7 @@ namespace TeduCoreApp.Data.Entities
         }
 
         public Bill(string customerName, string customerAddress, string customerMobile, string customerMessage,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string code, long shipcodeId)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string code, long shipcodeId, Guid? adminId)
         {
             CustomerName = customerName;
             CustomerAddress = customerAddress;
@@ -29,10 +29,11 @@ namespace TeduCoreApp.Data.Entities
             CustomerId = customerId;
             Code = code;
             ShipCodeId = shipcodeId;
+            AdminId = adminId;
         }
 
         public Bill(int id, string customerName, string customerAddress, string customerMobile, string customerMessage,
-           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string code, long shipcodeId)
+           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, string code, long shipcodeId, Guid? adminId)
         {
             Id = id;
             CustomerName = customerName;
@@ -45,6 +46,7 @@ namespace TeduCoreApp.Data.Entities
             CustomerId = customerId;
             Code = code;
             ShipCodeId = shipcodeId;
+            AdminId = adminId;
         }
 
         [Required]
@@ -85,5 +87,7 @@ namespace TeduCoreApp.Data.Entities
 
         [ForeignKey("ShipCodeId")]
         public ShipCode ShipCode { get; set; }
+
+        public Guid? AdminId { set; get; }
     }
 }

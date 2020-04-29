@@ -1,14 +1,15 @@
 ﻿@model CheckoutViewModel
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<AppUser> SignInManager
+@using TeduCoreApp.Extensions
 @{
     ViewData["Title"] = "Thanh toán đơn hàng";
 }
 @section Scripts {
 
-    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="~/lib/mustache/mustache.js"></script>
-    <script src="~/clientapp/controllers/cart/checkout.js"></script>
+    <script src="~/client/js/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="~/client/js/vendor/mustache/mustache.js"></script>
+    <script src="~/client/app/controllers/cart/checkout.js"></script>
     <script>
         var checkoutObj = new CheckoutController();
         checkoutObj.initialize();
@@ -23,6 +24,7 @@
 }
 
 <style>
+
     .field-validation-error {
         color: red
     }
@@ -93,6 +95,7 @@
                                             <div class="panel-body">
                                                 <div class="billing-information-wrapper">
                                                     <div class="row">
+                                                        <input type="hidden" id="ddlCustomerId" value="@User.GetSpecificClaim("UserId")">
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="billing-info">
                                                                 <label asp-for="CustomerName"></label>
@@ -212,69 +215,91 @@
                                         </div>
                                     </div>
                                     <!--Phuong Thuc Giao Hang-->
+                                    @*<div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h5 class="panel-title"><span>3.</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-6">Phương Thức Giao Hàng</a></h5>
+                                            </div>
+                                            <div id="payment-6" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <div class="billing-information-wrapper">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-md-6">
+                                                                <div class="billing-info">
+                                                                    <label>Nhà Vận Chuyển</label>
+                                                                    <input id="Carriers" class="input form-control" placeholder="Chọn Hãng" data-toggle="dropdown" type="text">
+                                                                    <ul style="overflow: scroll; width: 250px; height: 100px" class="dropdown-menu carriess" id="template-shipcode">
+                                                                    </ul>
+                                                                    <script id="template-table-shipcode" type="x-tmpl-mustache">
+                                                                        <li><a data-id="{{IdCarriers}}">{{{Carriers}}}</a></li>
+                                                                    </script>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <input id="ShipCodeId" asp-for="ShipCodeId" type="hidden" />
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-6">
+                                                                <div class="billing-info">
+                                                                    <label>Chi Phí Vận Chuyển</label>
+                                                                    <input id="CollectionFee" class="input form-control" data-toggle="dropdown" type="text" disabled>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-3 col-md-6">
+                                                                <div class="billing-info">
+                                                                    <label>Mã Bưu Chính</label>
+                                                                    <input id="ZipCode" class="input form-control" data-toggle="dropdown" type="text" disabled>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-3 col-md-6">
+                                                                <div class="billing-info">
+                                                                    <label>VAT</label>
+                                                                    <input id="VAT" class="input form-control" data-toggle="dropdown" value="10%" type="text" disabled>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-3 col-md-6">
+                                                                <div class="billing-info">
+                                                                    <label>Thời Gian Giao</label>
+
+                                                                    <input id="DiliveryTime" type="text" disabled>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-3 col-md-6">
+                                                                <div class="billing-info">
+                                                                    <label>Tổng Chi Phí Vận Chuyển: </label>
+                                                                    <input id="Total" class="input form-control" data-toggle="dropdown" type="text" disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>*@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h5 class="panel-title"><span>3.</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-6">Phương Thức Giao Hàng</a></h5>
+                                            <h5 class="panel-title"><span>3.</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-4">Chi Phí Vận Chuyển</a></h5>
                                         </div>
-                                        <div id="payment-6" class="panel-collapse collapse">
+                                        <div id="payment-4" class="panel-collapse collapse ">
                                             <div class="panel-body">
-                                                <div class="billing-information-wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-3 col-md-6">
-                                                            <div class="billing-info">
-                                                                <label>Nhà Vận Chuyển</label>
-                                                                <input id="Carriers" class="input form-control" placeholder="Chọn Hãng" data-toggle="dropdown" type="text">
-                                                                <ul style="overflow: scroll; width: 250px; height: 100px" class="dropdown-menu carriess" id="template-shipcode">
-                                                                </ul>
-                                                                <script id="template-table-shipcode" type="x-tmpl-mustache">
-                                                                    <li><a data-id="{{IdCarriers}}">{{{Carriers}}}</a></li>
-                                                                </script>
-                                                            </div>
+                                                <div class="shipping-method-wrapper">
+                                                    <div class="shipping-method">
+                                                        <p class="text-center">Chi Phí Vận Chuyển</p>
+                                                        <p class="text-center">Fixed $40.00</p>
+                                                    </div>
+                                                    <div class="billing-back-btn">
+                                                        <div class="billing-back">
+                                                            <a href="#"><i class="ion-arrow-up-c"></i> back</a>
                                                         </div>
-                                                        <div>
-                                                            <input id="ShipCodeId" asp-for="ShipCodeId" type="hidden" />
-                                                        </div>
-                                                        <div class="col-lg-3 col-md-6">
-                                                            <div class="billing-info">
-                                                                <label>Chi Phí Vận Chuyển</label>
-                                                                <input id="CollectionFee" class="input form-control" data-toggle="dropdown" type="text" disabled>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-3 col-md-6">
-                                                            <div class="billing-info">
-                                                                <label>Mã Bưu Chính</label>
-                                                                <input id="ZipCode" class="input form-control" data-toggle="dropdown" type="text" disabled>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-3 col-md-6">
-                                                            <div class="billing-info">
-                                                                <label>VAT</label>
-                                                                <input id="VAT" class="input form-control" data-toggle="dropdown" value="10%" type="text" disabled>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-3 col-md-6">
-                                                            <div class="billing-info">
-                                                                <label>Thời Gian Giao</label>
-
-                                                                <input id="DiliveryTime" type="text" disabled>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-3 col-md-6">
-                                                            <div class="billing-info">
-                                                                <label>Tổng Chi Phí Vận Chuyển: </label>
-                                                                <input id="Total" class="input form-control" data-toggle="dropdown" type="text" disabled>
-                                                            </div>
+                                                        <div class="billing-btn">
+                                                            <button type="submit">Continue</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h5 class="panel-title"><span>4.</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-6">Chi tiết đơn hàng</a></h5>

@@ -168,6 +168,8 @@ namespace TeduCoreApp
             services.AddTransient<IAnnouncementService, AnnouncementService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
             services.AddTransient<IShipCodeService, ShipCodeService>();
+            services.AddTransient<IColorService, ColorService>();
+            services.AddTransient<ISizeService, SizeService>();
 
             #endregion Serrvices
 

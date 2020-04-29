@@ -189,6 +189,26 @@
             }
         });
     }
+
+    function GetNameAddress(IdAddress) {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/ShipCodes/SaveEntity",
+            data: {
+                Id: IdAddress,
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+            },
+            error: function () {
+                tedu.notify('Has an error in progress', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
     function resetFormMaintainance() {
         $('#hidId').val(0);
         $('#dateDeliveryTime').val('');

@@ -368,7 +368,7 @@
         $('#txtCustomerMobile').val('');
         $('#txtCustomerMessage').val('');
         $('#ddlPaymentMethod').val('');
-        $('#ddlCustomerId').val('');
+        //$('#ddlCustomerId').val('');
         $('#ddlBillStatus').val('');
         $('#tbl-bill-details').html('');
     }

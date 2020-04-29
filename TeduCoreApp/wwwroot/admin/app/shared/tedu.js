@@ -136,12 +136,11 @@
         }
         return roots;
     },
-    notifypermission: function () {
+    notifySweet2: function (message) {
         Swal.fire({
-            icon: 'error',
-            title: '<strong></strong>',
-            text: 'Something went wrong!',
-            footer: '<a href>Why do I have this issue?</a>',
+            icon: 'success',
+            title: '<strong>Thông Báo</strong>',
+            text: message,
             customClass: 'swal-wide'
         });
     },

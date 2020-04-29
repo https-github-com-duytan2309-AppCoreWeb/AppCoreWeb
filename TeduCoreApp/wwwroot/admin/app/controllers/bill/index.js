@@ -121,6 +121,7 @@
                 var customerMessage = $('#txtCustomerMessage').val();
                 var paymentMethod = $('#ddlPaymentMethod').val();
                 var billStatus = $('#ddlBillStatus').val();
+                var adminId = $('#ddlAdminId').val();
                 //bill detail
                 var billDetails = [];
                 $.each($('#tbl-bill-details tr'), function (i, item) {
@@ -147,7 +148,8 @@
                         CustomerName: customerName,
                         PaymentMethod: paymentMethod,
                         Status: 1,
-                        BillDetails: billDetails
+                        BillDetails: billDetails,
+                        AdminId: adminId
                     },
                     dataType: "json",
                     beforeSend: function () {
@@ -347,7 +349,7 @@
         $('#txtCustomerMobile').val('');
         $('#txtCustomerMessage').val('');
         $('#ddlPaymentMethod').val('');
-        $('#ddlCustomerId').val('');
+        //$('#ddlCustomerId').val('');
         $('#ddlBillStatus').val('');
         $('#tbl-bill-details').html('');
     }

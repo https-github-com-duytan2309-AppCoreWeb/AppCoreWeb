@@ -53,10 +53,18 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         #region AJAX API
 
         [HttpGet]
-        public async Task<IActionResult> GetIdFromCategory(string nameCategory)
+        public async Task<IActionResult> CheckProductFromCategoryId(int IdCategory)
         {
-            var model = _productCategoryService.GetIdByName(nameCategory);
-            return new OkObjectResult(model.Id);
+            //int IdCategory = 12;
+            var model = _productService.CheckProductFromCategoryId(IdCategory.ToString());
+            if (model.Count == 0)
+            {
+                return new JsonResult("NO");
+            }
+            else
+            {
+                return new JsonResult("OK");
+            }
         }
 
         [HttpGet]
