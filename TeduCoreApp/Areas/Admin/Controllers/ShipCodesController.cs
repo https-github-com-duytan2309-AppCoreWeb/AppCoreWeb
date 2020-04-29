@@ -32,7 +32,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _authorizationService = authorizationService;
         }
 
-        [Route("chi-phi-van-chuyen.html")]
+        [Route("quan-ly-van-chuyen.html")]
         public async Task<IActionResult> Index()
         {
             var result = await _authorizationService.AuthorizeAsync(User, "SHIPER", Operations.Read);

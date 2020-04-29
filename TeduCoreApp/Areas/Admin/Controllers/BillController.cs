@@ -43,6 +43,24 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             return View();
         }
 
+        [Route("danh-sach-hoa-don-dien-thoai.html")]
+        public async Task<IActionResult> BillPhone()
+        {
+            var result = await _authorizationService.AuthorizeAsync(User, "BILLPHONE", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/notify-denied.html");
+            return View();
+        }
+
+        [Route("danh-sach-hoa-don-tai-cua-hang.html")]
+        public async Task<IActionResult> BillDirect()
+        {
+            var result = await _authorizationService.AuthorizeAsync(User, "BILLSTORE", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/notify-denied.html");
+            return View();
+        }
+
         [HttpGet]
         public IActionResult GetById(int id)
         {

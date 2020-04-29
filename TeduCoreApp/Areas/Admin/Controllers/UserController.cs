@@ -20,19 +20,28 @@ namespace TeduCoreApp.Areas.Admin.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IUserService _userService;
         private readonly IAuthorizationService _authorizationService;
+        private readonly IFeedbackService _feedBackService;
 
         public UserController(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             IUserService userService
             ,
-            IAuthorizationService authorizationService
+            IAuthorizationService authorizationService,
+            IFeedbackService feedBackService
             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _userService = userService;
             _authorizationService = authorizationService;
+            _feedBackService = feedBackService;
+        }
+
+        [Route("quan-ly-nguoi-dung.html")]
+        public async Task<IActionResult> IndexUpdate()
+        {
+            return View();
         }
 
         public async Task<IActionResult> UserProfile()
@@ -48,6 +57,16 @@ namespace TeduCoreApp.Areas.Admin.Controllers
                 return new RedirectResult("/notify-denied.html");
 
             return View("Index");
+        }
+
+        [Route("nguoi-dung-phan-hoi.html")]
+        public async Task<IActionResult> Feedback()
+        {
+            var result = await _authorizationService.AuthorizeAsync(User, "CUSTOMERFEEKBACK", Operations.Read);
+            if (result.Succeeded == false)
+                return new RedirectResult("/notify-denied.html");
+
+            return View("Feedback");
         }
 
         #region Ajax User

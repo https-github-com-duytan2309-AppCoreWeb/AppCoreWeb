@@ -11,6 +11,7 @@ using TeduCoreApp.Authorization;
 
 namespace TeduCoreApp.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CompanyController : BaseController
     {
         private readonly IContactService _contactService;
@@ -25,6 +26,7 @@ namespace TeduCoreApp.Areas.Admin.Controllers
             _authorizationService = authorizationService;
         }
 
+        [Route("quan-ly-dich-vu-cong-ty.html")]
         public IActionResult Index()
         {
             return View();
